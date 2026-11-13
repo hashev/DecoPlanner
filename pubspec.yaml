@@ -1,0 +1,49 @@
+name: deco_planner
+description: "Offline dive planning application."
+publish_to: 'none'
+version: 0.1.0+1
+
+environment:
+  sdk: ^3.11.4
+
+dependencies:
+  crypto: ^3.0.8
+  deco_core:
+    path: packages/deco_core
+  file_selector: ^1.1.0
+  flutter:
+    sdk: flutter
+
+  flutter_localizations:
+    sdk: flutter
+  # image 4.11 calls archive.decodeLazy, absent in SDK-compatible archive 4.0.9.
+  image: 4.8.0
+  path: ^1.9.1
+  path_provider: ^2.1.6
+  pdf: ^3.12.0
+  printing: ^5.14.3
+  share_plus: ^11.1.0
+
+dev_dependencies:
+  integration_test:
+    sdk: flutter
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/help/
+    - assets/fonts/firasans-OFL.txt
+    - assets/fonts/firacode-OFL.txt
+  fonts:
+    - family: Fira Sans
+      fonts:
+        - asset: assets/fonts/FiraSans-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/FiraSans-SemiBold.ttf
+          weight: 600
+    - family: Fira Code
+      fonts:
+        - asset: assets/fonts/FiraCode[wght].ttf

@@ -1,0 +1,204 @@
+{
+  "schema_version": 1,
+  "provenance": {
+    "kind": "independent-high-precision-equation-solve",
+    "project": "mpmath",
+    "version": "1.3.0",
+    "source": "https://mpmath.org/doc/current/calculus/optimization.html",
+    "module_sha256": "b241584d2c1fc0304b0a1015ea923749d7b0800411dd406dcab7c82bf25d9fe8",
+    "command": "local/oracles/python-env/bin/python tool/capture_eos_reference.py"
+  },
+  "equation": "P=R*T*n/(1-b*n)-a*n^2; a=(sum f*sqrt(ai))^2; b=sum f*bi",
+  "constants": {
+    "r_litre_bar_mol_kelvin": ".083145",
+    "a": [
+      "1.382",
+      "1.37",
+      ".0346"
+    ],
+    "b": [
+      ".03186",
+      ".0387",
+      ".0238"
+    ]
+  },
+  "scope": "Independent root solver for declared model; not experimental validation of gas physics",
+  "tolerance_moles_per_litre": 1e-08,
+  "cases": [
+    {
+      "oxygen": 0.21,
+      "helium": 0.0,
+      "temperature_kelvin": 294,
+      "pressure_bar": 1,
+      "moles_per_litre": "0.0409403372005999462308871665245094117275419874326640067385742"
+    },
+    {
+      "oxygen": 0.21,
+      "helium": 0.0,
+      "temperature_kelvin": 294,
+      "pressure_bar": 6.89,
+      "moles_per_litre": "0.28334569718745099768208707246298371922761656646164694807122"
+    },
+    {
+      "oxygen": 0.21,
+      "helium": 0.0,
+      "temperature_kelvin": 294,
+      "pressure_bar": 50,
+      "moles_per_litre": "2.1156927681676437850230905208917672669317067556820529819392"
+    },
+    {
+      "oxygen": 0.21,
+      "helium": 0.0,
+      "temperature_kelvin": 294,
+      "pressure_bar": 200,
+      "moles_per_litre": "8.32848567770240352797230032673092043756835044821928587826583"
+    },
+    {
+      "oxygen": 0.21,
+      "helium": 0.0,
+      "temperature_kelvin": 294,
+      "pressure_bar": 300,
+      "moles_per_litre": "11.2549979359692290660263929368821320884575345165574218284155"
+    },
+    {
+      "oxygen": 0.32,
+      "helium": 0.0,
+      "temperature_kelvin": 294,
+      "pressure_bar": 1,
+      "moles_per_litre": "0.0409416947205230164199176676149596048003807121180661110609899"
+    },
+    {
+      "oxygen": 0.32,
+      "helium": 0.0,
+      "temperature_kelvin": 294,
+      "pressure_bar": 6.89,
+      "moles_per_litre": "0.283412440266864275000155667046873730350053821591997770344505"
+    },
+    {
+      "oxygen": 0.32,
+      "helium": 0.0,
+      "temperature_kelvin": 294,
+      "pressure_bar": 50,
+      "moles_per_litre": "2.12018104869714342310784895261842121671194985858963942132824"
+    },
+    {
+      "oxygen": 0.32,
+      "helium": 0.0,
+      "temperature_kelvin": 294,
+      "pressure_bar": 200,
+      "moles_per_litre": "8.42768508702724453790962083746761160626817497741870037497039"
+    },
+    {
+      "oxygen": 0.32,
+      "helium": 0.0,
+      "temperature_kelvin": 294,
+      "pressure_bar": 300,
+      "moles_per_litre": "11.4292571183205736597266137400421731588296865387009362359342"
+    },
+    {
+      "oxygen": 0.18,
+      "helium": 0.45,
+      "temperature_kelvin": 294,
+      "pressure_bar": 1,
+      "moles_per_litre": "0.0408935648141450831652617045959500300296240886305965145206566"
+    },
+    {
+      "oxygen": 0.18,
+      "helium": 0.45,
+      "temperature_kelvin": 294,
+      "pressure_bar": 6.89,
+      "moles_per_litre": "0.281124273136662957036462234626841040623302198066275346675514"
+    },
+    {
+      "oxygen": 0.18,
+      "helium": 0.45,
+      "temperature_kelvin": 294,
+      "pressure_bar": 50,
+      "moles_per_litre": "2.00107918635234856454889452454397247976043550215841014659574"
+    },
+    {
+      "oxygen": 0.18,
+      "helium": 0.45,
+      "temperature_kelvin": 294,
+      "pressure_bar": 200,
+      "moles_per_litre": "7.24355662889876728898574596344845468750178118299486848192757"
+    },
+    {
+      "oxygen": 0.18,
+      "helium": 0.45,
+      "temperature_kelvin": 294,
+      "pressure_bar": 300,
+      "moles_per_litre": "9.99982479974599461661399709160459800966239375782023842991752"
+    },
+    {
+      "oxygen": 1.0,
+      "helium": 0.0,
+      "temperature_kelvin": 294,
+      "pressure_bar": 1,
+      "moles_per_litre": "0.040950089897346159645148887948274357384174561700247560277484"
+    },
+    {
+      "oxygen": 1.0,
+      "helium": 0.0,
+      "temperature_kelvin": 294,
+      "pressure_bar": 6.89,
+      "moles_per_litre": "0.28382589920160896718840815257544305484175844689263903354105"
+    },
+    {
+      "oxygen": 1.0,
+      "helium": 0.0,
+      "temperature_kelvin": 294,
+      "pressure_bar": 50,
+      "moles_per_litre": "2.14854150811818972884809860904454514909522471309049652987898"
+    },
+    {
+      "oxygen": 1.0,
+      "helium": 0.0,
+      "temperature_kelvin": 294,
+      "pressure_bar": 200,
+      "moles_per_litre": "9.15013698018435237223475249377639231208540501187652449460673"
+    },
+    {
+      "oxygen": 1.0,
+      "helium": 0.0,
+      "temperature_kelvin": 294,
+      "pressure_bar": 300,
+      "moles_per_litre": "12.7434275989469198782536454830695139651960123787448330122615"
+    },
+    {
+      "oxygen": 0.0,
+      "helium": 1.0,
+      "temperature_kelvin": 294,
+      "pressure_bar": 1,
+      "moles_per_litre": "0.0408713489971185475901348981810617904066346232941162177046134"
+    },
+    {
+      "oxygen": 0.0,
+      "helium": 1.0,
+      "temperature_kelvin": 294,
+      "pressure_bar": 6.89,
+      "moles_per_litre": "0.280092853038434269316040394113083211233691237387392267073134"
+    },
+    {
+      "oxygen": 0.0,
+      "helium": 1.0,
+      "temperature_kelvin": 294,
+      "pressure_bar": 50,
+      "moles_per_litre": "1.95540720592740054219261331885203599919607370203167085174918"
+    },
+    {
+      "oxygen": 0.0,
+      "helium": 1.0,
+      "temperature_kelvin": 294,
+      "pressure_bar": 200,
+      "moles_per_litre": "6.89531418635597755661451758895115538650480193428189012773708"
+    },
+    {
+      "oxygen": 0.0,
+      "helium": 1.0,
+      "temperature_kelvin": 294,
+      "pressure_bar": 300,
+      "moles_per_litre": "9.57584858143641164822618714813155070746254283230219547337521"
+    }
+  ]
+}

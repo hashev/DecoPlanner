@@ -1,0 +1,21 @@
+{
+  "legacy_entries": 455,
+  "legacy_source_verified": false,
+  "dynamic_scenarios": 28,
+  "included": 437,
+  "excluded": 18,
+  "screens": 18,
+  "state_variants": 13,
+  "boards": 363,
+  "layout_groups": 144,
+  "markdown_links": 402,
+  "requirements": 15,
+  "fixture_checks": [],
+  "protected_files_unchanged": null,
+  "all_fields_preserved_in_each_layout": true,
+  "svg_dimensions_match": true,
+  "png_verification": "all present previews checked",
+  "all_passed": true,
+  "runtime_validation": "not tested by static UX audit",
+  "reference_verification": "not requested; private sources and numeric claims not verified"
+}

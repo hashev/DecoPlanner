@@ -1,0 +1,382 @@
+[
+  {
+    "capability": "planner-workspace",
+    "requirement": "Редактирование режимов и уровней",
+    "screens": [
+      "P01",
+      "P02",
+      "P07"
+    ],
+    "boards": [
+      "MATRIX-1000x900-dark",
+      "MATRIX-1000x900-light",
+      "MATRIX-1000x900-text200",
+      "MATRIX-1024x768-dark",
+      "MATRIX-1024x768-light",
+      "MATRIX-1440x900-text200",
+      "MATRIX-375x812-text200",
+      "MATRIX-390x844-dark",
+      "MATRIX-390x844-light",
+      "MATRIX-599x900-dark",
+      "MATRIX-599x900-light",
+      "MATRIX-600x900-dark",
+      "MATRIX-600x900-light",
+      "MATRIX-600x900-text200",
+      "MATRIX-768x1024-dark",
+      "MATRIX-768x1024-light",
+      "MATRIX-844x390-dark",
+      "MATRIX-844x390-light",
+      "MATRIX-999x900-dark",
+      "MATRIX-999x900-light",
+      "P01-desktop-dark",
+      "P01-desktop-light",
+      "P01-mobile-dark",
+      "P01-mobile-light",
+      "P02-desktop-dark",
+      "P02-desktop-light",
+      "P02-mobile-dark",
+      "P02-mobile-light",
+      "P07-desktop-dark",
+      "P07-desktop-light",
+      "P07-mobile-dark",
+      "P07-mobile-light"
+    ],
+    "validation": "static design + documented walkthrough; runtime not run"
+  },
+  {
+    "capability": "planner-workspace",
+    "requirement": "Газы и параметры расчёта",
+    "screens": [
+      "P03",
+      "S01"
+    ],
+    "boards": [
+      "P03-desktop-dark",
+      "P03-desktop-light",
+      "P03-mobile-dark",
+      "P03-mobile-light",
+      "S01-desktop-dark",
+      "S01-desktop-light",
+      "S01-mobile-dark",
+      "S01-mobile-light"
+    ],
+    "validation": "static design + documented walkthrough; runtime not run"
+  },
+  {
+    "capability": "planner-workspace",
+    "requirement": "Последовательность погружений",
+    "screens": [
+      "P01"
+    ],
+    "boards": [
+      "P01-desktop-dark",
+      "P01-desktop-light",
+      "P01-mobile-dark",
+      "P01-mobile-light"
+    ],
+    "validation": "static design + documented walkthrough; runtime not run"
+  },
+  {
+    "capability": "planner-workspace",
+    "requirement": "Актуальность и ошибки",
+    "screens": [
+      "V-empty",
+      "V-invalid",
+      "V-calculating",
+      "V-stale",
+      "V-error",
+      "V-unavailable"
+    ],
+    "boards": [
+      "V-calculating-desktop-dark",
+      "V-calculating-desktop-light",
+      "V-calculating-mobile-dark",
+      "V-calculating-mobile-light",
+      "V-empty-desktop-dark",
+      "V-empty-desktop-light",
+      "V-empty-mobile-dark",
+      "V-empty-mobile-light",
+      "V-error-desktop-dark",
+      "V-error-desktop-light",
+      "V-error-mobile-dark",
+      "V-error-mobile-light",
+      "V-invalid-desktop-dark",
+      "V-invalid-desktop-light",
+      "V-invalid-mobile-dark",
+      "V-invalid-mobile-light",
+      "V-stale-desktop-dark",
+      "V-stale-desktop-light",
+      "V-stale-mobile-dark",
+      "V-stale-mobile-light",
+      "V-unavailable-desktop-dark",
+      "V-unavailable-desktop-light",
+      "V-unavailable-mobile-dark",
+      "V-unavailable-mobile-light"
+    ],
+    "validation": "static design + documented walkthrough; runtime not run"
+  },
+  {
+    "capability": "planner-workspace",
+    "requirement": "Представления результатов",
+    "screens": [
+      "P04",
+      "P05",
+      "P06"
+    ],
+    "boards": [
+      "P04-desktop-dark",
+      "P04-desktop-light",
+      "P04-mobile-dark",
+      "P04-mobile-light",
+      "P05-desktop-dark",
+      "P05-desktop-light",
+      "P05-mobile-dark",
+      "P05-mobile-light",
+      "P06-desktop-dark",
+      "P06-desktop-light",
+      "P06-mobile-dark",
+      "P06-mobile-light"
+    ],
+    "validation": "static design + documented walkthrough; runtime not run"
+  },
+  {
+    "capability": "planner-workspace",
+    "requirement": "Сравнения и диапазонные таблицы",
+    "screens": [
+      "P05",
+      "P08"
+    ],
+    "boards": [
+      "P05-desktop-dark",
+      "P05-desktop-light",
+      "P05-mobile-dark",
+      "P05-mobile-light",
+      "P08-desktop-dark",
+      "P08-desktop-light",
+      "P08-mobile-dark",
+      "P08-mobile-light"
+    ],
+    "validation": "static design + documented walkthrough; runtime not run"
+  },
+  {
+    "capability": "gas-tool-workflows",
+    "requirement": "Каталог газовых инструментов",
+    "screens": [
+      "T01",
+      "T02",
+      "T03",
+      "T04",
+      "T05",
+      "T06",
+      "T07"
+    ],
+    "boards": [
+      "T01-desktop-dark",
+      "T01-desktop-light",
+      "T01-mobile-dark",
+      "T01-mobile-light",
+      "T02-desktop-dark",
+      "T02-desktop-light",
+      "T02-mobile-dark",
+      "T02-mobile-light",
+      "T03-desktop-dark",
+      "T03-desktop-light",
+      "T03-mobile-dark",
+      "T03-mobile-light",
+      "T04-desktop-dark",
+      "T04-desktop-light",
+      "T04-mobile-dark",
+      "T04-mobile-light",
+      "T05-desktop-dark",
+      "T05-desktop-light",
+      "T05-mobile-dark",
+      "T05-mobile-light",
+      "T06-desktop-dark",
+      "T06-desktop-light",
+      "T06-mobile-dark",
+      "T06-mobile-light",
+      "T07-desktop-dark",
+      "T07-desktop-light",
+      "T07-mobile-dark",
+      "T07-mobile-light"
+    ],
+    "validation": "static design + documented walkthrough; runtime not run"
+  },
+  {
+    "capability": "gas-tool-workflows",
+    "requirement": "Свойства и подбор смеси",
+    "screens": [
+      "T01",
+      "T02",
+      "T03"
+    ],
+    "boards": [
+      "T01-desktop-dark",
+      "T01-desktop-light",
+      "T01-mobile-dark",
+      "T01-mobile-light",
+      "T02-desktop-dark",
+      "T02-desktop-light",
+      "T02-mobile-dark",
+      "T02-mobile-light",
+      "T03-desktop-dark",
+      "T03-desktop-light",
+      "T03-mobile-dark",
+      "T03-mobile-light"
+    ],
+    "validation": "static design + documented walkthrough; runtime not run"
+  },
+  {
+    "capability": "gas-tool-workflows",
+    "requirement": "Смешивание и стоимость",
+    "screens": [
+      "T04",
+      "T08",
+      "V-drain",
+      "V-impossible"
+    ],
+    "boards": [
+      "T04-desktop-dark",
+      "T04-desktop-light",
+      "T04-mobile-dark",
+      "T04-mobile-light",
+      "T08-desktop-dark",
+      "T08-desktop-light",
+      "T08-mobile-dark",
+      "T08-mobile-light",
+      "V-drain-desktop-dark",
+      "V-drain-desktop-light",
+      "V-drain-mobile-dark",
+      "V-drain-mobile-light",
+      "V-impossible-desktop-dark",
+      "V-impossible-desktop-light",
+      "V-impossible-mobile-dark",
+      "V-impossible-mobile-light"
+    ],
+    "validation": "static design + documented walkthrough; runtime not run"
+  },
+  {
+    "capability": "gas-tool-workflows",
+    "requirement": "Валидация численных значений",
+    "screens": [
+      "V-invalid",
+      "V-tool-error",
+      "V-tool-stale"
+    ],
+    "boards": [
+      "V-invalid-desktop-dark",
+      "V-invalid-desktop-light",
+      "V-invalid-mobile-dark",
+      "V-invalid-mobile-light",
+      "V-tool-error-desktop-dark",
+      "V-tool-error-desktop-light",
+      "V-tool-error-mobile-dark",
+      "V-tool-error-mobile-light",
+      "V-tool-stale-desktop-dark",
+      "V-tool-stale-desktop-light",
+      "V-tool-stale-mobile-dark",
+      "V-tool-stale-mobile-light"
+    ],
+    "validation": "static design + documented walkthrough; runtime not run"
+  },
+  {
+    "capability": "adaptive-planner-presentation",
+    "requirement": "Адаптация по доступной ширине",
+    "screens": [
+      "P02"
+    ],
+    "boards": [
+      "MATRIX-1000x900-dark",
+      "MATRIX-1000x900-light",
+      "MATRIX-1000x900-text200",
+      "MATRIX-1024x768-dark",
+      "MATRIX-1024x768-light",
+      "MATRIX-1440x900-text200",
+      "MATRIX-375x812-text200",
+      "MATRIX-390x844-dark",
+      "MATRIX-390x844-light",
+      "MATRIX-599x900-dark",
+      "MATRIX-599x900-light",
+      "MATRIX-600x900-dark",
+      "MATRIX-600x900-light",
+      "MATRIX-600x900-text200",
+      "MATRIX-768x1024-dark",
+      "MATRIX-768x1024-light",
+      "MATRIX-844x390-dark",
+      "MATRIX-844x390-light",
+      "MATRIX-999x900-dark",
+      "MATRIX-999x900-light",
+      "P02-desktop-dark",
+      "P02-desktop-light",
+      "P02-mobile-dark",
+      "P02-mobile-light"
+    ],
+    "validation": "static design + documented walkthrough; runtime not run"
+  },
+  {
+    "capability": "adaptive-planner-presentation",
+    "requirement": "Читаемость и доступность",
+    "screens": [
+      "V-components"
+    ],
+    "boards": [
+      "V-components-desktop-dark",
+      "V-components-desktop-light",
+      "V-components-mobile-dark",
+      "V-components-mobile-light"
+    ],
+    "validation": "static design + documented walkthrough; runtime not run"
+  },
+  {
+    "capability": "adaptive-planner-presentation",
+    "requirement": "Управление на разных платформах",
+    "screens": [
+      "V-components"
+    ],
+    "boards": [
+      "V-components-desktop-dark",
+      "V-components-desktop-light",
+      "V-components-mobile-dark",
+      "V-components-mobile-light"
+    ],
+    "validation": "static design + documented walkthrough; runtime not run"
+  },
+  {
+    "capability": "adaptive-planner-presentation",
+    "requirement": "Прослеживаемый дизайн-пакет",
+    "screens": [
+      "P01",
+      "S02"
+    ],
+    "boards": [
+      "P01-desktop-dark",
+      "P01-desktop-light",
+      "P01-mobile-dark",
+      "P01-mobile-light",
+      "S02-desktop-dark",
+      "S02-desktop-light",
+      "S02-mobile-dark",
+      "S02-mobile-light"
+    ],
+    "validation": "static design + documented walkthrough; runtime not run"
+  },
+  {
+    "capability": "adaptive-planner-presentation",
+    "requirement": "Честный статус демонстрационных материалов",
+    "screens": [
+      "P04",
+      "V-print"
+    ],
+    "boards": [
+      "P04-desktop-dark",
+      "P04-desktop-light",
+      "P04-mobile-dark",
+      "P04-mobile-light",
+      "V-print-desktop-dark",
+      "V-print-desktop-light",
+      "V-print-mobile-dark",
+      "V-print-mobile-light"
+    ],
+    "validation": "static design + documented walkthrough; runtime not run"
+  }
+]

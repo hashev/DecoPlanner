@@ -1,0 +1,55 @@
+# Private legacy distribution, research evidence and local validation scratch.
+/local/
+.DS_Store
+
+# Dart / Flutter generated state.
+**/.dart_tool/
+**/.packages
+**/.pub-cache/
+**/.pub/
+**/build/
+/coverage/
+**/.flutter-plugins
+**/.flutter-plugins-dependencies
+/packages/deco_core/pubspec.lock
+
+# Personal editor state.
+.idea/
+*.iml
+.vscode/*
+!.vscode/extensions.json
+!.vscode/launch.json
+
+# Platform-local caches / generated integration files.
+**/.gradle/
+**/local.properties
+**/Pods/
+**/.symlinks/
+**/ephemeral/
+**/DerivedData/
+**/xcuserdata/
+**/*.xcuserstate
+**/Flutter/Generated.xcconfig
+**/Flutter/flutter_export_environment.sh
+
+# User data, exports and signing material.
+/user-data/
+/exports/
+.env
+.env.*
+!.env.example
+*.jks
+*.keystore
+*.p12
+*.p8
+*.mobileprovision
+**/key.properties
+
+# Regenerable design previews; SVG sources and metadata are versioned.
+/docs/ui/mockups/*.png
+/docs/ui/reports/contact-sheets/*.png
+
+# Local logs / validation output.
+*.log
+__pycache__/
+*.pyc

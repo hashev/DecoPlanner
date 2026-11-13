@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "id": "altitude-vpm-acclimatized",
+  "provenance": {
+    "kind": "original-runtime-observation",
+    "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+    "original_result_sha256": "38fc53ba33a57f1e8130f52cc38f2621b1f3e17828f33688de9b08715b745513",
+    "source": "analysis/fixtures/results/altitude-vpm-acclimatized.json"
+  },
+  "request": {
+    "id": "altitude-vpm-acclimatized",
+    "model": "vpm",
+    "mode": "oc",
+    "levels": [
+      [
+        30,
+        20,
+        21,
+        0,
+        0
+      ]
+    ],
+    "settings": {
+      "altitude_enabled": true,
+      "altitude": 2000,
+      "acclimatized": true,
+      "initial_altitude": 0,
+      "hours_to_altitude": 3,
+      "hours_at_altitude": 2
+    }
+  },
+  "outcome": "legacy-error",
+  "role": "baseline observation, not an independent corrected-model expectation"
+}

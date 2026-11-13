@@ -1,0 +1,224 @@
+{
+  "schema_version": 1,
+  "id": "subsurface-vpmb-bailout",
+  "provenance": {
+    "kind": "independent-full-plan-execution",
+    "repository": "https://github.com/subsurface/subsurface",
+    "commit": "7f2610cee4572ebc1795c48d054616a51d457eec",
+    "libdc_submodule_commit": "469f28d17ed05112496f176006eccccc9f8fdc73",
+    "source_sha256": {
+      "core/deco.cpp": "26964790fdca9ac7afb239329a36a8b2b9a0b0d92b02c097bde88a0bc64121b5",
+      "core/planner.cpp": "65047f37420c3490589479fcacc6e5005e75b684e1c61de1c1af3365d956207e"
+    },
+    "harness_sha256": "f21203a3a3c5ba0c4e0a7f2aeb21e0ab49ea11b2c6636c4172ac76f43347de9b",
+    "executable_sha256": "b42b5f113eed1989e8328332b858d3df9570ff87b6897f925c829a53236a3557",
+    "numerical_modifications": false,
+    "command": "python3 tool/capture_subsurface_plans.py",
+    "author_benchmark_check": "independent execution; no separate author benchmark claimed"
+  },
+  "request": {
+    "model": "VPMB",
+    "mode": "bailout",
+    "depth_m": 60,
+    "bottom_runtime_min": 20,
+    "diluent_o2": 0.2,
+    "diluent_he": 0.21,
+    "setpoint_bar": 1.3,
+    "gf_low": 0.5,
+    "gf_high": 0.7,
+    "salinity_source": 10300,
+    "gas_availability": [
+      {
+        "o2": 0.53,
+        "he": 0
+      },
+      {
+        "o2": 0.19,
+        "he": 0.33
+      }
+    ]
+  },
+  "expected": {
+    "runtime_seconds": 3060,
+    "bailout": true,
+    "points": [
+      {
+        "time_seconds": 0,
+        "depth_mm": 18000,
+        "cylinder": 1,
+        "setpoint_mbar": 0,
+        "mode": 0
+      },
+      {
+        "time_seconds": 0,
+        "depth_mm": 72000,
+        "cylinder": 2,
+        "setpoint_mbar": 0,
+        "mode": 0
+      },
+      {
+        "time_seconds": 1200,
+        "depth_mm": 60000,
+        "cylinder": 0,
+        "setpoint_mbar": 1300,
+        "mode": 1
+      },
+      {
+        "time_seconds": 1440,
+        "depth_mm": 60000,
+        "cylinder": 2,
+        "setpoint_mbar": 0,
+        "mode": 0
+      },
+      {
+        "time_seconds": 1662,
+        "depth_mm": 27000,
+        "cylinder": 2,
+        "setpoint_mbar": 0,
+        "mode": 0
+      },
+      {
+        "time_seconds": 1740,
+        "depth_mm": 27000,
+        "cylinder": 2,
+        "setpoint_mbar": 0,
+        "mode": 0
+      },
+      {
+        "time_seconds": 1780,
+        "depth_mm": 21000,
+        "cylinder": 2,
+        "setpoint_mbar": 0,
+        "mode": 0
+      },
+      {
+        "time_seconds": 1860,
+        "depth_mm": 21000,
+        "cylinder": 2,
+        "setpoint_mbar": 0,
+        "mode": 0
+      },
+      {
+        "time_seconds": 1880,
+        "depth_mm": 18000,
+        "cylinder": 2,
+        "setpoint_mbar": 0,
+        "mode": 0
+      },
+      {
+        "time_seconds": 1940,
+        "depth_mm": 18000,
+        "cylinder": 1,
+        "setpoint_mbar": 0,
+        "mode": 0
+      },
+      {
+        "time_seconds": 1960,
+        "depth_mm": 15000,
+        "cylinder": 1,
+        "setpoint_mbar": 0,
+        "mode": 0
+      },
+      {
+        "time_seconds": 2040,
+        "depth_mm": 15000,
+        "cylinder": 1,
+        "setpoint_mbar": 0,
+        "mode": 0
+      },
+      {
+        "time_seconds": 2060,
+        "depth_mm": 12000,
+        "cylinder": 1,
+        "setpoint_mbar": 0,
+        "mode": 0
+      },
+      {
+        "time_seconds": 2160,
+        "depth_mm": 12000,
+        "cylinder": 1,
+        "setpoint_mbar": 0,
+        "mode": 0
+      },
+      {
+        "time_seconds": 2180,
+        "depth_mm": 9000,
+        "cylinder": 1,
+        "setpoint_mbar": 0,
+        "mode": 0
+      },
+      {
+        "time_seconds": 2280,
+        "depth_mm": 9000,
+        "cylinder": 1,
+        "setpoint_mbar": 0,
+        "mode": 0
+      },
+      {
+        "time_seconds": 2300,
+        "depth_mm": 6000,
+        "cylinder": 1,
+        "setpoint_mbar": 0,
+        "mode": 0
+      },
+      {
+        "time_seconds": 2940,
+        "depth_mm": 6000,
+        "cylinder": 1,
+        "setpoint_mbar": 0,
+        "mode": 0
+      },
+      {
+        "time_seconds": 2940,
+        "depth_mm": 6000,
+        "cylinder": 1,
+        "setpoint_mbar": 0,
+        "mode": 0
+      },
+      {
+        "time_seconds": 3060,
+        "depth_mm": 0,
+        "cylinder": 1,
+        "setpoint_mbar": 0,
+        "mode": 0
+      }
+    ],
+    "n2_bar": [
+      0.8366880228580369,
+      1.046595541567784,
+      1.2339061697065512,
+      1.3113924935274928,
+      1.2999836868786478,
+      1.2386875942363196,
+      1.1562429711405195,
+      1.072110961502401,
+      0.9974354780618676,
+      0.9447015758091232,
+      0.9074838969016149,
+      0.8768478909459944,
+      0.8518756686002694,
+      0.8314453291509281,
+      0.8150960640695014,
+      0.8020797895184827
+    ],
+    "he_bar": [
+      0.0008885377633068168,
+      0.015120352468236627,
+      0.07878908419178679,
+      0.19053572461462873,
+      0.31141838802669997,
+      0.38960495924759847,
+      0.41510401356460724,
+      0.39340442873186365,
+      0.34285041972037805,
+      0.29119056957430467,
+      0.24719328625033735,
+      0.20642705517443927,
+      0.17017960522965028,
+      0.13854195911991626,
+      0.11194814126781713,
+      0.089963665017275
+    ]
+  },
+  "scope": "Full source-native plan. Conventions require normalization before product regression; tissues are the state returned by plan()."
+}

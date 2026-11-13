@@ -1,0 +1,211 @@
+import '../numerics/failure.dart';
+import '../units/units.dart';
+
+enum ZGas { oxygen, helium, nitrogen, air }
+
+/// Recorded20C empirical tables; explicit zero-pressure anchor and continuous
+/// linear extrapolation. This is separate from the vdW fill equation of state.
+abstract final class RecordedCompressibility20C {
+  static const stepBar = 6.894942725;
+  static const _tables = <ZGas, List<double>>{
+    ZGas.nitrogen: [
+      0.997,
+      0.995,
+      0.993,
+      0.991,
+      0.99,
+      0.989,
+      0.988,
+      0.987,
+      0.987,
+      0.986,
+      0.987,
+      0.987,
+      0.988,
+      0.988,
+      0.99,
+      0.991,
+      0.992,
+      0.994,
+      0.996,
+      0.999,
+      1.001,
+      1.004,
+      1.007,
+      1.01,
+      1.013,
+      1.016,
+      1.02,
+      1.024,
+      1.028,
+      1.032,
+      1.036,
+      1.04,
+      1.045,
+      1.049,
+      1.054,
+      1.059,
+      1.064,
+      1.069,
+      1.074,
+      1.079,
+    ],
+    ZGas.helium: [
+      1.004,
+      1.007,
+      1.011,
+      1.015,
+      1.018,
+      1.022,
+      1.026,
+      1.029,
+      1.033,
+      1.036,
+      1.04,
+      1.043,
+      1.047,
+      1.05,
+      1.054,
+      1.057,
+      1.061,
+      1.064,
+      1.067,
+      1.071,
+      1.074,
+      1.078,
+      1.081,
+      1.084,
+      1.088,
+      1.091,
+      1.094,
+      1.097,
+      1.101,
+      1.104,
+      1.107,
+      1.11,
+      1.114,
+      1.117,
+      1.12,
+      1.123,
+      1.127,
+      1.13,
+      1.133,
+      1.136,
+    ],
+    ZGas.oxygen: [
+      0.995,
+      0.99,
+      0.986,
+      0.981,
+      0.977,
+      0.973,
+      0.969,
+      0.966,
+      0.962,
+      0.959,
+      0.956,
+      0.954,
+      0.951,
+      0.949,
+      0.947,
+      0.945,
+      0.944,
+      0.943,
+      0.942,
+      0.941,
+      0.94,
+      0.94,
+      0.94,
+      0.941,
+      0.941,
+      0.942,
+      0.943,
+      0.944,
+      0.945,
+      0.947,
+      0.948,
+      0.95,
+      0.953,
+      0.955,
+      0.957,
+      0.96,
+      0.963,
+      0.966,
+      0.969,
+      0.972,
+    ],
+    ZGas.air: [
+      0.998,
+      0.997,
+      0.995,
+      0.994,
+      0.993,
+      0.993,
+      0.993,
+      0.993,
+      0.993,
+      0.994,
+      0.995,
+      0.996,
+      0.997,
+      0.999,
+      1.001,
+      1.003,
+      1.005,
+      1.008,
+      1.011,
+      1.014,
+      1.017,
+      1.021,
+      1.024,
+      1.028,
+      1.032,
+      1.036,
+      1.041,
+      1.045,
+      1.05,
+      1.054,
+      1.059,
+      1.064,
+      1.069,
+      1.074,
+      1.08,
+      1.085,
+      1.091,
+      1.096,
+      1.102,
+      1.107,
+    ],
+  };
+  static const _slopes = <ZGas, double>{
+    ZGas.oxygen: 4.351015128e-4,
+    ZGas.helium: 4.908837563e-4,
+    ZGas.air: 7.251691881e-4,
+    ZGas.nitrogen: 7.251691881e-4,
+  };
+  static double atPressureBar(ZGas gas, double pressureBar) {
+    requireFinite(pressureBar, 'Z pressureBar', nonnegative: true);
+    final values = _tables[gas]!;
+    if (pressureBar == 0) return 1;
+    final lastPressure = values.length * stepBar;
+    if (pressureBar > lastPressure) {
+      final extrapolated =
+          values.last + (pressureBar - lastPressure) * _slopes[gas]!;
+      requireFinite(extrapolated, 'extrapolated Z', nonnegative: true);
+      return extrapolated;
+    }
+    final position = pressureBar / stepBar;
+    final lower = position.floor();
+    if (lower >= values.length) return values.last;
+    final start = lower == 0 ? 1.0 : values[lower - 1];
+    final end = values[lower];
+    final value = start + (end - start) * (position - lower);
+    if (!value.isFinite || value <= 0) {
+      throw const CalculationFailure(
+        CalculationFailureCode.nonFinite,
+        'Invalid interpolated Z.',
+      );
+    }
+    return value;
+  }
+}

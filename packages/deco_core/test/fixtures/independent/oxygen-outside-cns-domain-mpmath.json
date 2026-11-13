@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "policy": "baker-seven-bands-si90-v1",
+  "provenance": {
+    "kind": "primary-equation-independent-quadrature",
+    "source": "https://cdn.shopify.com/s/files/1/0838/3732/1530/files/Oxygen_Toxicity_Calculations.pdf?v=1710181583",
+    "source_sha256": "304b1a1d137303d5893fc4e23850159f5a697ea760f2a3e64748e55c7349c678",
+    "solver": "mpmath 1.3.0",
+    "command": "local/oracles/python-env/bin/python tool/capture_oxygen_domain_reference.py"
+  },
+  "decision": "CNS domain status does not block decompression or independent OTU",
+  "cases": [
+    {
+      "id": "o2-20ft",
+      "start_ata": "1.60606060606060606060606060606060606060606060606060606060606",
+      "end_ata": "1.60606060606060606060606060606060606060606060606060606060606",
+      "duration_min": 10,
+      "cns_fraction": null,
+      "cns_reason": "outsideModelDomain",
+      "otu": "19.37941963453205248035097220748798394114423282091760944"
+    },
+    {
+      "id": "high-1.9",
+      "start_ata": "1.9",
+      "end_ata": "1.9",
+      "duration_min": 10,
+      "cns_fraction": null,
+      "cns_reason": "outsideModelDomain",
+      "otu": "23.5847725766518777607995090864507525436694259581294451"
+    },
+    {
+      "id": "cross-domain",
+      "start_ata": "0.21",
+      "end_ata": "1.7",
+      "duration_min": 5,
+      "cns_fraction": null,
+      "cns_reason": "outsideModelDomain",
+      "otu": "4.555816767030958835247754295048594706225383007902661429"
+    }
+  ]
+}

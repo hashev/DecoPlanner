@@ -1,0 +1,1129 @@
+{
+  "schema_version": 1,
+  "scope": "P03/S01/S02 functional bindings; structural containers/labels inherit parent layout, not counted as separate actions",
+  "source": "docs/ui/feature-map.json",
+  "source_sha256": "351f41684f3f9e9fee1d894a82fd76be664f84927620487c5bdc09917abbb1f4",
+  "verification": "Source mapping plus listed behavioral tests. Not a claim of native testing every legacy control.",
+  "entries": [
+    {
+      "legacy_id": "L0020",
+      "control": "decoGasSetPreviousButton",
+      "screen": "P03",
+      "behavior": "Набор выбирается по имени; копия списка, редактирование depth/O₂/He/lost/mode/SP/minimum, clear, Apply и отдельный save/delete каталога.",
+      "implementation": [
+        "lib/ui/features/plan/switches_editor.dart",
+        "lib/ui/features/documents/catalog_view.dart"
+      ],
+      "tests": [
+        "test/ui/switches_editor_test.dart",
+        "test/ui/catalog_view_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0021",
+      "control": "decoGasSetNextButton",
+      "screen": "P03",
+      "behavior": "Набор выбирается по имени; копия списка, редактирование depth/O₂/He/lost/mode/SP/minimum, clear, Apply и отдельный save/delete каталога.",
+      "implementation": [
+        "lib/ui/features/plan/switches_editor.dart",
+        "lib/ui/features/documents/catalog_view.dart"
+      ],
+      "tests": [
+        "test/ui/switches_editor_test.dart",
+        "test/ui/catalog_view_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0022",
+      "control": "openCircuitDecoGasTable",
+      "screen": "P03",
+      "behavior": "Набор выбирается по имени; копия списка, редактирование depth/O₂/He/lost/mode/SP/minimum, clear, Apply и отдельный save/delete каталога.",
+      "implementation": [
+        "lib/ui/features/plan/switches_editor.dart",
+        "lib/ui/features/documents/catalog_view.dart"
+      ],
+      "tests": [
+        "test/ui/switches_editor_test.dart",
+        "test/ui/catalog_view_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0023",
+      "control": "decoGasSwitchDepth",
+      "screen": "P03",
+      "behavior": "Набор выбирается по имени; копия списка, редактирование depth/O₂/He/lost/mode/SP/minimum, clear, Apply и отдельный save/delete каталога.",
+      "implementation": [
+        "lib/ui/features/plan/switches_editor.dart",
+        "lib/ui/features/documents/catalog_view.dart"
+      ],
+      "tests": [
+        "test/ui/switches_editor_test.dart",
+        "test/ui/catalog_view_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0024",
+      "control": "decoGasOxygenPercent",
+      "screen": "P03",
+      "behavior": "Набор выбирается по имени; копия списка, редактирование depth/O₂/He/lost/mode/SP/minimum, clear, Apply и отдельный save/delete каталога.",
+      "implementation": [
+        "lib/ui/features/plan/switches_editor.dart",
+        "lib/ui/features/documents/catalog_view.dart"
+      ],
+      "tests": [
+        "test/ui/switches_editor_test.dart",
+        "test/ui/catalog_view_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0025",
+      "control": "decoGasHeliumPercent",
+      "screen": "P03",
+      "behavior": "Набор выбирается по имени; копия списка, редактирование depth/O₂/He/lost/mode/SP/minimum, clear, Apply и отдельный save/delete каталога.",
+      "implementation": [
+        "lib/ui/features/plan/switches_editor.dart",
+        "lib/ui/features/documents/catalog_view.dart"
+      ],
+      "tests": [
+        "test/ui/switches_editor_test.dart",
+        "test/ui/catalog_view_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0075",
+      "control": "closedCircuitDecoGasTable",
+      "screen": "P03",
+      "behavior": "Набор выбирается по имени; копия списка, редактирование depth/O₂/He/lost/mode/SP/minimum, clear, Apply и отдельный save/delete каталога.",
+      "implementation": [
+        "lib/ui/features/plan/switches_editor.dart",
+        "lib/ui/features/documents/catalog_view.dart"
+      ],
+      "tests": [
+        "test/ui/switches_editor_test.dart",
+        "test/ui/catalog_view_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0076",
+      "control": "decoGasSwitchDepth",
+      "screen": "P03",
+      "behavior": "Набор выбирается по имени; копия списка, редактирование depth/O₂/He/lost/mode/SP/minimum, clear, Apply и отдельный save/delete каталога.",
+      "implementation": [
+        "lib/ui/features/plan/switches_editor.dart",
+        "lib/ui/features/documents/catalog_view.dart"
+      ],
+      "tests": [
+        "test/ui/switches_editor_test.dart",
+        "test/ui/catalog_view_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0077",
+      "control": "decoGasPO2",
+      "screen": "P03",
+      "behavior": "Набор выбирается по имени; копия списка, редактирование depth/O₂/He/lost/mode/SP/minimum, clear, Apply и отдельный save/delete каталога.",
+      "implementation": [
+        "lib/ui/features/plan/switches_editor.dart",
+        "lib/ui/features/documents/catalog_view.dart"
+      ],
+      "tests": [
+        "test/ui/switches_editor_test.dart",
+        "test/ui/catalog_view_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0078",
+      "control": "decoGasOxygenPercent",
+      "screen": "P03",
+      "behavior": "Набор выбирается по имени; копия списка, редактирование depth/O₂/He/lost/mode/SP/minimum, clear, Apply и отдельный save/delete каталога.",
+      "implementation": [
+        "lib/ui/features/plan/switches_editor.dart",
+        "lib/ui/features/documents/catalog_view.dart"
+      ],
+      "tests": [
+        "test/ui/switches_editor_test.dart",
+        "test/ui/catalog_view_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0079",
+      "control": "decoGasHeliumPercent",
+      "screen": "P03",
+      "behavior": "Набор выбирается по имени; копия списка, редактирование depth/O₂/He/lost/mode/SP/minimum, clear, Apply и отдельный save/delete каталога.",
+      "implementation": [
+        "lib/ui/features/plan/switches_editor.dart",
+        "lib/ui/features/documents/catalog_view.dart"
+      ],
+      "tests": [
+        "test/ui/switches_editor_test.dart",
+        "test/ui/catalog_view_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0119",
+      "control": "helpButton",
+      "screen": "S02",
+      "behavior": "Локальная справка и notices доступны из app bar/настроек; WebView заменён встроенным offline-текстом.",
+      "implementation": [
+        "lib/app/planner_app.dart",
+        "assets/help/planner.txt"
+      ],
+      "tests": [
+        "test/ui/planner_app_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0120",
+      "control": "settingsButton",
+      "screen": "S02",
+      "behavior": "Постоянный destination Настройки вместо toggle toolbar.",
+      "implementation": [
+        "lib/app/planner_app.dart"
+      ],
+      "tests": [
+        "test/ui/planner_app_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0128",
+      "control": "generalDescentRateField",
+      "screen": "S01",
+      "behavior": "S01 typed draft с Apply/Cancel/Save defaults. Altitude time подписан в минутах; last-stop — физическая глубина, ratio stops — view preference. GF только B/C, VPM conservatism0–4.",
+      "implementation": [
+        "lib/ui/features/plan/settings_editor.dart",
+        "lib/app/planner_app.dart"
+      ],
+      "tests": [
+        "test/ui/settings_editor_test.dart",
+        "test/ui/document_session_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0129",
+      "control": "generalAscentRateField",
+      "screen": "S01",
+      "behavior": "S01 typed draft с Apply/Cancel/Save defaults. Altitude time подписан в минутах; last-stop — физическая глубина, ratio stops — view preference. GF только B/C, VPM conservatism0–4.",
+      "implementation": [
+        "lib/ui/features/plan/settings_editor.dart",
+        "lib/app/planner_app.dart"
+      ],
+      "tests": [
+        "test/ui/settings_editor_test.dart",
+        "test/ui/document_session_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0130",
+      "control": "generalSaveButton",
+      "screen": "S01",
+      "behavior": "S01 typed draft с Apply/Cancel/Save defaults. Altitude time подписан в минутах; last-stop — физическая глубина, ratio stops — view preference. GF только B/C, VPM conservatism0–4.",
+      "implementation": [
+        "lib/ui/features/plan/settings_editor.dart",
+        "lib/app/planner_app.dart"
+      ],
+      "tests": [
+        "test/ui/settings_editor_test.dart",
+        "test/ui/document_session_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0133",
+      "control": "generalUnitsChoiceBox",
+      "screen": "S01",
+      "behavior": "Units/theme применяются и сохраняются сразу, не требуют отдельного Save и не меняют physical revision.",
+      "implementation": [
+        "lib/app/planner_app.dart",
+        "lib/ui/features/plan/planner_view_model.dart"
+      ],
+      "tests": [
+        "test/ui/planner_app_test.dart",
+        "test/ui/planner_view_model_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0135",
+      "control": "generalDecoModelChoiceBox",
+      "screen": "S01",
+      "behavior": "S01 typed draft с Apply/Cancel/Save defaults. Altitude time подписан в минутах; last-stop — физическая глубина, ratio stops — view preference. GF только B/C, VPM conservatism0–4.",
+      "implementation": [
+        "lib/ui/features/plan/settings_editor.dart",
+        "lib/app/planner_app.dart"
+      ],
+      "tests": [
+        "test/ui/settings_editor_test.dart",
+        "test/ui/document_session_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0136",
+      "control": "buhlmannSettingsLastStopCheckbox",
+      "screen": "S02",
+      "behavior": "S01 typed draft с Apply/Cancel/Save defaults. Altitude time подписан в минутах; last-stop — физическая глубина, ratio stops — view preference. GF только B/C, VPM conservatism0–4.",
+      "implementation": [
+        "lib/ui/features/plan/settings_editor.dart",
+        "lib/app/planner_app.dart"
+      ],
+      "tests": [
+        "test/ui/settings_editor_test.dart",
+        "test/ui/document_session_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0138",
+      "control": "minimumStopDurationChoiceBox",
+      "screen": "S01",
+      "behavior": "S01 typed draft с Apply/Cancel/Save defaults. Altitude time подписан в минутах; last-stop — физическая глубина, ratio stops — view preference. GF только B/C, VPM conservatism0–4.",
+      "implementation": [
+        "lib/ui/features/plan/settings_editor.dart",
+        "lib/app/planner_app.dart"
+      ],
+      "tests": [
+        "test/ui/settings_editor_test.dart",
+        "test/ui/document_session_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0141",
+      "control": "altitudeSeaLevelRadio",
+      "screen": "S01",
+      "behavior": "S01 typed draft с Apply/Cancel/Save defaults. Altitude time подписан в минутах; last-stop — физическая глубина, ratio stops — view preference. GF только B/C, VPM conservatism0–4.",
+      "implementation": [
+        "lib/ui/features/plan/settings_editor.dart",
+        "lib/app/planner_app.dart"
+      ],
+      "tests": [
+        "test/ui/settings_editor_test.dart",
+        "test/ui/document_session_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0143",
+      "control": "altitudeAltitudeLevelRadio",
+      "screen": "S01",
+      "behavior": "S01 typed draft с Apply/Cancel/Save defaults. Altitude time подписан в минутах; last-stop — физическая глубина, ratio stops — view preference. GF только B/C, VPM conservatism0–4.",
+      "implementation": [
+        "lib/ui/features/plan/settings_editor.dart",
+        "lib/app/planner_app.dart"
+      ],
+      "tests": [
+        "test/ui/settings_editor_test.dart",
+        "test/ui/document_session_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0145",
+      "control": "altitudeInputField",
+      "screen": "S01",
+      "behavior": "S01 typed draft с Apply/Cancel/Save defaults. Altitude time подписан в минутах; last-stop — физическая глубина, ratio stops — view preference. GF только B/C, VPM conservatism0–4.",
+      "implementation": [
+        "lib/ui/features/plan/settings_editor.dart",
+        "lib/app/planner_app.dart"
+      ],
+      "tests": [
+        "test/ui/settings_editor_test.dart",
+        "test/ui/document_session_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0147",
+      "control": "altitudeAcclimatizedCheckBox",
+      "screen": "S01",
+      "behavior": "S01 typed draft с Apply/Cancel/Save defaults. Altitude time подписан в минутах; last-stop — физическая глубина, ratio stops — view preference. GF только B/C, VPM conservatism0–4.",
+      "implementation": [
+        "lib/ui/features/plan/settings_editor.dart",
+        "lib/app/planner_app.dart"
+      ],
+      "tests": [
+        "test/ui/settings_editor_test.dart",
+        "test/ui/document_session_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0149",
+      "control": "altitudeHoursAtAltitudeField",
+      "screen": "S01",
+      "behavior": "S01 typed draft с Apply/Cancel/Save defaults. Altitude time подписан в минутах; last-stop — физическая глубина, ratio stops — view preference. GF только B/C, VPM conservatism0–4.",
+      "implementation": [
+        "lib/ui/features/plan/settings_editor.dart",
+        "lib/app/planner_app.dart"
+      ],
+      "tests": [
+        "test/ui/settings_editor_test.dart",
+        "test/ui/document_session_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0150",
+      "control": "altitudeHoursToReachField",
+      "screen": "S01",
+      "behavior": "S01 typed draft с Apply/Cancel/Save defaults. Altitude time подписан в минутах; last-stop — физическая глубина, ratio stops — view preference. GF только B/C, VPM conservatism0–4.",
+      "implementation": [
+        "lib/ui/features/plan/settings_editor.dart",
+        "lib/app/planner_app.dart"
+      ],
+      "tests": [
+        "test/ui/settings_editor_test.dart",
+        "test/ui/document_session_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0153",
+      "control": "altitudeStartingAltitudeField",
+      "screen": "S01",
+      "behavior": "S01 typed draft с Apply/Cancel/Save defaults. Altitude time подписан в минутах; last-stop — физическая глубина, ratio stops — view preference. GF только B/C, VPM conservatism0–4.",
+      "implementation": [
+        "lib/ui/features/plan/settings_editor.dart",
+        "lib/app/planner_app.dart"
+      ],
+      "tests": [
+        "test/ui/settings_editor_test.dart",
+        "test/ui/document_session_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0154",
+      "control": "altitudeSaveButton",
+      "screen": "S01",
+      "behavior": "S01 typed draft с Apply/Cancel/Save defaults. Altitude time подписан в минутах; last-stop — физическая глубина, ratio stops — view preference. GF только B/C, VPM conservatism0–4.",
+      "implementation": [
+        "lib/ui/features/plan/settings_editor.dart",
+        "lib/app/planner_app.dart"
+      ],
+      "tests": [
+        "test/ui/settings_editor_test.dart",
+        "test/ui/document_session_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0156",
+      "control": "openCircuitSACbottomField",
+      "screen": "S01",
+      "behavior": "S01 typed draft с Apply/Cancel/Save defaults. Altitude time подписан в минутах; last-stop — физическая глубина, ratio stops — view preference. GF только B/C, VPM conservatism0–4.",
+      "implementation": [
+        "lib/ui/features/plan/settings_editor.dart",
+        "lib/app/planner_app.dart"
+      ],
+      "tests": [
+        "test/ui/settings_editor_test.dart",
+        "test/ui/document_session_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0159",
+      "control": "openCircuitSACdecoField",
+      "screen": "S01",
+      "behavior": "S01 typed draft с Apply/Cancel/Save defaults. Altitude time подписан в минутах; last-stop — физическая глубина, ratio stops — view preference. GF только B/C, VPM conservatism0–4.",
+      "implementation": [
+        "lib/ui/features/plan/settings_editor.dart",
+        "lib/app/planner_app.dart"
+      ],
+      "tests": [
+        "test/ui/settings_editor_test.dart",
+        "test/ui/document_session_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0161",
+      "control": "openCircuitSaveButton",
+      "screen": "S01",
+      "behavior": "S01 typed draft с Apply/Cancel/Save defaults. Altitude time подписан в минутах; last-stop — физическая глубина, ratio stops — view preference. GF только B/C, VPM conservatism0–4.",
+      "implementation": [
+        "lib/ui/features/plan/settings_editor.dart",
+        "lib/app/planner_app.dart"
+      ],
+      "tests": [
+        "test/ui/settings_editor_test.dart",
+        "test/ui/document_session_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0163",
+      "control": "closedCircuitLowSetpointChoiceBox",
+      "screen": "S01",
+      "behavior": "S01 typed draft с Apply/Cancel/Save defaults. Altitude time подписан в минутах; last-stop — физическая глубина, ratio stops — view preference. GF только B/C, VPM conservatism0–4.",
+      "implementation": [
+        "lib/ui/features/plan/settings_editor.dart",
+        "lib/app/planner_app.dart"
+      ],
+      "tests": [
+        "test/ui/settings_editor_test.dart",
+        "test/ui/document_session_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0164",
+      "control": "closedCircuitSaveButton",
+      "screen": "S01",
+      "behavior": "S01 typed draft с Apply/Cancel/Save defaults. Altitude time подписан в минутах; last-stop — физическая глубина, ratio stops — view preference. GF только B/C, VPM conservatism0–4.",
+      "implementation": [
+        "lib/ui/features/plan/settings_editor.dart",
+        "lib/app/planner_app.dart"
+      ],
+      "tests": [
+        "test/ui/settings_editor_test.dart",
+        "test/ui/document_session_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0167",
+      "control": "closedCircuitRatioStopsChoiceBox",
+      "screen": "S01",
+      "behavior": "S01 typed draft с Apply/Cancel/Save defaults. Altitude time подписан в минутах; last-stop — физическая глубина, ratio stops — view preference. GF только B/C, VPM conservatism0–4.",
+      "implementation": [
+        "lib/ui/features/plan/settings_editor.dart",
+        "lib/app/planner_app.dart"
+      ],
+      "tests": [
+        "test/ui/settings_editor_test.dart",
+        "test/ui/document_session_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0170",
+      "control": "closedCircuitOCRbottomTextField",
+      "screen": "S01",
+      "behavior": "S01 typed draft с Apply/Cancel/Save defaults. Altitude time подписан в минутах; last-stop — физическая глубина, ratio stops — view preference. GF только B/C, VPM conservatism0–4.",
+      "implementation": [
+        "lib/ui/features/plan/settings_editor.dart",
+        "lib/app/planner_app.dart"
+      ],
+      "tests": [
+        "test/ui/settings_editor_test.dart",
+        "test/ui/document_session_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0171",
+      "control": "closedCircuitOCRdecoTextField",
+      "screen": "S01",
+      "behavior": "S01 typed draft с Apply/Cancel/Save defaults. Altitude time подписан в минутах; last-stop — физическая глубина, ratio stops — view preference. GF только B/C, VPM conservatism0–4.",
+      "implementation": [
+        "lib/ui/features/plan/settings_editor.dart",
+        "lib/app/planner_app.dart"
+      ],
+      "tests": [
+        "test/ui/settings_editor_test.dart",
+        "test/ui/document_session_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0175",
+      "control": "buhlmannSettingsGFloTextField",
+      "screen": "S02",
+      "behavior": "S01 typed draft с Apply/Cancel/Save defaults. Altitude time подписан в минутах; last-stop — физическая глубина, ratio stops — view preference. GF только B/C, VPM conservatism0–4.",
+      "implementation": [
+        "lib/ui/features/plan/settings_editor.dart",
+        "lib/app/planner_app.dart"
+      ],
+      "tests": [
+        "test/ui/settings_editor_test.dart",
+        "test/ui/document_session_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0177",
+      "control": "buhlmannSettingsGFhiTextField",
+      "screen": "S02",
+      "behavior": "S01 typed draft с Apply/Cancel/Save defaults. Altitude time подписан в минутах; last-stop — физическая глубина, ratio stops — view preference. GF только B/C, VPM conservatism0–4.",
+      "implementation": [
+        "lib/ui/features/plan/settings_editor.dart",
+        "lib/app/planner_app.dart"
+      ],
+      "tests": [
+        "test/ui/settings_editor_test.dart",
+        "test/ui/document_session_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0180",
+      "control": "buhlmannSettingsBoption",
+      "screen": "S02",
+      "behavior": "S01 typed draft с Apply/Cancel/Save defaults. Altitude time подписан в минутах; last-stop — физическая глубина, ratio stops — view preference. GF только B/C, VPM conservatism0–4.",
+      "implementation": [
+        "lib/ui/features/plan/settings_editor.dart",
+        "lib/app/planner_app.dart"
+      ],
+      "tests": [
+        "test/ui/settings_editor_test.dart",
+        "test/ui/document_session_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0182",
+      "control": "buhlmannSettingsCoption",
+      "screen": "S02",
+      "behavior": "S01 typed draft с Apply/Cancel/Save defaults. Altitude time подписан в минутах; last-stop — физическая глубина, ratio stops — view preference. GF только B/C, VPM conservatism0–4.",
+      "implementation": [
+        "lib/ui/features/plan/settings_editor.dart",
+        "lib/app/planner_app.dart"
+      ],
+      "tests": [
+        "test/ui/settings_editor_test.dart",
+        "test/ui/document_session_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0183",
+      "control": "buhlmannSettingsSaveButton",
+      "screen": "S02",
+      "behavior": "S01 typed draft с Apply/Cancel/Save defaults. Altitude time подписан в минутах; last-stop — физическая глубина, ratio stops — view preference. GF только B/C, VPM conservatism0–4.",
+      "implementation": [
+        "lib/ui/features/plan/settings_editor.dart",
+        "lib/app/planner_app.dart"
+      ],
+      "tests": [
+        "test/ui/settings_editor_test.dart",
+        "test/ui/document_session_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0185",
+      "control": "vpmSettingsConservatismChoiceBox",
+      "screen": "S02",
+      "behavior": "S01 typed draft с Apply/Cancel/Save defaults. Altitude time подписан в минутах; last-stop — физическая глубина, ratio stops — view preference. GF только B/C, VPM conservatism0–4.",
+      "implementation": [
+        "lib/ui/features/plan/settings_editor.dart",
+        "lib/app/planner_app.dart"
+      ],
+      "tests": [
+        "test/ui/settings_editor_test.dart",
+        "test/ui/document_session_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0186",
+      "control": "vpmSettingsSaveButton",
+      "screen": "S02",
+      "behavior": "S01 typed draft с Apply/Cancel/Save defaults. Altitude time подписан в минутах; last-stop — физическая глубина, ratio stops — view preference. GF только B/C, VPM conservatism0–4.",
+      "implementation": [
+        "lib/ui/features/plan/settings_editor.dart",
+        "lib/app/planner_app.dart"
+      ],
+      "tests": [
+        "test/ui/settings_editor_test.dart",
+        "test/ui/document_session_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0187",
+      "control": "decoGasSetsSelectorComboBox",
+      "screen": "S02",
+      "behavior": "Набор выбирается по имени; копия списка, редактирование depth/O₂/He/lost/mode/SP/minimum, clear, Apply и отдельный save/delete каталога.",
+      "implementation": [
+        "lib/ui/features/plan/switches_editor.dart",
+        "lib/ui/features/documents/catalog_view.dart"
+      ],
+      "tests": [
+        "test/ui/switches_editor_test.dart",
+        "test/ui/catalog_view_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0188",
+      "control": "decoGasSetsTable",
+      "screen": "S02",
+      "behavior": "Набор выбирается по имени; копия списка, редактирование depth/O₂/He/lost/mode/SP/minimum, clear, Apply и отдельный save/delete каталога.",
+      "implementation": [
+        "lib/ui/features/plan/switches_editor.dart",
+        "lib/ui/features/documents/catalog_view.dart"
+      ],
+      "tests": [
+        "test/ui/switches_editor_test.dart",
+        "test/ui/catalog_view_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0189",
+      "control": "decoGasSetsSwitchDepth",
+      "screen": "S02",
+      "behavior": "Набор выбирается по имени; копия списка, редактирование depth/O₂/He/lost/mode/SP/minimum, clear, Apply и отдельный save/delete каталога.",
+      "implementation": [
+        "lib/ui/features/plan/switches_editor.dart",
+        "lib/ui/features/documents/catalog_view.dart"
+      ],
+      "tests": [
+        "test/ui/switches_editor_test.dart",
+        "test/ui/catalog_view_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0190",
+      "control": "decoGasSetsOxygenPercent",
+      "screen": "S02",
+      "behavior": "Набор выбирается по имени; копия списка, редактирование depth/O₂/He/lost/mode/SP/minimum, clear, Apply и отдельный save/delete каталога.",
+      "implementation": [
+        "lib/ui/features/plan/switches_editor.dart",
+        "lib/ui/features/documents/catalog_view.dart"
+      ],
+      "tests": [
+        "test/ui/switches_editor_test.dart",
+        "test/ui/catalog_view_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0191",
+      "control": "decoGasSetsHeliumPercent",
+      "screen": "S02",
+      "behavior": "Набор выбирается по имени; копия списка, редактирование depth/O₂/He/lost/mode/SP/minimum, clear, Apply и отдельный save/delete каталога.",
+      "implementation": [
+        "lib/ui/features/plan/switches_editor.dart",
+        "lib/ui/features/documents/catalog_view.dart"
+      ],
+      "tests": [
+        "test/ui/switches_editor_test.dart",
+        "test/ui/catalog_view_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0192",
+      "control": "decoGasSetsDeleteButton",
+      "screen": "S02",
+      "behavior": "Набор выбирается по имени; копия списка, редактирование depth/O₂/He/lost/mode/SP/minimum, clear, Apply и отдельный save/delete каталога.",
+      "implementation": [
+        "lib/ui/features/plan/switches_editor.dart",
+        "lib/ui/features/documents/catalog_view.dart"
+      ],
+      "tests": [
+        "test/ui/switches_editor_test.dart",
+        "test/ui/catalog_view_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0193",
+      "control": "decoGasSetsAddButton",
+      "screen": "S02",
+      "behavior": "Набор выбирается по имени; копия списка, редактирование depth/O₂/He/lost/mode/SP/minimum, clear, Apply и отдельный save/delete каталога.",
+      "implementation": [
+        "lib/ui/features/plan/switches_editor.dart",
+        "lib/ui/features/documents/catalog_view.dart"
+      ],
+      "tests": [
+        "test/ui/switches_editor_test.dart",
+        "test/ui/catalog_view_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0194",
+      "control": "decoGasSetsClearButton",
+      "screen": "S02",
+      "behavior": "Набор выбирается по имени; копия списка, редактирование depth/O₂/He/lost/mode/SP/minimum, clear, Apply и отдельный save/delete каталога.",
+      "implementation": [
+        "lib/ui/features/plan/switches_editor.dart",
+        "lib/ui/features/documents/catalog_view.dart"
+      ],
+      "tests": [
+        "test/ui/switches_editor_test.dart",
+        "test/ui/catalog_view_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0195",
+      "control": "decoGasSetsSaveButton",
+      "screen": "S02",
+      "behavior": "Набор выбирается по имени; копия списка, редактирование depth/O₂/He/lost/mode/SP/minimum, clear, Apply и отдельный save/delete каталога.",
+      "implementation": [
+        "lib/ui/features/plan/switches_editor.dart",
+        "lib/ui/features/documents/catalog_view.dart"
+      ],
+      "tests": [
+        "test/ui/switches_editor_test.dart",
+        "test/ui/catalog_view_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0197",
+      "control": "tanksSelectionComboBox",
+      "screen": "S02",
+      "behavior": "Каталог с именем/выбором/CRUD, metric L/bar либо imperial nominal CuFt/PSI. Units выбираются до модального редактора. Применение — физическая копия, удаление не меняет план.",
+      "implementation": [
+        "lib/ui/features/documents/catalog_view.dart",
+        "lib/ui/features/plan/gas_usage_view.dart"
+      ],
+      "tests": [
+        "test/ui/catalog_view_test.dart",
+        "test/ui/gas_usage_view_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0199",
+      "control": "tanksLabelTextField",
+      "screen": "S02",
+      "behavior": "Каталог с именем/выбором/CRUD, metric L/bar либо imperial nominal CuFt/PSI. Units выбираются до модального редактора. Применение — физическая копия, удаление не меняет план.",
+      "implementation": [
+        "lib/ui/features/documents/catalog_view.dart",
+        "lib/ui/features/plan/gas_usage_view.dart"
+      ],
+      "tests": [
+        "test/ui/catalog_view_test.dart",
+        "test/ui/gas_usage_view_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0200",
+      "control": "tanksMetricRadioButton",
+      "screen": "S02",
+      "behavior": "Каталог с именем/выбором/CRUD, metric L/bar либо imperial nominal CuFt/PSI. Units выбираются до модального редактора. Применение — физическая копия, удаление не меняет план.",
+      "implementation": [
+        "lib/ui/features/documents/catalog_view.dart",
+        "lib/ui/features/plan/gas_usage_view.dart"
+      ],
+      "tests": [
+        "test/ui/catalog_view_test.dart",
+        "test/ui/gas_usage_view_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0202",
+      "control": "tanksImperialRadioButton",
+      "screen": "S02",
+      "behavior": "Каталог с именем/выбором/CRUD, metric L/bar либо imperial nominal CuFt/PSI. Units выбираются до модального редактора. Применение — физическая копия, удаление не меняет план.",
+      "implementation": [
+        "lib/ui/features/documents/catalog_view.dart",
+        "lib/ui/features/plan/gas_usage_view.dart"
+      ],
+      "tests": [
+        "test/ui/catalog_view_test.dart",
+        "test/ui/gas_usage_view_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0204",
+      "control": "tanksInnerVolumeTextField",
+      "screen": "S02",
+      "behavior": "Каталог с именем/выбором/CRUD, metric L/bar либо imperial nominal CuFt/PSI. Units выбираются до модального редактора. Применение — физическая копия, удаление не меняет план.",
+      "implementation": [
+        "lib/ui/features/documents/catalog_view.dart",
+        "lib/ui/features/plan/gas_usage_view.dart"
+      ],
+      "tests": [
+        "test/ui/catalog_view_test.dart",
+        "test/ui/gas_usage_view_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0206",
+      "control": "tanksPressureRatingTextField",
+      "screen": "S02",
+      "behavior": "Каталог с именем/выбором/CRUD, metric L/bar либо imperial nominal CuFt/PSI. Units выбираются до модального редактора. Применение — физическая копия, удаление не меняет план.",
+      "implementation": [
+        "lib/ui/features/documents/catalog_view.dart",
+        "lib/ui/features/plan/gas_usage_view.dart"
+      ],
+      "tests": [
+        "test/ui/catalog_view_test.dart",
+        "test/ui/gas_usage_view_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0208",
+      "control": "tanksCapacityTextField",
+      "screen": "S02",
+      "behavior": "Каталог с именем/выбором/CRUD, metric L/bar либо imperial nominal CuFt/PSI. Units выбираются до модального редактора. Применение — физическая копия, удаление не меняет план.",
+      "implementation": [
+        "lib/ui/features/documents/catalog_view.dart",
+        "lib/ui/features/plan/gas_usage_view.dart"
+      ],
+      "tests": [
+        "test/ui/catalog_view_test.dart",
+        "test/ui/gas_usage_view_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0209",
+      "control": "tanksAddButton",
+      "screen": "S02",
+      "behavior": "Каталог с именем/выбором/CRUD, metric L/bar либо imperial nominal CuFt/PSI. Units выбираются до модального редактора. Применение — физическая копия, удаление не меняет план.",
+      "implementation": [
+        "lib/ui/features/documents/catalog_view.dart",
+        "lib/ui/features/plan/gas_usage_view.dart"
+      ],
+      "tests": [
+        "test/ui/catalog_view_test.dart",
+        "test/ui/gas_usage_view_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0210",
+      "control": "tanksSaveButton",
+      "screen": "S02",
+      "behavior": "Каталог с именем/выбором/CRUD, metric L/bar либо imperial nominal CuFt/PSI. Units выбираются до модального редактора. Применение — физическая копия, удаление не меняет план.",
+      "implementation": [
+        "lib/ui/features/documents/catalog_view.dart",
+        "lib/ui/features/plan/gas_usage_view.dart"
+      ],
+      "tests": [
+        "test/ui/catalog_view_test.dart",
+        "test/ui/gas_usage_view_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0211",
+      "control": "tanksDeleteButton",
+      "screen": "S02",
+      "behavior": "Каталог с именем/выбором/CRUD, metric L/bar либо imperial nominal CuFt/PSI. Units выбираются до модального редактора. Применение — физическая копия, удаление не меняет план.",
+      "implementation": [
+        "lib/ui/features/documents/catalog_view.dart",
+        "lib/ui/features/plan/gas_usage_view.dart"
+      ],
+      "tests": [
+        "test/ui/catalog_view_test.dart",
+        "test/ui/gas_usage_view_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0213",
+      "control": "diveProfileSettingsClearPreviousProfile",
+      "screen": "S02",
+      "behavior": "S02 auto-retain previous profile (обратный смысл Clear previous), ascent-only, keep-on-reset. Параметры сохраняются сразу. P05 Clear comparisons очищает сохранённые наложения с подтверждением; численный текущий результат остаётся источником основного графика.",
+      "implementation": [
+        "lib/app/planner_app.dart",
+        "lib/ui/features/documents/document_session.dart",
+        "lib/ui/features/plan/profile_view.dart"
+      ],
+      "tests": [
+        "test/ui/document_session_test.dart",
+        "test/ui/profile_view_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0214",
+      "control": "diveProfileSettingsOnlyShowAscent",
+      "screen": "S02",
+      "behavior": "S02 auto-retain previous profile (обратный смысл Clear previous), ascent-only, keep-on-reset. Параметры сохраняются сразу. P05 Clear comparisons очищает сохранённые наложения с подтверждением; численный текущий результат остаётся источником основного графика.",
+      "implementation": [
+        "lib/app/planner_app.dart",
+        "lib/ui/features/documents/document_session.dart",
+        "lib/ui/features/plan/profile_view.dart"
+      ],
+      "tests": [
+        "test/ui/document_session_test.dart",
+        "test/ui/profile_view_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0215",
+      "control": "diveProfileSettingsDontClearOnReset",
+      "screen": "S02",
+      "behavior": "S02 auto-retain previous profile (обратный смысл Clear previous), ascent-only, keep-on-reset. Параметры сохраняются сразу. P05 Clear comparisons очищает сохранённые наложения с подтверждением; численный текущий результат остаётся источником основного графика.",
+      "implementation": [
+        "lib/app/planner_app.dart",
+        "lib/ui/features/documents/document_session.dart",
+        "lib/ui/features/plan/profile_view.dart"
+      ],
+      "tests": [
+        "test/ui/document_session_test.dart",
+        "test/ui/profile_view_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0216",
+      "control": "diveProfileSettingsSaveButton",
+      "screen": "S02",
+      "behavior": "S02 auto-retain previous profile (обратный смысл Clear previous), ascent-only, keep-on-reset. Параметры сохраняются сразу. P05 Clear comparisons очищает сохранённые наложения с подтверждением; численный текущий результат остаётся источником основного графика.",
+      "implementation": [
+        "lib/app/planner_app.dart",
+        "lib/ui/features/documents/document_session.dart",
+        "lib/ui/features/plan/profile_view.dart"
+      ],
+      "tests": [
+        "test/ui/document_session_test.dart",
+        "test/ui/profile_view_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0217",
+      "control": "diveProfileClearProfileButton",
+      "screen": "S02",
+      "behavior": "S02 auto-retain previous profile (обратный смысл Clear previous), ascent-only, keep-on-reset. Параметры сохраняются сразу. P05 Clear comparisons очищает сохранённые наложения с подтверждением; численный текущий результат остаётся источником основного графика.",
+      "implementation": [
+        "lib/app/planner_app.dart",
+        "lib/ui/features/documents/document_session.dart",
+        "lib/ui/features/plan/profile_view.dart"
+      ],
+      "tests": [
+        "test/ui/document_session_test.dart",
+        "test/ui/profile_view_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0218",
+      "control": "themeLightRadioButton",
+      "screen": "S02",
+      "behavior": "Units/theme применяются и сохраняются сразу, не требуют отдельного Save и не меняют physical revision.",
+      "implementation": [
+        "lib/app/planner_app.dart",
+        "lib/ui/features/plan/planner_view_model.dart"
+      ],
+      "tests": [
+        "test/ui/planner_app_test.dart",
+        "test/ui/planner_view_model_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0221",
+      "control": "themeDarkRadioButton",
+      "screen": "S02",
+      "behavior": "Units/theme применяются и сохраняются сразу, не требуют отдельного Save и не меняют physical revision.",
+      "implementation": [
+        "lib/app/planner_app.dart",
+        "lib/ui/features/plan/planner_view_model.dart"
+      ],
+      "tests": [
+        "test/ui/planner_app_test.dart",
+        "test/ui/planner_view_model_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0222",
+      "control": "themeSaveButton",
+      "screen": "S02",
+      "behavior": "Units/theme применяются и сохраняются сразу, не требуют отдельного Save и не меняют physical revision.",
+      "implementation": [
+        "lib/app/planner_app.dart",
+        "lib/ui/features/plan/planner_view_model.dart"
+      ],
+      "tests": [
+        "test/ui/planner_app_test.dart",
+        "test/ui/planner_view_model_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0390",
+      "control": "userGuideTab",
+      "screen": "S02",
+      "behavior": "Локальная справка и notices доступны из app bar/настроек; WebView заменён встроенным offline-текстом.",
+      "implementation": [
+        "lib/app/planner_app.dart",
+        "assets/help/planner.txt"
+      ],
+      "tests": [
+        "test/ui/planner_app_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0393",
+      "control": "tutorialsWebView",
+      "screen": "S02",
+      "behavior": "Локальная справка и notices доступны из app bar/настроек; WebView заменён встроенным offline-текстом.",
+      "implementation": [
+        "lib/app/planner_app.dart",
+        "assets/help/planner.txt"
+      ],
+      "tests": [
+        "test/ui/planner_app_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0411",
+      "control": "decoGasSetPreviousButton",
+      "screen": "P03",
+      "behavior": "Набор выбирается по имени; копия списка, редактирование depth/O₂/He/lost/mode/SP/minimum, clear, Apply и отдельный save/delete каталога.",
+      "implementation": [
+        "lib/ui/features/plan/switches_editor.dart",
+        "lib/ui/features/documents/catalog_view.dart"
+      ],
+      "tests": [
+        "test/ui/switches_editor_test.dart",
+        "test/ui/catalog_view_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0412",
+      "control": "decoGasSetNextButton",
+      "screen": "P03",
+      "behavior": "Набор выбирается по имени; копия списка, редактирование depth/O₂/He/lost/mode/SP/minimum, clear, Apply и отдельный save/delete каталога.",
+      "implementation": [
+        "lib/ui/features/plan/switches_editor.dart",
+        "lib/ui/features/documents/catalog_view.dart"
+      ],
+      "tests": [
+        "test/ui/switches_editor_test.dart",
+        "test/ui/catalog_view_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0413",
+      "control": "openCircuitDecoGasTable",
+      "screen": "P03",
+      "behavior": "Набор выбирается по имени; копия списка, редактирование depth/O₂/He/lost/mode/SP/minimum, clear, Apply и отдельный save/delete каталога.",
+      "implementation": [
+        "lib/ui/features/plan/switches_editor.dart",
+        "lib/ui/features/documents/catalog_view.dart"
+      ],
+      "tests": [
+        "test/ui/switches_editor_test.dart",
+        "test/ui/catalog_view_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0414",
+      "control": "decoGasSwitchDepth",
+      "screen": "P03",
+      "behavior": "Набор выбирается по имени; копия списка, редактирование depth/O₂/He/lost/mode/SP/minimum, clear, Apply и отдельный save/delete каталога.",
+      "implementation": [
+        "lib/ui/features/plan/switches_editor.dart",
+        "lib/ui/features/documents/catalog_view.dart"
+      ],
+      "tests": [
+        "test/ui/switches_editor_test.dart",
+        "test/ui/catalog_view_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0415",
+      "control": "decoGasOxygenPercent",
+      "screen": "P03",
+      "behavior": "Набор выбирается по имени; копия списка, редактирование depth/O₂/He/lost/mode/SP/minimum, clear, Apply и отдельный save/delete каталога.",
+      "implementation": [
+        "lib/ui/features/plan/switches_editor.dart",
+        "lib/ui/features/documents/catalog_view.dart"
+      ],
+      "tests": [
+        "test/ui/switches_editor_test.dart",
+        "test/ui/catalog_view_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0416",
+      "control": "decoGasHeliumPercent",
+      "screen": "P03",
+      "behavior": "Набор выбирается по имени; копия списка, редактирование depth/O₂/He/lost/mode/SP/minimum, clear, Apply и отдельный save/delete каталога.",
+      "implementation": [
+        "lib/ui/features/plan/switches_editor.dart",
+        "lib/ui/features/documents/catalog_view.dart"
+      ],
+      "tests": [
+        "test/ui/switches_editor_test.dart",
+        "test/ui/catalog_view_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0417",
+      "control": "decoGasMinimumStopTime",
+      "screen": "P03",
+      "behavior": "Набор выбирается по имени; копия списка, редактирование depth/O₂/He/lost/mode/SP/minimum, clear, Apply и отдельный save/delete каталога.",
+      "implementation": [
+        "lib/ui/features/plan/switches_editor.dart",
+        "lib/ui/features/documents/catalog_view.dart"
+      ],
+      "tests": [
+        "test/ui/switches_editor_test.dart",
+        "test/ui/catalog_view_test.dart"
+      ]
+    },
+    {
+      "legacy_id": "L0418",
+      "control": "decoGasLostGas",
+      "screen": "P03",
+      "behavior": "Набор выбирается по имени; копия списка, редактирование depth/O₂/He/lost/mode/SP/minimum, clear, Apply и отдельный save/delete каталога.",
+      "implementation": [
+        "lib/ui/features/plan/switches_editor.dart",
+        "lib/ui/features/documents/catalog_view.dart"
+      ],
+      "tests": [
+        "test/ui/switches_editor_test.dart",
+        "test/ui/catalog_view_test.dart"
+      ]
+    }
+  ]
+}

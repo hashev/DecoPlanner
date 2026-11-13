@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "id": "vpm-oc-no-deco",
+  "provenance": {
+    "kind": "original-runtime-observation",
+    "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+    "original_result_sha256": "c7994eb003509953c5cde3ee80b1656e5a4265ab1b112beef31241c5d99b7ba3",
+    "source": "analysis/fixtures/results/vpm-oc-no-deco.json"
+  },
+  "request": {
+    "id": "vpm-oc-no-deco",
+    "mode": "oc",
+    "levels": [
+      [
+        10,
+        10,
+        21,
+        0,
+        0
+      ]
+    ],
+    "model": "vpm"
+  },
+  "outcome": "legacy-result",
+  "role": "baseline observation, not an independent corrected-model expectation",
+  "observed": [
+    {
+      "runtime_display_min": 11.0,
+      "ascent_min": 0.0,
+      "deco_min": 0.0,
+      "offgassing_depth_m": 4.622813720703125,
+      "cns_fraction": 0.0,
+      "otu": 0.0,
+      "final_tissues_bar": {
+        "n2": [
+          1.3120821501154936,
+          1.1995621606052538,
+          1.0890017396214944,
+          1.004430519021352,
+          0.9387248067769803,
+          0.8916540940107381,
+          0.8560163072439991,
+          0.829549433967611,
+          0.8102834402131294,
+          0.7982518994369912,
+          0.7903645357348068,
+          0.7841901635857994,
+          0.7793466943949625,
+          0.7754999791741739,
+          0.7724918090566462,
+          0.7701391790856178
+        ],
+        "he": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "segments": [
+        {
+          "start_depth_m": 0.0,
+          "end_depth_m": 10.0,
+          "duration_min": 1.0,
+          "start_min": 0.0,
+          "end_min": 1.0,
+          "gas_index": 0,
+          "o2_fraction": 0.21,
+          "he_fraction": 0.0,
+          "setpoint_ata": 0.0
+        },
+        {
+          "start_depth_m": 10.0,
+          "end_depth_m": 10.0,
+          "duration_min": 9.0,
+          "start_min": 1.0,
+          "end_min": 10.0,
+          "gas_index": 0,
+          "o2_fraction": 0.21,
+          "he_fraction": 0.0,
+          "setpoint_ata": 0.0
+        }
+      ]
+    }
+  ]
+}

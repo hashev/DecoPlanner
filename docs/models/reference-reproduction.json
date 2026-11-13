@@ -1,0 +1,169 @@
+{
+  "schema_version": 1,
+  "rule": "preserve all captured fixture bytes; never accept differences against product actual",
+  "commands": [
+    {
+      "command": "local/oracles/python-env/bin/python tool/capture_buhlmann_parameters.py",
+      "exit_code": 0,
+      "elapsed_seconds": 0.063,
+      "changed_fixtures": [],
+      "generator_sha256": "184abef5006d52d5245c1e83c81d206c2b49b01b343a09eaea1f95a5c0abaa84"
+    },
+    {
+      "command": "local/oracles/python-env/bin/python tool/capture_buhlmann_oc_schedules.py",
+      "exit_code": 0,
+      "elapsed_seconds": 0.067,
+      "changed_fixtures": [],
+      "generator_sha256": "c9d94f783ab0b0a6993e753d182c5ecb024be1135783c19482ba073b97febf10"
+    },
+    {
+      "command": "local/oracles/python-env/bin/python tool/capture_buhlmann_bailout.py",
+      "exit_code": 0,
+      "elapsed_seconds": 23.609,
+      "changed_fixtures": [],
+      "generator_sha256": "b3dc3c3bbb2e1d15bff8181bfa7f6538566fc7333d0c69dbbea59d68d27cc85f"
+    },
+    {
+      "command": "local/oracles/python-env/bin/python tool/capture_buhlmann_sequences.py",
+      "exit_code": 0,
+      "elapsed_seconds": 239.061,
+      "changed_fixtures": [],
+      "generator_sha256": "6a82be75d74d90c1a264d049375aeb564cbb595fc07a98a619d578d0fd19d3a2"
+    },
+    {
+      "command": "local/oracles/python-env/bin/python tool/capture_oxygen_reference.py",
+      "exit_code": 0,
+      "elapsed_seconds": 0.468,
+      "changed_fixtures": [],
+      "generator_sha256": "fdcb40f7ef6023ea4ccf92a92991a53f7b4cc7ed95fcb9530d9df74664852dc7"
+    },
+    {
+      "command": "local/oracles/python-env/bin/python tool/capture_oxygen_domain_reference.py",
+      "exit_code": 0,
+      "elapsed_seconds": 0.074,
+      "changed_fixtures": [],
+      "generator_sha256": "28382a6af81d5929ad97b5577f24ae6a04c885c1bf5f2f5fb80d9484bd5c04e0"
+    },
+    {
+      "command": "local/oracles/python-env/bin/python tool/capture_eos_reference.py",
+      "exit_code": 0,
+      "elapsed_seconds": 0.065,
+      "changed_fixtures": [],
+      "generator_sha256": "79734acbbc2b504a299a9a77edb0e875b9ab2fef73cb0a7f9c776fa34f9f26a6"
+    },
+    {
+      "command": "local/oracles/python-env/bin/python tool/capture_continuous_reference.py",
+      "exit_code": 0,
+      "elapsed_seconds": 1.846,
+      "changed_fixtures": [],
+      "generator_sha256": "fef40a3622c13698773ceb1579849b0753f42b43bf99fa9f19004fcfd18381b3"
+    },
+    {
+      "command": "local/oracles/python-env/bin/python tool/capture_usage_reference.py",
+      "exit_code": 0,
+      "elapsed_seconds": 1.015,
+      "changed_fixtures": [],
+      "generator_sha256": "3df8bd3a724218cb4d1af40c0fb424d181683ecfc503589dcbe78fb83db4fdb7"
+    },
+    {
+      "command": "local/oracles/python-env/bin/python tool/capture_vpm_physical_states.py",
+      "exit_code": 0,
+      "elapsed_seconds": 0.223,
+      "changed_fixtures": [],
+      "generator_sha256": "a2e746ab87a7e6eb3f0fac3a74c2bdc7859c3f08386b8b2f32dae988a994b08d"
+    },
+    {
+      "command": "local/oracles/python-env/bin/python tool/capture_vpm_high_precision.py",
+      "exit_code": 0,
+      "elapsed_seconds": 0.249,
+      "changed_fixtures": [],
+      "generator_sha256": "373bc8ca11b342c3d6b7ff60b9ef76313403c92048cd6660b94a8e54a465c84f"
+    },
+    {
+      "command": "local/oracles/python-env/bin/python tool/capture_vpm_gradient_kernels.py",
+      "exit_code": 0,
+      "elapsed_seconds": 0.515,
+      "changed_fixtures": [],
+      "generator_sha256": "65d8a72775a09a88a8eb2651411957195aa251813e4f6f721d99215bbb775bd3"
+    },
+    {
+      "command": "local/oracles/python-env/bin/python tool/capture_vpm_schedules.py",
+      "exit_code": 0,
+      "elapsed_seconds": 53.112,
+      "changed_fixtures": [],
+      "generator_sha256": "e8083a75839f9839e31140cd762abf905d3707521af3b812266a8ff48e1b349e"
+    },
+    {
+      "command": "local/oracles/python-env/bin/python tool/capture_vpm_ccr.py",
+      "exit_code": 0,
+      "elapsed_seconds": 43.974,
+      "changed_fixtures": [],
+      "generator_sha256": "9af118088ff2f7f6cc32fa94039d603b81fca16b0fec91f33b6c3bcbb87053a4"
+    },
+    {
+      "command": "local/oracles/python-env/bin/python tool/capture_vpm_sequences.py",
+      "exit_code": 0,
+      "elapsed_seconds": 29.154,
+      "changed_fixtures": [],
+      "generator_sha256": "f7274ce78857f9cce5b1c51481f5d5f077bc265c588b75bd8429b070cfd4bfa0"
+    },
+    {
+      "command": "local/oracles/python-env/bin/python tool/capture_vpm_ccr_sequences.py",
+      "exit_code": 0,
+      "elapsed_seconds": 86.763,
+      "changed_fixtures": [],
+      "generator_sha256": "13f1679ab38b2db2ae1a1183420526a00bcca1d9d3874d19870feef0d814a507"
+    },
+    {
+      "command": "local/oracles/python-env/bin/python tool/capture_vpm_surface_reference.py",
+      "exit_code": 0,
+      "elapsed_seconds": 0.085,
+      "changed_fixtures": [],
+      "generator_sha256": "266e3ae7e0fe7f0f45d924646b5e4c8794120ae1bdd064093a76667b0a249645"
+    },
+    {
+      "command": "local/oracles/python-env/bin/python tool/capture_projected_ascent_contract.py",
+      "exit_code": 0,
+      "elapsed_seconds": 0.044,
+      "changed_fixtures": [],
+      "generator_sha256": "59d24a5a5054637093fb30c46be8053ede3c0ebeb7834f281157f3f0cfcafddc"
+    },
+    {
+      "command": "local/oracles/python-env/bin/python tool/capture_schedule_replay.py",
+      "exit_code": 0,
+      "elapsed_seconds": 0.136,
+      "changed_fixtures": [],
+      "generator_sha256": "c49dbb820d90bc2906209eb70cf92bd96551ed19d0d4ca9c238a4109dd42c67a"
+    },
+    {
+      "command": "local/oracles/python-env/bin/python tool/capture_schedule_oxygen_replay.py",
+      "exit_code": 0,
+      "elapsed_seconds": 1.748,
+      "changed_fixtures": [],
+      "generator_sha256": "ee4600b22b978a644e914c405c93f909f8c1296c7f022bc1cd739a46ed53627c"
+    }
+  ],
+  "date": "2026-11-13",
+  "result": "All 20 selected existing generators reproduced byte-identical checked-in expectations; snapshots restored before failure would be reported.",
+  "additional_repeated_captures": [
+    {
+      "generator": "tool/capture_vpm_multilevel_descending.py",
+      "fixture": "vpmb-multilevel-descending-units.json",
+      "fixture_sha256": "bf7439f6cce28a047e5cda16507f6dd3785e7d2aa499fc9f9176f8535eefacd6",
+      "result": "second capture byte-identical"
+    },
+    {
+      "generator": "tool/capture_vpm_redescent.py",
+      "fixture": "vpmb-redescent-normalized.json",
+      "fixture_sha256": "1a11ff55e763454c81ae3ddc8e76c01d7587e4ce2a1c0848f7f5fb4c46de0bf6",
+      "result": "second capture byte-identical"
+    },
+    {
+      "generator": "tool/capture_buhlmann_imperial_ccr.py",
+      "fixture": "buhlmann-imperial-ccr-bailout.json",
+      "fixture_sha256": "399d967529752905333101e2d944d685813d58a6f4f9cfab969f608ba9e4e08d",
+      "result": "second capture byte-identical"
+    }
+  ],
+  "scope": "Selected normalized/component sources. Auxiliary native-default diagnostic profiles are not recaptured by these 20 commands and are not product conformance expectations."
+}

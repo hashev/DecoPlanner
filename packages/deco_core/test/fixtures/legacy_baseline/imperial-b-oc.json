@@ -1,0 +1,289 @@
+{
+  "schema_version": 1,
+  "id": "imperial-b-oc",
+  "provenance": {
+    "kind": "original-runtime-observation",
+    "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+    "original_result_sha256": "1ca05f773966a8341fb29ddb955bfcffd1db9a703639ef6f20f41ebd4d448049",
+    "source": "analysis/fixtures/results/imperial-b-oc.json"
+  },
+  "request": {
+    "id": "imperial-b-oc",
+    "model": "b",
+    "mode": "oc",
+    "units": "imperial",
+    "levels": [
+      [
+        150,
+        25,
+        21,
+        35,
+        0
+      ]
+    ],
+    "deco": [
+      [
+        70,
+        50,
+        0
+      ],
+      [
+        20,
+        100,
+        0
+      ]
+    ]
+  },
+  "outcome": "legacy-result",
+  "role": "baseline observation, not an independent corrected-model expectation",
+  "observed": [
+    {
+      "runtime_display_min": 46.0,
+      "ascent_min": 20.33333333333333,
+      "deco_min": 17.66666666666666,
+      "offgassing_depth_m": 30.944715820312503,
+      "cns_fraction": 0.27623863164300405,
+      "otu": 56.64125649270971,
+      "final_tissues_bar": {
+        "n2": [
+          0.3342843892590112,
+          0.6490460841276086,
+          0.9175525518986384,
+          1.0556214617228037,
+          1.0969899521354292,
+          1.079191784702534,
+          1.0338768277646497,
+          0.9800609112671874,
+          0.9290739056597432,
+          0.8918695348657513,
+          0.8651513461274378,
+          0.8429150477438603,
+          0.8246447473403637,
+          0.8096086676178562,
+          0.7975223307503859,
+          0.7878674662589523
+        ],
+        "he": [
+          0.0024205582407845695,
+          0.029864015911163,
+          0.13079612151514927,
+          0.292774147106365,
+          0.4616753345570404,
+          0.5686155563051223,
+          0.6013044307185346,
+          0.5678389895557896,
+          0.49403198794066866,
+          0.41929162797804365,
+          0.355817942213414,
+          0.2970786501935074,
+          0.2448847353416037,
+          0.19934514470531348,
+          0.16107348408333105,
+          0.1294388251163168
+        ]
+      },
+      "segments": [
+        {
+          "start_depth_m": 0.0,
+          "end_depth_m": 45.72,
+          "duration_min": 4.545454545454546,
+          "start_min": 0.0,
+          "end_min": 4.545454545454546,
+          "gas_index": 0,
+          "o2_fraction": 0.21,
+          "he_fraction": 0.35,
+          "setpoint_ata": 0.0
+        },
+        {
+          "start_depth_m": 45.72,
+          "end_depth_m": 45.72,
+          "duration_min": 20.454545454545453,
+          "start_min": 4.545454545454546,
+          "end_min": 25.0,
+          "gas_index": 0,
+          "o2_fraction": 0.21,
+          "he_fraction": 0.35,
+          "setpoint_ata": 0.0
+        },
+        {
+          "start_depth_m": 45.72,
+          "end_depth_m": 21.336000000000002,
+          "duration_min": 2.6666666666666665,
+          "start_min": 25.0,
+          "end_min": 27.666666666666668,
+          "gas_index": 0,
+          "o2_fraction": 0.21,
+          "he_fraction": 0.35,
+          "setpoint_ata": 0.0
+        },
+        {
+          "start_depth_m": 21.336000000000002,
+          "end_depth_m": 21.336000000000002,
+          "duration_min": 0.33333333333333215,
+          "start_min": 27.666666666666668,
+          "end_min": 28.0,
+          "gas_index": 1,
+          "o2_fraction": 0.5,
+          "he_fraction": 0.0,
+          "setpoint_ata": 0.0
+        },
+        {
+          "start_depth_m": 21.336000000000002,
+          "end_depth_m": 18.288,
+          "duration_min": 0.3333333333333333,
+          "start_min": 28.0,
+          "end_min": 28.333333333333332,
+          "gas_index": 1,
+          "o2_fraction": 0.5,
+          "he_fraction": 0.0,
+          "setpoint_ata": 0.0
+        },
+        {
+          "start_depth_m": 18.288,
+          "end_depth_m": 18.288,
+          "duration_min": 0.6666666666666679,
+          "start_min": 28.333333333333332,
+          "end_min": 29.0,
+          "gas_index": 1,
+          "o2_fraction": 0.5,
+          "he_fraction": 0.0,
+          "setpoint_ata": 0.0
+        },
+        {
+          "start_depth_m": 18.288,
+          "end_depth_m": 15.24,
+          "duration_min": 0.3333333333333333,
+          "start_min": 29.0,
+          "end_min": 29.333333333333332,
+          "gas_index": 1,
+          "o2_fraction": 0.5,
+          "he_fraction": 0.0,
+          "setpoint_ata": 0.0
+        },
+        {
+          "start_depth_m": 15.24,
+          "end_depth_m": 15.24,
+          "duration_min": 0.6666666666666679,
+          "start_min": 29.333333333333332,
+          "end_min": 30.0,
+          "gas_index": 1,
+          "o2_fraction": 0.5,
+          "he_fraction": 0.0,
+          "setpoint_ata": 0.0
+        },
+        {
+          "start_depth_m": 15.24,
+          "end_depth_m": 12.192,
+          "duration_min": 0.3333333333333333,
+          "start_min": 30.0,
+          "end_min": 30.333333333333332,
+          "gas_index": 1,
+          "o2_fraction": 0.5,
+          "he_fraction": 0.0,
+          "setpoint_ata": 0.0
+        },
+        {
+          "start_depth_m": 12.192,
+          "end_depth_m": 12.192,
+          "duration_min": 1.6666666666666679,
+          "start_min": 30.333333333333332,
+          "end_min": 32.0,
+          "gas_index": 1,
+          "o2_fraction": 0.5,
+          "he_fraction": 0.0,
+          "setpoint_ata": 0.0
+        },
+        {
+          "start_depth_m": 12.192,
+          "end_depth_m": 9.144,
+          "duration_min": 0.3333333333333333,
+          "start_min": 32.0,
+          "end_min": 32.333333333333336,
+          "gas_index": 1,
+          "o2_fraction": 0.5,
+          "he_fraction": 0.0,
+          "setpoint_ata": 0.0
+        },
+        {
+          "start_depth_m": 9.144,
+          "end_depth_m": 9.144,
+          "duration_min": 1.6666666666666643,
+          "start_min": 32.333333333333336,
+          "end_min": 34.0,
+          "gas_index": 1,
+          "o2_fraction": 0.5,
+          "he_fraction": 0.0,
+          "setpoint_ata": 0.0
+        },
+        {
+          "start_depth_m": 9.144,
+          "end_depth_m": 6.096,
+          "duration_min": 0.3333333333333333,
+          "start_min": 34.0,
+          "end_min": 34.333333333333336,
+          "gas_index": 1,
+          "o2_fraction": 0.5,
+          "he_fraction": 0.0,
+          "setpoint_ata": 0.0
+        },
+        {
+          "start_depth_m": 6.096,
+          "end_depth_m": 6.096,
+          "duration_min": 3.6666666666666643,
+          "start_min": 34.333333333333336,
+          "end_min": 38.0,
+          "gas_index": 2,
+          "o2_fraction": 1.0,
+          "he_fraction": 0.0,
+          "setpoint_ata": 0.0
+        },
+        {
+          "start_depth_m": 6.096,
+          "end_depth_m": 3.048,
+          "duration_min": 0.3333333333333333,
+          "start_min": 38.0,
+          "end_min": 38.333333333333336,
+          "gas_index": 2,
+          "o2_fraction": 1.0,
+          "he_fraction": 0.0,
+          "setpoint_ata": 0.0
+        },
+        {
+          "start_depth_m": 3.048,
+          "end_depth_m": 3.048,
+          "duration_min": 6.666666666666664,
+          "start_min": 38.333333333333336,
+          "end_min": 45.0,
+          "gas_index": 2,
+          "o2_fraction": 1.0,
+          "he_fraction": 0.0,
+          "setpoint_ata": 0.0
+        },
+        {
+          "start_depth_m": 3.048,
+          "end_depth_m": 0.0,
+          "duration_min": 0.3333333333333333,
+          "start_min": 45.0,
+          "end_min": 45.333333333333336,
+          "gas_index": 2,
+          "o2_fraction": 1.0,
+          "he_fraction": 0.0,
+          "setpoint_ata": 0.0
+        }
+      ]
+    }
+  ],
+  "normalization": {
+    "depth_to_metres": 0.3048,
+    "pressure_depth_to_bar": 0.030704545454545453,
+    "surface_bar": 1.01325,
+    "water_vapour_bar": 0.06266797727272727,
+    "initial_n2_bar": 0.7509597979545455,
+    "bar_per_metre": 0.10073669768551657,
+    "descent_m_min": 10.0584,
+    "ascent_m_min": 9.144,
+    "step_m": 3.048,
+    "gf_low": 0.3,
+    "gf_high": 0.85
+  }
+}

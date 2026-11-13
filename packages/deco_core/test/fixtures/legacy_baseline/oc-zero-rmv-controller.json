@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "id": "oc-zero-rmv-controller",
+  "provenance": {
+    "kind": "original-runtime-observation",
+    "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+    "original_result_sha256": "ff503465410bfea38d8355ba2a9f1a6850475fe384b085b1f7846892649b4a55",
+    "source": "analysis/fixtures/results/oc-zero-rmv-controller.json"
+  },
+  "request": {
+    "id": "oc-zero-rmv-controller",
+    "model": "b",
+    "mode": "oc",
+    "levels": [
+      [
+        10,
+        10,
+        21,
+        0,
+        0
+      ]
+    ],
+    "postprocess": true,
+    "settings": {
+      "rmv_bottom": 0,
+      "rmv_deco": 0
+    }
+  },
+  "outcome": "legacy-error",
+  "role": "baseline observation, not an independent corrected-model expectation"
+}

@@ -1,0 +1,634 @@
+{
+  "schema_version": 1,
+  "legacy_source": "docs/calculations/limitations.md",
+  "entries": [
+    {
+      "id": "vpm-oc-altitude",
+      "classification": "confirmed-defect",
+      "legacy_evidence": "H.F before context assignment",
+      "target_rule": "Initialize altitude context before adjustment; preserve adjusted tissues and bubble state.",
+      "tasks": [
+        "5.4"
+      ],
+      "source": "bwaite/vpmb altitude routines",
+      "required_checks": "altitude-acclimatized, altitude-travel",
+      "implementation_status": "implemented for OC",
+      "validation_status": "passed: independent full schedules/tissues/bubble states at2000m acclimatized/travel and8848m travel",
+      "reason": "H.F before context assignment",
+      "source_version": "bec938d84742e42dd43b574beec49ac26f6863ac; normalized timing/Boyle precision documented",
+      "independent_fixtures": [
+        "vpmb-altitude-surface-transitions.json",
+        "vpmb-full-altitude-repetitive.json"
+      ],
+      "permitted_legacy_difference": "Only the target rule, after independent validation; no blanket tolerance exception."
+    },
+    {
+      "id": "vpm-ccr-altitude-overwrite",
+      "classification": "confirmed-static-defect",
+      "legacy_evidence": "D.F tissue adjustments overwritten by J arrays",
+      "target_rule": "Initialize once; transfer complete adjusted state without overwriting tissues.",
+      "tasks": [
+        "5.4"
+      ],
+      "source": "Pinned bwaite/vpmb altitude initialization with explicit constant-SP inspiration extension",
+      "required_checks": "CCR acclimatized/travel tissue and radius snapshots",
+      "implementation_status": "implemented: preserve altitude-adjusted tissues and bubble state for CCR and bailout",
+      "validation_status": "passed6full CCR/bailout profiles:2000m acclimatized/travel and8848m travel, all initial tissues/radii and complete segment/final bubble states",
+      "reason": "D.F tissue adjustments overwritten by J arrays",
+      "source_version": "bec938d84742e42dd43b574beec49ac26f6863ac; adapter/provenance hashes recorded in fixture",
+      "independent_fixtures": [
+        "vpmb-ccr-altitude-repetitive.json"
+      ],
+      "permitted_legacy_difference": "Only the target rule, after independent validation; no blanket tolerance exception."
+    },
+    {
+      "id": "vpm-si-index",
+      "classification": "confirmed-defect",
+      "legacy_evidence": "H.B indexes 1..16 into length16",
+      "target_rule": "Process exactly indices0..15; carry all tissue and bubble state.",
+      "tasks": [
+        "5.5"
+      ],
+      "source": "bwaite/vpmb repetitive algorithm",
+      "required_checks": "SI0/45/60/180/1440 OC/CCR/bailout",
+      "implementation_status": "implemented full-state transitions for OC/CCR/bailout",
+      "validation_status": "passed OC sequences and20CCR→CCR/CCR→OC/CCR→bailout/bailout→CCR sequences at SI0/45/60/180/1440; SI0identity, tissues/radii/full bubble snapshots, CNS/OTU and JSON handoff",
+      "reason": "H.B indexes 1..16 into length16",
+      "source_version": "bec938d84742e42dd43b574beec49ac26f6863ac",
+      "independent_fixtures": [
+        "vpmb-altitude-surface-transitions.json",
+        "vpmb-full-altitude-repetitive.json",
+        "vpmb-ccr-altitude-repetitive.json"
+      ],
+      "permitted_legacy_difference": "Only the target rule, after independent validation; no blanket tolerance exception."
+    },
+    {
+      "id": "buhlmann-si-inclusive",
+      "classification": "confirmed-defect",
+      "legacy_evidence": "SI0 changes tissues",
+      "target_rule": "Use elapsed continuous time; SI0 is identity.",
+      "tasks": [
+        "4.4"
+      ],
+      "source": "External DecoTengu air recovery and independent full B/C OC/CCR/bailout stop search",
+      "required_checks": "SI0 identity and fractional SI",
+      "implementation_status": "implemented continuous SI with full-state handoff",
+      "validation_status": "passed50full B/C two-dive sequences at SI0/45/60/180/1440; SI0identity, every segment tissue/oxygen state and JSON handoff",
+      "reason": "SI0 changes tissues",
+      "source_version": "DecoTengu0.14.1 source hash and adapter hashes recorded in fixture",
+      "independent_fixtures": [
+        "buhlmann-altitude-repetitive.json"
+      ],
+      "permitted_legacy_difference": "Only the target rule, after independent validation; no blanket tolerance exception."
+    },
+    {
+      "id": "cns-integer-recovery",
+      "classification": "confirmed-defect",
+      "legacy_evidence": "integer n/60",
+      "target_rule": "Use continuous recovery under documented oxygen policy; no integer-hour truncation.",
+      "tasks": [
+        "4.4"
+      ],
+      "source": "Erik C Baker, Oxygen Toxicity Calculations;90minute CNS half-time",
+      "required_checks": "SI0/45/60/180/1440",
+      "implementation_status": "implemented continuous recovery; unknown CNS remains unknown",
+      "validation_status": "passed independent SI0/45/60/180/1440 single-dose references and full B/C/VPM OC/CCR/bailout chains",
+      "reason": "integer n/60",
+      "source_version": "Primary PDF/source SHA in oxygen-baker-mpmath.json",
+      "independent_fixtures": [
+        "oxygen-baker-mpmath.json",
+        "buhlmann-altitude-repetitive.json",
+        "vpmb-ccr-altitude-repetitive.json"
+      ],
+      "permitted_legacy_difference": "Only the target rule, after independent validation; no blanket tolerance exception."
+    },
+    {
+      "id": "cns-high-po2",
+      "classification": "confirmed-inconsistency",
+      "legacy_evidence": "duration versus fixed2 at high PO2",
+      "target_rule": "CNS outside1.6ATA becomes null with typed reason; decompression and independent OTU continue; preserve unknown CNS acrossSI/JSON.",
+      "tasks": [
+        "2.4",
+        "4.4"
+      ],
+      "source": "Baker original12-page paper, owner decision during apply",
+      "required_checks": "all band boundaries and high PO2",
+      "implementation_status": "implemented",
+      "validation_status": "passed: independent quadrature and imperial OC full-result regressions",
+      "reason": "duration versus fixed2 at high PO2",
+      "source_version": "Baker Oxygen Toxicity Calculations, pinned PDF hash in oxygen-outside-cns-domain-mpmath.json; owner-approved CNS unavailable policy beyond1.6ATA",
+      "independent_fixtures": [
+        "oxygen-outside-cns-domain-mpmath.json"
+      ],
+      "permitted_legacy_difference": "Only the target rule, after independent validation; no blanket tolerance exception.",
+      "evidence_files": [
+        "packages/deco_core/test/src/oxygen/oxygen_test.dart",
+        "test/ui/result_details_test.dart"
+      ]
+    },
+    {
+      "id": "cns-movement-top-band",
+      "classification": "confirmed-static-defect",
+      "legacy_evidence": "movement loop omits upper band",
+      "target_rule": "Integrate all supported bands consistently across hold and movement.",
+      "tasks": [
+        "4.4"
+      ],
+      "source": "Erik C Baker published seven-band table; independent mpmath quadrature",
+      "required_checks": "cross every band in both directions",
+      "implementation_status": "implemented all supported bands in hold and movement",
+      "validation_status": "passed every band both directions, including1.5–1.6ATA and full-range ramps",
+      "reason": "movement loop omits upper band",
+      "source_version": "Primary PDF/source SHA and precision recorded in oxygen-baker-mpmath.json",
+      "independent_fixtures": [
+        "oxygen-baker-mpmath.json"
+      ],
+      "permitted_legacy_difference": "Only the target rule, after independent validation; no blanket tolerance exception."
+    },
+    {
+      "id": "vpm-bad-root-bracket",
+      "classification": "confirmed-defect",
+      "legacy_evidence": "diagnostic3565 then out-of-bracket value",
+      "target_rule": "Reject invalid bracket with typed failure; never return a successful nonroot.",
+      "tasks": [
+        "3.4"
+      ],
+      "source": "bracketed numerical method invariant",
+      "required_checks": "bad bracket, endpoint root, nonfinite",
+      "implementation_status": "implemented",
+      "validation_status": "passed: core unit tests, analytical balance and independently sourced expectations",
+      "reason": "diagnostic3565 then out-of-bracket value",
+      "source_version": "bec938d84742e42dd43b574beec49ac26f6863ac; independent70-digit VPM physics and root residual contracts",
+      "independent_fixtures": [
+        "vpmb-physical-high-precision.json",
+        "vpmb-gradient-kernels.json"
+      ],
+      "permitted_legacy_difference": "Explicit finite error / double arithmetic and dimensional EOS inputs; Z uses zero anchor and continuous extrapolation. See model documentation.",
+      "evidence_files": [
+        "packages/deco_core/test/src/numerics/solver_test.dart",
+        "packages/deco_core/test/src/vpm/physics_test.dart"
+      ]
+    },
+    {
+      "id": "vpm-unbounded-iteration",
+      "classification": "confirmed-static-defect",
+      "legacy_evidence": "critical-volume outer loop unbounded",
+      "target_rule": "Keep model convergence semantics; enforce iteration/time budgets and typed nonconvergence.",
+      "tasks": [
+        "3.4",
+        "5.2"
+      ],
+      "source": "bwaite/vpmb critical_volume",
+      "required_checks": "converged and budget-exhausted",
+      "implementation_status": "implemented bounded request budgets without changing model convergence",
+      "validation_status": "passed normal full independent schedules and explicit iteration/time/cancel failures",
+      "reason": "critical-volume outer loop unbounded",
+      "source_version": "bec938d84742e42dd43b574beec49ac26f6863ac; CalculationBudget contract",
+      "independent_fixtures": [
+        "vpmb-normalized-schedules.json",
+        "vpmb-redescent-normalized.json"
+      ],
+      "permitted_legacy_difference": "Only the target rule, after independent validation; no blanket tolerance exception.",
+      "evidence_files": [
+        "packages/deco_core/test/src/planning/vpm_schedule_test.dart"
+      ]
+    },
+    {
+      "id": "vpm-any-convergence",
+      "classification": "intentional-model-rule",
+      "legacy_evidence": "ANY tissue within1 minute",
+      "target_rule": "Preserve ANY: independent VPM-B explicitly documents and implements this criterion; do not replace with ALL.",
+      "tasks": [
+        "5.2"
+      ],
+      "source": "bwaite/vpmb@bec938d84742e42dd43b574beec49ac26f6863ac vpmb.py1887-1907",
+      "required_checks": "c0-c4 full schedules, intermediate phase volume",
+      "implementation_status": "preserved intentional ANY criterion",
+      "validation_status": "passed inclusive one-minute ANY unit contract and c0-c4 independent full schedules",
+      "reason": "ANY tissue within1 minute",
+      "source_version": "bec938d84742e42dd43b574beec49ac26f6863ac",
+      "independent_fixtures": [
+        "vpmb-normalized-schedules.json",
+        "vpmb-ccr-bailout-normalized.json",
+        "vpmb-redescent-normalized.json"
+      ],
+      "permitted_legacy_difference": "Only the target rule, after independent validation; no blanket tolerance exception.",
+      "evidence_files": [
+        "packages/deco_core/test/src/vpm/gradients_test.dart"
+      ]
+    },
+    {
+      "id": "vpm-projected-ascent",
+      "classification": "statically-ineffective-guard; observed-schedule-impact-unproven",
+      "legacy_evidence": "returned candidate discarded by legacy caller",
+      "target_rule": "Use independent VPM projected-ascent safeguard contract; do not claim a changed normal legacy schedule without a counterexample.",
+      "tasks": [
+        "5.2"
+      ],
+      "source": "same pinned vpmb.py projected_ascent1049-1105 and call1856",
+      "required_checks": "source-native search observations, independent synthetic helper contract, and full normalized schedules; no changed normal legacy schedule claimed without a counterexample",
+      "implementation_status": "implemented independent safeguard contract; legacy normal schedule impact remains unproven",
+      "validation_status": "passed independent synthetic safeguard and full normalized schedules; original bounded search found no normal-profile counterexample",
+      "reason": "returned candidate discarded by legacy caller",
+      "source_version": "bec938d84742e42dd43b574beec49ac26f6863ac; projected-ascent-contract fixture",
+      "independent_fixtures": [
+        "vpmb-projected-ascent-contract.json",
+        "vpmb-redescent-normalized.json"
+      ],
+      "permitted_legacy_difference": "Only the target rule, after independent validation; no blanket tolerance exception.",
+      "evidence_files": [
+        "packages/deco_core/test/src/vpm/gradients_test.dart"
+      ]
+    },
+    {
+      "id": "real-gas-newton",
+      "classification": "confirmed-static-defect",
+      "legacy_evidence": "Q Newton no iteration maximum",
+      "target_rule": "Bound solver, validate finite residual and explicit temperature/unit inputs.",
+      "tasks": [
+        "3.4",
+        "6.2"
+      ],
+      "source": "equation of state documented in research; independent balance tests",
+      "required_checks": "nonconvergence and order independence",
+      "implementation_status": "implemented",
+      "validation_status": "passed: core unit tests, analytical balance and independently sourced expectations",
+      "reason": "Q Newton no iteration maximum",
+      "source_version": "declared model versions and source hashes in docs/models/mixing.md and independent/vdw-mpmath.json",
+      "independent_fixtures": [
+        "vdw-mpmath.json"
+      ],
+      "permitted_legacy_difference": "Explicit finite error / double arithmetic and dimensional EOS inputs; Z uses zero anchor and continuous extrapolation. See model documentation."
+    },
+    {
+      "id": "real-gas-static-units",
+      "classification": "confirmed-static-defect",
+      "legacy_evidence": "previous static unit/temperature influences Q",
+      "target_rule": "All thermodynamic inputs explicit per request; canonical units.",
+      "tasks": [
+        "3.2",
+        "6.2"
+      ],
+      "source": "physical dimensional invariants",
+      "required_checks": "alternate units and temperature requests",
+      "implementation_status": "implemented",
+      "validation_status": "passed: core unit tests, analytical balance and independently sourced expectations",
+      "reason": "previous static unit/temperature influences Q",
+      "source_version": "declared model versions and source hashes in docs/models/mixing.md and independent/vdw-mpmath.json",
+      "independent_fixtures": [
+        "vdw-mpmath.json"
+      ],
+      "permitted_legacy_difference": "Explicit finite error / double arithmetic and dimensional EOS inputs; Z uses zero anchor and continuous extrapolation. See model documentation."
+    },
+    {
+      "id": "z-table-lower-bound",
+      "classification": "confirmed-defect",
+      "legacy_evidence": "6.89 guard vs6.894942725 step yields index-1",
+      "target_rule": "Validate exact tabulated domain and interpolation interval; no undocumented clamp.",
+      "tasks": [
+        "6.2"
+      ],
+      "source": "published table provenance pending",
+      "required_checks": "below/at/above first node",
+      "implementation_status": "implemented",
+      "validation_status": "passed: core unit tests, analytical balance and independently sourced expectations",
+      "reason": "6.89 guard vs6.894942725 step yields index-1",
+      "source_version": "RecordedCompressibility20C; parameters/z-observed.json; explicit linear interpolation/extrapolation policy",
+      "independent_fixtures": [],
+      "permitted_legacy_difference": "Explicit finite error / double arithmetic and dimensional EOS inputs; Z uses zero anchor and continuous extrapolation. See model documentation.",
+      "reference_parameters": [
+        "parameters/z-observed.json"
+      ],
+      "evidence_files": [
+        "packages/deco_core/test/src/gas/compressibility_test.dart"
+      ]
+    },
+    {
+      "id": "real-gas-drain",
+      "classification": "open-static-suspicion",
+      "legacy_evidence": "j/T tests initial component rather than required addition",
+      "target_rule": "Select drain branch from required component amount; verify component mass balance independently.",
+      "tasks": [
+        "6.2"
+      ],
+      "source": "mass conservation",
+      "required_checks": "normal/drain/impossible both O2-He orders",
+      "implementation_status": "implemented",
+      "validation_status": "passed: core unit tests, analytical balance and independently sourced expectations",
+      "reason": "j/T tests initial component rather than required addition",
+      "source_version": "declared model versions and source hashes in docs/models/mixing.md and independent/vdw-mpmath.json",
+      "independent_fixtures": [
+        "vdw-mpmath.json"
+      ],
+      "permitted_legacy_difference": "Explicit finite error / double arithmetic and dimensional EOS inputs; Z uses zero anchor and continuous extrapolation. See model documentation."
+    },
+    {
+      "id": "continuous-blending-limits",
+      "classification": "coverage-gap",
+      "legacy_evidence": "rare constrained flow branches not executed",
+      "target_rule": "Validate every limit and feasible component flow; reject impossible recipes.",
+      "tasks": [
+        "6.3"
+      ],
+      "source": "independent component balance",
+      "required_checks": "both variants, limits, drain, zero flows",
+      "implementation_status": "implemented joint bounded component/feed allocation",
+      "validation_status": "passed486 independent HiGHS cases plus legacy/boundary/error/budget controls",
+      "reason": "rare constrained flow branches not executed",
+      "source_version": "SciPy1.18.1/NumPy2.5.4/mpmath1.3.0; HiGHS binary/version SHA in fixture",
+      "independent_fixtures": [
+        "continuous-highs.json"
+      ],
+      "permitted_legacy_difference": "Joint retained/feed solution enforces both caps; no float threshold or unbounded repair. See mixing.md."
+    },
+    {
+      "id": "zero-rmv",
+      "classification": "confirmed-defect",
+      "legacy_evidence": "controller parses empty gas-volume string",
+      "target_rule": "Validate domain at core boundary; accepted zero usage returns numeric0, never formatted-string arithmetic.",
+      "tasks": [
+        "3.1",
+        "6.5"
+      ],
+      "source": "dimensional gas consumption",
+      "required_checks": "zero/negative/positive RMV",
+      "implementation_status": "implemented numeric segment usage; zero rates remain zero",
+      "validation_status": "passed37 independent usage profiles, zero rates and negative-rate rejection",
+      "reason": "controller parses empty gas-volume string",
+      "source_version": "mpmath1.3.0, 70 decimal digits; source/generator SHA in fixture",
+      "independent_fixtures": [
+        "gas-usage-quadrature.json"
+      ],
+      "permitted_legacy_difference": "Only the target rule, after independent validation; no blanket tolerance exception."
+    },
+    {
+      "id": "zero-profile-duration",
+      "classification": "confirmed-defect",
+      "legacy_evidence": "zero hold/depth may throw",
+      "target_rule": "Specify movement-only semantics; reject insufficient runtime; zero elapsed segment is identity.",
+      "tasks": [
+        "3.3"
+      ],
+      "source": "analytical kinetics",
+      "required_checks": "zero hold, zero elapsed, impossible descent",
+      "implementation_status": "implemented explicit movement-only/insufficient-duration/zero-elapsed contracts",
+      "validation_status": "passed movement-only hold omission, insufficient/negative runtime rejection, and zero-time tissue identity",
+      "reason": "zero hold/depth may throw",
+      "source_version": "canonical timing contract; Haldane/Schreiner zero-time identity",
+      "independent_fixtures": [],
+      "permitted_legacy_difference": "Only the target rule, after independent validation; no blanket tolerance exception.",
+      "evidence_files": [
+        "packages/deco_core/test/src/tissues/segments_test.dart",
+        "packages/deco_core/test/src/tissues/tissues_test.dart"
+      ]
+    },
+    {
+      "id": "zero-oxygen-mod",
+      "classification": "confirmed-defect",
+      "legacy_evidence": "O2=0 MOD Infinity",
+      "target_rule": "Return explicit inapplicable MOD for oxygen-free gas, never Infinity.",
+      "tasks": [
+        "6.1"
+      ],
+      "source": "partial pressure equation",
+      "required_checks": "O2=0/1 and invalid fractions",
+      "implementation_status": "implemented unavailable MOD/min-depth for oxygen-free gas",
+      "validation_status": "passed oxygen0/1, partial-pressure balance and invalid fraction cases; no Infinity result",
+      "reason": "O2=0 MOD Infinity",
+      "source_version": "analytic PO2=fO2*ambient pressure; canonical pressure context",
+      "independent_fixtures": [],
+      "permitted_legacy_difference": "Only the target rule, after independent validation; no blanket tolerance exception.",
+      "evidence_files": [
+        "packages/deco_core/test/src/gas/properties_test.dart"
+      ]
+    },
+    {
+      "id": "legacy-chart-state",
+      "classification": "open-static-suspicion",
+      "legacy_evidence": "separate interpolation/surface constants",
+      "target_rule": "Charts consume authoritative schedule/state and same surface value; numeric accessible representation.",
+      "tasks": [
+        "9.4"
+      ],
+      "source": "core result contract",
+      "required_checks": "chart endpoints and raw schedule",
+      "implementation_status": "replaced with authoritative physical segment/state presentation",
+      "validation_status": "passed exact surface/endpoints, no interpolation, 16 tissues, numerical alternatives and native P05 flow; no universal legacy chart claim",
+      "reason": "separate interpolation/surface constants",
+      "source_version": "ProfileData contract; independent core schedules; new UI presentation",
+      "independent_fixtures": [],
+      "permitted_legacy_difference": "Only the target rule, after independent validation; no blanket tolerance exception.",
+      "evidence_files": [
+        "test/domain/profile_data_test.dart",
+        "test/ui/profile_view_test.dart",
+        "integration_test/plan_flow_test.dart"
+      ]
+    },
+    {
+      "id": "reserve-absence",
+      "classification": "intentional-scope-boundary",
+      "legacy_evidence": "hidden reserve control, usage only",
+      "target_rule": "Label single-diver consumption; do not invent reserve algorithm.",
+      "tasks": [
+        "6.5"
+      ],
+      "source": "research coverage and feature map",
+      "required_checks": "UI/report consumption labels",
+      "implementation_status": "scope enforced: single-diver consumption without invented reserve policy",
+      "validation_status": "passed usage sums/zero rates and visible single-diver/no-reserves label",
+      "reason": "hidden reserve control, usage only",
+      "source_version": "declared product scope; gas-usage-quadrature provenance",
+      "independent_fixtures": [
+        "gas-usage-quadrature.json"
+      ],
+      "permitted_legacy_difference": "Only the target rule, after independent validation; no blanket tolerance exception.",
+      "evidence_files": [
+        "test/ui/planner_app_test.dart"
+      ]
+    },
+    {
+      "id": "decompiler-copy-loop",
+      "classification": "decompiler-artifact",
+      "legacy_evidence": "M emitted loop differs from bytecode",
+      "target_rule": "Do not port decompiler artifact as algorithm; bytecode takes precedence.",
+      "tasks": [
+        "3.1"
+      ],
+      "source": "original bytecode and research notes",
+      "required_checks": "full16-state copy, no aliasing",
+      "implementation_status": "artifact not ported; immutable full-state copies and serialization implemented",
+      "validation_status": "passed distinct nonzero values across all16 positions of every VPM vector, saved tissues and no mutable aliasing",
+      "reason": "M emitted loop differs from bytecode",
+      "source_version": "pinned bytecode evidence; explicit typed state contracts",
+      "independent_fixtures": [],
+      "permitted_legacy_difference": "Only the target rule, after independent validation; no blanket tolerance exception.",
+      "evidence_files": [
+        "packages/deco_core/test/src/model/contracts_test.dart"
+      ]
+    },
+    {
+      "id": "unofficial-distribution",
+      "classification": "provenance-limitation",
+      "legacy_evidence": "no unmodified official JAR",
+      "target_rule": "Scope legacy claims to pinned archive; do not call these universal GUE rules.",
+      "tasks": [
+        "11.1"
+      ],
+      "source": "local reference manifest",
+      "required_checks": "provenance audit",
+      "implementation_status": "provenance limitation documented; legacy claims restricted to pinned unofficial archive",
+      "validation_status": "verified205 immutable inputs; optional archive remains isolated; final public distribution audit remains11.3",
+      "reason": "no unmodified official JAR",
+      "source_version": "local reference manifest verified2026-11-13; no official unmodified JAR claimed",
+      "independent_fixtures": [],
+      "permitted_legacy_difference": "Only the target rule, after independent validation; no blanket tolerance exception.",
+      "evidence_files": [
+        "docs/development/reference.md"
+      ]
+    },
+    {
+      "id": "multilevel-ascent-gas-label",
+      "classification": "confirmed-by-independent-replay",
+      "legacy_evidence": "OC multilevel36→21m segment is labeled50%/0He; final tissues match only propagation on preceding21/35.",
+      "target_rule": "Retain preceding breathing gas during level ascent, switch on arrival; label the actual gas used by tissue propagation.",
+      "tasks": [
+        "4.2",
+        "6.5",
+        "9.4"
+      ],
+      "source": "DecoTengu0.14.1 independent replay plus original semantic segments and final tissues",
+      "source_version": "source hash in independent/*-tissue-replay.json",
+      "reason": "A label/propagation mismatch corrupts consumption and charts even when final tissues are internally consistent.",
+      "required_checks": "B/C multilevel all16 tissues at every segment; original final state preserved; corrected ascent gas21/35.",
+      "independent_fixtures": [
+        "oc-b-multilevel-tissue-replay.json",
+        "oc-c-multilevel-tissue-replay.json"
+      ],
+      "permitted_legacy_difference": "Only ascent segment gas label/composition; unchanged timing and final tissues.",
+      "implementation_status": "implemented",
+      "validation_status": "passed: external replay and Dart segment snapshots"
+    },
+    {
+      "id": "cns-movement-band-equality",
+      "classification": "confirmed-runtime-and-independent-quadrature",
+      "legacy_evidence": "S.D clips minimumPO2 to0.5 then strict lower-bound comparisons assign full movement range to first band; air0→30m/3min CNS.004973526151167392.",
+      "target_rule": "Intersect movement PO2 interval with each published band, include each positive-duration intersection once.",
+      "tasks": [
+        "2.4",
+        "4.4"
+      ],
+      "source": "Baker coefficient table/equations plus original isolated motion probe and mpmath65digit quadrature",
+      "source_version": "PDF SHA and script commands in oxygen-baker-mpmath.json and cns-clipped-lower-band-equality.json",
+      "reason": "Equality at a clipped lower band boundary triggers an incorrect fallback and duplicate exposure ranges.",
+      "required_checks": "Exact0.5 clipped boundary,43band/edge/movement cases,14OC oxygen schedule replays.",
+      "independent_fixtures": [
+        "oxygen-baker-mpmath.json",
+        "oc-oxygen-replay.json"
+      ],
+      "permitted_legacy_difference": "CNS correct integral differs; schedule/tissues unchanged. Independent descent CNS.0026519428999620699709.",
+      "implementation_status": "implemented",
+      "validation_status": "passed122coretests including targeted regression"
+    },
+    {
+      "id": "vpm-zero-crushing-ratio",
+      "classification": "analytically-confirmed-singularity",
+      "legacy_evidence": "Regeneration ratio divides by Rinitial-Rcrushed; at crushing0 both numerator and denominator vanish.",
+      "target_rule": "Cancel common radius difference; use (Rcrushed/Rregenerated)*exp(-t/tau), preserving exact zero-crush radius.",
+      "tasks": [
+        "5.1"
+      ],
+      "source": "Published VPM regeneration equations; analytical continuous limit and independent primary model",
+      "source_version": "pinned VPM source and model parameters documented in docs/models/vpm.md",
+      "reason": "Valid unloaded initial state must not produce0/0 or nonfinite gradients.",
+      "required_checks": "Zero crushing for16N2/He, c0–c4 and impermeable200m independent primitive gates.",
+      "independent_fixtures": [
+        "vpmb-physical-states.json",
+        "vpmb-physical-high-precision.json"
+      ],
+      "permitted_legacy_difference": "Finite mathematical limit instead of undefined0/0 at zero crushing.",
+      "implementation_status": "implemented",
+      "validation_status": "passed: analytical limit plus independent70digit checks"
+    },
+    {
+      "id": "vpm-swapped-gas-gradients",
+      "classification": "confirmed-bytecode-and-independent-execution-defect",
+      "legacy_evidence": "H.B: f=m(N2), M=S(He), followed by H.E/C weighting f/a with q(He) and M/F with T(N2). H-upper.txt offsets94–117 and ceiling weights confirm decompilation.",
+      "target_rule": "Weight N2 tissue pressure with N2 allowable/Boyle gradient, He with He gradient.",
+      "tasks": [
+        "5.2",
+        "5.3"
+      ],
+      "source": "bwaite/vpmb independent full schedules; deliberate swapped-reference variant reproduces original c0–c4.",
+      "source_version": "bec938d84742e42dd43b574beec49ac26f6863ac; declared timing, max-first-stop and pressure normalization in fixture",
+      "reason": "Named physical initial gradients are fed to the opposite gas in legacy ceiling/projected ascent/Boyle paths.",
+      "required_checks": "Corrected17OC full schedules, every tissue/stop/full bubble state; five independent swapped-diagnostic schedules exactly match legacy depths/durations and final tissues.",
+      "independent_fixtures": [
+        "vpmb-normalized-schedules.json",
+        "vpmb-ccr-bailout-normalized.json",
+        "vpmb-multilevel-descending-units.json",
+        "vpmb-redescent-normalized.json"
+      ],
+      "permitted_legacy_difference": "Only differences established by independent correctly weighted full schedules; no tolerance relaxation.",
+      "implementation_status": "implemented for VPM planner",
+      "validation_status": "passed17corrected OC schedules plus5legacy diagnostics,30full CCR/bailout cases, altitude/SI and90multilevel descending/partial-ascent/redescent cases"
+    },
+    {
+      "id": "vpm-no-deco-missing-ascent-segment",
+      "classification": "confirmed-runtime-and-static-defect",
+      "legacy_evidence": "vpm-oc-no-deco contains two descent/hold rows, yet final tissues include unrecorded10→0m ascent. H.A(int,int) no-deco branch executes gas loading but appends no segment.",
+      "target_rule": "Publish physical ascent segment with its tissues and oxygen dose, including no-stop dives.",
+      "tasks": [
+        "5.2",
+        "5.3"
+      ],
+      "source": "Independent VPM no-stop profiles and preserved original tissue0=1.3120821501154936bar",
+      "source_version": "bec938d84742e42dd43b574beec49ac26f6863ac",
+      "reason": "Missing physical segment breaks graph, duration and oxygen accounting.",
+      "required_checks": "Shallow6m/10min and matching legacy10m/10min source profiles include finite continuous ascent with matching final tissues.",
+      "independent_fixtures": [
+        "vpmb-normalized-schedules.json"
+      ],
+      "permitted_legacy_difference": "Explicit surfaced segment and its dose/runtime instead of missing row; original JSON unchanged.",
+      "implementation_status": "implemented",
+      "validation_status": "passed independent full schedules"
+    },
+    {
+      "id": "ccr-usage-overlap",
+      "classification": "intentional-correction",
+      "legacy_evidence": "R.B enteredTime plus totalAscentTime can overlap on entered ascents; docs/calculations/gas-usage.md",
+      "target_rule": "Count every physical segment exactly once with OCR selected by its recorded phase; do not estimate diluent.",
+      "tasks": [
+        "6.5"
+      ],
+      "source": "Dimensional consumption and independent schedule quadrature/aggregation",
+      "required_checks": "OC/CCR/bailout, partial stop groups, entered ascent, zero rates",
+      "implementation_status": "implemented",
+      "validation_status": "passed37 independent profiles and core-backed B/C/VPM tests",
+      "reason": "R.B enteredTime plus totalAscentTime can overlap on entered ascents; docs/calculations/gas-usage.md",
+      "source_version": "mpmath1.3.0; provenance SHA in fixture",
+      "independent_fixtures": [
+        "gas-usage-quadrature.json"
+      ],
+      "permitted_legacy_difference": "Count every physical segment exactly once with OCR selected by its recorded phase; do not estimate diluent."
+    },
+    {
+      "id": "stop-group-average-count",
+      "classification": "intentional-correction",
+      "legacy_evidence": "Legacy ratio group denominators include fixed2/5 grid nodes, including absent stops; docs/calculations/auxiliary.md",
+      "target_rule": "Divide actual stop duration by actual distinct stop depths; preserve precise and rounded ratios separately.",
+      "tasks": [
+        "6.5"
+      ],
+      "source": "Dimensional consumption and independent schedule quadrature/aggregation",
+      "required_checks": "OC/CCR/bailout, partial stop groups, entered ascent, zero rates",
+      "implementation_status": "implemented",
+      "validation_status": "passed37 independent profiles and core-backed B/C/VPM tests",
+      "reason": "Legacy ratio group denominators include fixed2/5 grid nodes, including absent stops; docs/calculations/auxiliary.md",
+      "source_version": "mpmath1.3.0; provenance SHA in fixture",
+      "independent_fixtures": [
+        "gas-usage-quadrature.json"
+      ],
+      "permitted_legacy_difference": "Divide actual stop duration by actual distinct stop depths; preserve precise and rounded ratios separately."
+    }
+  ]
+}

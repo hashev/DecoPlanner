@@ -1,0 +1,156 @@
+{
+  "schema_version": 1,
+  "id": "last-stop-double-vpm",
+  "provenance": {
+    "kind": "original-runtime-observation",
+    "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+    "original_result_sha256": "3415671a60cc5381cbcd36444af4fe8dfb6448dc5b70d16de1d274f0b7b9d21b",
+    "source": "analysis/fixtures/results/last-stop-double-vpm.json"
+  },
+  "request": {
+    "id": "last-stop-double-vpm",
+    "model": "vpm",
+    "mode": "oc",
+    "levels": [
+      [
+        30,
+        20,
+        21,
+        0,
+        0
+      ]
+    ],
+    "settings": {
+      "last_stop_double": true
+    }
+  },
+  "outcome": "legacy-result",
+  "role": "baseline observation, not an independent corrected-model expectation",
+  "observed": [
+    {
+      "runtime_display_min": 38.0,
+      "ascent_min": 17.66666666666667,
+      "deco_min": 15.333333333333336,
+      "offgassing_depth_m": 20.42737976074219,
+      "cns_fraction": 0.050839995582775674,
+      "otu": 13.38762401339048,
+      "final_tissues_bar": {
+        "n2": [
+          1.4040641665447517,
+          1.5899865421485841,
+          1.6845751431579443,
+          1.6552837158090086,
+          1.5486181237910954,
+          1.4173155840928247,
+          1.2832286305857565,
+          1.1625524403382201,
+          1.0626891628915929,
+          0.9949697709650082,
+          0.948279357393335,
+          0.9104371522910697,
+          0.8799474892334729,
+          0.8552234015974591,
+          0.835572471791511,
+          0.8200091386353051
+        ],
+        "he": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "segments": [
+        {
+          "start_depth_m": 0.0,
+          "end_depth_m": 30.0,
+          "duration_min": 3.0,
+          "start_min": 0.0,
+          "end_min": 3.0,
+          "gas_index": 0,
+          "o2_fraction": 0.21,
+          "he_fraction": 0.0,
+          "setpoint_ata": 0.0
+        },
+        {
+          "start_depth_m": 30.0,
+          "end_depth_m": 30.0,
+          "duration_min": 17.0,
+          "start_min": 3.0,
+          "end_min": 20.0,
+          "gas_index": 0,
+          "o2_fraction": 0.21,
+          "he_fraction": 0.0,
+          "setpoint_ata": 0.0
+        },
+        {
+          "start_depth_m": 30.0,
+          "end_depth_m": 9.0,
+          "duration_min": 2.3333333333333335,
+          "start_min": 20.0,
+          "end_min": 22.333333333333332,
+          "gas_index": 0,
+          "o2_fraction": 0.21,
+          "he_fraction": 0.0,
+          "setpoint_ata": 0.0
+        },
+        {
+          "start_depth_m": 9.0,
+          "end_depth_m": 9.0,
+          "duration_min": 1.6666666666666679,
+          "start_min": 22.333333333333332,
+          "end_min": 24.0,
+          "gas_index": 0,
+          "o2_fraction": 0.21,
+          "he_fraction": 0.0,
+          "setpoint_ata": 0.0
+        },
+        {
+          "start_depth_m": 9.0,
+          "end_depth_m": 6.0,
+          "duration_min": 0.3333333333333333,
+          "start_min": 24.0,
+          "end_min": 24.333333333333332,
+          "gas_index": 0,
+          "o2_fraction": 0.21,
+          "he_fraction": 0.0,
+          "setpoint_ata": 0.0
+        },
+        {
+          "start_depth_m": 6.0,
+          "end_depth_m": 6.0,
+          "duration_min": 12.666666666666668,
+          "start_min": 24.333333333333332,
+          "end_min": 37.0,
+          "gas_index": 0,
+          "o2_fraction": 0.21,
+          "he_fraction": 0.0,
+          "setpoint_ata": 0.0
+        },
+        {
+          "start_depth_m": 6.0,
+          "end_depth_m": 0.0,
+          "duration_min": 0.6666666666666666,
+          "start_min": 37.0,
+          "end_min": 37.666666666666664,
+          "gas_index": 0,
+          "o2_fraction": 0.21,
+          "he_fraction": 0.0,
+          "setpoint_ata": 0.0
+        }
+      ]
+    }
+  ]
+}

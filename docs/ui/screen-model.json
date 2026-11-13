@@ -1,0 +1,1805 @@
+[
+  {
+    "id": "P01",
+    "title": "План погружений",
+    "panels": [
+      {
+        "title": "Последовательность",
+        "fields": [
+          {
+            "label": "Погружение 1 · OC",
+            "value": "Черновик"
+          },
+          {
+            "label": "Погружение 2 · CCR",
+            "value": "Зависит от погружения 1"
+          },
+          {
+            "label": "Поверхностный интервал",
+            "value": "1 ч 30 мин"
+          }
+        ],
+        "note": "Следующее погружение использует состояние предыдущего."
+      },
+      {
+        "title": "Управление планом",
+        "fields": [
+          {
+            "label": "Режим выбранного погружения",
+            "value": "OC / CCR"
+          },
+          {
+            "label": "Модель",
+            "value": "Bühlmann B · GF 30/85"
+          },
+          {
+            "label": "Действия",
+            "value": "Добавить / Удалить / Сбросить"
+          }
+        ],
+        "note": ""
+      }
+    ],
+    "action": "Открыть погружение",
+    "fixture": null,
+    "provenance": "illustrative",
+    "state": "draft",
+    "requirements": [
+      "planner-workspace",
+      "adaptive-planner-presentation"
+    ]
+  },
+  {
+    "id": "P02",
+    "title": "Уровни погружения",
+    "panels": [
+      {
+        "title": "OC · Уровень 1",
+        "fields": [
+          {
+            "label": "Глубина",
+            "value": "30 м"
+          },
+          {
+            "label": "Длительность",
+            "value": "20 мин"
+          },
+          {
+            "label": "Газ · O2 / He",
+            "value": "21 / 0 %"
+          },
+          {
+            "label": "N2 · вычисляется",
+            "value": "79 %"
+          }
+        ],
+        "note": "Спуск включён во время. Изменить правило в параметрах."
+      },
+      {
+        "title": "CCR · вариант редактора",
+        "fields": [
+          {
+            "label": "Глубина",
+            "value": "45 м"
+          },
+          {
+            "label": "Длительность",
+            "value": "25 мин"
+          },
+          {
+            "label": "Setpoint",
+            "value": "1,3 ATA"
+          },
+          {
+            "label": "Дилюент · O2 / He",
+            "value": "21 / 35 %"
+          }
+        ],
+        "note": ""
+      },
+      {
+        "title": "Действия уровня",
+        "fields": [
+          {
+            "label": "Порядок",
+            "value": "Вверх / Вниз"
+          },
+          {
+            "label": "Редактирование",
+            "value": "Сохранить / Отменить"
+          },
+          {
+            "label": "Удаление",
+            "value": "Удалить уровень"
+          },
+          {
+            "label": "Следующий уровень",
+            "value": "Добавить уровень"
+          }
+        ],
+        "note": ""
+      }
+    ],
+    "action": "Рассчитать",
+    "fixture": null,
+    "provenance": "illustrative",
+    "state": "draft",
+    "requirements": [
+      "planner-workspace",
+      "adaptive-planner-presentation"
+    ]
+  },
+  {
+    "id": "P03",
+    "title": "Декогазы и переключения",
+    "panels": [
+      {
+        "title": "OC · Набор декогазов",
+        "fields": [
+          {
+            "label": "Набор",
+            "value": "Выбрать / Сохранить как"
+          },
+          {
+            "label": "Газ · O2 / He",
+            "value": "50 / 0 %"
+          },
+          {
+            "label": "Переключение не глубже",
+            "value": "21 м"
+          },
+          {
+            "label": "Минимальная остановка",
+            "value": "1 мин"
+          },
+          {
+            "label": "Потерянный газ",
+            "value": "Нет · Изменить"
+          }
+        ],
+        "note": ""
+      },
+      {
+        "title": "CCR · Переключение",
+        "fields": [
+          {
+            "label": "Глубина",
+            "value": "21 м"
+          },
+          {
+            "label": "Setpoint",
+            "value": "1,3 ATA"
+          },
+          {
+            "label": "Дилюент · O2 / He",
+            "value": "21 / 35 %"
+          }
+        ],
+        "note": "CCR-переключение не является OC-декогазом."
+      }
+    ],
+    "action": "Применить газы",
+    "fixture": null,
+    "provenance": "illustrative",
+    "state": "draft",
+    "requirements": [
+      "planner-workspace",
+      "adaptive-planner-presentation"
+    ]
+  },
+  {
+    "id": "P04",
+    "title": "Результат погружения",
+    "panels": [
+      {
+        "title": "OC · Воздух 30 м / 20 мин",
+        "fields": [
+          {
+            "label": "Время погружения",
+            "value": "28 мин"
+          },
+          {
+            "label": "Время подъёма",
+            "value": "7,333 мин"
+          },
+          {
+            "label": "Декомпрессия",
+            "value": "5,333 мин"
+          },
+          {
+            "label": "CNS / OTU",
+            "value": "5,084 % / 13,388"
+          }
+        ],
+        "note": "Эталон: oc-air-30m-20min. Округление UI отдельно от ядра."
+      },
+      {
+        "title": "Desktop · таблица остановок",
+        "fields": [],
+        "note": "",
+        "desktop_only": true,
+        "table": {
+          "headers": [
+            "Глубина",
+            "Время",
+            "Газ",
+            "Начало, мин",
+            "Конец, мин"
+          ],
+          "rows": [
+            [
+              "12 м",
+              "1 мин",
+              "21/0",
+              "22",
+              "23"
+            ],
+            [
+              "9 м",
+              "1 мин",
+              "21/0",
+              "23",
+              "24"
+            ],
+            [
+              "6 м",
+              "1 мин",
+              "21/0",
+              "24",
+              "25"
+            ],
+            [
+              "3 м",
+              "2 мин",
+              "21/0",
+              "25",
+              "27"
+            ]
+          ]
+        }
+      },
+      {
+        "title": "Остановки · глубина / время",
+        "fields": [
+          {
+            "label": "12 м · 1 мин",
+            "value": "Воздух · runtime 22–23"
+          },
+          {
+            "label": "9 м · 1 мин",
+            "value": "Воздух · runtime 23–24"
+          },
+          {
+            "label": "6 м · 1 мин",
+            "value": "Воздух · runtime 24–25"
+          },
+          {
+            "label": "3 м · 2 мин",
+            "value": "Воздух · runtime 25–27"
+          }
+        ],
+        "note": ""
+      },
+      {
+        "title": "Раскрытая остановка · 12 м",
+        "fields": [
+          {
+            "label": "PO2",
+            "value": "0,46 ATA"
+          },
+          {
+            "label": "GF",
+            "value": "59,2 %"
+          },
+          {
+            "label": "CNS / OTU",
+            "value": "5,084 % / 13,388"
+          },
+          {
+            "label": "Расход сегмента",
+            "value": "125,176 л"
+          }
+        ],
+        "note": ""
+      },
+      {
+        "title": "CCR · дополнительные поля",
+        "fields": [
+          {
+            "label": "Дилюент",
+            "value": "Состав из результата"
+          },
+          {
+            "label": "Эффективный газ",
+            "value": "O2 / He / N2 из результата"
+          },
+          {
+            "label": "Плотность",
+            "value": "г/л из результата"
+          }
+        ],
+        "note": "Отдельный вариант CCR; не числа OC-эталона."
+      }
+    ],
+    "action": "Открыть анализ",
+    "fixture": "oc-air-30m-20min",
+    "provenance": "original-runtime fixture",
+    "state": "ready",
+    "requirements": [
+      "planner-workspace",
+      "adaptive-planner-presentation"
+    ]
+  },
+  {
+    "id": "P05",
+    "title": "Профиль и анализ",
+    "panels": [
+      {
+        "title": "Профиль",
+        "fields": [
+          {
+            "label": "Представление",
+            "value": "Весь профиль / Только подъём"
+          },
+          {
+            "label": "Сравнение",
+            "value": "План A · сплошная / План B · штрих"
+          },
+          {
+            "label": "Данные точки",
+            "value": "Время · Глубина · Газ · Setpoint"
+          },
+          {
+            "label": "Доступный эквивалент",
+            "value": "Открыть таблицу точек"
+          }
+        ],
+        "note": "Иллюстративный график, не расчёт. Глубина направлена вниз."
+      },
+      {
+        "title": "График профиля · схема",
+        "fields": [],
+        "note": "",
+        "chart": "profile"
+      },
+      {
+        "title": "Ткани",
+        "fields": [
+          {
+            "label": "Компонент",
+            "value": "Все / Ткань 1–16"
+          },
+          {
+            "label": "Показатель",
+            "value": "N2 / He / M-value"
+          },
+          {
+            "label": "Единица давления",
+            "value": "ATA · явно на оси"
+          },
+          {
+            "label": "Точки",
+            "value": "Открыть таблицу тканей"
+          }
+        ],
+        "note": ""
+      },
+      {
+        "title": "График тканей · схема",
+        "fields": [],
+        "note": "",
+        "chart": "tissue"
+      },
+      {
+        "title": "Ratios",
+        "fields": [
+          {
+            "label": "Bottom / deco",
+            "value": "Округлённая сводка"
+          },
+          {
+            "label": "Группы",
+            "value": "По настроенному числу стопов"
+          },
+          {
+            "label": "Газы",
+            "value": "Доли времени на декогазах"
+          }
+        ],
+        "note": "Округлённое отношение не заменяет таблицу остановок."
+      },
+      {
+        "title": "Сравнения",
+        "fields": [
+          {
+            "label": "Сохранённый профиль",
+            "value": "Имя · Модель · Входы · Актуальность"
+          },
+          {
+            "label": "Действия",
+            "value": "Сохранить снимок / Очистить"
+          },
+          {
+            "label": "При пересчёте",
+            "value": "Заменить / Сохранить предыдущий"
+          }
+        ],
+        "note": ""
+      },
+      {
+        "title": "Данные выбранной точки",
+        "fields": [
+          {
+            "label": "Время / глубина",
+            "value": "Из выбранного результата"
+          },
+          {
+            "label": "Газ / PO2",
+            "value": "Состав / величина и единица"
+          },
+          {
+            "label": "Ткань / давление",
+            "value": "Номер / N2 / He / M-value"
+          }
+        ],
+        "note": "Табличная альтернатива графику доступна без hover."
+      }
+    ],
+    "action": "Сохранить сравнение",
+    "fixture": null,
+    "provenance": "illustrative",
+    "state": "draft",
+    "requirements": [
+      "planner-workspace",
+      "adaptive-planner-presentation"
+    ]
+  },
+  {
+    "id": "P06",
+    "title": "Расход газа",
+    "panels": [
+      {
+        "title": "Один дайвер · без резервов",
+        "fields": [
+          {
+            "label": "Газ",
+            "value": "Воздух 21/0"
+          },
+          {
+            "label": "Расход",
+            "value": "Из результата, л"
+          },
+          {
+            "label": "Баллон",
+            "value": "Выбрать размер"
+          },
+          {
+            "label": "Требуемое давление",
+            "value": "Из расхода и баллона, бар"
+          }
+        ],
+        "note": "Резервы не рассчитаны. Нельзя называть это минимальным запасом."
+      },
+      {
+        "title": "CCR · расход",
+        "fields": [
+          {
+            "label": "Дилюент",
+            "value": "Объём и давление из результата"
+          },
+          {
+            "label": "Кислород",
+            "value": "Объём и давление из результата"
+          },
+          {
+            "label": "Баллон каждого газа",
+            "value": "Отдельный выбор"
+          }
+        ],
+        "note": ""
+      }
+    ],
+    "action": "Выбрать баллон",
+    "fixture": null,
+    "provenance": "illustrative",
+    "state": "draft",
+    "requirements": [
+      "planner-workspace",
+      "adaptive-planner-presentation"
+    ]
+  },
+  {
+    "id": "P07",
+    "title": "Bailout-сценарий",
+    "panels": [
+      {
+        "title": "Связь с исходным CCR",
+        "fields": [
+          {
+            "label": "Источник",
+            "value": "Погружение 1 · последний расчёт"
+          },
+          {
+            "label": "Точка перехода",
+            "value": "Выбрать уровень / момент"
+          },
+          {
+            "label": "Статус",
+            "value": "Зависит от CCR-результата"
+          }
+        ],
+        "note": ""
+      },
+      {
+        "title": "Последовательность сегментов",
+        "fields": [
+          {
+            "label": "Сегмент 1 · CCR",
+            "value": "Глубина / Время / Дилюент / Setpoint"
+          },
+          {
+            "label": "Сегмент 2 · OC",
+            "value": "Глубина / Время / O2 / He"
+          },
+          {
+            "label": "Переключения",
+            "value": "Газы · Глубины"
+          }
+        ],
+        "note": "Явный тип OC вместо скрытого смысла пустого PO2."
+      },
+      {
+        "title": "Результаты bailout",
+        "fields": [
+          {
+            "label": "Представления",
+            "value": "Таблица / Профиль / Расход"
+          },
+          {
+            "label": "Вариант",
+            "value": "Без декогаза"
+          },
+          {
+            "label": "Изменение исходного CCR",
+            "value": "Этот результат станет неактуальным"
+          }
+        ],
+        "note": ""
+      }
+    ],
+    "action": "Рассчитать",
+    "fixture": null,
+    "provenance": "illustrative",
+    "state": "draft",
+    "requirements": [
+      "planner-workspace",
+      "adaptive-planner-presentation"
+    ]
+  },
+  {
+    "id": "P08",
+    "title": "Таблицы диапазонов",
+    "panels": [
+      {
+        "title": "Условия диапазона",
+        "fields": [
+          {
+            "label": "Глубина · от / до / шаг",
+            "value": "27 / 33 / 3 м"
+          },
+          {
+            "label": "Время · от / до / шаг",
+            "value": "18 / 22 / 2 мин"
+          },
+          {
+            "label": "Вариант",
+            "value": "Базовый / Без декогаза"
+          },
+          {
+            "label": "Для CCR",
+            "value": "Без дилюент/PO2 переключений"
+          }
+        ],
+        "note": ""
+      },
+      {
+        "title": "Результаты диапазона",
+        "fields": [
+          {
+            "label": "Просмотр",
+            "value": "Матрица / Список сценариев"
+          },
+          {
+            "label": "Ячейка",
+            "value": "Глубина · Время · Итог · Статус"
+          },
+          {
+            "label": "Ошибочный сценарий",
+            "value": "Отдельная причина, не нулевое deco"
+          }
+        ],
+        "note": ""
+      },
+      {
+        "title": "Печатный preview",
+        "fields": [
+          {
+            "label": "Заголовок",
+            "value": "Погружение · Модель · GF · Единицы"
+          },
+          {
+            "label": "Содержимое",
+            "value": "Входы · Строки · Газы · Статус"
+          },
+          {
+            "label": "Действия",
+            "value": "Печать / Сохранить / Поделиться"
+          }
+        ],
+        "note": "Иллюстрация структуры. Нет выдуманных рассчитанных ячеек."
+      }
+    ],
+    "action": "Построить таблицы",
+    "fixture": null,
+    "provenance": "illustrative",
+    "state": "draft",
+    "requirements": [
+      "planner-workspace",
+      "adaptive-planner-presentation"
+    ]
+  },
+  {
+    "id": "T01",
+    "title": "MOD и END",
+    "panels": [
+      {
+        "title": "Смесь и условия",
+        "fields": [
+          {
+            "label": "O2 / He",
+            "value": "21 / 35 %"
+          },
+          {
+            "label": "Максимальный PO2",
+            "value": "1,4 бар"
+          },
+          {
+            "label": "Минимальный PO2",
+            "value": "0,18 бар"
+          },
+          {
+            "label": "END на глубине",
+            "value": "45 м"
+          },
+          {
+            "label": "Наркотичность O2",
+            "value": "Как N2 · варианты 0 / 0,3 / 1 / 2"
+          }
+        ],
+        "note": ""
+      },
+      {
+        "title": "Результат",
+        "fields": [
+          {
+            "label": "Минимальная глубина",
+            "value": "После расчёта, м"
+          },
+          {
+            "label": "Максимальная глубина",
+            "value": "После расчёта, м"
+          },
+          {
+            "label": "END",
+            "value": "После расчёта, м"
+          }
+        ],
+        "note": ""
+      }
+    ],
+    "action": "Рассчитать",
+    "fixture": null,
+    "provenance": "illustrative",
+    "state": "draft",
+    "requirements": [
+      "gas-tool-workflows",
+      "adaptive-planner-presentation"
+    ]
+  },
+  {
+    "id": "T02",
+    "title": "Плотность газа",
+    "panels": [
+      {
+        "title": "Исходные условия",
+        "fields": [
+          {
+            "label": "O2 / He",
+            "value": "21 / 35 %"
+          },
+          {
+            "label": "Глубина",
+            "value": "45 м"
+          }
+        ],
+        "note": ""
+      },
+      {
+        "title": "Результат",
+        "fields": [
+          {
+            "label": "Плотность",
+            "value": "После расчёта, г/л"
+          },
+          {
+            "label": "Эквивалентная глубина воздуха",
+            "value": "После расчёта, м"
+          }
+        ],
+        "note": ""
+      }
+    ],
+    "action": "Рассчитать",
+    "fixture": null,
+    "provenance": "illustrative",
+    "state": "draft",
+    "requirements": [
+      "gas-tool-workflows",
+      "adaptive-planner-presentation"
+    ]
+  },
+  {
+    "id": "T03",
+    "title": "Подбор смеси",
+    "panels": [
+      {
+        "title": "Целевые условия",
+        "fields": [
+          {
+            "label": "Глубина",
+            "value": "45 м"
+          },
+          {
+            "label": "Максимальный PO2",
+            "value": "1,3 бар"
+          },
+          {
+            "label": "Максимальный END",
+            "value": "30 м"
+          },
+          {
+            "label": "Наркотичность O2",
+            "value": "1 × N2 · варианты 0 / 0,3 / 1 / 2"
+          }
+        ],
+        "note": ""
+      },
+      {
+        "title": "Результат подбора",
+        "fields": [
+          {
+            "label": "O2",
+            "value": "23,9 %"
+          },
+          {
+            "label": "He",
+            "value": "27,2 %"
+          },
+          {
+            "label": "N2 · остаток",
+            "value": "48,9 %"
+          }
+        ],
+        "note": "Оригинальный вызов K.C. Перенос газа — отдельное действие."
+      }
+    ],
+    "action": "Добавить газ в план",
+    "fixture": "custom-gas-original-controller",
+    "provenance": "original-runtime fixture",
+    "state": "ready",
+    "requirements": [
+      "gas-tool-workflows",
+      "adaptive-planner-presentation"
+    ]
+  },
+  {
+    "id": "T04",
+    "title": "Смешивание газов",
+    "panels": [
+      {
+        "title": "Текущая и целевая смесь",
+        "fields": [
+          {
+            "label": "Текущая · O2 / He / давление",
+            "value": "21 / 0 % · 50 бар"
+          },
+          {
+            "label": "Целевая · O2 / He / давление",
+            "value": "32 / 0 % · 200 бар"
+          }
+        ],
+        "note": ""
+      },
+      {
+        "title": "Метод",
+        "fields": [
+          {
+            "label": "Способ",
+            "value": "Парциальные давления / Непрерывный"
+          },
+          {
+            "label": "Модель газа",
+            "value": "Идеальный / Реальный"
+          },
+          {
+            "label": "Сначала заполнять",
+            "value": "O2 / He"
+          },
+          {
+            "label": "Газ дозаправки",
+            "value": "O2 / He, %"
+          },
+          {
+            "label": "Непрерывное смешивание",
+            "value": "Вариант 1 / 2 · Пределы потоков"
+          }
+        ],
+        "note": ""
+      },
+      {
+        "title": "Инструкция заправки",
+        "fields": [
+          {
+            "label": "Добавить / довести до",
+            "value": "Газ и давление каждого шага"
+          },
+          {
+            "label": "Стравливание",
+            "value": "Отдельный шаг до заполнения"
+          },
+          {
+            "label": "Невозможно",
+            "value": "Причина и изменение условий"
+          },
+          {
+            "label": "Следующий шаг",
+            "value": "Объём и стоимость"
+          }
+        ],
+        "note": "Инструкция появляется только для актуального успешного ответа."
+      }
+    ],
+    "action": "Рассчитать",
+    "fixture": null,
+    "provenance": "illustrative",
+    "state": "draft",
+    "requirements": [
+      "gas-tool-workflows",
+      "adaptive-planner-presentation"
+    ]
+  },
+  {
+    "id": "T05",
+    "title": "Дозаправка",
+    "panels": [
+      {
+        "title": "Текущая смесь",
+        "fields": [
+          {
+            "label": "O2 / He",
+            "value": "21 / 0 %"
+          },
+          {
+            "label": "Давление",
+            "value": "50 бар"
+          }
+        ],
+        "note": ""
+      },
+      {
+        "title": "Добавляемый газ",
+        "fields": [
+          {
+            "label": "O2 / He",
+            "value": "32 / 0 %"
+          },
+          {
+            "label": "Итоговое давление",
+            "value": "200 бар"
+          }
+        ],
+        "note": ""
+      },
+      {
+        "title": "Итоговая смесь",
+        "fields": [
+          {
+            "label": "O2 / He",
+            "value": "29,2 / 0 %"
+          },
+          {
+            "label": "N2",
+            "value": "70,8 %"
+          }
+        ],
+        "note": ""
+      }
+    ],
+    "action": "Рассчитать",
+    "fixture": "topoff-original-controller",
+    "provenance": "original-runtime fixture",
+    "state": "ready",
+    "requirements": [
+      "gas-tool-workflows",
+      "adaptive-planner-presentation"
+    ]
+  },
+  {
+    "id": "T06",
+    "title": "Уравнивание баллонов",
+    "panels": [
+      {
+        "title": "Баллон с низким давлением",
+        "fields": [
+          {
+            "label": "Внутренний объём",
+            "value": "12 л"
+          },
+          {
+            "label": "Давление",
+            "value": "50 бар"
+          }
+        ],
+        "note": ""
+      },
+      {
+        "title": "Баллон с высоким давлением",
+        "fields": [
+          {
+            "label": "Внутренний объём",
+            "value": "50 л"
+          },
+          {
+            "label": "Давление",
+            "value": "200 бар"
+          }
+        ],
+        "note": ""
+      },
+      {
+        "title": "Итоговое давление",
+        "fields": [
+          {
+            "label": "После уравнивания",
+            "value": "171,0 бар"
+          }
+        ],
+        "note": "Imperial-ввод: tank factor, CuFt/100 PSI; не номинальные CuFt."
+      }
+    ],
+    "action": "Рассчитать",
+    "fixture": "equalizer-original-controller",
+    "provenance": "original-runtime fixture",
+    "state": "ready",
+    "requirements": [
+      "gas-tool-workflows",
+      "adaptive-planner-presentation"
+    ]
+  },
+  {
+    "id": "T07",
+    "title": "Конверсия баллонов",
+    "panels": [
+      {
+        "title": "Метрические параметры",
+        "fields": [
+          {
+            "label": "Внутренний объём",
+            "value": "12 л"
+          },
+          {
+            "label": "Рабочее давление",
+            "value": "232 бар"
+          }
+        ],
+        "note": ""
+      },
+      {
+        "title": "Имперские параметры",
+        "fields": [
+          {
+            "label": "Свободный объём",
+            "value": "CuFt"
+          },
+          {
+            "label": "Рабочее давление",
+            "value": "PSI"
+          },
+          {
+            "label": "Направление",
+            "value": "В metric / В imperial"
+          }
+        ],
+        "note": "Приближённая конверсия; спецификацию баллона уточняют у производителя."
+      }
+    ],
+    "action": "Преобразовать",
+    "fixture": null,
+    "provenance": "illustrative",
+    "state": "draft",
+    "requirements": [
+      "gas-tool-workflows",
+      "adaptive-planner-presentation"
+    ]
+  },
+  {
+    "id": "T08",
+    "title": "Объём и стоимость",
+    "panels": [
+      {
+        "title": "Рецепт смешивания",
+        "fields": [
+          {
+            "label": "Источник",
+            "value": "T04 · успешный рецепт"
+          },
+          {
+            "label": "Баллон",
+            "value": "24 л"
+          },
+          {
+            "label": "Добавлено O2 / He",
+            "value": "50 / 70 бар"
+          }
+        ],
+        "note": ""
+      },
+      {
+        "title": "Цены",
+        "fields": [
+          {
+            "label": "Кислород",
+            "value": "0,10 за л"
+          },
+          {
+            "label": "Гелий",
+            "value": "0,70 за л"
+          },
+          {
+            "label": "Дозаправка",
+            "value": "10,00 · фиксированная плата"
+          }
+        ],
+        "note": ""
+      },
+      {
+        "title": "Стоимость заправки",
+        "fields": [
+          {
+            "label": "O2 · 1200 л",
+            "value": "120,00"
+          },
+          {
+            "label": "He · 1680 л",
+            "value": "1176,00"
+          },
+          {
+            "label": "Дозаправка",
+            "value": "10,00"
+          },
+          {
+            "label": "Итого",
+            "value": "1306,00"
+          }
+        ],
+        "note": "Условные денежные единицы; валютная конверсия отсутствует."
+      }
+    ],
+    "action": "Пересчитать стоимость",
+    "fixture": "cost-original-controller",
+    "provenance": "original-runtime fixture",
+    "state": "ready",
+    "requirements": [
+      "gas-tool-workflows",
+      "adaptive-planner-presentation"
+    ]
+  },
+  {
+    "id": "S01",
+    "title": "Параметры плана",
+    "panels": [
+      {
+        "title": "Декомпрессия",
+        "fields": [
+          {
+            "label": "Модель",
+            "value": "Bühlmann B / C · VPM-B"
+          },
+          {
+            "label": "GF Low / High",
+            "value": "30 / 85 % · только Bühlmann"
+          },
+          {
+            "label": "VPM-консерватизм",
+            "value": "0–4 · только VPM-B"
+          },
+          {
+            "label": "Минимальная остановка",
+            "value": "1 мин"
+          },
+          {
+            "label": "Последняя остановка",
+            "value": "3 м / 6 м"
+          }
+        ],
+        "note": ""
+      },
+      {
+        "title": "Движение",
+        "fields": [
+          {
+            "label": "Скорость спуска",
+            "value": "10 м/мин"
+          },
+          {
+            "label": "Скорость подъёма",
+            "value": "9 м/мин"
+          },
+          {
+            "label": "Спуск во времени уровня",
+            "value": "Включён"
+          }
+        ],
+        "note": ""
+      },
+      {
+        "title": "Потребление",
+        "fields": [
+          {
+            "label": "RMV bottom / deco",
+            "value": "20 / 15 л/мин"
+          },
+          {
+            "label": "CCR low setpoint",
+            "value": "0,7 ATA"
+          },
+          {
+            "label": "OCR bottom / deco",
+            "value": "0,7 / 0,5 л/мин"
+          },
+          {
+            "label": "Стопов на ratio-сегмент",
+            "value": "5"
+          }
+        ],
+        "note": ""
+      },
+      {
+        "title": "Высота",
+        "fields": [
+          {
+            "label": "Режим",
+            "value": "Уровень моря / Высота"
+          },
+          {
+            "label": "Высота погружения",
+            "value": "1000 м"
+          },
+          {
+            "label": "Акклиматизирован",
+            "value": "Да / Нет"
+          },
+          {
+            "label": "Исходная высота",
+            "value": "0 м"
+          },
+          {
+            "label": "Время подъёма / ожидания",
+            "value": "3 / 2 ч"
+          }
+        ],
+        "note": ""
+      },
+      {
+        "title": "Применение",
+        "fields": [
+          {
+            "label": "Текущий план",
+            "value": "Применить к плану"
+          },
+          {
+            "label": "Будущие планы",
+            "value": "Сохранить по умолчанию"
+          },
+          {
+            "label": "Неприменимые поля",
+            "value": "Объяснение по выбранной модели"
+          }
+        ],
+        "note": ""
+      }
+    ],
+    "action": "Применить к плану",
+    "fixture": null,
+    "provenance": "illustrative",
+    "state": "draft",
+    "requirements": [
+      "planner-workspace",
+      "adaptive-planner-presentation"
+    ]
+  },
+  {
+    "id": "S02",
+    "title": "Справочники и вид",
+    "panels": [
+      {
+        "title": "Справочники",
+        "fields": [
+          {
+            "label": "Наборы декогазов",
+            "value": "Добавить / Изменить / Удалить"
+          },
+          {
+            "label": "Газ в наборе",
+            "value": "O2 / He · Глубина переключения"
+          },
+          {
+            "label": "Баллоны",
+            "value": "Название · Объём · Рейтинг давления"
+          },
+          {
+            "label": "Imperial-баллон",
+            "value": "Capacity CuFt · Рейтинг PSI"
+          }
+        ],
+        "note": ""
+      },
+      {
+        "title": "Отображение",
+        "fields": [
+          {
+            "label": "Единицы",
+            "value": "Metric / Imperial"
+          },
+          {
+            "label": "Тема",
+            "value": "Светлая / Тёмная"
+          },
+          {
+            "label": "Пересчёт профиля",
+            "value": "Заменять / Сохранять предыдущий"
+          },
+          {
+            "label": "Сброс плана",
+            "value": "Сохранить / Удалить сравнения"
+          },
+          {
+            "label": "График",
+            "value": "Только подъём / Весь профиль"
+          }
+        ],
+        "note": ""
+      },
+      {
+        "title": "Справка",
+        "fields": [
+          {
+            "label": "Определения",
+            "value": "PO2 · GF · CNS · OTU · RMV · END"
+          },
+          {
+            "label": "Внешняя документация",
+            "value": "Открыть явно, требуется интернет"
+          },
+          {
+            "label": "Очистка",
+            "value": "Очистить сравнения с подтверждением"
+          }
+        ],
+        "note": ""
+      }
+    ],
+    "action": "Сохранить настройки",
+    "fixture": null,
+    "provenance": "illustrative",
+    "state": "draft",
+    "requirements": [
+      "planner-workspace",
+      "adaptive-planner-presentation"
+    ]
+  },
+  {
+    "id": "V-empty",
+    "title": "План пока пуст",
+    "panels": [
+      {
+        "title": "План пока пуст",
+        "fields": [
+          {
+            "label": "Начало",
+            "value": "Добавьте первый уровень",
+            "error": false
+          },
+          {
+            "label": "Действие",
+            "value": "Добавить уровень",
+            "error": false
+          }
+        ],
+        "note": "Иллюстративное состояние интерфейса, не выполненный расчёт."
+      }
+    ],
+    "action": "Добавить уровень",
+    "fixture": null,
+    "provenance": "illustrative",
+    "state": "empty",
+    "requirements": [
+      "adaptive-planner-presentation",
+      "planner-workspace"
+    ],
+    "section": "P"
+  },
+  {
+    "id": "V-invalid",
+    "title": "Исправьте состав",
+    "panels": [
+      {
+        "title": "Исправьте состав",
+        "fields": [
+          {
+            "label": "O2",
+            "value": "80 %",
+            "error": false
+          },
+          {
+            "label": "He",
+            "value": "30 %",
+            "error": false
+          },
+          {
+            "label": "Ошибка состава",
+            "value": "O2 + He не могут превышать 100%",
+            "error": true
+          },
+          {
+            "label": "Сводка ошибок",
+            "value": "Перейти к составу",
+            "error": false
+          }
+        ],
+        "note": "Иллюстративное состояние интерфейса, не выполненный расчёт."
+      }
+    ],
+    "action": "Исправить состав",
+    "fixture": null,
+    "provenance": "illustrative",
+    "state": "invalid",
+    "requirements": [
+      "adaptive-planner-presentation",
+      "planner-workspace"
+    ],
+    "section": "P"
+  },
+  {
+    "id": "V-calculating",
+    "title": "Выполняется расчёт",
+    "panels": [
+      {
+        "title": "Выполняется расчёт",
+        "fields": [
+          {
+            "label": "Статус",
+            "value": "Расчёт выбранного погружения",
+            "error": false
+          },
+          {
+            "label": "Повторный запуск",
+            "value": "Недоступен до ответа",
+            "error": false
+          },
+          {
+            "label": "Черновик",
+            "value": "Сохранён; можно вернуться к вводу",
+            "error": false
+          }
+        ],
+        "note": "Иллюстративное состояние интерфейса, не выполненный расчёт."
+      }
+    ],
+    "action": "Расчёт…",
+    "fixture": null,
+    "provenance": "illustrative",
+    "state": "calculating",
+    "requirements": [
+      "adaptive-planner-presentation",
+      "planner-workspace"
+    ],
+    "section": "P"
+  },
+  {
+    "id": "V-stale",
+    "title": "Входы изменены",
+    "panels": [
+      {
+        "title": "Входы изменены",
+        "fields": [
+          {
+            "label": "Состояние",
+            "value": "Результат неактуален",
+            "error": false
+          },
+          {
+            "label": "Последний расчёт",
+            "value": "Последний расчёт и новые входы различаются",
+            "error": false
+          },
+          {
+            "label": "Действие",
+            "value": "Пересчитать последовательность",
+            "error": false
+          }
+        ],
+        "note": "Иллюстративное состояние интерфейса, не выполненный расчёт."
+      }
+    ],
+    "action": "Пересчитать",
+    "fixture": null,
+    "provenance": "illustrative",
+    "state": "stale",
+    "requirements": [
+      "adaptive-planner-presentation",
+      "planner-workspace"
+    ],
+    "section": "P"
+  },
+  {
+    "id": "V-error",
+    "title": "Не удалось рассчитать",
+    "panels": [
+      {
+        "title": "Не удалось рассчитать",
+        "fields": [
+          {
+            "label": "Причина",
+            "value": "Превышено время вычисления",
+            "error": false
+          },
+          {
+            "label": "Введённые значения",
+            "value": "Сохранены",
+            "error": false
+          },
+          {
+            "label": "Действия",
+            "value": "Повторить / Изменить вход",
+            "error": false
+          }
+        ],
+        "note": "Иллюстративное состояние интерфейса, не выполненный расчёт."
+      }
+    ],
+    "action": "Повторить расчёт",
+    "fixture": null,
+    "provenance": "illustrative",
+    "state": "error",
+    "requirements": [
+      "adaptive-planner-presentation",
+      "planner-workspace"
+    ],
+    "section": "P"
+  },
+  {
+    "id": "V-unavailable",
+    "title": "Режим недоступен",
+    "panels": [
+      {
+        "title": "Режим недоступен",
+        "fields": [
+          {
+            "label": "Причина",
+            "value": "Эта комбинация модели и условий пока недоступна",
+            "error": false
+          },
+          {
+            "label": "Результат",
+            "value": "Не создан",
+            "error": false
+          },
+          {
+            "label": "Действие",
+            "value": "Изменить модель или условия",
+            "error": false
+          }
+        ],
+        "note": "Иллюстративное состояние интерфейса, не выполненный расчёт."
+      }
+    ],
+    "action": "Изменить условия",
+    "fixture": null,
+    "provenance": "illustrative",
+    "state": "unavailable",
+    "requirements": [
+      "adaptive-planner-presentation",
+      "planner-workspace"
+    ],
+    "section": "P"
+  },
+  {
+    "id": "V-reset",
+    "title": "Сбросить план?",
+    "panels": [
+      {
+        "title": "Сбросить план?",
+        "fields": [
+          {
+            "label": "Будет удалено",
+            "value": "2 погружения и связанные результаты",
+            "error": false
+          },
+          {
+            "label": "Сравнения",
+            "value": "Сохранить / Также удалить",
+            "error": false
+          },
+          {
+            "label": "Подтверждение",
+            "value": "Сбросить / Отменить",
+            "error": false
+          }
+        ],
+        "note": "Иллюстративное состояние интерфейса, не выполненный расчёт."
+      }
+    ],
+    "action": "Сбросить план",
+    "fixture": null,
+    "provenance": "illustrative",
+    "state": "confirmation",
+    "requirements": [
+      "adaptive-planner-presentation",
+      "planner-workspace"
+    ],
+    "section": "P"
+  },
+  {
+    "id": "V-drain",
+    "title": "Смешивание · стравливание",
+    "panels": [
+      {
+        "title": "Смешивание · стравливание",
+        "fields": [
+          {
+            "label": "Шаг 1",
+            "value": "Стравить до давления из ответа",
+            "error": false
+          },
+          {
+            "label": "Шаги 2–4",
+            "value": "Добавить компоненты по рецепту",
+            "error": false
+          },
+          {
+            "label": "Статус",
+            "value": "Структура ответа, без численного примера",
+            "error": false
+          }
+        ],
+        "note": "Иллюстративное состояние интерфейса, не выполненный расчёт."
+      }
+    ],
+    "action": "Объём и стоимость",
+    "fixture": null,
+    "provenance": "illustrative",
+    "state": "drain",
+    "requirements": [
+      "adaptive-planner-presentation",
+      "gas-tool-workflows"
+    ],
+    "section": "T"
+  },
+  {
+    "id": "V-impossible",
+    "title": "Смесь недостижима",
+    "panels": [
+      {
+        "title": "Смесь недостижима",
+        "fields": [
+          {
+            "label": "Причина",
+            "value": "С заданными газами невозможно получить цель",
+            "error": false
+          },
+          {
+            "label": "Инструкция",
+            "value": "Отсутствует; прошлый рецепт неактуален",
+            "error": false
+          },
+          {
+            "label": "Действие",
+            "value": "Изменить условия",
+            "error": false
+          }
+        ],
+        "note": "Иллюстративное состояние интерфейса, не выполненный расчёт."
+      }
+    ],
+    "action": "Изменить условия",
+    "fixture": null,
+    "provenance": "illustrative",
+    "state": "impossible",
+    "requirements": [
+      "adaptive-planner-presentation",
+      "gas-tool-workflows"
+    ],
+    "section": "T"
+  },
+  {
+    "id": "V-tool-error",
+    "title": "Проверьте давление",
+    "panels": [
+      {
+        "title": "Проверьте давление",
+        "fields": [
+          {
+            "label": "Конечное давление",
+            "value": "50 бар",
+            "error": false
+          },
+          {
+            "label": "Ошибка",
+            "value": "Должно быть выше исходного 50 бар",
+            "error": true
+          },
+          {
+            "label": "Ввод",
+            "value": "Сохранён; исправьте значение",
+            "error": false
+          }
+        ],
+        "note": "Иллюстративное состояние интерфейса, не выполненный расчёт."
+      }
+    ],
+    "action": "Исправить давление",
+    "fixture": null,
+    "provenance": "illustrative",
+    "state": "invalid",
+    "requirements": [
+      "adaptive-planner-presentation",
+      "gas-tool-workflows"
+    ],
+    "section": "T"
+  },
+  {
+    "id": "V-tool-stale",
+    "title": "Газовый инструмент",
+    "panels": [
+      {
+        "title": "Газовый инструмент",
+        "fields": [
+          {
+            "label": "Статус",
+            "value": "Входы изменены, результат неактуален",
+            "error": false
+          },
+          {
+            "label": "Состав",
+            "value": "Новые значения сохранены",
+            "error": false
+          },
+          {
+            "label": "Действие",
+            "value": "Рассчитать заново",
+            "error": false
+          }
+        ],
+        "note": "Иллюстративное состояние интерфейса, не выполненный расчёт."
+      }
+    ],
+    "action": "Рассчитать",
+    "fixture": null,
+    "provenance": "illustrative",
+    "state": "stale",
+    "requirements": [
+      "adaptive-planner-presentation",
+      "gas-tool-workflows"
+    ],
+    "section": "T"
+  },
+  {
+    "id": "V-components",
+    "title": "Состояния компонентов",
+    "panels": [
+      {
+        "title": "Состояния компонентов",
+        "fields": [
+          {
+            "label": "Обычный ввод",
+            "value": "Подпись + единица + значение",
+            "error": false
+          },
+          {
+            "label": "Фокус",
+            "value": "Внешняя рамка 2; порядок чтения",
+            "error": false
+          },
+          {
+            "label": "Ошибка",
+            "value": "Текст причины рядом с полем",
+            "error": true
+          },
+          {
+            "label": "Недоступно",
+            "value": "Причина + disabled semantics",
+            "error": false
+          },
+          {
+            "label": "Hover / pressed",
+            "value": "Обратная связь без сдвига",
+            "error": false
+          }
+        ],
+        "note": "Иллюстративное состояние интерфейса, не выполненный расчёт."
+      }
+    ],
+    "action": "Закрыть",
+    "fixture": null,
+    "provenance": "illustrative",
+    "state": "component-reference",
+    "requirements": [
+      "adaptive-planner-presentation",
+      "planner-workspace"
+    ],
+    "section": "S"
+  },
+  {
+    "id": "V-print",
+    "title": "Печатный вид",
+    "panels": [
+      {
+        "title": "Печатный вид",
+        "fields": [
+          {
+            "label": "Погружение",
+            "value": "OC 30 м / 20 мин · metric",
+            "error": false
+          },
+          {
+            "label": "Модель",
+            "value": "Bühlmann B · GF 30/85",
+            "error": false
+          },
+          {
+            "label": "Статус",
+            "value": "Актуальность исходного результата",
+            "error": false
+          },
+          {
+            "label": "Остановки",
+            "value": "12м/1мин; 9м/1мин; 6м/1мин; 3м/2мин",
+            "error": false
+          },
+          {
+            "label": "Время",
+            "value": "Runtime 28 мин",
+            "error": false
+          },
+          {
+            "label": "Газы",
+            "value": "Воздух 21/0",
+            "error": false
+          }
+        ],
+        "note": "Иллюстративное состояние интерфейса, не выполненный расчёт.",
+        "paper": true
+      }
+    ],
+    "action": "Печать",
+    "fixture": "oc-air-30m-20min",
+    "provenance": "original-runtime fixture: stop depths/durations/runtime only",
+    "state": "print-preview",
+    "requirements": [
+      "adaptive-planner-presentation",
+      "planner-workspace"
+    ],
+    "section": "P"
+  }
+]

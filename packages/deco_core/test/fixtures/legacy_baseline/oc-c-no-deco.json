@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "id": "oc-c-no-deco",
+  "provenance": {
+    "kind": "original-runtime-observation",
+    "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+    "original_result_sha256": "0bf90bd0788e27390bea6dec2401930c27aad762424c58a2d1a4f5553dd6924b",
+    "source": "analysis/fixtures/results/oc-c-no-deco.json"
+  },
+  "request": {
+    "id": "oc-c-no-deco",
+    "model": "c",
+    "mode": "oc",
+    "levels": [
+      [
+        10,
+        10,
+        21,
+        0,
+        0
+      ]
+    ],
+    "settings": {}
+  },
+  "outcome": "legacy-result",
+  "role": "baseline observation, not an independent corrected-model expectation",
+  "observed": [
+    {
+      "runtime_display_min": 12.0,
+      "ascent_min": 1.1111111111111112,
+      "deco_min": 0.0,
+      "offgassing_depth_m": 3.094198608398436,
+      "cns_fraction": 0.0,
+      "otu": 0.0,
+      "final_tissues_bar": {
+        "n2": [
+          1.3014961501154936,
+          1.1889761606052545,
+          1.0784157396214937,
+          0.9938445190213514,
+          0.9281388067769797,
+          0.8810680940107375,
+          0.8454303072440098,
+          0.8189634339676217,
+          0.79969744021314,
+          0.7876658994369791,
+          0.7797785357347948,
+          0.7736041635857873,
+          0.7687606943949504,
+          0.7649139791741618,
+          0.7619058090566796,
+          0.7595531790856512
+        ],
+        "he": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "segments": [
+        {
+          "start_depth_m": 0.0,
+          "end_depth_m": 10.0,
+          "duration_min": 1.0,
+          "start_min": 0.0,
+          "end_min": 1.0,
+          "gas_index": 0,
+          "o2_fraction": 0.21,
+          "he_fraction": 0.0,
+          "setpoint_ata": 0.0
+        },
+        {
+          "start_depth_m": 10.0,
+          "end_depth_m": 10.0,
+          "duration_min": 9.0,
+          "start_min": 1.0,
+          "end_min": 10.0,
+          "gas_index": 0,
+          "o2_fraction": 0.21,
+          "he_fraction": 0.0,
+          "setpoint_ata": 0.0
+        },
+        {
+          "start_depth_m": 10.0,
+          "end_depth_m": 0.0,
+          "duration_min": 1.1111111111111112,
+          "start_min": 10.0,
+          "end_min": 11.11111111111111,
+          "gas_index": 0,
+          "o2_fraction": 0.21,
+          "he_fraction": 0.0,
+          "setpoint_ata": 0.0
+        }
+      ]
+    }
+  ]
+}

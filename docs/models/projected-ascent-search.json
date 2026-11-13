@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "counterexample_found": false,
+  "profiles_tested": 1116,
+  "source_errors": {
+    "RootException": 57
+  },
+  "scope": "First projected-ascent call across the declared deterministic grid; not proof for all possible inputs",
+  "classification": "Discarded legacy return is statically ineffective; numerical schedule impact unproven on searched grid",
+  "provenance": {
+    "repository": "https://github.com/bwaite/vpmb",
+    "commit": "bec938d84742e42dd43b574beec49ac26f6863ac",
+    "source_sha256": "337a84085e0b5a492ec6310a0b98edac4edcfa2bb16028792ca769881815726b",
+    "command": "local/oracles/python-env/bin/python tool/find_projected_ascent_reference.py"
+  }
+}

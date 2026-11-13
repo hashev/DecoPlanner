@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "provenance": {
+    "kind": "legacy-original-runtime",
+    "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+    "source_fixture_sha256": "4becb425255f665c7dcd82a6d6b7697b17e0a38b191f7e64f775b13b994d9f82"
+  },
+  "input": {
+    "initial_oxygen": 0.21,
+    "initial_helium": 0,
+    "initial_bar": 0,
+    "target_oxygen": 0.21,
+    "target_helium": 0.35,
+    "target_bar": 232,
+    "variant": 1,
+    "oxygen_limit": 1,
+    "helium_limit": 1
+  },
+  "expected": {
+    "first_stream_pressure_bar": 102.784805,
+    "first_stream_oxygen": 0.20999998,
+    "second_stream_pressure_bar": 129.2152,
+    "second_stream_oxygen": 0.21
+  },
+  "pressure_tolerance_bar": 3e-05,
+  "fraction_tolerance": 1e-07,
+  "rationale": "Original float arithmetic versus double; normal control only, not authority for corrected constrained cases."
+}

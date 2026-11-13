@@ -1,0 +1,32 @@
+/// Independent calculation model for the DecoPlanner application.
+library;
+
+export 'src/numerics/failure.dart';
+export 'src/numerics/solver.dart';
+export 'src/units/units.dart';
+export 'src/model/gas.dart';
+export 'src/tissues/tissues.dart';
+export 'src/tissues/segments.dart';
+export 'src/buhlmann/coefficients.dart';
+export 'src/buhlmann/ceiling.dart';
+export 'src/model/request.dart';
+export 'src/planning/buhlmann_schedule.dart';
+export 'src/gas/properties.dart';
+export 'src/gas/equation_of_state.dart';
+export 'src/gas/mixing.dart';
+export 'src/gas/compressibility.dart';
+export 'src/gas/auxiliary.dart';
+export 'src/oxygen/oxygen.dart';
+export 'src/model/vpm_state.dart';
+export 'src/model/calculation_state.dart';
+export 'src/model/vpm_parameters.dart';
+export 'src/model/result.dart';
+export 'src/model/plan.dart';
+export 'src/model/altitude_settings.dart';
+export 'src/vpm/physics.dart';
+export 'src/vpm/gradients.dart';
+export 'src/planning/surface.dart';
+export 'src/planning/vpm_schedule.dart';
+export 'src/gas/continuous.dart';
+export 'src/gas/usage.dart';
+export 'src/planning/range.dart';

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "fixture": "packages/deco_core/test/fixtures/independent/vpmb-multilevel-descending-units.json",
+  "fixture_sha256": "bf7439f6cce28a047e5cda16507f6dd3785e7d2aa499fc9f9176f8535eefacd6",
+  "status": "validated-and-reproduced",
+  "coverage": {
+    "modes": [
+      "oc",
+      "ccr",
+      "bailout"
+    ],
+    "units": [
+      "metric",
+      "imperial"
+    ],
+    "conservatism": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "cases": 30,
+    "profile": "four descending levels; final decompression with switches"
+  },
+  "validation": [
+    "31 focused unit tests",
+    "936 full core tests",
+    "second independent capture: identical whole-file SHA256"
+  ],
+  "remaining": [
+    "full numerical coverage/correction audit"
+  ],
+  "documentation": "docs/models/vpm-multilevel-reference.md",
+  "related_upward_reference": "docs/models/vpm-redescent-reference.json"
+}

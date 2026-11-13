@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "id": "repetitive-vpm-180",
+  "provenance": {
+    "kind": "original-runtime-observation",
+    "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+    "original_result_sha256": "efc88e2bbad9a66b837407db0bd12b1377dcd43be88bf4eff7f42c0bf88be62b",
+    "source": "analysis/fixtures/results/repetitive-vpm-180.json"
+  },
+  "request": {
+    "id": "repetitive-vpm-180",
+    "model": "vpm",
+    "mode": "oc",
+    "dives": [
+      [
+        [
+          30,
+          20,
+          21,
+          0,
+          0
+        ]
+      ],
+      [
+        [
+          30,
+          20,
+          21,
+          0,
+          0
+        ]
+      ]
+    ],
+    "intervals": [
+      180
+    ]
+  },
+  "outcome": "legacy-error",
+  "role": "baseline observation, not an independent corrected-model expectation"
+}

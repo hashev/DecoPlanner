@@ -1,0 +1,4105 @@
+{
+  "schema_version": 1,
+  "policy": "Read-only reviewed snapshot. Changes require source recapture review, never product actual-to-expected replacement.",
+  "normalization": "docs/models/reference-normalization.md",
+  "fixtures": [
+    {
+      "path": "packages/deco_core/test/fixtures/gas_properties/legacy-density.json",
+      "sha256": "97b065597ea80b9fd548ceb29afd943605c61b8c90b4bc3fa924c5662dc51ffc",
+      "group": "gas_properties",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "cases",
+        "schema_version",
+        "scope"
+      ],
+      "schema_version": 1,
+      "provenance": null,
+      "declared_tolerances": {},
+      "test_contracts": [
+        {
+          "path": "packages/deco_core/test/src/gas/properties_test.dart",
+          "sha256": "5ebd6b29af4d9aef0e67e3935f77004b4c2054510e4dcc3d4c05622930bdb8f8"
+        }
+      ],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/independent/buhlmann-1b-parameters-and-ceilings.json",
+      "sha256": "680b9e94b35482e47c208d1bc65adbe4b89ebb1e02bcd2e8a834fbb75b502042",
+      "group": "independent",
+      "role": "independent-component",
+      "top_level_keys": [
+        "models",
+        "normalization",
+        "provenance",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "independent-parameter-verification-and-execution",
+        "project": "DecoTengu",
+        "version": "0.14.1",
+        "source": "https://wrobell.dcmod.org/decotengu/_modules/decotengu/model.html",
+        "source_sha256": "6136b38c650faa3852b4a344b8f32eb1849f815409147ee883d2a1f22063387b",
+        "command": "local/oracles/python-env/bin/python tool/capture_buhlmann_parameters.py"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [
+        {
+          "path": "packages/deco_core/test/src/buhlmann/ceiling_test.dart",
+          "sha256": "858d8bc2326b6b008805792432dcc151c0d8d5048b228fe9877cf5d69a482e85"
+        }
+      ],
+      "comparison": "Field-specific tolerances in declared_tolerances and pinned test_contracts; discrete fields exact. No blanket tolerance."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/independent/buhlmann-altitude-repetitive.json",
+      "sha256": "3149eee277c1ed0061f6ce6d6b72ba7f011ecbab41c1d2f74029fb954ae77dff",
+      "group": "independent",
+      "role": "independent-normalized-full-schedule",
+      "top_level_keys": [
+        "cases",
+        "provenance",
+        "schema_version",
+        "scope",
+        "tolerances"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "independent-normalized-B-C-altitude-SI-full-schedules",
+        "model_source_sha256": "6136b38c650faa3852b4a344b8f32eb1849f815409147ee883d2a1f22063387b",
+        "atmosphere_source_commit": "bec938d84742e42dd43b574beec49ac26f6863ac",
+        "atmosphere_source_sha256": "337a84085e0b5a492ec6310a0b98edac4edcfa2bb16028792ca769881815726b",
+        "generator_sha256": "6a82be75d74d90c1a264d049375aeb564cbb595fc07a98a619d578d0fd19d3a2",
+        "adapters_sha256": {
+          "capture_buhlmann_oc_schedules.py": "c9d94f783ab0b0a6993e753d182c5ecb024be1135783c19482ba073b97febf10",
+          "capture_buhlmann_bailout.py": "b3dc3c3bbb2e1d15bff8181bfa7f6538566fc7333d0c69dbbea59d68d27cc85f",
+          "reference_oxygen_quadrature.py": "48e981893355081b94b121fa1103df216b5756dc80c9b1d530aebe5501d6e16e"
+        },
+        "command": "local/oracles/python-env/bin/python tool/capture_buhlmann_sequences.py"
+      },
+      "declared_tolerances": {
+        "tolerances": {
+          "tissue_bar": 1e-10,
+          "time_min": 1e-10,
+          "cns_fraction": 1e-10,
+          "otu": 1e-09
+        }
+      },
+      "test_contracts": [
+        {
+          "path": "packages/deco_core/test/src/planning/buhlmann_sequences_test.dart",
+          "sha256": "7141258921acda89c128f4e8dffcb0aa5c2018fe9b9e63308166160ae4a142df"
+        }
+      ],
+      "comparison": "Field-specific tolerances in declared_tolerances and pinned test_contracts; discrete fields exact. No blanket tolerance."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/independent/buhlmann-bailout-normalized.json",
+      "sha256": "39b39eb144981123e6fb8a0f7b9b31734d651fb04ceb2a538a83095f9c0a5aea",
+      "group": "independent",
+      "role": "independent-normalized-full-schedule",
+      "top_level_keys": [
+        "cases",
+        "normalization",
+        "provenance",
+        "schema_version",
+        "scope",
+        "tolerances"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "normalized-independent-CCR-quadrature-and-OC-stop-enumeration",
+        "decotengu_version": "0.14.1",
+        "model_source_sha256": "6136b38c650faa3852b4a344b8f32eb1849f815409147ee883d2a1f22063387b",
+        "oxygen_adapter_sha256": "48e981893355081b94b121fa1103df216b5756dc80c9b1d530aebe5501d6e16e",
+        "generator_sha256": "b3dc3c3bbb2e1d15bff8181bfa7f6538566fc7333d0c69dbbea59d68d27cc85f",
+        "mpmath_version": "1.3.0",
+        "precision_decimal_digits": 55,
+        "command": "local/oracles/python-env/bin/python tool/capture_buhlmann_bailout.py"
+      },
+      "declared_tolerances": {
+        "tolerances": {
+          "tissue_bar": 1e-10,
+          "time_min": 1e-10,
+          "cns_fraction": 1e-10,
+          "otu": 1e-09
+        }
+      },
+      "test_contracts": [
+        {
+          "path": "packages/deco_core/test/src/planning/buhlmann_bailout_test.dart",
+          "sha256": "138cf1260c1b970a5e4af6de04232b34db571bdd890796090cba0182f3e75d1d"
+        }
+      ],
+      "comparison": "Field-specific tolerances in declared_tolerances and pinned test_contracts; discrete fields exact. No blanket tolerance."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/independent/buhlmann-imperial-ccr-bailout.json",
+      "sha256": "399d967529752905333101e2d944d685813d58a6f4f9cfab969f608ba9e4e08d",
+      "group": "independent",
+      "role": "independent-normalized-full-schedule",
+      "top_level_keys": [
+        "cases",
+        "normalization",
+        "provenance",
+        "schema_version",
+        "tolerances"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "independent-external-kinetics-and-CCR-ODE-physical-grid-enumeration",
+        "decotengu_version": "0.14.1",
+        "mpmath_version": "1.3.0",
+        "model_source_sha256": "6136b38c650faa3852b4a344b8f32eb1849f815409147ee883d2a1f22063387b",
+        "base_adapter_sha256": "b3dc3c3bbb2e1d15bff8181bfa7f6538566fc7333d0c69dbbea59d68d27cc85f",
+        "generator_sha256": "822b0080159cb67e705933e436fb897807ee1eaf38ca7b645d999dcd63eb7592",
+        "normalized_function_sha256": "9c657e3e2ea3f91c8df330f9aca1e72f6d762f7356c2dc97e3a652b7ed75b71d",
+        "oxygen_adapter_sha256": "48e981893355081b94b121fa1103df216b5756dc80c9b1d530aebe5501d6e16e",
+        "command": "local/oracles/python-env/bin/python tool/capture_buhlmann_imperial_ccr.py"
+      },
+      "declared_tolerances": {
+        "tolerances": {
+          "time_min": 1e-10,
+          "depth_m": 1e-10,
+          "tissue_bar": 1e-10,
+          "cns_fraction": 1e-10,
+          "otu": 1e-09
+        }
+      },
+      "test_contracts": [
+        {
+          "path": "packages/deco_core/test/src/planning/buhlmann_imperial_ccr_test.dart",
+          "sha256": "629d3849956c0e16eae4e79bb5c06c5db7c5494dde976d3b9629706929954fe9"
+        }
+      ],
+      "comparison": "Field-specific tolerances in declared_tolerances and pinned test_contracts; discrete fields exact. No blanket tolerance."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/independent/buhlmann-oc-normalized-schedules.json",
+      "sha256": "a6dad9f63976965002d84b816c47cc1791a0136c2ea408c40c2497884d36be61",
+      "group": "independent",
+      "role": "independent-normalized-full-schedule",
+      "top_level_keys": [
+        "cases",
+        "provenance",
+        "schema_version",
+        "scope",
+        "tolerances"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "independent-normalized-OC-stop-enumeration-with-external-kinetics-and-ceilings",
+        "decotengu_version": "0.14.1",
+        "model_source_sha256": "6136b38c650faa3852b4a344b8f32eb1849f815409147ee883d2a1f22063387b",
+        "generator_sha256": "c9d94f783ab0b0a6993e753d182c5ecb024be1135783c19482ba073b97febf10",
+        "command": "local/oracles/python-env/bin/python tool/capture_buhlmann_oc_schedules.py"
+      },
+      "declared_tolerances": {
+        "tolerances": {
+          "tissue_bar": 1e-10,
+          "time_min": 1e-10
+        }
+      },
+      "test_contracts": [
+        {
+          "path": "packages/deco_core/test/src/planning/buhlmann_independent_oc_test.dart",
+          "sha256": "92425d762fd186a71f24c56b834eadaec0585ae5da1fcbf5a91e7f9358b5aabe"
+        }
+      ],
+      "comparison": "Field-specific tolerances in declared_tolerances and pinned test_contracts; discrete fields exact. No blanket tolerance."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/independent/continuous-highs.json",
+      "sha256": "4c45e68edb02a9aa17f74e8b1615e029d31f952285b91248b30e9362114fb4fd",
+      "group": "independent",
+      "role": "independent-component",
+      "top_level_keys": [
+        "cases",
+        "normalized_amount_tolerance",
+        "policy",
+        "pressure_tolerance_bar",
+        "provenance",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "independent-linear-programming",
+        "scipy": "1.18.1",
+        "numpy": "2.5.4",
+        "mpmath": "1.3.0",
+        "method": "highs-ds",
+        "highs_version": "1.12.0",
+        "highs_binary_sha256": "361f1d9ae5cb1c9e408394150a4e273c1ce60dfbeba141ee7434dd58b2f2d66b",
+        "linprog_module_sha256": "66633d0193e4482a54f38f4890f15d0437aea9eacc6c2ac3b41746b81c72513d",
+        "generator_sha256": "fef40a3622c13698773ceb1579849b0753f42b43bf99fa9f19004fcfd18381b3",
+        "source": "https://docs.scipy.org/doc/scipy/reference/optimize.linprog-highs-ds.html",
+        "command": "local/oracles/python-env/bin/python tool/capture_continuous_reference.py"
+      },
+      "declared_tolerances": {
+        "normalized_amount_tolerance": 2e-08,
+        "pressure_tolerance_bar": 1e-07
+      },
+      "test_contracts": [
+        {
+          "path": "packages/deco_core/test/src/gas/continuous_test.dart",
+          "sha256": "1efdce97a93e636553eb512791788db0a8dc0bbfa3c791a9305f2f4051ac2999"
+        }
+      ],
+      "comparison": "Field-specific tolerances in declared_tolerances and pinned test_contracts; discrete fields exact. No blanket tolerance."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/independent/decotengu-b-air-30-20.json",
+      "sha256": "0421079b0ccb09ae3b2dea441d8cae5124980ac3c42dd7c219d8665d766ed1c6",
+      "group": "independent",
+      "role": "external-native-diagnostic-only",
+      "top_level_keys": [
+        "comparison_policy",
+        "expected",
+        "id",
+        "provenance",
+        "request",
+        "schema_version",
+        "scope"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "independent-execution",
+        "project": "DecoTengu",
+        "version": "0.14.1",
+        "source": "https://wrobell.dcmod.org/decotengu/",
+        "engine_module_sha256": "be23ee22c55eb729ad7034efcc7b7fd43a65c856a104990f423374086036599a",
+        "model_module_sha256": "6136b38c650faa3852b4a344b8f32eb1849f815409147ee883d2a1f22063387b"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Not product schedule acceptance; native defaults differ. See reference-normalization.md."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/independent/decotengu-c-air-30-20.json",
+      "sha256": "9ae597b4de80ee54972acfe675fdd4220b672daf648c1133f555063f0791e8f2",
+      "group": "independent",
+      "role": "external-native-diagnostic-only",
+      "top_level_keys": [
+        "comparison_policy",
+        "expected",
+        "id",
+        "provenance",
+        "request",
+        "schema_version",
+        "scope"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "independent-execution",
+        "project": "DecoTengu",
+        "version": "0.14.1",
+        "source": "https://wrobell.dcmod.org/decotengu/",
+        "engine_module_sha256": "be23ee22c55eb729ad7034efcc7b7fd43a65c856a104990f423374086036599a",
+        "model_module_sha256": "6136b38c650faa3852b4a344b8f32eb1849f815409147ee883d2a1f22063387b"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Not product schedule acceptance; native defaults differ. See reference-normalization.md."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/independent/gas-usage-quadrature.json",
+      "sha256": "a1e5f9a5640743626b2e6d27f03df0e4e07ff49da9c1de49d7f9cf4fa4810a4e",
+      "group": "independent",
+      "role": "independent-component",
+      "top_level_keys": [
+        "cases",
+        "provenance",
+        "quantity_tolerance",
+        "schema_version",
+        "segment_litre_tolerance"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "independent-quadrature-and-aggregation",
+        "mpmath": "1.3.0",
+        "precision_decimal_digits": 70,
+        "source_sha256": {
+          "buhlmann-oc-normalized-schedules.json": "a6dad9f63976965002d84b816c47cc1791a0136c2ea408c40c2497884d36be61",
+          "buhlmann-bailout-normalized.json": "39b39eb144981123e6fb8a0f7b9b31734d651fb04ceb2a538a83095f9c0a5aea"
+        },
+        "generator_sha256": "3df8bd3a724218cb4d1af40c0fb424d181683ecfc503589dcbe78fb83db4fdb7",
+        "command": "local/oracles/python-env/bin/python tool/capture_usage_reference.py"
+      },
+      "declared_tolerances": {
+        "segment_litre_tolerance": 1e-08,
+        "quantity_tolerance": 1e-08
+      },
+      "test_contracts": [
+        {
+          "path": "packages/deco_core/test/src/gas/usage_test.dart",
+          "sha256": "53a88e540db84f9526228c7b08a5289e3e8e6253fa6ade589102e0bb0cde6b5a"
+        }
+      ],
+      "comparison": "Field-specific tolerances in declared_tolerances and pinned test_contracts; discrete fields exact. No blanket tolerance."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/independent/last-stop-double-b-tissue-replay.json",
+      "sha256": "fc62f6e586c8b5169f1ee55ebcc5eb7f90d648971b04040148ac94dfccb93034",
+      "group": "independent",
+      "role": "independent-kinetics-on-preserved-schedule",
+      "top_level_keys": [
+        "expected",
+        "id",
+        "normalization",
+        "provenance",
+        "schema_version",
+        "scope",
+        "tolerances"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "independent-tissue-replay-of-legacy-schedule",
+        "project": "DecoTengu",
+        "version": "0.14.1",
+        "source": "https://wrobell.dcmod.org/decotengu/_modules/decotengu/model.html",
+        "source_sha256": "6136b38c650faa3852b4a344b8f32eb1849f815409147ee883d2a1f22063387b",
+        "legacy_fixture_sha256": "d3f1b876c0d6822cc8b58cca997d84f4c67e497a85deafb0403dedc72a15cdd6",
+        "command": "local/oracles/python-env/bin/python tool/capture_schedule_replay.py"
+      },
+      "declared_tolerances": {
+        "tolerances": {
+          "tissue_bar": 1e-10,
+          "time_min": 1e-10
+        }
+      },
+      "test_contracts": [
+        {
+          "path": "packages/deco_core/test/src/planning/legacy_oc_test.dart",
+          "sha256": "4d597cbd7fb2f908f894b151e6271ae6e75c607e2a00d56a93a9b0aabfa9261f"
+        }
+      ],
+      "comparison": "Field-specific tolerances in declared_tolerances and pinned test_contracts; discrete fields exact. No blanket tolerance."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/independent/minimum-stop-override-b-tissue-replay.json",
+      "sha256": "b141bd71fe552a7f6e6d9b33737d073fb2c772693eb8d2287ddf4aa8f678dae8",
+      "group": "independent",
+      "role": "independent-kinetics-on-preserved-schedule",
+      "top_level_keys": [
+        "expected",
+        "id",
+        "normalization",
+        "provenance",
+        "schema_version",
+        "scope",
+        "tolerances"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "independent-tissue-replay-of-legacy-schedule",
+        "project": "DecoTengu",
+        "version": "0.14.1",
+        "source": "https://wrobell.dcmod.org/decotengu/_modules/decotengu/model.html",
+        "source_sha256": "6136b38c650faa3852b4a344b8f32eb1849f815409147ee883d2a1f22063387b",
+        "legacy_fixture_sha256": "55e1b8c6eae8cb49fbbda1c849cbd709e2b743108f8bbd103fda6ef088aea61c",
+        "command": "local/oracles/python-env/bin/python tool/capture_schedule_replay.py"
+      },
+      "declared_tolerances": {
+        "tolerances": {
+          "tissue_bar": 1e-10,
+          "time_min": 1e-10
+        }
+      },
+      "test_contracts": [
+        {
+          "path": "packages/deco_core/test/src/planning/legacy_oc_test.dart",
+          "sha256": "4d597cbd7fb2f908f894b151e6271ae6e75c607e2a00d56a93a9b0aabfa9261f"
+        }
+      ],
+      "comparison": "Field-specific tolerances in declared_tolerances and pinned test_contracts; discrete fields exact. No blanket tolerance."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/independent/oc-air-30m-20min-tissue-replay.json",
+      "sha256": "32611488381355130a267642d9d535b18963843b18c2a3e6806dab2981b133aa",
+      "group": "independent",
+      "role": "independent-kinetics-on-preserved-schedule",
+      "top_level_keys": [
+        "expected",
+        "id",
+        "normalization",
+        "provenance",
+        "schema_version",
+        "scope",
+        "tolerances"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "independent-tissue-replay-of-legacy-schedule",
+        "project": "DecoTengu",
+        "version": "0.14.1",
+        "source": "https://wrobell.dcmod.org/decotengu/_modules/decotengu/model.html",
+        "source_sha256": "6136b38c650faa3852b4a344b8f32eb1849f815409147ee883d2a1f22063387b",
+        "legacy_fixture_sha256": "7daa50b33c68737e86abd9c81265d020318c4f506d5e6d500d8bd49a09861391",
+        "command": "local/oracles/python-env/bin/python tool/capture_schedule_replay.py"
+      },
+      "declared_tolerances": {
+        "tolerances": {
+          "tissue_bar": 1e-10,
+          "time_min": 1e-10
+        }
+      },
+      "test_contracts": [
+        {
+          "path": "packages/deco_core/test/src/planning/legacy_oc_test.dart",
+          "sha256": "4d597cbd7fb2f908f894b151e6271ae6e75c607e2a00d56a93a9b0aabfa9261f"
+        }
+      ],
+      "comparison": "Field-specific tolerances in declared_tolerances and pinned test_contracts; discrete fields exact. No blanket tolerance."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/independent/oc-b-deco-switch-tissue-replay.json",
+      "sha256": "456bd54328df650705e8f24c13bbae47bcf832d74ec18d769b80a111d5bd1243",
+      "group": "independent",
+      "role": "independent-kinetics-on-preserved-schedule",
+      "top_level_keys": [
+        "expected",
+        "id",
+        "normalization",
+        "provenance",
+        "schema_version",
+        "scope",
+        "tolerances"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "independent-tissue-replay-of-legacy-schedule",
+        "project": "DecoTengu",
+        "version": "0.14.1",
+        "source": "https://wrobell.dcmod.org/decotengu/_modules/decotengu/model.html",
+        "source_sha256": "6136b38c650faa3852b4a344b8f32eb1849f815409147ee883d2a1f22063387b",
+        "legacy_fixture_sha256": "415c4c390d806587f5fef0780a8dddaf77c55f10717f9254342326c75693bbbb",
+        "command": "local/oracles/python-env/bin/python tool/capture_schedule_replay.py"
+      },
+      "declared_tolerances": {
+        "tolerances": {
+          "tissue_bar": 1e-10,
+          "time_min": 1e-10
+        }
+      },
+      "test_contracts": [
+        {
+          "path": "packages/deco_core/test/src/planning/legacy_oc_test.dart",
+          "sha256": "4d597cbd7fb2f908f894b151e6271ae6e75c607e2a00d56a93a9b0aabfa9261f"
+        }
+      ],
+      "comparison": "Field-specific tolerances in declared_tolerances and pinned test_contracts; discrete fields exact. No blanket tolerance."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/independent/oc-b-gf100-tissue-replay.json",
+      "sha256": "9f2a3112909288f31d61771cabccafb026e81432ca8a852f4f4bed36f3d55dfe",
+      "group": "independent",
+      "role": "independent-kinetics-on-preserved-schedule",
+      "top_level_keys": [
+        "expected",
+        "id",
+        "normalization",
+        "provenance",
+        "schema_version",
+        "scope",
+        "tolerances"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "independent-tissue-replay-of-legacy-schedule",
+        "project": "DecoTengu",
+        "version": "0.14.1",
+        "source": "https://wrobell.dcmod.org/decotengu/_modules/decotengu/model.html",
+        "source_sha256": "6136b38c650faa3852b4a344b8f32eb1849f815409147ee883d2a1f22063387b",
+        "legacy_fixture_sha256": "7fa55751dc140ce73cb762873431ecc75fe1e47747bcc4c12f0c2cf510597c21",
+        "command": "local/oracles/python-env/bin/python tool/capture_schedule_replay.py"
+      },
+      "declared_tolerances": {
+        "tolerances": {
+          "tissue_bar": 1e-10,
+          "time_min": 1e-10
+        }
+      },
+      "test_contracts": [
+        {
+          "path": "packages/deco_core/test/src/planning/legacy_oc_test.dart",
+          "sha256": "4d597cbd7fb2f908f894b151e6271ae6e75c607e2a00d56a93a9b0aabfa9261f"
+        }
+      ],
+      "comparison": "Field-specific tolerances in declared_tolerances and pinned test_contracts; discrete fields exact. No blanket tolerance."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/independent/oc-b-lost-oxygen-tissue-replay.json",
+      "sha256": "632437563549ebe934de8bf1223c08d1b39abebfc5c4afe21df61f00e8883987",
+      "group": "independent",
+      "role": "independent-kinetics-on-preserved-schedule",
+      "top_level_keys": [
+        "expected",
+        "id",
+        "normalization",
+        "provenance",
+        "schema_version",
+        "scope",
+        "tolerances"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "independent-tissue-replay-of-legacy-schedule",
+        "project": "DecoTengu",
+        "version": "0.14.1",
+        "source": "https://wrobell.dcmod.org/decotengu/_modules/decotengu/model.html",
+        "source_sha256": "6136b38c650faa3852b4a344b8f32eb1849f815409147ee883d2a1f22063387b",
+        "legacy_fixture_sha256": "9a800f30c9935c2302dee90cbe37812882e49569588ed4c65532d98506b6c4c2",
+        "command": "local/oracles/python-env/bin/python tool/capture_schedule_replay.py"
+      },
+      "declared_tolerances": {
+        "tolerances": {
+          "tissue_bar": 1e-10,
+          "time_min": 1e-10
+        }
+      },
+      "test_contracts": [
+        {
+          "path": "packages/deco_core/test/src/planning/legacy_oc_test.dart",
+          "sha256": "4d597cbd7fb2f908f894b151e6271ae6e75c607e2a00d56a93a9b0aabfa9261f"
+        }
+      ],
+      "comparison": "Field-specific tolerances in declared_tolerances and pinned test_contracts; discrete fields exact. No blanket tolerance."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/independent/oc-b-multilevel-tissue-replay.json",
+      "sha256": "33ebea1946186d77deb9d3a693d923dd6825dc324e73074ac645a5d48d106da4",
+      "group": "independent",
+      "role": "independent-kinetics-on-preserved-schedule",
+      "top_level_keys": [
+        "expected",
+        "id",
+        "normalization",
+        "provenance",
+        "schema_version",
+        "scope",
+        "tolerances"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "independent-tissue-replay-of-legacy-schedule",
+        "project": "DecoTengu",
+        "version": "0.14.1",
+        "source": "https://wrobell.dcmod.org/decotengu/_modules/decotengu/model.html",
+        "source_sha256": "6136b38c650faa3852b4a344b8f32eb1849f815409147ee883d2a1f22063387b",
+        "legacy_fixture_sha256": "19b3c1291c38f9a553419df5fa6527cc6b45e54560a3e9d59bf2630e8fd31797",
+        "command": "local/oracles/python-env/bin/python tool/capture_schedule_replay.py"
+      },
+      "declared_tolerances": {
+        "tolerances": {
+          "tissue_bar": 1e-10,
+          "time_min": 1e-10
+        }
+      },
+      "test_contracts": [
+        {
+          "path": "packages/deco_core/test/src/planning/legacy_oc_test.dart",
+          "sha256": "4d597cbd7fb2f908f894b151e6271ae6e75c607e2a00d56a93a9b0aabfa9261f"
+        }
+      ],
+      "comparison": "Field-specific tolerances in declared_tolerances and pinned test_contracts; discrete fields exact. No blanket tolerance."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/independent/oc-b-no-deco-tissue-replay.json",
+      "sha256": "559aac7d9f8c70d9efef9fecc042b4ed3f2a41654d213a34313d7d2bae95064e",
+      "group": "independent",
+      "role": "independent-kinetics-on-preserved-schedule",
+      "top_level_keys": [
+        "expected",
+        "id",
+        "normalization",
+        "provenance",
+        "schema_version",
+        "scope",
+        "tolerances"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "independent-tissue-replay-of-legacy-schedule",
+        "project": "DecoTengu",
+        "version": "0.14.1",
+        "source": "https://wrobell.dcmod.org/decotengu/_modules/decotengu/model.html",
+        "source_sha256": "6136b38c650faa3852b4a344b8f32eb1849f815409147ee883d2a1f22063387b",
+        "legacy_fixture_sha256": "6cecb7d18a3b49e7db59d40cce46ec7175888acbc8ba99934418792118f4f164",
+        "command": "local/oracles/python-env/bin/python tool/capture_schedule_replay.py"
+      },
+      "declared_tolerances": {
+        "tolerances": {
+          "tissue_bar": 1e-10,
+          "time_min": 1e-10
+        }
+      },
+      "test_contracts": [
+        {
+          "path": "packages/deco_core/test/src/planning/legacy_oc_test.dart",
+          "sha256": "4d597cbd7fb2f908f894b151e6271ae6e75c607e2a00d56a93a9b0aabfa9261f"
+        }
+      ],
+      "comparison": "Field-specific tolerances in declared_tolerances and pinned test_contracts; discrete fields exact. No blanket tolerance."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/independent/oc-c-deco-switch-tissue-replay.json",
+      "sha256": "6cd4cf97300d2dcf07b3c5be60841e4cf440aabc5ae82cb29ef6afcd795d8db2",
+      "group": "independent",
+      "role": "independent-kinetics-on-preserved-schedule",
+      "top_level_keys": [
+        "expected",
+        "id",
+        "normalization",
+        "provenance",
+        "schema_version",
+        "scope",
+        "tolerances"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "independent-tissue-replay-of-legacy-schedule",
+        "project": "DecoTengu",
+        "version": "0.14.1",
+        "source": "https://wrobell.dcmod.org/decotengu/_modules/decotengu/model.html",
+        "source_sha256": "6136b38c650faa3852b4a344b8f32eb1849f815409147ee883d2a1f22063387b",
+        "legacy_fixture_sha256": "c15444ffe649721dd4ac9d1752eb746768df7c72cb1bf4f3c6ba2c3e0b27fb43",
+        "command": "local/oracles/python-env/bin/python tool/capture_schedule_replay.py"
+      },
+      "declared_tolerances": {
+        "tolerances": {
+          "tissue_bar": 1e-10,
+          "time_min": 1e-10
+        }
+      },
+      "test_contracts": [
+        {
+          "path": "packages/deco_core/test/src/planning/legacy_oc_test.dart",
+          "sha256": "4d597cbd7fb2f908f894b151e6271ae6e75c607e2a00d56a93a9b0aabfa9261f"
+        }
+      ],
+      "comparison": "Field-specific tolerances in declared_tolerances and pinned test_contracts; discrete fields exact. No blanket tolerance."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/independent/oc-c-gf100-tissue-replay.json",
+      "sha256": "ae3594b074ff1fa562ce6e38ae5dc56886f19e5b9de76609441333c28e967fc2",
+      "group": "independent",
+      "role": "independent-kinetics-on-preserved-schedule",
+      "top_level_keys": [
+        "expected",
+        "id",
+        "normalization",
+        "provenance",
+        "schema_version",
+        "scope",
+        "tolerances"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "independent-tissue-replay-of-legacy-schedule",
+        "project": "DecoTengu",
+        "version": "0.14.1",
+        "source": "https://wrobell.dcmod.org/decotengu/_modules/decotengu/model.html",
+        "source_sha256": "6136b38c650faa3852b4a344b8f32eb1849f815409147ee883d2a1f22063387b",
+        "legacy_fixture_sha256": "2a06f4ee33731689b3ca19f1db6371085f46cbcc7455654363b85f3effe3faf4",
+        "command": "local/oracles/python-env/bin/python tool/capture_schedule_replay.py"
+      },
+      "declared_tolerances": {
+        "tolerances": {
+          "tissue_bar": 1e-10,
+          "time_min": 1e-10
+        }
+      },
+      "test_contracts": [
+        {
+          "path": "packages/deco_core/test/src/planning/legacy_oc_test.dart",
+          "sha256": "4d597cbd7fb2f908f894b151e6271ae6e75c607e2a00d56a93a9b0aabfa9261f"
+        }
+      ],
+      "comparison": "Field-specific tolerances in declared_tolerances and pinned test_contracts; discrete fields exact. No blanket tolerance."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/independent/oc-c-lost-oxygen-tissue-replay.json",
+      "sha256": "251677a447e60d3d4e1b5d7281bcf5daa4ee555ac3736bbcc688e8fd9f5ec6af",
+      "group": "independent",
+      "role": "independent-kinetics-on-preserved-schedule",
+      "top_level_keys": [
+        "expected",
+        "id",
+        "normalization",
+        "provenance",
+        "schema_version",
+        "scope",
+        "tolerances"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "independent-tissue-replay-of-legacy-schedule",
+        "project": "DecoTengu",
+        "version": "0.14.1",
+        "source": "https://wrobell.dcmod.org/decotengu/_modules/decotengu/model.html",
+        "source_sha256": "6136b38c650faa3852b4a344b8f32eb1849f815409147ee883d2a1f22063387b",
+        "legacy_fixture_sha256": "ef60cae2a06998009ccdb462327252c588d2e5d56375f81f53b82cb7f1842983",
+        "command": "local/oracles/python-env/bin/python tool/capture_schedule_replay.py"
+      },
+      "declared_tolerances": {
+        "tolerances": {
+          "tissue_bar": 1e-10,
+          "time_min": 1e-10
+        }
+      },
+      "test_contracts": [
+        {
+          "path": "packages/deco_core/test/src/planning/legacy_oc_test.dart",
+          "sha256": "4d597cbd7fb2f908f894b151e6271ae6e75c607e2a00d56a93a9b0aabfa9261f"
+        }
+      ],
+      "comparison": "Field-specific tolerances in declared_tolerances and pinned test_contracts; discrete fields exact. No blanket tolerance."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/independent/oc-c-multilevel-tissue-replay.json",
+      "sha256": "c94bd3acafbb77b8dbbcf84a2cea56bd3fd208a5a90774e68a8900190db3a0ca",
+      "group": "independent",
+      "role": "independent-kinetics-on-preserved-schedule",
+      "top_level_keys": [
+        "expected",
+        "id",
+        "normalization",
+        "provenance",
+        "schema_version",
+        "scope",
+        "tolerances"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "independent-tissue-replay-of-legacy-schedule",
+        "project": "DecoTengu",
+        "version": "0.14.1",
+        "source": "https://wrobell.dcmod.org/decotengu/_modules/decotengu/model.html",
+        "source_sha256": "6136b38c650faa3852b4a344b8f32eb1849f815409147ee883d2a1f22063387b",
+        "legacy_fixture_sha256": "591e2b0f0a0accb32ec747915390a3e27e43fd5d50b9e5adff39859b950b3fc5",
+        "command": "local/oracles/python-env/bin/python tool/capture_schedule_replay.py"
+      },
+      "declared_tolerances": {
+        "tolerances": {
+          "tissue_bar": 1e-10,
+          "time_min": 1e-10
+        }
+      },
+      "test_contracts": [
+        {
+          "path": "packages/deco_core/test/src/planning/legacy_oc_test.dart",
+          "sha256": "4d597cbd7fb2f908f894b151e6271ae6e75c607e2a00d56a93a9b0aabfa9261f"
+        }
+      ],
+      "comparison": "Field-specific tolerances in declared_tolerances and pinned test_contracts; discrete fields exact. No blanket tolerance."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/independent/oc-c-no-deco-tissue-replay.json",
+      "sha256": "727c9bf045c98bc32e1bf45415b212d4dd605a15017a42ba92e22a15fb1f6e12",
+      "group": "independent",
+      "role": "independent-kinetics-on-preserved-schedule",
+      "top_level_keys": [
+        "expected",
+        "id",
+        "normalization",
+        "provenance",
+        "schema_version",
+        "scope",
+        "tolerances"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "independent-tissue-replay-of-legacy-schedule",
+        "project": "DecoTengu",
+        "version": "0.14.1",
+        "source": "https://wrobell.dcmod.org/decotengu/_modules/decotengu/model.html",
+        "source_sha256": "6136b38c650faa3852b4a344b8f32eb1849f815409147ee883d2a1f22063387b",
+        "legacy_fixture_sha256": "00d6f4e0d7b52f491ea63a18d9ede803a42347e01104009b809b611c5b247a18",
+        "command": "local/oracles/python-env/bin/python tool/capture_schedule_replay.py"
+      },
+      "declared_tolerances": {
+        "tolerances": {
+          "tissue_bar": 1e-10,
+          "time_min": 1e-10
+        }
+      },
+      "test_contracts": [
+        {
+          "path": "packages/deco_core/test/src/planning/legacy_oc_test.dart",
+          "sha256": "4d597cbd7fb2f908f894b151e6271ae6e75c607e2a00d56a93a9b0aabfa9261f"
+        }
+      ],
+      "comparison": "Field-specific tolerances in declared_tolerances and pinned test_contracts; discrete fields exact. No blanket tolerance."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/independent/oc-nitrox-18m-30min-tissue-replay.json",
+      "sha256": "c8996be03f2a8b7215a8e3090b8232ad925243e04b3aff508036c85abd8959aa",
+      "group": "independent",
+      "role": "independent-kinetics-on-preserved-schedule",
+      "top_level_keys": [
+        "expected",
+        "id",
+        "normalization",
+        "provenance",
+        "schema_version",
+        "scope",
+        "tolerances"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "independent-tissue-replay-of-legacy-schedule",
+        "project": "DecoTengu",
+        "version": "0.14.1",
+        "source": "https://wrobell.dcmod.org/decotengu/_modules/decotengu/model.html",
+        "source_sha256": "6136b38c650faa3852b4a344b8f32eb1849f815409147ee883d2a1f22063387b",
+        "legacy_fixture_sha256": "f1512928faa5e19404925c397b4e5cfd0a824d39682dca8d9a3bf9872850c687",
+        "command": "local/oracles/python-env/bin/python tool/capture_schedule_replay.py"
+      },
+      "declared_tolerances": {
+        "tolerances": {
+          "tissue_bar": 1e-10,
+          "time_min": 1e-10
+        }
+      },
+      "test_contracts": [
+        {
+          "path": "packages/deco_core/test/src/planning/legacy_oc_test.dart",
+          "sha256": "4d597cbd7fb2f908f894b151e6271ae6e75c607e2a00d56a93a9b0aabfa9261f"
+        }
+      ],
+      "comparison": "Field-specific tolerances in declared_tolerances and pinned test_contracts; discrete fields exact. No blanket tolerance."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/independent/oc-oxygen-replay.json",
+      "sha256": "76c6a2bded232f24847ec34a73ecac7ee0faec0ecc29861dd320c457b4b8c76c",
+      "group": "independent",
+      "role": "independent-oxygen-on-preserved-schedule",
+      "top_level_keys": [
+        "cases",
+        "policy",
+        "provenance",
+        "schema_version",
+        "scope"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "independent-oxygen-quadrature-of-observed-schedules",
+        "solver": "mpmath 1.3.0",
+        "source": "https://cdn.shopify.com/s/files/1/0838/3732/1530/files/Oxygen_Toxicity_Calculations.pdf?v=1710181583",
+        "command": "local/oracles/python-env/bin/python tool/capture_schedule_oxygen_replay.py"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [
+        {
+          "path": "packages/deco_core/test/src/planning/legacy_oc_test.dart",
+          "sha256": "4d597cbd7fb2f908f894b151e6271ae6e75c607e2a00d56a93a9b0aabfa9261f"
+        },
+        {
+          "path": "packages/deco_core/test/src/planning/buhlmann_schedule_test.dart",
+          "sha256": "62aaaa2fa09cd95049afd4106839da87e53aae8f87c53b7f9f047fafc766d223"
+        }
+      ],
+      "comparison": "Field-specific tolerances in declared_tolerances and pinned test_contracts; discrete fields exact. No blanket tolerance."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/independent/oxygen-baker-mpmath.json",
+      "sha256": "78769225b49587eb3a6b013ed09110131b8ae1e286726496e891f86eede80203",
+      "group": "independent",
+      "role": "independent-component",
+      "top_level_keys": [
+        "bands",
+        "cases",
+        "domain",
+        "policy",
+        "provenance",
+        "recovery",
+        "schema_version",
+        "tolerances",
+        "worked_example_exact_depth"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "primary-policy-independent-quadrature",
+        "author": "Erik C. Baker, P.E.",
+        "title": "Oxygen Toxicity Calculations,12pages",
+        "source": "https://cdn.shopify.com/s/files/1/0838/3732/1530/files/Oxygen_Toxicity_Calculations.pdf?v=1710181583",
+        "source_sha256": "304b1a1d137303d5893fc4e23850159f5a697ea760f2a3e64748e55c7349c678",
+        "solver": "mpmath 1.3.0",
+        "precision_decimal_digits": 65,
+        "command": "local/oracles/python-env/bin/python tool/capture_oxygen_reference.py"
+      },
+      "declared_tolerances": {
+        "tolerances": {
+          "cns_absolute": 1e-12,
+          "otu_absolute": 1e-10
+        }
+      },
+      "test_contracts": [
+        {
+          "path": "packages/deco_core/test/src/oxygen/oxygen_test.dart",
+          "sha256": "f64e2705ce616eae70e5fa235854bc90ae2adb6cc77b94a0c3496b8d78ea401d"
+        }
+      ],
+      "comparison": "Field-specific tolerances in declared_tolerances and pinned test_contracts; discrete fields exact. No blanket tolerance."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/independent/oxygen-outside-cns-domain-mpmath.json",
+      "sha256": "7de807cd4a613fe50a4e6aacff1f211ea2012fa34acbec191e0e82a0f0b95654",
+      "group": "independent",
+      "role": "independent-component",
+      "top_level_keys": [
+        "cases",
+        "decision",
+        "policy",
+        "provenance",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "primary-equation-independent-quadrature",
+        "source": "https://cdn.shopify.com/s/files/1/0838/3732/1530/files/Oxygen_Toxicity_Calculations.pdf?v=1710181583",
+        "source_sha256": "304b1a1d137303d5893fc4e23850159f5a697ea760f2a3e64748e55c7349c678",
+        "solver": "mpmath 1.3.0",
+        "command": "local/oracles/python-env/bin/python tool/capture_oxygen_domain_reference.py"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [
+        {
+          "path": "packages/deco_core/test/src/oxygen/oxygen_test.dart",
+          "sha256": "f64e2705ce616eae70e5fa235854bc90ae2adb6cc77b94a0c3496b8d78ea401d"
+        }
+      ],
+      "comparison": "Field-specific tolerances in declared_tolerances and pinned test_contracts; discrete fields exact. No blanket tolerance."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/independent/subsurface-buhlmann-ccr-hold.json",
+      "sha256": "9af6432119f96762bcf0c9caa290ddd6f97de43e113ea4b006bbbbb8218d4eb2",
+      "group": "independent",
+      "role": "independent-component",
+      "top_level_keys": [
+        "comparison_policy",
+        "expected",
+        "id",
+        "provenance",
+        "request",
+        "schema_version",
+        "scope"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "independent-execution",
+        "repository": "https://github.com/subsurface/subsurface",
+        "commit": "7f2610cee4572ebc1795c48d054616a51d457eec",
+        "libdivecomputer_headers_commit": "14f92934c0aedbba7a5aafe8915e8a96d944335c",
+        "numerical_source_sha256": {
+          "deco.cpp": "26964790fdca9ac7afb239329a36a8b2b9a0b0d92b02c097bde88a0bc64121b5",
+          "gas.cpp": "a32a61ef2af6f5e6faf294747a054c50537266a27a9e9b7ae01895e5554bd10a",
+          "units.h": "e1e9eae7985758cfca36e35eefe78c6c2416858cc20f4b38675291aa166db557"
+        },
+        "harness_sha256": "7f70906c8975652ece12d8d180e093d5a4451fd915324803ba6a302c34163b2f",
+        "numerical_modifications": false,
+        "command": "python3 tool/capture_subsurface_tissues.py"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [
+        {
+          "path": "packages/deco_core/test/src/tissues/tissues_test.dart",
+          "sha256": "7b8bc8c0c816bbea801f1ff5b9b94ff78016e09fb6a11e0a3f417e5f19e8345a"
+        }
+      ],
+      "comparison": "Field-specific tolerances in declared_tolerances and pinned test_contracts; discrete fields exact. No blanket tolerance."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/independent/subsurface-c1b-bailout.json",
+      "sha256": "5f277cb39a712568ccb5a03ff053dcda6a89bd6cfb0afdda9bd5d99ba3216a13",
+      "group": "independent",
+      "role": "external-native-diagnostic-only",
+      "top_level_keys": [
+        "expected",
+        "id",
+        "provenance",
+        "request",
+        "schema_version",
+        "scope"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "independent-full-plan-execution",
+        "repository": "https://github.com/subsurface/subsurface",
+        "commit": "7f2610cee4572ebc1795c48d054616a51d457eec",
+        "libdc_submodule_commit": "469f28d17ed05112496f176006eccccc9f8fdc73",
+        "source_sha256": {
+          "core/deco.cpp": "26964790fdca9ac7afb239329a36a8b2b9a0b0d92b02c097bde88a0bc64121b5",
+          "core/planner.cpp": "65047f37420c3490589479fcacc6e5005e75b684e1c61de1c1af3365d956207e"
+        },
+        "harness_sha256": "f21203a3a3c5ba0c4e0a7f2aeb21e0ab49ea11b2c6636c4172ac76f43347de9b",
+        "executable_sha256": "b42b5f113eed1989e8328332b858d3df9570ff87b6897f925c829a53236a3557",
+        "numerical_modifications": false,
+        "command": "python3 tool/capture_subsurface_plans.py",
+        "author_benchmark_check": "C1b bailout3060s matches upstream TestPlan::testCcrBailoutGasSelection"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Not product schedule acceptance; native defaults differ. See reference-normalization.md."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/independent/subsurface-c1b-ccr.json",
+      "sha256": "41e04d20455a5a1c12c90c3e34df7607f4f668937252a1b17076d6b98fccdf79",
+      "group": "independent",
+      "role": "external-native-diagnostic-only",
+      "top_level_keys": [
+        "expected",
+        "id",
+        "provenance",
+        "request",
+        "schema_version",
+        "scope"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "independent-full-plan-execution",
+        "repository": "https://github.com/subsurface/subsurface",
+        "commit": "7f2610cee4572ebc1795c48d054616a51d457eec",
+        "libdc_submodule_commit": "469f28d17ed05112496f176006eccccc9f8fdc73",
+        "source_sha256": {
+          "core/deco.cpp": "26964790fdca9ac7afb239329a36a8b2b9a0b0d92b02c097bde88a0bc64121b5",
+          "core/planner.cpp": "65047f37420c3490589479fcacc6e5005e75b684e1c61de1c1af3365d956207e"
+        },
+        "harness_sha256": "f21203a3a3c5ba0c4e0a7f2aeb21e0ab49ea11b2c6636c4172ac76f43347de9b",
+        "executable_sha256": "b42b5f113eed1989e8328332b858d3df9570ff87b6897f925c829a53236a3557",
+        "numerical_modifications": false,
+        "command": "python3 tool/capture_subsurface_plans.py",
+        "author_benchmark_check": "independent execution; no separate author benchmark claimed"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Not product schedule acceptance; native defaults differ. See reference-normalization.md."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/independent/subsurface-vpmb-bailout.json",
+      "sha256": "91dc94cedf7cf369481b2f97124dd1f061f13e4695fea17196b3e1311608f63d",
+      "group": "independent",
+      "role": "external-native-diagnostic-only",
+      "top_level_keys": [
+        "expected",
+        "id",
+        "provenance",
+        "request",
+        "schema_version",
+        "scope"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "independent-full-plan-execution",
+        "repository": "https://github.com/subsurface/subsurface",
+        "commit": "7f2610cee4572ebc1795c48d054616a51d457eec",
+        "libdc_submodule_commit": "469f28d17ed05112496f176006eccccc9f8fdc73",
+        "source_sha256": {
+          "core/deco.cpp": "26964790fdca9ac7afb239329a36a8b2b9a0b0d92b02c097bde88a0bc64121b5",
+          "core/planner.cpp": "65047f37420c3490589479fcacc6e5005e75b684e1c61de1c1af3365d956207e"
+        },
+        "harness_sha256": "f21203a3a3c5ba0c4e0a7f2aeb21e0ab49ea11b2c6636c4172ac76f43347de9b",
+        "executable_sha256": "b42b5f113eed1989e8328332b858d3df9570ff87b6897f925c829a53236a3557",
+        "numerical_modifications": false,
+        "command": "python3 tool/capture_subsurface_plans.py",
+        "author_benchmark_check": "independent execution; no separate author benchmark claimed"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Not product schedule acceptance; native defaults differ. See reference-normalization.md."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/independent/subsurface-vpmb-ccr-hold.json",
+      "sha256": "ce9d1a9c6721432961297a181dff593e475a49160c208b3103d71645df035846",
+      "group": "independent",
+      "role": "independent-component",
+      "top_level_keys": [
+        "comparison_policy",
+        "expected",
+        "id",
+        "provenance",
+        "request",
+        "schema_version",
+        "scope"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "independent-execution",
+        "repository": "https://github.com/subsurface/subsurface",
+        "commit": "7f2610cee4572ebc1795c48d054616a51d457eec",
+        "libdivecomputer_headers_commit": "14f92934c0aedbba7a5aafe8915e8a96d944335c",
+        "numerical_source_sha256": {
+          "deco.cpp": "26964790fdca9ac7afb239329a36a8b2b9a0b0d92b02c097bde88a0bc64121b5",
+          "gas.cpp": "a32a61ef2af6f5e6faf294747a054c50537266a27a9e9b7ae01895e5554bd10a",
+          "units.h": "e1e9eae7985758cfca36e35eefe78c6c2416858cc20f4b38675291aa166db557"
+        },
+        "harness_sha256": "7f70906c8975652ece12d8d180e093d5a4451fd915324803ba6a302c34163b2f",
+        "numerical_modifications": false,
+        "command": "python3 tool/capture_subsurface_tissues.py"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [
+        {
+          "path": "packages/deco_core/test/src/tissues/tissues_test.dart",
+          "sha256": "7b8bc8c0c816bbea801f1ff5b9b94ff78016e09fb6a11e0a3f417e5f19e8345a"
+        }
+      ],
+      "comparison": "Field-specific tolerances in declared_tolerances and pinned test_contracts; discrete fields exact. No blanket tolerance."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/independent/subsurface-vpmb-ccr.json",
+      "sha256": "eb57b710e9887dd8581d7cd26b7e1ef6e497b912f531f3f98debed84fd8a984f",
+      "group": "independent",
+      "role": "external-native-diagnostic-only",
+      "top_level_keys": [
+        "expected",
+        "id",
+        "provenance",
+        "request",
+        "schema_version",
+        "scope"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "independent-full-plan-execution",
+        "repository": "https://github.com/subsurface/subsurface",
+        "commit": "7f2610cee4572ebc1795c48d054616a51d457eec",
+        "libdc_submodule_commit": "469f28d17ed05112496f176006eccccc9f8fdc73",
+        "source_sha256": {
+          "core/deco.cpp": "26964790fdca9ac7afb239329a36a8b2b9a0b0d92b02c097bde88a0bc64121b5",
+          "core/planner.cpp": "65047f37420c3490589479fcacc6e5005e75b684e1c61de1c1af3365d956207e"
+        },
+        "harness_sha256": "f21203a3a3c5ba0c4e0a7f2aeb21e0ab49ea11b2c6636c4172ac76f43347de9b",
+        "executable_sha256": "b42b5f113eed1989e8328332b858d3df9570ff87b6897f925c829a53236a3557",
+        "numerical_modifications": false,
+        "command": "python3 tool/capture_subsurface_plans.py",
+        "author_benchmark_check": "independent execution; no separate author benchmark claimed"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Not product schedule acceptance; native defaults differ. See reference-normalization.md."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/independent/vdw-mpmath.json",
+      "sha256": "c93b5512e4c5a821130a82d0e15148a4878ca36dfcb710c3a4af8b72b6b3b61e",
+      "group": "independent",
+      "role": "independent-component",
+      "top_level_keys": [
+        "cases",
+        "constants",
+        "equation",
+        "provenance",
+        "schema_version",
+        "scope",
+        "tolerance_moles_per_litre"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "independent-high-precision-equation-solve",
+        "project": "mpmath",
+        "version": "1.3.0",
+        "source": "https://mpmath.org/doc/current/calculus/optimization.html",
+        "module_sha256": "b241584d2c1fc0304b0a1015ea923749d7b0800411dd406dcab7c82bf25d9fe8",
+        "command": "local/oracles/python-env/bin/python tool/capture_eos_reference.py"
+      },
+      "declared_tolerances": {
+        "tolerance_moles_per_litre": 1e-08
+      },
+      "test_contracts": [
+        {
+          "path": "packages/deco_core/test/src/gas/equation_of_state_test.dart",
+          "sha256": "abe1e6d6ad846176325b03bc98f81ec0457b44c58b0f84df078d9ab9d31d626e"
+        }
+      ],
+      "comparison": "Field-specific tolerances in declared_tolerances and pinned test_contracts; discrete fields exact. No blanket tolerance."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/independent/vpmb-altitude-surface-transitions.json",
+      "sha256": "54569eb6d5c6a21318502e7e73037bff2794833c5de16a8f3f3848bd2c0ecd26",
+      "group": "independent",
+      "role": "independent-component",
+      "top_level_keys": [
+        "altitude_cases",
+        "boundary_policy",
+        "post_dive",
+        "provenance",
+        "schema_version",
+        "surface_intervals"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "independent-successful-altitude-and-repetitive-transitions",
+        "repository": "https://github.com/bwaite/vpmb",
+        "commit": "bec938d84742e42dd43b574beec49ac26f6863ac",
+        "source_sha256": "337a84085e0b5a492ec6310a0b98edac4edcfa2bb16028792ca769881815726b",
+        "numerical_modifications": false,
+        "oxygen_recovery_source": "Baker90min convention, independently evaluated by mpmath",
+        "command": "local/oracles/python-env/bin/python tool/capture_vpm_surface_reference.py"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [
+        {
+          "path": "packages/deco_core/test/src/planning/surface_test.dart",
+          "sha256": "18ea661a54d6068a66937a644200d8fc136baa5ddc7e5c176d0c752363732094"
+        }
+      ],
+      "comparison": "Field-specific tolerances in declared_tolerances and pinned test_contracts; discrete fields exact. No blanket tolerance."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/independent/vpmb-ccr-altitude-repetitive.json",
+      "sha256": "9f32fc25fca16e0b9921d6c1c8d7bcdb5711940fbf4412d5f0b02797bc6daf6e",
+      "group": "independent",
+      "role": "independent-normalized-full-schedule",
+      "top_level_keys": [
+        "cases",
+        "provenance",
+        "schema_version",
+        "scope",
+        "tolerances"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "independent-normalized-full-CCR-bailout-altitude-repetitive-execution",
+        "repository": "https://github.com/bwaite/vpmb",
+        "commit": "bec938d84742e42dd43b574beec49ac26f6863ac",
+        "source_sha256": "337a84085e0b5a492ec6310a0b98edac4edcfa2bb16028792ca769881815726b",
+        "adapter_sha256": "2d5a853c429e2d8c04f48b3ca4e1ac41616a5df079108008e0da10cf6963fd87",
+        "oxygen_adapter_sha256": "48e981893355081b94b121fa1103df216b5756dc80c9b1d530aebe5501d6e16e",
+        "generator_sha256": "13f1679ab38b2db2ae1a1183420526a00bcca1d9d3874d19870feef0d814a507",
+        "command": "local/oracles/python-env/bin/python tool/capture_vpm_ccr_sequences.py"
+      },
+      "declared_tolerances": {
+        "tolerances": {
+          "time_min": 1e-07,
+          "tissue_bar": 1e-08,
+          "gradient_bar": 1e-08,
+          "radius_m": 1e-15,
+          "phase_min": 1e-07,
+          "cns_fraction": 1e-10,
+          "otu": 1e-09
+        }
+      },
+      "test_contracts": [
+        {
+          "path": "packages/deco_core/test/src/planning/vpm_ccr_sequences_test.dart",
+          "sha256": "2624a8d5cb15c6479ee2b18e758e88c84883267b7ea21ad72274c512a1c421c1"
+        }
+      ],
+      "comparison": "Field-specific tolerances in declared_tolerances and pinned test_contracts; discrete fields exact. No blanket tolerance."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/independent/vpmb-ccr-bailout-normalized.json",
+      "sha256": "c1038c5436dc8d02f6a528f97c02c53bf57f08d554b9b154cabcb849140f2957",
+      "group": "independent",
+      "role": "independent-normalized-full-schedule",
+      "top_level_keys": [
+        "cases",
+        "provenance",
+        "schema_version",
+        "scope",
+        "tolerances"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "independent-VPM-execution-with-explicit-CCR-inspiration-extension",
+        "repository": "https://github.com/bwaite/vpmb",
+        "commit": "bec938d84742e42dd43b574beec49ac26f6863ac",
+        "original_source_sha256": "337a84085e0b5a492ec6310a0b98edac4edcfa2bb16028792ca769881815726b",
+        "adapter_sha256": "2d5a853c429e2d8c04f48b3ca4e1ac41616a5df079108008e0da10cf6963fd87",
+        "oxygen_adapter_sha256": "48e981893355081b94b121fa1103df216b5756dc80c9b1d530aebe5501d6e16e",
+        "generator_sha256": "9af118088ff2f7f6cc32fa94039d603b81fca16b0fec91f33b6c3bcbb87053a4",
+        "command": "local/oracles/python-env/bin/python tool/capture_vpm_ccr.py"
+      },
+      "declared_tolerances": {
+        "tolerances": {
+          "time_min": 1e-07,
+          "tissue_bar": 1e-08,
+          "gradient_bar": 1e-08,
+          "radius_m": 1e-15,
+          "phase_min": 1e-07,
+          "cns_fraction": 1e-10,
+          "otu": 1e-09
+        }
+      },
+      "test_contracts": [
+        {
+          "path": "packages/deco_core/test/src/planning/vpm_ccr_bailout_test.dart",
+          "sha256": "1384b918ed99dd98f4c7b7707ff13e30a420851b8ab966490c6abb2ba36d8bb2"
+        }
+      ],
+      "comparison": "Field-specific tolerances in declared_tolerances and pinned test_contracts; discrete fields exact. No blanket tolerance."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/independent/vpmb-full-altitude-repetitive.json",
+      "sha256": "cb2e4e406c5218cbf32151400bde489a6b9a83711a84d98ee70f48bb5e8b3764",
+      "group": "independent",
+      "role": "independent-normalized-full-schedule",
+      "top_level_keys": [
+        "cases",
+        "provenance",
+        "schema_version",
+        "tolerances"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "independent-normalized-full-OC-altitude-repetitive-execution",
+        "repository": "https://github.com/bwaite/vpmb",
+        "commit": "bec938d84742e42dd43b574beec49ac26f6863ac",
+        "source_sha256": "337a84085e0b5a492ec6310a0b98edac4edcfa2bb16028792ca769881815726b",
+        "policy_adapter": "reference_vpm_schedule.py: same declared timing/max-first-stop/MP precision as normalized schedules; untouched primary altitude/repetitive routines.",
+        "oxygen": "Independent mpmath quadrature of published Baker7band rates,90minute CNS recovery, OTU carried unchanged on SI.",
+        "command": "local/oracles/python-env/bin/python tool/capture_vpm_sequences.py"
+      },
+      "declared_tolerances": {
+        "tolerances": {
+          "time_min": 1e-07,
+          "tissue_bar": 1e-08,
+          "gradient_bar": 1e-08,
+          "radius_m": 1e-15,
+          "phase_min": 1e-07,
+          "cns": 1e-12,
+          "otu": 1e-10
+        }
+      },
+      "test_contracts": [
+        {
+          "path": "packages/deco_core/test/src/planning/vpm_sequences_test.dart",
+          "sha256": "e43f36efb34d1be1abb7399246372b1c06a660cd6f21d386450dd77118f2121d"
+        }
+      ],
+      "comparison": "Field-specific tolerances in declared_tolerances and pinned test_contracts; discrete fields exact. No blanket tolerance."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/independent/vpmb-gradient-kernels.json",
+      "sha256": "713132d6eea337e255055a1e90343a8b4c7c45020299d24ae7c94e9c691bc40d",
+      "group": "independent",
+      "role": "independent-component",
+      "top_level_keys": [
+        "cases",
+        "provenance",
+        "schema_version",
+        "tolerances"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "independent-source-kernel-execution-with-refined-root",
+        "repository": "https://github.com/bwaite/vpmb",
+        "commit": "bec938d84742e42dd43b574beec49ac26f6863ac",
+        "source_sha256": "337a84085e0b5a492ec6310a0b98edac4edcfa2bb16028792ca769881815726b",
+        "numerical_override": "First captured Boyle call only: mpmath70digit cubic bisection replaces1e-12m stopping rule",
+        "command": "local/oracles/python-env/bin/python tool/capture_vpm_gradient_kernels.py"
+      },
+      "declared_tolerances": {
+        "tolerances": {
+          "gradient_bar": 1e-08,
+          "surface_phase_min": 1e-09
+        }
+      },
+      "test_contracts": [
+        {
+          "path": "packages/deco_core/test/src/vpm/gradients_test.dart",
+          "sha256": "2add6929898adde83f282c26ce2fa45e618ecaa8d674bd5647556aeb581fe3b7"
+        }
+      ],
+      "comparison": "Field-specific tolerances in declared_tolerances and pinned test_contracts; discrete fields exact. No blanket tolerance."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/independent/vpmb-multilevel-descending-units.json",
+      "sha256": "bf7439f6cce28a047e5cda16507f6dd3785e7d2aa499fc9f9176f8535eefacd6",
+      "group": "independent",
+      "role": "independent-normalized-full-schedule",
+      "top_level_keys": [
+        "cases",
+        "normalization",
+        "provenance",
+        "schema_version",
+        "tolerances"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "independent-execution-normalized-policy-refined-roots",
+        "repository": "https://github.com/bwaite/vpmb",
+        "commit": "bec938d84742e42dd43b574beec49ac26f6863ac",
+        "source_sha256": "337a84085e0b5a492ec6310a0b98edac4edcfa2bb16028792ca769881815726b",
+        "generator_sha256": "76428ffe5038dd14ba7fd26adf5541132d792bc69c2ce564e55d05009fd40e93",
+        "adapter_sha256": "2d5a853c429e2d8c04f48b3ca4e1ac41616a5df079108008e0da10cf6963fd87",
+        "oxygen_adapter_sha256": "48e981893355081b94b121fa1103df216b5756dc80c9b1d530aebe5501d6e16e",
+        "command": "local/oracles/python-env/bin/python tool/capture_vpm_multilevel_descending.py"
+      },
+      "declared_tolerances": {
+        "tolerances": {
+          "time_min": 1e-07,
+          "tissue_bar": 1e-08,
+          "gradient_bar": 1e-08,
+          "radius_m": 1e-15,
+          "phase_min": 1e-07,
+          "cns_fraction": 1e-10,
+          "otu": 1e-09
+        }
+      },
+      "test_contracts": [
+        {
+          "path": "packages/deco_core/test/src/planning/vpm_multilevel_test.dart",
+          "sha256": "a950fccbde6cd0600bd357dd3da4f1d59e55432e66834918fc7016bd1fcad9b8"
+        }
+      ],
+      "comparison": "Field-specific tolerances in declared_tolerances and pinned test_contracts; discrete fields exact. No blanket tolerance."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/independent/vpmb-normalized-schedules.json",
+      "sha256": "84d16f7505c474a450bed5396b496457f5d29b839bb6bafd3330069a5cb8bd5d",
+      "group": "independent",
+      "role": "independent-normalized-full-schedule",
+      "top_level_keys": [
+        "cases",
+        "provenance",
+        "schema_version",
+        "tolerances"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "independent-execution-normalized-policy-refined-roots",
+        "repository": "https://github.com/bwaite/vpmb",
+        "commit": "bec938d84742e42dd43b574beec49ac26f6863ac",
+        "source_sha256": "337a84085e0b5a492ec6310a0b98edac4edcfa2bb16028792ca769881815726b",
+        "policy_normalization": [
+          "Minimum stop round argument +0.501, matches selected planner timing policy.",
+          "Boyle first-stop argument is maximum over trial iterations, selected planner policy.",
+          "Record surface actual gradient also on no-deco ascent; finalize repetitive excitation at SI0 before publishing the state.",
+          "Legacy replacement profiles explicitly calibrate surface pressure to1.01325bar and equilibrium N2 accordingly."
+        ],
+        "numerical_refinement": "mpmath70digit Boyle cubic and deco-zone roots; source equations remain independent of Dart.",
+        "command": "local/oracles/python-env/bin/python tool/capture_vpm_schedules.py"
+      },
+      "declared_tolerances": {
+        "tolerances": {
+          "time_min": 1e-07,
+          "tissue_bar": 1e-08,
+          "gradient_bar": 1e-08,
+          "radius_m": 1e-15,
+          "phase_min": 1e-07
+        }
+      },
+      "test_contracts": [
+        {
+          "path": "packages/deco_core/test/src/planning/vpm_schedule_test.dart",
+          "sha256": "139896514b43345a2f5b08695e312215dfcf8d47a500f9d209ad1a56bb6a3e4c"
+        }
+      ],
+      "comparison": "Field-specific tolerances in declared_tolerances and pinned test_contracts; discrete fields exact. No blanket tolerance."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/independent/vpmb-oc-80-30.json",
+      "sha256": "2d8c3f07f9b3960642a30058336f1df8316de3e00f3253a5a10bdd6031a563bf",
+      "group": "independent",
+      "role": "external-native-diagnostic-only",
+      "top_level_keys": [
+        "comparison_policy",
+        "expected",
+        "id",
+        "provenance",
+        "request",
+        "schema_version",
+        "scope"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "independent-execution",
+        "project": "bwaite/vpmb",
+        "repository": "https://github.com/bwaite/vpmb",
+        "commit": "bec938d84742e42dd43b574beec49ac26f6863ac",
+        "source_sha256": "337a84085e0b5a492ec6310a0b98edac4edcfa2bb16028792ca769881815726b",
+        "upstream_expected_sha256": "70591024af707b1c780950b08da5f2aefa414af90d65978cdd40417242158f10",
+        "numerical_modifications": false
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Not product schedule acceptance; native defaults differ. See reference-normalization.md."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/independent/vpmb-physical-high-precision.json",
+      "sha256": "053b61da69ddc5e715e2db5091a0d8dffb4d278d1b9b2e8a0335f1778b3ea37f",
+      "group": "independent",
+      "role": "independent-component",
+      "top_level_keys": [
+        "cases",
+        "provenance",
+        "schema_version",
+        "tolerances"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "independent-high-precision-equation-solve",
+        "solver": "mpmath 1.3.0",
+        "precision_decimal_digits": 70,
+        "primary_model": "https://github.com/bwaite/vpmb/blob/bec938d84742e42dd43b574beec49ac26f6863ac/vpmb.py",
+        "input_fixture_sha256": "946d338ba17577e07e38b66dc40e3b21682dadc027b935eafaf3b4886e0be3f0",
+        "command": "local/oracles/python-env/bin/python tool/capture_vpm_high_precision.py"
+      },
+      "declared_tolerances": {
+        "tolerances": {
+          "pressure_bar": 1e-08,
+          "radius_metres": 1e-15
+        }
+      },
+      "test_contracts": [
+        {
+          "path": "packages/deco_core/test/src/vpm/physics_test.dart",
+          "sha256": "9c937a92d087a0ed808c8765d611fa94e7842ade783b7e565f557811ca29adb7"
+        }
+      ],
+      "comparison": "Field-specific tolerances in declared_tolerances and pinned test_contracts; discrete fields exact. No blanket tolerance."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/independent/vpmb-physical-states.json",
+      "sha256": "946d338ba17577e07e38b66dc40e3b21682dadc027b935eafaf3b4886e0be3f0",
+      "group": "independent",
+      "role": "independent-component",
+      "top_level_keys": [
+        "cases",
+        "provenance",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "independent-execution-instrumented-states",
+        "repository": "https://github.com/bwaite/vpmb",
+        "commit": "bec938d84742e42dd43b574beec49ac26f6863ac",
+        "source_sha256": "337a84085e0b5a492ec6310a0b98edac4edcfa2bb16028792ca769881815726b",
+        "numerical_modifications": false,
+        "instrumentation": "Wrappers snapshot only after original methods; no inputs or numerical operations replaced",
+        "command": "local/oracles/python-env/bin/python tool/capture_vpm_physical_states.py"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [
+        {
+          "path": "packages/deco_core/test/src/vpm/physics_test.dart",
+          "sha256": "9c937a92d087a0ed808c8765d611fa94e7842ade783b7e565f557811ca29adb7"
+        }
+      ],
+      "comparison": "Field-specific tolerances in declared_tolerances and pinned test_contracts; discrete fields exact. No blanket tolerance."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/independent/vpmb-projected-ascent-contract.json",
+      "sha256": "37728bc40b799ad8797ee76e0ecfceffd10646ede776b1a12e8601e3f8e46b98",
+      "group": "independent",
+      "role": "independent-component",
+      "top_level_keys": [
+        "expected",
+        "id",
+        "input",
+        "original_selected_candidate_m",
+        "provenance",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "independent-synthetic-helper-execution",
+        "repository": "https://github.com/bwaite/vpmb",
+        "commit": "bec938d84742e42dd43b574beec49ac26f6863ac",
+        "source_sha256": "337a84085e0b5a492ec6310a0b98edac4edcfa2bb16028792ca769881815726b",
+        "command": "local/oracles/python-env/bin/python tool/capture_projected_ascent_contract.py"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [
+        {
+          "path": "packages/deco_core/test/src/vpm/gradients_test.dart",
+          "sha256": "2add6929898adde83f282c26ce2fa45e618ecaa8d674bd5647556aeb581fe3b7"
+        }
+      ],
+      "comparison": "Field-specific tolerances in declared_tolerances and pinned test_contracts; discrete fields exact. No blanket tolerance."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/independent/vpmb-redescent-normalized.json",
+      "sha256": "1a11ff55e763454c81ae3ddc8e76c01d7587e4ce2a1c0848f7f5fb4c46de0bf6",
+      "group": "independent",
+      "role": "independent-normalized-full-schedule",
+      "top_level_keys": [
+        "cases",
+        "normalization",
+        "provenance",
+        "schema_version",
+        "tolerances"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "independent-execution-with-explicit-partial-ascent-orchestration",
+        "repository": "https://github.com/bwaite/vpmb",
+        "commit": "bec938d84742e42dd43b574beec49ac26f6863ac",
+        "source_sha256": "337a84085e0b5a492ec6310a0b98edac4edcfa2bb16028792ca769881815726b",
+        "generator_sha256": "5d41539bcfec86f1be0dd2c620143d41a87ffb2777e96794e3c22efe856ef27d",
+        "adapter_sha256": "d8776099b3cb4713831157d752d3ec524c93bb17db323a91793716a6a9df416f",
+        "base_adapter_sha256": "2d5a853c429e2d8c04f48b3ca4e1ac41616a5df079108008e0da10cf6963fd87",
+        "oxygen_adapter_sha256": "48e981893355081b94b121fa1103df216b5756dc80c9b1d530aebe5501d6e16e",
+        "command": "local/oracles/python-env/bin/python tool/capture_vpm_redescent.py"
+      },
+      "declared_tolerances": {
+        "tolerances": {
+          "time_min": 1e-07,
+          "tissue_bar": 1e-08,
+          "gradient_bar": 1e-08,
+          "radius_m": 1e-15,
+          "cns_fraction": 1e-10,
+          "otu": 1e-09
+        }
+      },
+      "test_contracts": [
+        {
+          "path": "packages/deco_core/test/src/planning/vpm_redescent_test.dart",
+          "sha256": "04c4a3b5272bac2f0e9f7151b14dd3d6501f62383af15bfa48d3a62c0aee8a7e"
+        }
+      ],
+      "comparison": "Field-specific tolerances in declared_tolerances and pinned test_contracts; discrete fields exact. No blanket tolerance."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/altitude-b-acclimatized.json",
+      "sha256": "5d2416194b88659a28fbbc0cd19531363106c66bced82d19e9f16b1440b05839",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "18332a0a28aa23a6fbaaabc29656f74d1e68e335966cd77b726b99fd4f1a1d8c",
+        "source": "analysis/fixtures/results/altitude-b-acclimatized.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/altitude-b-ccr.json",
+      "sha256": "29c8e59e2f9dbf143dd5b6b1f2c1960eb64d7d161a4498d5f38bf3d87c658fd7",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "c41863c9eb4e980986f67f64e280f5b6a702e642f68b129f2438c9c2da348b24",
+        "source": "analysis/fixtures/results/altitude-b-ccr.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/altitude-b-travel.json",
+      "sha256": "09228ee360134e99908bf11290221562d5ac81ed5bf268c54c6dc61bda4e13f4",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "ccdf62b51f27be4ea8808989b20d3bc0d59ca6b5ec6b054473742177dd030f77",
+        "source": "analysis/fixtures/results/altitude-b-travel.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/altitude-c-acclimatized.json",
+      "sha256": "8ddf100656146c93b7c256cf82aebe60b464c2d3fbfd235aca3e7535e5d9a7ce",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "de0bfea748bea8652296030b9d4ba561c88ca51cc7bc148f29d67bdeea2e34b2",
+        "source": "analysis/fixtures/results/altitude-c-acclimatized.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/altitude-c-travel.json",
+      "sha256": "2de76a183f6ce24876358fdb45dfdfceb1ff7246344e108ee9f2b79fb2ea0e82",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "e70b22dce64255f1ca18e5984ca45ae79ac25e4be69c3cd9addb82ec0d11613f",
+        "source": "analysis/fixtures/results/altitude-c-travel.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/altitude-vpm-acclimatized.json",
+      "sha256": "2e7fd5e407c7a164824017ca1d271179f8eff3f8b19a582a20111e99e8ed2d36",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "38fc53ba33a57f1e8130f52cc38f2621b1f3e17828f33688de9b08715b745513",
+        "source": "analysis/fixtures/results/altitude-vpm-acclimatized.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/altitude-vpm-ccr-travel.json",
+      "sha256": "b05780c19beb9de51ea0df126aef550309b98ac7d47e34a21c96641a83c0c638",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "4119d55610e1702b9f3e30675c86b87524e08e804779efc93ea5e26c06230996",
+        "source": "analysis/fixtures/results/altitude-vpm-ccr-travel.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/altitude-vpm-ccr.json",
+      "sha256": "5f270ef2980e55d80d411472b6a0945965cbe363034f6c6f168d554eb7587a4a",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "c94bbf245e4fe54bbfb70b06781a7ca9b4a8921878d6cc18a47ea04cc44a75c5",
+        "source": "analysis/fixtures/results/altitude-vpm-ccr.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/altitude-vpm-travel.json",
+      "sha256": "d6978e5247974d30e0fa43459b40fa7e6d346407e0de0866a20f12e4f528e328",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "1f63a6339b986bd9b426582a7f3f2b0dec87bb133d49aeeafd170c5062e0a9b9",
+        "source": "analysis/fixtures/results/altitude-vpm-travel.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/b-bailout-explicit-transition.json",
+      "sha256": "e5efe0ce82a8c467f6434ec79ddf3d88283595f08dd533250b6264b63c718ca8",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "94893a46e222e9634f024fbe4f9f376c87fe75b1c79e65474a4f39f15236d3cb",
+        "source": "analysis/fixtures/results/b-bailout-explicit-transition.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/bailout-b-trimix.json",
+      "sha256": "7ce5e013ebdc40e4d1a7061158af2b238a56b935c03197d45c4aa7805a82d604",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "dd7ed43e063df26a019f3b91b7ac60045a65c767d6189f80e8760f7c155aad80",
+        "source": "analysis/fixtures/results/bailout-b-trimix.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/bailout-c-trimix.json",
+      "sha256": "62f4fb0653e4e156950c36b63b73d04db5c6db27d732db48ff3c47dab839f2ed",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "6f27b528e31b20a9b28d216aa3bde4e2c8eeebc0808dc3172d6cbf7163e9ccd7",
+        "source": "analysis/fixtures/results/bailout-c-trimix.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/bailout-gas-ratio-controller.json",
+      "sha256": "eee69e5c6cae2cdebe1d70d55d32e1c47317d42444a994028ee18e97faa0edd0",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "47a646200f678ba29257aa7883a30f4fc4f7529edacf39cd696d5348ea65187c",
+        "source": "analysis/fixtures/results/bailout-gas-ratio-controller.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/c-bailout-explicit-transition.json",
+      "sha256": "e1f8cc3accf3f3783781e30e2f43bbe71b1329c73d44539eb2cda12ddbcd2af5",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "0a6e7da2f475f0ea22a6da4e8700eb04a226bb446a475e0ac10f12d5fcf95bd6",
+        "source": "analysis/fixtures/results/c-bailout-explicit-transition.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/ccr-b-setpoint-switch.json",
+      "sha256": "f93fe4c7699e6673e909cccf974531da2a4cf4bdfba84d6c000922b0cfcd8a09",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "1ca817250be6fa676249d6b0443fd0e999c2ffc9913327c7d5b9f91a00037d86",
+        "source": "analysis/fixtures/results/ccr-b-setpoint-switch.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/ccr-b-trimix.json",
+      "sha256": "54464c02c324fa9fc647e9502db0f6707b81c15eed2998d8fc4f6d5ab33105de",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "6de1f2cb1c4ea6fa3992ab7830d1c19a7e420ab4a56d0b1dd07c28d99f3c7b1a",
+        "source": "analysis/fixtures/results/ccr-b-trimix.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/ccr-c-setpoint-switch.json",
+      "sha256": "ce21e49359018cc9a3a5663b040688e0755878d4a501946d6b3706c2d87790b1",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "86ffd31f52c22638a1f424faefd059d246a5e9582c541a01a90c05b568311372",
+        "source": "analysis/fixtures/results/ccr-c-setpoint-switch.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/ccr-c-trimix.json",
+      "sha256": "3636d732bfbccc10ccfa43515e16e17742ed48aa7bc5d7ae8132689f369b334b",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "95f4ec0e9aee9cbb78d80a728692a6c6a5ee3d7027df22da6080c7869cb42a1e",
+        "source": "analysis/fixtures/results/ccr-c-trimix.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/ccr-gas-ratio-controller.json",
+      "sha256": "5f68e3463191a9bbfad057b5b80cc4db51057b537efb3c2620c058fbc7fb594f",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "c9bdf7136a743fa1a295aa617086eb81ecff8e6bf2cc1d31b72030819e3e53a4",
+        "source": "analysis/fixtures/results/ccr-gas-ratio-controller.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/continuous-control.json",
+      "sha256": "029701c1a931055114028b0de37510e1d61afb78304763440d83f27f4adc6677",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "expected",
+        "fraction_tolerance",
+        "input",
+        "pressure_tolerance_bar",
+        "provenance",
+        "rationale",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "legacy-original-runtime",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "source_fixture_sha256": "4becb425255f665c7dcd82a6d6b7697b17e0a38b191f7e64f775b13b994d9f82"
+      },
+      "declared_tolerances": {
+        "pressure_tolerance_bar": 3e-05,
+        "fraction_tolerance": 1e-07
+      },
+      "test_contracts": [
+        {
+          "path": "packages/deco_core/test/src/gas/continuous_test.dart",
+          "sha256": "1efdce97a93e636553eb512791788db0a8dc0bbfa3c791a9305f2f4051ac2999"
+        }
+      ],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/imperial-b-bailout.json",
+      "sha256": "0ffbc95546c1b4aa31917aa369a916a735e91345a951775ddd68b48d0be255f4",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "normalization",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "0ab2b008fe100ff94cb437c9c20ff97ce5c8ef2446c8b62c3dade99198f88395",
+        "source": "analysis/fixtures/results/imperial-b-bailout.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/imperial-b-ccr.json",
+      "sha256": "b0abd315411519db81f42ed6fd6e68a840cef27a7630d9f960e7807270ce9393",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "normalization",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "5d34c7288d86edd5685e01bbcb959052d9f71ce617763481b9bcabfa383a7a8d",
+        "source": "analysis/fixtures/results/imperial-b-ccr.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/imperial-b-oc.json",
+      "sha256": "1743e2d5b204c89179026216fae67e5c0e3abcbbcf4e884b49b32dde992af79e",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "normalization",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "1ca05f773966a8341fb29ddb955bfcffd1db9a703639ef6f20f41ebd4d448049",
+        "source": "analysis/fixtures/results/imperial-b-oc.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/imperial-c-bailout.json",
+      "sha256": "0343c3cbf679519083645b90d9e4c1bfebc4ba355025f64d47729ce4b311adc8",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "normalization",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "a351b1be157239e800bccf5171b37c6ffc770dc01257720108bc7073ad40302f",
+        "source": "analysis/fixtures/results/imperial-c-bailout.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/imperial-c-ccr.json",
+      "sha256": "e3bda3382ca7e237c9388e8a48331db66dee7ef9acd3de1cf83b1f3245f2ae6a",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "normalization",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "4dcd26b20a2ee310b753e04a0660a401bc47ac12bd848eff10b3e09cb25e0096",
+        "source": "analysis/fixtures/results/imperial-c-ccr.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/imperial-c-oc.json",
+      "sha256": "39a2cd768f6ae889f7be4a22b17458d6dc85a512936b7e8769664207fd1f9406",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "normalization",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "950cf2146858047a41c8211f569532087eb35f50e367549806dbb5252f13cd07",
+        "source": "analysis/fixtures/results/imperial-c-oc.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/imperial-vpm-bailout.json",
+      "sha256": "17c9d255a7eee891268b57647aeba1d43650ed7493cacc65a32ac9ed345780a9",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "normalization",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "736f306f86734cce1e929afe989adcf5e5b3872fe934191f464f6d3a45334a0c",
+        "source": "analysis/fixtures/results/imperial-vpm-bailout.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/imperial-vpm-ccr.json",
+      "sha256": "72f20993eb9ba4483cd0ed87e344ecff1dd911af975d820b043ec4cd7e3564b4",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "normalization",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "4e1f5f359e14074c9a2fe2ae445fb8c1c7fef8b43c17f5f2fada4c725d6446aa",
+        "source": "analysis/fixtures/results/imperial-vpm-ccr.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/imperial-vpm-oc.json",
+      "sha256": "c20c5f13b5ad8cbb3943412cb73214159a277cf490ce94a7db202039f27297b5",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "normalization",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "4dfe08033d9af67ea1b45058209dd4af94331aaa220fe76e77267e96123e60c5",
+        "source": "analysis/fixtures/results/imperial-vpm-oc.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/last-stop-double-b.json",
+      "sha256": "d3f1b876c0d6822cc8b58cca997d84f4c67e497a85deafb0403dedc72a15cdd6",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "33dd3748c2af69529074a0ff0f6eaf82d60fa95ce6c31f058d492742cf1d9cd8",
+        "source": "analysis/fixtures/results/last-stop-double-b.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [
+        {
+          "path": "packages/deco_core/test/src/planning/legacy_oc_test.dart",
+          "sha256": "4d597cbd7fb2f908f894b151e6271ae6e75c607e2a00d56a93a9b0aabfa9261f"
+        }
+      ],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/last-stop-double-vpm.json",
+      "sha256": "29f6838c6d8577783be3eb2fdb786076083d17538a08ad6a62eca98179c1d1b6",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "3415671a60cc5381cbcd36444af4fe8dfb6448dc5b70d16de1d274f0b7b9d21b",
+        "source": "analysis/fixtures/results/last-stop-double-vpm.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [
+        {
+          "path": "packages/deco_core/test/src/planning/vpm_schedule_test.dart",
+          "sha256": "139896514b43345a2f5b08695e312215dfcf8d47a500f9d209ad1a56bb6a3e4c"
+        }
+      ],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/minimum-stop-override-b.json",
+      "sha256": "55e1b8c6eae8cb49fbbda1c849cbd709e2b743108f8bbd103fda6ef088aea61c",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "bc1bf9723e0c7209c050ce8d90af1dfa9aaa55772d2602a4109e088c841c332a",
+        "source": "analysis/fixtures/results/minimum-stop-override-b.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [
+        {
+          "path": "packages/deco_core/test/src/planning/legacy_oc_test.dart",
+          "sha256": "4d597cbd7fb2f908f894b151e6271ae6e75c607e2a00d56a93a9b0aabfa9261f"
+        }
+      ],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/oc-air-30m-20min.json",
+      "sha256": "7daa50b33c68737e86abd9c81265d020318c4f506d5e6d500d8bd49a09861391",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "034c08a574a92dd232606cda998db52b5190960b41165ff83bf1847662e3d9c3",
+        "source": "analysis/fixtures/results/oc-air-30m-20min.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [
+        {
+          "path": "packages/deco_core/test/src/planning/buhlmann_schedule_test.dart",
+          "sha256": "62aaaa2fa09cd95049afd4106839da87e53aae8f87c53b7f9f047fafc766d223"
+        }
+      ],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/oc-b-deco-switch.json",
+      "sha256": "415c4c390d806587f5fef0780a8dddaf77c55f10717f9254342326c75693bbbb",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "64929c96026c44ecb64a61ab40341457538a1d183d6230eb13c28d8757fd57ad",
+        "source": "analysis/fixtures/results/oc-b-deco-switch.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [
+        {
+          "path": "packages/deco_core/test/src/planning/legacy_oc_test.dart",
+          "sha256": "4d597cbd7fb2f908f894b151e6271ae6e75c607e2a00d56a93a9b0aabfa9261f"
+        }
+      ],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/oc-b-gf100.json",
+      "sha256": "7fa55751dc140ce73cb762873431ecc75fe1e47747bcc4c12f0c2cf510597c21",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "8382c99e3a3c02957b08d06463a86b991b6b7a28af10d12a6f85159c93b66155",
+        "source": "analysis/fixtures/results/oc-b-gf100.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [
+        {
+          "path": "packages/deco_core/test/src/planning/legacy_oc_test.dart",
+          "sha256": "4d597cbd7fb2f908f894b151e6271ae6e75c607e2a00d56a93a9b0aabfa9261f"
+        }
+      ],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/oc-b-lost-oxygen.json",
+      "sha256": "9a800f30c9935c2302dee90cbe37812882e49569588ed4c65532d98506b6c4c2",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "198f6b5d9f6916cf98e71deb293e68990d858dbc56fd9541da696576555a8231",
+        "source": "analysis/fixtures/results/oc-b-lost-oxygen.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [
+        {
+          "path": "packages/deco_core/test/src/planning/legacy_oc_test.dart",
+          "sha256": "4d597cbd7fb2f908f894b151e6271ae6e75c607e2a00d56a93a9b0aabfa9261f"
+        }
+      ],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/oc-b-multilevel.json",
+      "sha256": "19b3c1291c38f9a553419df5fa6527cc6b45e54560a3e9d59bf2630e8fd31797",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "e431ed630ae2ef663649ab1a5ccb8a55af25c5115318724cebbf1af614da0ef6",
+        "source": "analysis/fixtures/results/oc-b-multilevel.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [
+        {
+          "path": "packages/deco_core/test/src/planning/legacy_oc_test.dart",
+          "sha256": "4d597cbd7fb2f908f894b151e6271ae6e75c607e2a00d56a93a9b0aabfa9261f"
+        }
+      ],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/oc-b-no-deco.json",
+      "sha256": "6cecb7d18a3b49e7db59d40cce46ec7175888acbc8ba99934418792118f4f164",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "c59efaeb4912ae205f3badb6bac2831428a160ec36092ab476d568146926634e",
+        "source": "analysis/fixtures/results/oc-b-no-deco.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [
+        {
+          "path": "packages/deco_core/test/src/planning/legacy_oc_test.dart",
+          "sha256": "4d597cbd7fb2f908f894b151e6271ae6e75c607e2a00d56a93a9b0aabfa9261f"
+        }
+      ],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/oc-c-deco-switch.json",
+      "sha256": "c15444ffe649721dd4ac9d1752eb746768df7c72cb1bf4f3c6ba2c3e0b27fb43",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "a3412ffe2eb78063aed0f651e9fd4fc38742dd521d46c641ee08a71f75a95ae9",
+        "source": "analysis/fixtures/results/oc-c-deco-switch.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [
+        {
+          "path": "packages/deco_core/test/src/planning/legacy_oc_test.dart",
+          "sha256": "4d597cbd7fb2f908f894b151e6271ae6e75c607e2a00d56a93a9b0aabfa9261f"
+        }
+      ],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/oc-c-gf100.json",
+      "sha256": "2a06f4ee33731689b3ca19f1db6371085f46cbcc7455654363b85f3effe3faf4",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "e117614878b479e837d721c0200eec98688b4b8cdc7e425fb54678b72a0bac98",
+        "source": "analysis/fixtures/results/oc-c-gf100.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [
+        {
+          "path": "packages/deco_core/test/src/planning/legacy_oc_test.dart",
+          "sha256": "4d597cbd7fb2f908f894b151e6271ae6e75c607e2a00d56a93a9b0aabfa9261f"
+        }
+      ],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/oc-c-lost-oxygen.json",
+      "sha256": "ef60cae2a06998009ccdb462327252c588d2e5d56375f81f53b82cb7f1842983",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "bc43c61ef3094929de8e5e2f941512e31ac7981f416780dd00cf5c7d1f15a6ee",
+        "source": "analysis/fixtures/results/oc-c-lost-oxygen.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [
+        {
+          "path": "packages/deco_core/test/src/planning/legacy_oc_test.dart",
+          "sha256": "4d597cbd7fb2f908f894b151e6271ae6e75c607e2a00d56a93a9b0aabfa9261f"
+        }
+      ],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/oc-c-multilevel.json",
+      "sha256": "591e2b0f0a0accb32ec747915390a3e27e43fd5d50b9e5adff39859b950b3fc5",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "9032ecd629bbcc783c82286c3bb967686e548f7d77eaa7e56021f414ed3a4abf",
+        "source": "analysis/fixtures/results/oc-c-multilevel.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [
+        {
+          "path": "packages/deco_core/test/src/planning/legacy_oc_test.dart",
+          "sha256": "4d597cbd7fb2f908f894b151e6271ae6e75c607e2a00d56a93a9b0aabfa9261f"
+        }
+      ],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/oc-c-no-deco.json",
+      "sha256": "00d6f4e0d7b52f491ea63a18d9ede803a42347e01104009b809b611c5b247a18",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "0bf90bd0788e27390bea6dec2401930c27aad762424c58a2d1a4f5553dd6924b",
+        "source": "analysis/fixtures/results/oc-c-no-deco.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [
+        {
+          "path": "packages/deco_core/test/src/planning/legacy_oc_test.dart",
+          "sha256": "4d597cbd7fb2f908f894b151e6271ae6e75c607e2a00d56a93a9b0aabfa9261f"
+        }
+      ],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/oc-double-rmv-controller.json",
+      "sha256": "958be803552a871ce7706a0e84838c8b3c0e18c8a341e83c6e261c017314aebf",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "253f8764a2e2d91211060b7dc72f045c6e9aafda054f56cb3a975101cccd6651",
+        "source": "analysis/fixtures/results/oc-double-rmv-controller.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/oc-gas-ratio-controller.json",
+      "sha256": "632d13688dfe2ed8e7a03b8eaf663ba15d4b3ce5ee70046bd82aa8a9574d4b37",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "77a988b5291957f29e4f75b5cb274ebd348664553e91778fa8519358ed2f66b7",
+        "source": "analysis/fixtures/results/oc-gas-ratio-controller.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/oc-gas-tank-controller.json",
+      "sha256": "4ae827b4158daf0723f755c80e429c4f9954f00fb883e66fc42c6583915668eb",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "4b50bfa002d1db11cd528827f889e82fba59703e1d9c45c03bda79a1d3710178",
+        "source": "analysis/fixtures/results/oc-gas-tank-controller.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/oc-imperial-gas-controller.json",
+      "sha256": "7a4f3561348b7560db3eeafc3b2ec3df048e1b5410ef9641ac745cfd3d3d94f6",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "normalization",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "e07981566cf9200f99891b7d4b68e72ccac5ad5ad12e4d01297da602cc4a82d0",
+        "source": "analysis/fixtures/results/oc-imperial-gas-controller.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/oc-nitrox-18m-30min.json",
+      "sha256": "f1512928faa5e19404925c397b4e5cfd0a824d39682dca8d9a3bf9872850c687",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "b445bb4cb677336022bebfcafa418054b7f649d1d8ec026114c300225c5f074c",
+        "source": "analysis/fixtures/results/oc-nitrox-18m-30min.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [
+        {
+          "path": "packages/deco_core/test/src/planning/legacy_oc_test.dart",
+          "sha256": "4d597cbd7fb2f908f894b151e6271ae6e75c607e2a00d56a93a9b0aabfa9261f"
+        }
+      ],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/oc-zero-rmv-controller.json",
+      "sha256": "a4a8aaca8146ca3f73cd8e224ec5f73c52827484c1b7295fdccfe8a95d0f16d2",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "ff503465410bfea38d8355ba2a9f1a6850475fe384b085b1f7846892649b4a55",
+        "source": "analysis/fixtures/results/oc-zero-rmv-controller.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/repetitive-b-0.json",
+      "sha256": "765280a097d8aedda6e1d0ffc55c9bf91680f11ad2a03d45c44d2675594050ac",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "c65e743f6f39c75c0bd3e69b50ffce0d4dcfa765529137aca2dea72c07a6aa35",
+        "source": "analysis/fixtures/results/repetitive-b-0.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/repetitive-b-1440.json",
+      "sha256": "d8ff35b4495e11e1cd62e39e3057e1b9e6f0dc4b9b6521e00fd400cc4a9ab257",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "8a9966b7ed4a896046a08086a39b19b5c9146f5f54feb00e86c1f139472a4fa4",
+        "source": "analysis/fixtures/results/repetitive-b-1440.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/repetitive-b-180.json",
+      "sha256": "feb4412e65f28f80528545af04f6a84d22ae3fc664d68574ab7777ef82403c37",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "1c501e74993318c68ecdfd7630bf6d9fe1ae847ceb0e0e3e621ce707f431c226",
+        "source": "analysis/fixtures/results/repetitive-b-180.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/repetitive-b-45.json",
+      "sha256": "5d5d9900350f1b5b93c3e49dd4a08c71fd613b1303e3997962f8a53d8c93110b",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "afff53fb2385a3b555361dea2fc3f64cbdb166d6b5390c77cdeadbba723c5220",
+        "source": "analysis/fixtures/results/repetitive-b-45.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/repetitive-b-60.json",
+      "sha256": "eb44ac2e6f732b31a29a0698bf7205a393e95d9f76d53c21b6d2bbee33418bf6",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "b5b289b46c3bc8e9808eda8c940d4badbdcd149be90b2f925cf140f63497c9df",
+        "source": "analysis/fixtures/results/repetitive-b-60.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/repetitive-b-ccr.json",
+      "sha256": "9b6afdd2f25dee552dde89244f21c0f4dcfbc7e58e45f564a8e1169274d5af56",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "101c6bd3c04ad689426ee42b709ab374320fb94875eeb1042be03c32b94357f2",
+        "source": "analysis/fixtures/results/repetitive-b-ccr.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/repetitive-c-0.json",
+      "sha256": "11e9bafa6e10f813fc5761556fdb43ae2f89d5a228711f1af4bc58a55c7115c4",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "e45eee74d1a2a3076f738d99378523ec53b4f9f5fd5a6229ea598f22cce9888d",
+        "source": "analysis/fixtures/results/repetitive-c-0.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/repetitive-c-1440.json",
+      "sha256": "28796d967c912b9edf2635180b985ac835bcff35ef8639f72f510a38fac7367a",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "aab6abd9bb77dc2f5b812cacf941233a8849378f3750dbc0312f6f102adc1420",
+        "source": "analysis/fixtures/results/repetitive-c-1440.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/repetitive-c-180.json",
+      "sha256": "ad5a8fe493a3512915b202a42151590de6150500453f407175a8e5ded97627fd",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "c6155944d4edfa58f376a2f351fa24c09356a1408047e4e35982d91d88433a46",
+        "source": "analysis/fixtures/results/repetitive-c-180.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/repetitive-c-45.json",
+      "sha256": "200b157f3a1645245b44b21a2573cda70120ca246714159c40b893ad0214d568",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "833eb7d156cff25f9e5a0a42e5d2d4128c391657676325d82a1a3f9370f98981",
+        "source": "analysis/fixtures/results/repetitive-c-45.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/repetitive-c-60.json",
+      "sha256": "e97d8f8d686394f7e62eb78d0cf0e6021d55dfe15d76932b0d3bb659f9cbbcde",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "ec124694de4b2f377d5911b4075b8c3a07e28959665470412210c7b5ee3e1ff7",
+        "source": "analysis/fixtures/results/repetitive-c-60.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/repetitive-vpm-0.json",
+      "sha256": "0d5379048adef1ba895ee474653a0075f68228c438455dd72d2e2c606676010e",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "cf73032aa6c2539fe622061031638a2944f846934801270534b1a60fdebc2e12",
+        "source": "analysis/fixtures/results/repetitive-vpm-0.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/repetitive-vpm-1440.json",
+      "sha256": "a7ddb5daaa2d0967fa4ddf914db3b51c65dacf91caa7a04718a1ce667291def5",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "91621206a70c3e33f0ac22b79436e41a19341d84e5ddc9907b2b90b9efeb4667",
+        "source": "analysis/fixtures/results/repetitive-vpm-1440.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/repetitive-vpm-180.json",
+      "sha256": "b2e973147e70e30e009aa463e869a3f41b546a6b695206ed6fb03e3d3716e7e1",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "efc88e2bbad9a66b837407db0bd12b1377dcd43be88bf4eff7f42c0bf88be62b",
+        "source": "analysis/fixtures/results/repetitive-vpm-180.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/repetitive-vpm-45.json",
+      "sha256": "c2986f41b173f1db6eeb8a8cc4d102e0d62aec76e7bdb4b8b4168c4dcd9a3e6f",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "0876420875a56a261727ead4ec56df2883ff6411df55c04a6475482507cd9fcd",
+        "source": "analysis/fixtures/results/repetitive-vpm-45.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/repetitive-vpm-60.json",
+      "sha256": "6005eb411dc2c7ab868edfe89f68fde4f5e9088a64a876323d9d3df245af6a75",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "81c2fba19e57630151906f6b19528650eda4b9cb43955fd4183e148aedd0449d",
+        "source": "analysis/fixtures/results/repetitive-vpm-60.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/repetitive-vpm-ccr.json",
+      "sha256": "0b5af4cd43c65405b0e89ad4a6654df73408edc7ad0fedf975e1543cab5a36f6",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "5d4716b717685be007df207f8a5c788494c31db73f77d9833c5f1458f5ca40e2",
+        "source": "analysis/fixtures/results/repetitive-vpm-ccr.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/vpm-bailout-c0.json",
+      "sha256": "1aca81c720a8d7754eca313029c449b4c79100a031798b56be30f466149d75f4",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "3b7346b2a555b3ea9af3fb3cdb1035f5e467604db03e725cd79b9b364369d50f",
+        "source": "analysis/fixtures/results/vpm-bailout-c0.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/vpm-bailout-c1.json",
+      "sha256": "b46dc54620bf388e9e935f3b087aeea50dbf7bfed5b0470d3ca193c750741267",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "e74d3f8ed2356be6e2861d8b49944ebe9a6c721a1fb4cc1b5649520b12dea7a1",
+        "source": "analysis/fixtures/results/vpm-bailout-c1.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/vpm-bailout-c2.json",
+      "sha256": "f0987ed7ac90cc2dece7e2d668313bc864b1479bc03c48c2ba79b0d68a442f6a",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "41ead06a4ef39bf5bf77f831226fd9f7677d661e654c35d54737f5b6a8b23e40",
+        "source": "analysis/fixtures/results/vpm-bailout-c2.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/vpm-bailout-c3.json",
+      "sha256": "3576929f9cb6423225fdcc91fca5d55e17d0e02377a45ba31f18ed2bd9caad4b",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "9d1cfe8d13453654e37fa2aa27f9f2bd7a027fb2dbdfbb714e1dec2e5538b64f",
+        "source": "analysis/fixtures/results/vpm-bailout-c3.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/vpm-bailout-c4.json",
+      "sha256": "f0945cc1808d53a15d8ffb99e9aa353a7d65377252b5bcb01a22cc0bcdbe8b79",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "1757e1fa3786b24b666a4f7f41579c03281231bc13cd242e55855109d469a40b",
+        "source": "analysis/fixtures/results/vpm-bailout-c4.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/vpm-bailout-explicit-transition.json",
+      "sha256": "f9911f3107871c315d843120bb8f5c81ae02d9bc9e98a0d8f769669e6062acef",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "05fdd1fa6afb27dadfe9db3b756e61f3cea71a677d443d2af70ef6a0f38b7fab",
+        "source": "analysis/fixtures/results/vpm-bailout-explicit-transition.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/vpm-ccr-c0.json",
+      "sha256": "accd45e6b5b048ec41d57b1ca21f25ccf1248f3cd72e190d146b9d6d0605f0d4",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "d2883d66502c7c65b9ce6f826cc2a5222e1d9a9f942d32579758f8a47cb128d2",
+        "source": "analysis/fixtures/results/vpm-ccr-c0.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/vpm-ccr-c1.json",
+      "sha256": "1be4169d2cddf47bcf11424a2086c934c68b43d67a43ee708dd21095f6929fb7",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "0ec340e85f8d90d78b0f681ac8a577455163dc8c15988ba40c01c41f6315eb6b",
+        "source": "analysis/fixtures/results/vpm-ccr-c1.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/vpm-ccr-c2.json",
+      "sha256": "d780e6009ad9c1f7f3eaad06a3ea38952c62a5aea894cc2b27c34d231b4502eb",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "69948f177660834938c0ced1418d95d2baa862ff3e8a89b7b15d8972f396d1e3",
+        "source": "analysis/fixtures/results/vpm-ccr-c2.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/vpm-ccr-c3.json",
+      "sha256": "0b5cf50efb20b0945e688cf1443c8801ff09091515a5f1726705c4ef5814e691",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "1149e3774deea9808c5b59407b6c2bcac94cc7ffe6718eaa5fe08212bc4880ec",
+        "source": "analysis/fixtures/results/vpm-ccr-c3.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/vpm-ccr-c4.json",
+      "sha256": "7a706ff805638dc70d51c2fb5da71a611abe1f8cd9d3f0ce7b731aa1589951e8",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "2562145343afd1da2ea2639c468d122f9fa8b8fe9dc9dd10f1eb371a4c1a97ea",
+        "source": "analysis/fixtures/results/vpm-ccr-c4.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/vpm-ccr-setpoint-switch.json",
+      "sha256": "a87fb21c85407f238dabdb5329e44a043fb5ad090a8db7cc9a58117de77fc0ad",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "ca9dbe840aea9a6f6e607a02ff624d887eb140c79ae853c71c453cca94e13970",
+        "source": "analysis/fixtures/results/vpm-ccr-setpoint-switch.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/vpm-oc-c0.json",
+      "sha256": "aade6da1368a634afad2cecbdabfc8d3954331b9f6e379d48f0668047592aa5a",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "81e56729edaa36a13170d2f57b410adca8f20c52a5e8e15982b1dc87e8b5594d",
+        "source": "analysis/fixtures/results/vpm-oc-c0.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/vpm-oc-c1.json",
+      "sha256": "77d75b8392aaaac5773bcbf55a65c42a111ff507b5811a37299e1ea2b61b3b34",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "90e09c4d45db52def582d3785da51c71d0a38e98d87368626909fa730a495f01",
+        "source": "analysis/fixtures/results/vpm-oc-c1.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/vpm-oc-c2.json",
+      "sha256": "69faf663e30d4bcb47600c0e1aa198efac8b1e5da15c6b1ccb2b5777e6108f94",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "6e3ca6b859ee749a1e50acf2bc2ed871c2c727f0647e6ff1a1b94c1009424bbd",
+        "source": "analysis/fixtures/results/vpm-oc-c2.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/vpm-oc-c3.json",
+      "sha256": "dc98a264a9f71c6d782510acacc5b373a2939a8e37919fc0d48647956b3ce600",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "a8cf57de15182214c5048cbb033cabedd72e6ddcad5a1751a61da597a08c675e",
+        "source": "analysis/fixtures/results/vpm-oc-c3.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/vpm-oc-c4.json",
+      "sha256": "00877ef79b54568679aaf0bd157b2ad32f151086a524c7ad45fcfdd37bd7eaeb",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "5ec6f8597103738b2ffb961746e54f97263b0f91f6ef068e000dd4c263bec861",
+        "source": "analysis/fixtures/results/vpm-oc-c4.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/vpm-oc-lost-oxygen.json",
+      "sha256": "3130f225839b8c844c01b943397666f98ee25592eaf1c27940b946f1b2e19cd2",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "0d414d08ced7bca35d4e805b8199648cbaf9d513dd03fdfef1acf06e4cf9ebb6",
+        "source": "analysis/fixtures/results/vpm-oc-lost-oxygen.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/vpm-oc-multilevel.json",
+      "sha256": "6eca578a0fe3313fa47cefbd0e1a9b15021f6ab94b36921921309a3b37e5f9eb",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "c9c046c72ee84621f2fb99a3e8e92a065728e6632bfd3d2583f6eced39c533c6",
+        "source": "analysis/fixtures/results/vpm-oc-multilevel.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/vpm-oc-no-critical-volume.json",
+      "sha256": "ccf0d5cdb0413631756c97914dbed347098497a9d34feb519375aaae92113952",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "0587403668c47935aeedf9e3047e9e0c68daf05a2c957b88bc20e12041e26614",
+        "source": "analysis/fixtures/results/vpm-oc-no-critical-volume.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/vpm-oc-no-deco.json",
+      "sha256": "5ac44b4c70680b8b504be9e3ae9f336e85c247ae77407bfcd54f9f3367b993bc",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "observed",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "c7994eb003509953c5cde3ee80b1656e5a4265ab1b112beef31241c5d99b7ba3",
+        "source": "analysis/fixtures/results/vpm-oc-no-deco.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/zero-depth-zero-duration.json",
+      "sha256": "7ee9b825eb5fad5531a78f762d4aaf071b40aa294f86c0f1fdc3c47c46b4633e",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "93421f30614c3a4692ed8b941f5c854ae73c3aaa91e6ff3618fa9160b61c1945",
+        "source": "analysis/fixtures/results/zero-depth-zero-duration.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/legacy_baseline/zero-hold-after-descent.json",
+      "sha256": "f333ca65119cbecc73e723477636e28401e459bc173f196f7ce27bf6de666808",
+      "group": "legacy_baseline",
+      "role": "preserved-original-observation",
+      "top_level_keys": [
+        "id",
+        "outcome",
+        "provenance",
+        "request",
+        "role",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "original_result_sha256": "894ec0028e9590dbee560fbd9cd3dda79b1a8606f0efeff8f0866d922fc6a05d",
+        "source": "analysis/fixtures/results/zero-hold-after-descent.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/parameters/buhlmann-observed.json",
+      "sha256": "2038b14c34032de7e4e91babb49b0fe447527930132f8ae29825842ccf38a098",
+      "group": "parameters",
+      "role": "recorded-original-parameters",
+      "top_level_keys": [
+        "provenance",
+        "purpose",
+        "schema_version",
+        "tables",
+        "units"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "source_sha256": "86fd06776f6b93aa778cb7e027f5959c45357ada4d89913146e6e0afc8cdecb2",
+        "source": "analysis/coefficients/buhlmann.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/parameters/z-observed.json",
+      "sha256": "414484ae4d95211cc3bc4ace0950dc096ccf3c6b44cfb9d593faa99653600658",
+      "group": "parameters",
+      "role": "recorded-original-parameters",
+      "top_level_keys": [
+        "pressure_step_bar",
+        "provenance",
+        "schema_version",
+        "tables",
+        "temperature_celsius"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "kind": "observed-numeric-parameters",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "source_sha256": "a4e146f221edef9c710c6c6471fd18ccde4be27a3ad9e95c4d625fd34ab1fff9",
+        "source": "analysis/coefficients/mixing.json"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [
+        {
+          "path": "packages/deco_core/test/src/gas/compressibility_test.dart",
+          "sha256": "ac3e1ec1f0a5b122d73d3e3f95c2a16fadc6122743dc6a17e8e474da3f0440d0"
+        }
+      ],
+      "comparison": "Preserved observation; neither independent validation nor corrected expected output."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/regression/cns-clipped-lower-band-equality.json",
+      "sha256": "ee87556ef6a30e2411e2613159e9972b5377b32ae4beb3dade9406cd371a1d02",
+      "group": "regression",
+      "role": "corrected-regression",
+      "top_level_keys": [
+        "correction",
+        "expected",
+        "id",
+        "legacy_observed",
+        "provenance",
+        "request",
+        "schema_version"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "legacy_result_sha256": "f134fa17dee29ac85dd9435f36611434c9315dab68ef1bb79cbe3862c745a355",
+        "expected_origin": "Independent mpmath quadrature of Baker table; not Dart output",
+        "command": "local/oracles/python-env/bin/python tool/capture_schedule_oxygen_replay.py"
+      },
+      "declared_tolerances": {},
+      "test_contracts": [
+        {
+          "path": "packages/deco_core/test/src/oxygen/oxygen_test.dart",
+          "sha256": "f64e2705ce616eae70e5fa235854bc90ae2adb6cc77b94a0c3496b8d78ea401d"
+        }
+      ],
+      "comparison": "Field-specific tolerances in declared_tolerances and pinned test_contracts; discrete fields exact. No blanket tolerance."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/regression/oc-b-multilevel-gas-label-corrected.json",
+      "sha256": "0d9a64fae99f23520c3b6023d8510a4ad749d2921a034f13a85c927a919a8b74",
+      "group": "regression",
+      "role": "corrected-regression-linked-to-independent-replay",
+      "top_level_keys": [
+        "correction",
+        "expected",
+        "id",
+        "provenance",
+        "request",
+        "schema_version",
+        "tolerances"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "legacy_fixture_sha256": "19b3c1291c38f9a553419df5fa6527cc6b45e54560a3e9d59bf2630e8fd31797",
+        "independent_fixture": "oc-b-multilevel-tissue-replay.json",
+        "independent_fixture_sha256": "33ebea1946186d77deb9d3a693d923dd6825dc324e73074ac645a5d48d106da4",
+        "expected_origin": "external DecoTengu tissue replay, not Dart actual output"
+      },
+      "declared_tolerances": {
+        "tolerances": {
+          "tissue_bar": 1e-10,
+          "time_min": 1e-10
+        }
+      },
+      "test_contracts": [],
+      "comparison": "Expected must equal linked independent replay; both input-source hashes must match."
+    },
+    {
+      "path": "packages/deco_core/test/fixtures/regression/oc-c-multilevel-gas-label-corrected.json",
+      "sha256": "bc53d9cff3aac316cc48800aed6c144fff33d5c696630a9f1993f1e90edd90a2",
+      "group": "regression",
+      "role": "corrected-regression-linked-to-independent-replay",
+      "top_level_keys": [
+        "correction",
+        "expected",
+        "id",
+        "provenance",
+        "request",
+        "schema_version",
+        "tolerances"
+      ],
+      "schema_version": 1,
+      "provenance": {
+        "legacy_fixture_sha256": "591e2b0f0a0accb32ec747915390a3e27e43fd5d50b9e5adff39859b950b3fc5",
+        "independent_fixture": "oc-c-multilevel-tissue-replay.json",
+        "independent_fixture_sha256": "c94bd3acafbb77b8dbbcf84a2cea56bd3fd208a5a90774e68a8900190db3a0ca",
+        "expected_origin": "external DecoTengu tissue replay, not Dart actual output"
+      },
+      "declared_tolerances": {
+        "tolerances": {
+          "tissue_bar": 1e-10,
+          "time_min": 1e-10
+        }
+      },
+      "test_contracts": [],
+      "comparison": "Expected must equal linked independent replay; both input-source hashes must match."
+    }
+  ]
+}

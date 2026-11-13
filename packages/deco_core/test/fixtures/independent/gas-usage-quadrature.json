@@ -1,0 +1,6160 @@
+{
+  "schema_version": 1,
+  "provenance": {
+    "kind": "independent-quadrature-and-aggregation",
+    "mpmath": "1.3.0",
+    "precision_decimal_digits": 70,
+    "source_sha256": {
+      "buhlmann-oc-normalized-schedules.json": "a6dad9f63976965002d84b816c47cc1791a0136c2ea408c40c2497884d36be61",
+      "buhlmann-bailout-normalized.json": "39b39eb144981123e6fb8a0f7b9b31734d651fb04ceb2a538a83095f9c0a5aea"
+    },
+    "generator_sha256": "3df8bd3a724218cb4d1af40c0fb424d181683ecfc503589dcbe78fb83db4fdb7",
+    "command": "local/oracles/python-env/bin/python tool/capture_usage_reference.py"
+  },
+  "segment_litre_tolerance": 1e-08,
+  "quantity_tolerance": 1e-08,
+  "cases": [
+    {
+      "id": "oc-0",
+      "context": {
+        "surface_bar": 1.01325,
+        "vapour_bar": 0.0627,
+        "initial_n2_bar": 0.7509345000000001,
+        "bar_per_metre": 0.1,
+        "depth_factor": 1,
+        "descent_m_min": 10,
+        "ascent_m_min": 9,
+        "step_m": 3,
+        "last_stop_m": 3,
+        "gf_low": 0.3,
+        "gf_high": 0.85,
+        "minimum_stop_min": 1,
+        "include_descent": true
+      },
+      "rates": [
+        20,
+        15,
+        0.7,
+        0.5
+      ],
+      "segments": [
+        {
+          "start_depth_m": 0.0,
+          "end_depth_m": 30,
+          "duration_min": 3.0,
+          "phase": "levelTravel",
+          "oxygen": 0.21,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 30,
+          "end_depth_m": 30,
+          "duration_min": 17.0,
+          "phase": "levelHold",
+          "oxygen": 0.21,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 30,
+          "end_depth_m": 12,
+          "duration_min": 2.0,
+          "phase": "ascent",
+          "oxygen": 0.21,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 12,
+          "end_depth_m": 12,
+          "duration_min": 1.0,
+          "phase": "decompression",
+          "oxygen": 0.21,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 12,
+          "end_depth_m": 9,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.21,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 9,
+          "end_depth_m": 9,
+          "duration_min": 0.6666666666666679,
+          "phase": "decompression",
+          "oxygen": 0.21,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 9,
+          "end_depth_m": 6,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.21,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 6,
+          "duration_min": 0.6666666666666679,
+          "phase": "decompression",
+          "oxygen": 0.21,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 3,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.21,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 3,
+          "end_depth_m": 3,
+          "duration_min": 1.6666666666666679,
+          "phase": "decompression",
+          "oxygen": 0.21,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 3,
+          "end_depth_m": 0,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.21,
+          "helium": 0.0,
+          "mode": "oc"
+        }
+      ],
+      "expected": {
+        "segment_litres": [
+          148.82309400444115,
+          1346.661732050333,
+          92.1761658031088,
+          32.76461880088823,
+          10.181347150259066,
+          18.88230940044415,
+          8.700962250185047,
+          15.921539600296107,
+          7.220577350111028,
+          32.40192450037012,
+          5.740192450037009
+        ],
+        "total_litres": 1719.4744633604737,
+        "bottom_min": 20.0,
+        "stop_groups": [
+          {
+            "duration_min": 1.6666666666666679,
+            "stop_count": 2,
+            "shallowest_m": 9,
+            "deepest_m": 12
+          },
+          {
+            "duration_min": 2.3333333333333357,
+            "stop_count": 2,
+            "shallowest_m": 3,
+            "deepest_m": 6
+          }
+        ]
+      }
+    },
+    {
+      "id": "oc-1",
+      "context": {
+        "surface_bar": 1.01325,
+        "vapour_bar": 0.0627,
+        "initial_n2_bar": 0.7509345000000001,
+        "bar_per_metre": 0.1,
+        "depth_factor": 1,
+        "descent_m_min": 10,
+        "ascent_m_min": 9,
+        "step_m": 3,
+        "last_stop_m": 3,
+        "gf_low": 0.3,
+        "gf_high": 0.85,
+        "minimum_stop_min": 1,
+        "include_descent": true
+      },
+      "rates": [
+        20,
+        15,
+        0.7,
+        0.5
+      ],
+      "segments": [
+        {
+          "start_depth_m": 0.0,
+          "end_depth_m": 10,
+          "duration_min": 1.0,
+          "phase": "levelTravel",
+          "oxygen": 0.21,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 10,
+          "end_depth_m": 10,
+          "duration_min": 9.0,
+          "phase": "levelHold",
+          "oxygen": 0.21,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 10,
+          "end_depth_m": 0,
+          "duration_min": 1.1111111111111112,
+          "phase": "ascent",
+          "oxygen": 0.21,
+          "helium": 0.0,
+          "mode": "oc"
+        }
+      ],
+      "expected": {
+        "segment_litres": [
+          29.86923266716013,
+          357.6461880088823,
+          24.891027222633443
+        ],
+        "total_litres": 412.4064478986759,
+        "bottom_min": 10.0,
+        "stop_groups": []
+      }
+    },
+    {
+      "id": "oc-2",
+      "context": {
+        "surface_bar": 1.01325,
+        "vapour_bar": 0.0627,
+        "initial_n2_bar": 0.7509345000000001,
+        "bar_per_metre": 0.1,
+        "depth_factor": 1,
+        "descent_m_min": 10,
+        "ascent_m_min": 9,
+        "step_m": 3,
+        "last_stop_m": 3,
+        "gf_low": 0.3,
+        "gf_high": 0.85,
+        "minimum_stop_min": 1,
+        "include_descent": true
+      },
+      "rates": [
+        20,
+        15,
+        0.7,
+        0.5
+      ],
+      "segments": [
+        {
+          "start_depth_m": 0.0,
+          "end_depth_m": 10,
+          "duration_min": 1.0,
+          "phase": "levelTravel",
+          "oxygen": 0.21,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 10,
+          "end_depth_m": 10,
+          "duration_min": 9.0,
+          "phase": "levelHold",
+          "oxygen": 0.21,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 10,
+          "end_depth_m": 0,
+          "duration_min": 1.1111111111111112,
+          "phase": "ascent",
+          "oxygen": 0.21,
+          "helium": 0.0,
+          "mode": "oc"
+        }
+      ],
+      "expected": {
+        "segment_litres": [
+          29.86923266716013,
+          357.6461880088823,
+          24.891027222633443
+        ],
+        "total_litres": 412.4064478986759,
+        "bottom_min": 10.0,
+        "stop_groups": []
+      }
+    },
+    {
+      "id": "oc-3",
+      "context": {
+        "surface_bar": 1.01325,
+        "vapour_bar": 0.0627,
+        "initial_n2_bar": 0.7509345000000001,
+        "bar_per_metre": 0.1,
+        "depth_factor": 1,
+        "descent_m_min": 10,
+        "ascent_m_min": 9,
+        "step_m": 3,
+        "last_stop_m": 3,
+        "gf_low": 0.3,
+        "gf_high": 0.85,
+        "minimum_stop_min": 1,
+        "include_descent": true
+      },
+      "rates": [
+        20,
+        15,
+        0.7,
+        0.5
+      ],
+      "segments": [
+        {
+          "start_depth_m": 0.0,
+          "end_depth_m": 18,
+          "duration_min": 1.8,
+          "phase": "levelTravel",
+          "oxygen": 0.32,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 18,
+          "end_depth_m": 18,
+          "duration_min": 28.2,
+          "phase": "levelHold",
+          "oxygen": 0.32,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 18,
+          "end_depth_m": 3,
+          "duration_min": 1.6666666666666667,
+          "phase": "ascent",
+          "oxygen": 0.32,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 3,
+          "end_depth_m": 3,
+          "duration_min": 0.33333333333333215,
+          "phase": "decompression",
+          "oxygen": 0.32,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 3,
+          "end_depth_m": 0,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.32,
+          "helium": 0.0,
+          "mode": "oc"
+        }
+      ],
+      "expected": {
+        "segment_litres": [
+          67.97631384159881,
+          1565.9245003700962,
+          50.90673575129534,
+          6.480384900073997,
+          5.740192450037009
+        ],
+        "total_litres": 1697.0281273131013,
+        "bottom_min": 30.0,
+        "stop_groups": [
+          {
+            "duration_min": 0.33333333333333215,
+            "stop_count": 1,
+            "shallowest_m": 3,
+            "deepest_m": 3
+          }
+        ]
+      }
+    },
+    {
+      "id": "oc-4",
+      "context": {
+        "surface_bar": 1.01325,
+        "vapour_bar": 0.0627,
+        "initial_n2_bar": 0.7509345000000001,
+        "bar_per_metre": 0.1,
+        "depth_factor": 1,
+        "descent_m_min": 10,
+        "ascent_m_min": 9,
+        "step_m": 3,
+        "last_stop_m": 3,
+        "gf_low": 1,
+        "gf_high": 1,
+        "minimum_stop_min": 1,
+        "include_descent": true
+      },
+      "rates": [
+        20,
+        15,
+        0.7,
+        0.5
+      ],
+      "segments": [
+        {
+          "start_depth_m": 0.0,
+          "end_depth_m": 30,
+          "duration_min": 3.0,
+          "phase": "levelTravel",
+          "oxygen": 0.21,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 30,
+          "end_depth_m": 30,
+          "duration_min": 17.0,
+          "phase": "levelHold",
+          "oxygen": 0.21,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 30,
+          "end_depth_m": 0,
+          "duration_min": 3.3333333333333335,
+          "phase": "ascent",
+          "oxygen": 0.21,
+          "helium": 0.0,
+          "mode": "oc"
+        }
+      ],
+      "expected": {
+        "segment_litres": [
+          148.82309400444115,
+          1346.661732050333,
+          124.01924500370097
+        ],
+        "total_litres": 1619.5040710584751,
+        "bottom_min": 20.0,
+        "stop_groups": []
+      }
+    },
+    {
+      "id": "oc-5",
+      "context": {
+        "surface_bar": 1.01325,
+        "vapour_bar": 0.0627,
+        "initial_n2_bar": 0.7509345000000001,
+        "bar_per_metre": 0.1,
+        "depth_factor": 1,
+        "descent_m_min": 10,
+        "ascent_m_min": 9,
+        "step_m": 3,
+        "last_stop_m": 3,
+        "gf_low": 1,
+        "gf_high": 1,
+        "minimum_stop_min": 1,
+        "include_descent": true
+      },
+      "rates": [
+        20,
+        15,
+        0.7,
+        0.5
+      ],
+      "segments": [
+        {
+          "start_depth_m": 0.0,
+          "end_depth_m": 30,
+          "duration_min": 3.0,
+          "phase": "levelTravel",
+          "oxygen": 0.21,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 30,
+          "end_depth_m": 30,
+          "duration_min": 17.0,
+          "phase": "levelHold",
+          "oxygen": 0.21,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 30,
+          "end_depth_m": 0,
+          "duration_min": 3.3333333333333335,
+          "phase": "ascent",
+          "oxygen": 0.21,
+          "helium": 0.0,
+          "mode": "oc"
+        }
+      ],
+      "expected": {
+        "segment_litres": [
+          148.82309400444115,
+          1346.661732050333,
+          124.01924500370097
+        ],
+        "total_litres": 1619.5040710584751,
+        "bottom_min": 20.0,
+        "stop_groups": []
+      }
+    },
+    {
+      "id": "oc-6",
+      "context": {
+        "surface_bar": 1.01325,
+        "vapour_bar": 0.0627,
+        "initial_n2_bar": 0.7509345000000001,
+        "bar_per_metre": 0.1,
+        "depth_factor": 1,
+        "descent_m_min": 10,
+        "ascent_m_min": 9,
+        "step_m": 3,
+        "last_stop_m": 6,
+        "gf_low": 0.3,
+        "gf_high": 0.85,
+        "minimum_stop_min": 1,
+        "include_descent": true
+      },
+      "rates": [
+        20,
+        15,
+        0.7,
+        0.5
+      ],
+      "segments": [
+        {
+          "start_depth_m": 0.0,
+          "end_depth_m": 30,
+          "duration_min": 3.0,
+          "phase": "levelTravel",
+          "oxygen": 0.21,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 30,
+          "end_depth_m": 30,
+          "duration_min": 17.0,
+          "phase": "levelHold",
+          "oxygen": 0.21,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 30,
+          "end_depth_m": 12,
+          "duration_min": 2.0,
+          "phase": "ascent",
+          "oxygen": 0.21,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 12,
+          "end_depth_m": 12,
+          "duration_min": 1.0,
+          "phase": "decompression",
+          "oxygen": 0.21,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 12,
+          "end_depth_m": 9,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.21,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 9,
+          "end_depth_m": 9,
+          "duration_min": 0.6666666666666679,
+          "phase": "decompression",
+          "oxygen": 0.21,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 9,
+          "end_depth_m": 6,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.21,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 6,
+          "duration_min": 2.666666666666668,
+          "phase": "decompression",
+          "oxygen": 0.21,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 0,
+          "duration_min": 0.6666666666666666,
+          "phase": "ascent",
+          "oxygen": 0.21,
+          "helium": 0.0,
+          "mode": "oc"
+        }
+      ],
+      "expected": {
+        "segment_litres": [
+          148.82309400444115,
+          1346.661732050333,
+          92.1761658031088,
+          32.76461880088823,
+          10.181347150259066,
+          18.88230940044415,
+          8.700962250185047,
+          63.686158401184336,
+          12.960769800148038
+        ],
+        "total_litres": 1734.8371576609918,
+        "bottom_min": 20.0,
+        "stop_groups": [
+          {
+            "duration_min": 1.0,
+            "stop_count": 1,
+            "shallowest_m": 12,
+            "deepest_m": 12
+          },
+          {
+            "duration_min": 3.3333333333333357,
+            "stop_count": 2,
+            "shallowest_m": 6,
+            "deepest_m": 9
+          }
+        ]
+      }
+    },
+    {
+      "id": "oc-7",
+      "context": {
+        "surface_bar": 1.01325,
+        "vapour_bar": 0.0627,
+        "initial_n2_bar": 0.7509345000000001,
+        "bar_per_metre": 0.1,
+        "depth_factor": 1,
+        "descent_m_min": 10,
+        "ascent_m_min": 9,
+        "step_m": 3,
+        "last_stop_m": 3,
+        "gf_low": 0.3,
+        "gf_high": 0.85,
+        "minimum_stop_min": 1,
+        "include_descent": true
+      },
+      "rates": [
+        20,
+        15,
+        0.7,
+        0.5
+      ],
+      "segments": [
+        {
+          "start_depth_m": 0.0,
+          "end_depth_m": 45,
+          "duration_min": 4.5,
+          "phase": "levelTravel",
+          "oxygen": 0.21,
+          "helium": 0.35,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 45,
+          "end_depth_m": 45,
+          "duration_min": 20.5,
+          "phase": "levelHold",
+          "oxygen": 0.21,
+          "helium": 0.35,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 45,
+          "end_depth_m": 21,
+          "duration_min": 2.6666666666666665,
+          "phase": "ascent",
+          "oxygen": 0.21,
+          "helium": 0.35,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 21,
+          "end_depth_m": 21,
+          "duration_min": 1.3333333333333321,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 21,
+          "end_depth_m": 18,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 18,
+          "end_depth_m": 18,
+          "duration_min": 1.6666666666666679,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 18,
+          "end_depth_m": 15,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 15,
+          "end_depth_m": 15,
+          "duration_min": 1.6666666666666679,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 15,
+          "end_depth_m": 12,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 12,
+          "end_depth_m": 12,
+          "duration_min": 1.6666666666666643,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 12,
+          "end_depth_m": 9,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 9,
+          "end_depth_m": 9,
+          "duration_min": 1.6666666666666643,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 9,
+          "end_depth_m": 6,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 6,
+          "duration_min": 1.6666666666666643,
+          "phase": "decompression",
+          "oxygen": 1.0,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 3,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 1.0,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 3,
+          "end_depth_m": 3,
+          "duration_min": 7.666666666666664,
+          "phase": "decompression",
+          "oxygen": 1.0,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 3,
+          "end_depth_m": 0,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 1.0,
+          "helium": 0.0,
+          "mode": "oc"
+        }
+      ],
+      "expected": {
+        "segment_litres": [
+          289.8519615099926,
+          2230.8734270910436,
+          170.2738712065137,
+          61.45077720207248,
+          14.622501850481123,
+          69.41154700222063,
+          13.142116950407104,
+          62.00962250185053,
+          11.661732050333086,
+          54.60769800148031,
+          10.181347150259066,
+          47.20577350111022,
+          8.700962250185047,
+          39.803849000740136,
+          7.220577350111028,
+          149.0488527017024,
+          5.740192450037009
+        ],
+        "total_litres": 3245.80680977054,
+        "bottom_min": 25.0,
+        "stop_groups": [
+          {
+            "duration_min": 7.9999999999999964,
+            "stop_count": 5,
+            "shallowest_m": 9,
+            "deepest_m": 21
+          },
+          {
+            "duration_min": 9.333333333333329,
+            "stop_count": 2,
+            "shallowest_m": 3,
+            "deepest_m": 6
+          }
+        ]
+      }
+    },
+    {
+      "id": "oc-8",
+      "context": {
+        "surface_bar": 1.01325,
+        "vapour_bar": 0.0627,
+        "initial_n2_bar": 0.7509345000000001,
+        "bar_per_metre": 0.1,
+        "depth_factor": 1,
+        "descent_m_min": 10,
+        "ascent_m_min": 9,
+        "step_m": 3,
+        "last_stop_m": 3,
+        "gf_low": 0.3,
+        "gf_high": 0.85,
+        "minimum_stop_min": 1,
+        "include_descent": true
+      },
+      "rates": [
+        20,
+        15,
+        0.7,
+        0.5
+      ],
+      "segments": [
+        {
+          "start_depth_m": 0.0,
+          "end_depth_m": 45,
+          "duration_min": 4.5,
+          "phase": "levelTravel",
+          "oxygen": 0.21,
+          "helium": 0.35,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 45,
+          "end_depth_m": 45,
+          "duration_min": 20.5,
+          "phase": "levelHold",
+          "oxygen": 0.21,
+          "helium": 0.35,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 45,
+          "end_depth_m": 21,
+          "duration_min": 2.6666666666666665,
+          "phase": "ascent",
+          "oxygen": 0.21,
+          "helium": 0.35,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 21,
+          "end_depth_m": 21,
+          "duration_min": 0.33333333333333215,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 21,
+          "end_depth_m": 18,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 18,
+          "end_depth_m": 18,
+          "duration_min": 0.6666666666666679,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 18,
+          "end_depth_m": 15,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 15,
+          "end_depth_m": 15,
+          "duration_min": 0.6666666666666679,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 15,
+          "end_depth_m": 12,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 12,
+          "end_depth_m": 12,
+          "duration_min": 1.6666666666666679,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 12,
+          "end_depth_m": 9,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 9,
+          "end_depth_m": 9,
+          "duration_min": 1.6666666666666643,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 9,
+          "end_depth_m": 6,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 6,
+          "duration_min": 3.6666666666666643,
+          "phase": "decompression",
+          "oxygen": 1.0,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 3,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 1.0,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 3,
+          "end_depth_m": 3,
+          "duration_min": 6.666666666666664,
+          "phase": "decompression",
+          "oxygen": 1.0,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 3,
+          "end_depth_m": 0,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 1.0,
+          "helium": 0.0,
+          "mode": "oc"
+        }
+      ],
+      "expected": {
+        "segment_litres": [
+          289.8519615099926,
+          2230.8734270910436,
+          170.2738712065137,
+          15.362694300518081,
+          14.622501850481123,
+          27.764618800888282,
+          13.142116950407104,
+          24.80384900074024,
+          11.661732050333086,
+          54.60769800148042,
+          10.181347150259066,
+          47.20577350111022,
+          8.700962250185047,
+          87.56846780162837,
+          7.220577350111028,
+          129.60769800148034,
+          5.740192450037009
+        ],
+        "total_litres": 3149.1894892672094,
+        "bottom_min": 25.0,
+        "stop_groups": [
+          {
+            "duration_min": 5.0,
+            "stop_count": 5,
+            "shallowest_m": 9,
+            "deepest_m": 21
+          },
+          {
+            "duration_min": 10.333333333333329,
+            "stop_count": 2,
+            "shallowest_m": 3,
+            "deepest_m": 6
+          }
+        ]
+      }
+    },
+    {
+      "id": "oc-9",
+      "context": {
+        "surface_bar": 1.01325,
+        "vapour_bar": 0.0627,
+        "initial_n2_bar": 0.7509345000000001,
+        "bar_per_metre": 0.1,
+        "depth_factor": 1,
+        "descent_m_min": 10,
+        "ascent_m_min": 9,
+        "step_m": 3,
+        "last_stop_m": 3,
+        "gf_low": 0.3,
+        "gf_high": 0.85,
+        "minimum_stop_min": 1,
+        "include_descent": true
+      },
+      "rates": [
+        20,
+        15,
+        0.7,
+        0.5
+      ],
+      "segments": [
+        {
+          "start_depth_m": 0.0,
+          "end_depth_m": 45,
+          "duration_min": 4.5,
+          "phase": "levelTravel",
+          "oxygen": 0.21,
+          "helium": 0.35,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 45,
+          "end_depth_m": 45,
+          "duration_min": 20.5,
+          "phase": "levelHold",
+          "oxygen": 0.21,
+          "helium": 0.35,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 45,
+          "end_depth_m": 21,
+          "duration_min": 2.6666666666666665,
+          "phase": "ascent",
+          "oxygen": 0.21,
+          "helium": 0.35,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 21,
+          "end_depth_m": 21,
+          "duration_min": 0.33333333333333215,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 21,
+          "end_depth_m": 18,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 18,
+          "end_depth_m": 18,
+          "duration_min": 0.6666666666666679,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 18,
+          "end_depth_m": 15,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 15,
+          "end_depth_m": 15,
+          "duration_min": 0.6666666666666679,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 15,
+          "end_depth_m": 12,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 12,
+          "end_depth_m": 12,
+          "duration_min": 1.6666666666666679,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 12,
+          "end_depth_m": 9,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 9,
+          "end_depth_m": 9,
+          "duration_min": 1.6666666666666643,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 9,
+          "end_depth_m": 6,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 6,
+          "duration_min": 3.6666666666666643,
+          "phase": "decompression",
+          "oxygen": 1.0,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 3,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 1.0,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 3,
+          "end_depth_m": 3,
+          "duration_min": 6.666666666666664,
+          "phase": "decompression",
+          "oxygen": 1.0,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 3,
+          "end_depth_m": 0,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 1.0,
+          "helium": 0.0,
+          "mode": "oc"
+        }
+      ],
+      "expected": {
+        "segment_litres": [
+          289.8519615099926,
+          2230.8734270910436,
+          170.2738712065137,
+          15.362694300518081,
+          14.622501850481123,
+          27.764618800888282,
+          13.142116950407104,
+          24.80384900074024,
+          11.661732050333086,
+          54.60769800148042,
+          10.181347150259066,
+          47.20577350111022,
+          8.700962250185047,
+          87.56846780162837,
+          7.220577350111028,
+          129.60769800148034,
+          5.740192450037009
+        ],
+        "total_litres": 3149.1894892672094,
+        "bottom_min": 25.0,
+        "stop_groups": [
+          {
+            "duration_min": 5.0,
+            "stop_count": 5,
+            "shallowest_m": 9,
+            "deepest_m": 21
+          },
+          {
+            "duration_min": 10.333333333333329,
+            "stop_count": 2,
+            "shallowest_m": 3,
+            "deepest_m": 6
+          }
+        ]
+      }
+    },
+    {
+      "id": "oc-10",
+      "context": {
+        "surface_bar": 1.01325,
+        "vapour_bar": 0.0627,
+        "initial_n2_bar": 0.7509345000000001,
+        "bar_per_metre": 0.1,
+        "depth_factor": 1,
+        "descent_m_min": 10,
+        "ascent_m_min": 9,
+        "step_m": 3,
+        "last_stop_m": 3,
+        "gf_low": 0.3,
+        "gf_high": 0.85,
+        "minimum_stop_min": 1,
+        "include_descent": true
+      },
+      "rates": [
+        20,
+        15,
+        0.7,
+        0.5
+      ],
+      "segments": [
+        {
+          "start_depth_m": 0.0,
+          "end_depth_m": 45,
+          "duration_min": 4.5,
+          "phase": "levelTravel",
+          "oxygen": 0.21,
+          "helium": 0.35,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 45,
+          "end_depth_m": 45,
+          "duration_min": 20.5,
+          "phase": "levelHold",
+          "oxygen": 0.21,
+          "helium": 0.35,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 45,
+          "end_depth_m": 21,
+          "duration_min": 2.6666666666666665,
+          "phase": "ascent",
+          "oxygen": 0.21,
+          "helium": 0.35,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 21,
+          "end_depth_m": 21,
+          "duration_min": 0.33333333333333215,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 21,
+          "end_depth_m": 18,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 18,
+          "end_depth_m": 18,
+          "duration_min": 0.6666666666666679,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 18,
+          "end_depth_m": 15,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 15,
+          "end_depth_m": 15,
+          "duration_min": 0.6666666666666679,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 15,
+          "end_depth_m": 12,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 12,
+          "end_depth_m": 12,
+          "duration_min": 1.6666666666666679,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 12,
+          "end_depth_m": 9,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 9,
+          "end_depth_m": 9,
+          "duration_min": 1.6666666666666643,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 9,
+          "end_depth_m": 6,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 6,
+          "duration_min": 4.666666666666664,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 3,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 3,
+          "end_depth_m": 3,
+          "duration_min": 8.666666666666664,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 3,
+          "end_depth_m": 0,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        }
+      ],
+      "expected": {
+        "segment_litres": [
+          289.8519615099926,
+          2230.8734270910436,
+          170.2738712065137,
+          15.362694300518081,
+          14.622501850481123,
+          27.764618800888282,
+          13.142116950407104,
+          24.80384900074024,
+          11.661732050333086,
+          54.60769800148042,
+          10.181347150259066,
+          47.20577350111022,
+          8.700962250185047,
+          111.45077720207247,
+          7.220577350111028,
+          168.49000740192446,
+          5.740192450037009
+        ],
+        "total_litres": 3211.9541080680974,
+        "bottom_min": 25.0,
+        "stop_groups": [
+          {
+            "duration_min": 5.0,
+            "stop_count": 5,
+            "shallowest_m": 9,
+            "deepest_m": 21
+          },
+          {
+            "duration_min": 13.333333333333329,
+            "stop_count": 2,
+            "shallowest_m": 3,
+            "deepest_m": 6
+          }
+        ]
+      }
+    },
+    {
+      "id": "oc-11",
+      "context": {
+        "surface_bar": 1.01325,
+        "vapour_bar": 0.0627,
+        "initial_n2_bar": 0.7509345000000001,
+        "bar_per_metre": 0.1,
+        "depth_factor": 1,
+        "descent_m_min": 10,
+        "ascent_m_min": 9,
+        "step_m": 3,
+        "last_stop_m": 3,
+        "gf_low": 0.3,
+        "gf_high": 0.85,
+        "minimum_stop_min": 1,
+        "include_descent": true
+      },
+      "rates": [
+        20,
+        15,
+        0.7,
+        0.5
+      ],
+      "segments": [
+        {
+          "start_depth_m": 0.0,
+          "end_depth_m": 45,
+          "duration_min": 4.5,
+          "phase": "levelTravel",
+          "oxygen": 0.21,
+          "helium": 0.35,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 45,
+          "end_depth_m": 45,
+          "duration_min": 20.5,
+          "phase": "levelHold",
+          "oxygen": 0.21,
+          "helium": 0.35,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 45,
+          "end_depth_m": 21,
+          "duration_min": 2.6666666666666665,
+          "phase": "ascent",
+          "oxygen": 0.21,
+          "helium": 0.35,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 21,
+          "end_depth_m": 21,
+          "duration_min": 0.33333333333333215,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 21,
+          "end_depth_m": 18,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 18,
+          "end_depth_m": 18,
+          "duration_min": 0.6666666666666679,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 18,
+          "end_depth_m": 15,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 15,
+          "end_depth_m": 15,
+          "duration_min": 0.6666666666666679,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 15,
+          "end_depth_m": 12,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 12,
+          "end_depth_m": 12,
+          "duration_min": 1.6666666666666679,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 12,
+          "end_depth_m": 9,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 9,
+          "end_depth_m": 9,
+          "duration_min": 1.6666666666666643,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 9,
+          "end_depth_m": 6,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 6,
+          "duration_min": 5.666666666666664,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 3,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 3,
+          "end_depth_m": 3,
+          "duration_min": 9.666666666666664,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 3,
+          "end_depth_m": 0,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        }
+      ],
+      "expected": {
+        "segment_litres": [
+          289.8519615099926,
+          2230.8734270910436,
+          170.2738712065137,
+          15.362694300518081,
+          14.622501850481123,
+          27.764618800888282,
+          13.142116950407104,
+          24.80384900074024,
+          11.661732050333086,
+          54.60769800148042,
+          10.181347150259066,
+          47.20577350111022,
+          8.700962250185047,
+          135.3330866025166,
+          7.220577350111028,
+          187.93116210214652,
+          5.740192450037009
+        ],
+        "total_litres": 3255.2775721687635,
+        "bottom_min": 25.0,
+        "stop_groups": [
+          {
+            "duration_min": 5.0,
+            "stop_count": 5,
+            "shallowest_m": 9,
+            "deepest_m": 21
+          },
+          {
+            "duration_min": 15.333333333333329,
+            "stop_count": 2,
+            "shallowest_m": 3,
+            "deepest_m": 6
+          }
+        ]
+      }
+    },
+    {
+      "id": "oc-12",
+      "context": {
+        "surface_bar": 1.01325,
+        "vapour_bar": 0.0627,
+        "initial_n2_bar": 0.7509345000000001,
+        "bar_per_metre": 0.1,
+        "depth_factor": 1,
+        "descent_m_min": 10,
+        "ascent_m_min": 9,
+        "step_m": 3,
+        "last_stop_m": 3,
+        "gf_low": 0.3,
+        "gf_high": 0.85,
+        "minimum_stop_min": 1,
+        "include_descent": true
+      },
+      "rates": [
+        20,
+        15,
+        0.7,
+        0.5
+      ],
+      "segments": [
+        {
+          "start_depth_m": 0.0,
+          "end_depth_m": 36,
+          "duration_min": 3.6,
+          "phase": "levelTravel",
+          "oxygen": 0.21,
+          "helium": 0.35,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 36,
+          "end_depth_m": 36,
+          "duration_min": 16.4,
+          "phase": "levelHold",
+          "oxygen": 0.21,
+          "helium": 0.35,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 36,
+          "end_depth_m": 21,
+          "duration_min": 1.6666666666666667,
+          "phase": "ascent",
+          "oxygen": 0.21,
+          "helium": 0.35,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 21,
+          "end_depth_m": 21,
+          "duration_min": 10.333333333333332,
+          "phase": "levelHold",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 21,
+          "end_depth_m": 6,
+          "duration_min": 1.6666666666666667,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 6,
+          "duration_min": 0.3333333333333357,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 3,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 3,
+          "end_depth_m": 3,
+          "duration_min": 0.6666666666666643,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 3,
+          "end_depth_m": 0,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        }
+      ],
+      "expected": {
+        "segment_litres": [
+          199.90525536639527,
+          1493.358993338268,
+          95.31828275351592,
+          634.9913644214162,
+          58.30866025166544,
+          7.960769800148095,
+          7.220577350111028,
+          12.960769800147993,
+          5.740192450037009
+        ],
+        "total_litres": 2515.764865531705,
+        "bottom_min": 30.333333333333332,
+        "stop_groups": [
+          {
+            "duration_min": 1.0,
+            "stop_count": 2,
+            "shallowest_m": 3,
+            "deepest_m": 6
+          }
+        ]
+      }
+    },
+    {
+      "id": "oc-13",
+      "context": {
+        "surface_bar": 1.01325,
+        "vapour_bar": 0.0627,
+        "initial_n2_bar": 0.7509345000000001,
+        "bar_per_metre": 0.1,
+        "depth_factor": 1,
+        "descent_m_min": 10,
+        "ascent_m_min": 9,
+        "step_m": 3,
+        "last_stop_m": 3,
+        "gf_low": 0.3,
+        "gf_high": 0.85,
+        "minimum_stop_min": 1,
+        "include_descent": true
+      },
+      "rates": [
+        20,
+        15,
+        0.7,
+        0.5
+      ],
+      "segments": [
+        {
+          "start_depth_m": 0.0,
+          "end_depth_m": 36,
+          "duration_min": 3.6,
+          "phase": "levelTravel",
+          "oxygen": 0.21,
+          "helium": 0.35,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 36,
+          "end_depth_m": 36,
+          "duration_min": 16.4,
+          "phase": "levelHold",
+          "oxygen": 0.21,
+          "helium": 0.35,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 36,
+          "end_depth_m": 21,
+          "duration_min": 1.6666666666666667,
+          "phase": "ascent",
+          "oxygen": 0.21,
+          "helium": 0.35,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 21,
+          "end_depth_m": 21,
+          "duration_min": 10.333333333333332,
+          "phase": "levelHold",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 21,
+          "end_depth_m": 6,
+          "duration_min": 1.6666666666666667,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 6,
+          "duration_min": 0.3333333333333357,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 3,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 3,
+          "end_depth_m": 3,
+          "duration_min": 0.6666666666666643,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 3,
+          "end_depth_m": 0,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        }
+      ],
+      "expected": {
+        "segment_litres": [
+          199.90525536639527,
+          1493.358993338268,
+          95.31828275351592,
+          634.9913644214162,
+          58.30866025166544,
+          7.960769800148095,
+          7.220577350111028,
+          12.960769800147993,
+          5.740192450037009
+        ],
+        "total_litres": 2515.764865531705,
+        "bottom_min": 30.333333333333332,
+        "stop_groups": [
+          {
+            "duration_min": 1.0,
+            "stop_count": 2,
+            "shallowest_m": 3,
+            "deepest_m": 6
+          }
+        ]
+      }
+    },
+    {
+      "id": "oc-14",
+      "context": {
+        "surface_bar": 1.01325,
+        "vapour_bar": 0.06266797727272727,
+        "initial_n2_bar": 0.7509597979545455,
+        "bar_per_metre": 0.10073669768551657,
+        "depth_factor": 0.3048,
+        "descent_m_min": 10.0584,
+        "ascent_m_min": 9.144,
+        "step_m": 3.048,
+        "last_stop_m": 3.048,
+        "gf_low": 0.3,
+        "gf_high": 0.85,
+        "minimum_stop_min": 1,
+        "include_descent": true
+      },
+      "rates": [
+        20,
+        15,
+        0.7,
+        0.5
+      ],
+      "segments": [
+        {
+          "start_depth_m": 0.0,
+          "end_depth_m": 45.72,
+          "duration_min": 4.545454545454545,
+          "phase": "levelTravel",
+          "oxygen": 0.21,
+          "helium": 0.35,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 45.72,
+          "end_depth_m": 45.72,
+          "duration_min": 20.454545454545453,
+          "phase": "levelHold",
+          "oxygen": 0.21,
+          "helium": 0.35,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 45.72,
+          "end_depth_m": 21.336,
+          "duration_min": 2.6666666666666665,
+          "phase": "ascent",
+          "oxygen": 0.21,
+          "helium": 0.35,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 21.336,
+          "end_depth_m": 21.336,
+          "duration_min": 0.33333333333333215,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 21.336,
+          "end_depth_m": 18.287999999999997,
+          "duration_min": 0.33333333333333354,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 18.287999999999997,
+          "end_depth_m": 18.287999999999997,
+          "duration_min": 0.6666666666666679,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 18.287999999999997,
+          "end_depth_m": 15.239999999999997,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 15.239999999999997,
+          "end_depth_m": 15.239999999999997,
+          "duration_min": 0.6666666666666679,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 15.239999999999997,
+          "end_depth_m": 12.191999999999997,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 12.191999999999997,
+          "end_depth_m": 12.191999999999997,
+          "duration_min": 1.6666666666666679,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 12.191999999999997,
+          "end_depth_m": 9.143999999999997,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 9.143999999999997,
+          "end_depth_m": 9.143999999999997,
+          "duration_min": 1.6666666666666643,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 9.143999999999997,
+          "end_depth_m": 6.0959999999999965,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 6.0959999999999965,
+          "end_depth_m": 6.0959999999999965,
+          "duration_min": 3.6666666666666643,
+          "phase": "decompression",
+          "oxygen": 1.0,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 6.0959999999999965,
+          "end_depth_m": 3.048,
+          "duration_min": 0.3333333333333329,
+          "phase": "ascent",
+          "oxygen": 1.0,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 3.048,
+          "end_depth_m": 3.048,
+          "duration_min": 6.666666666666664,
+          "phase": "decompression",
+          "oxygen": 1.0,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 3.048,
+          "end_depth_m": 0,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 1.0,
+          "helium": 0.0,
+          "mode": "oc"
+        }
+      ],
+      "expected": {
+        "segment_litres": [
+          297.52066115702473,
+          2268.5950413223136,
+          173.33333333333331,
+          15.606060606060549,
+          14.848484848484855,
+          28.18181818181823,
+          13.333333333333329,
+          25.15151515151519,
+          11.818181818181815,
+          55.30303030303033,
+          10.3030303030303,
+          47.72727272727265,
+          8.787878787878785,
+          88.33333333333326,
+          7.272727272727262,
+          130.30303030303025,
+          5.757575757575757
+        ],
+        "total_litres": 3202.1763085399443,
+        "bottom_min": 24.999999999999996,
+        "stop_groups": [
+          {
+            "duration_min": 5.0,
+            "stop_count": 5,
+            "shallowest_m": 9.143999999999997,
+            "deepest_m": 21.336
+          },
+          {
+            "duration_min": 10.333333333333329,
+            "stop_count": 2,
+            "shallowest_m": 3.048,
+            "deepest_m": 6.0959999999999965
+          }
+        ]
+      }
+    },
+    {
+      "id": "oc-15",
+      "context": {
+        "surface_bar": 1.01325,
+        "vapour_bar": 0.06266797727272727,
+        "initial_n2_bar": 0.7509597979545455,
+        "bar_per_metre": 0.10073669768551657,
+        "depth_factor": 0.3048,
+        "descent_m_min": 10.0584,
+        "ascent_m_min": 9.144,
+        "step_m": 3.048,
+        "last_stop_m": 3.048,
+        "gf_low": 0.3,
+        "gf_high": 0.85,
+        "minimum_stop_min": 1,
+        "include_descent": true
+      },
+      "rates": [
+        20,
+        15,
+        0.7,
+        0.5
+      ],
+      "segments": [
+        {
+          "start_depth_m": 0.0,
+          "end_depth_m": 45.72,
+          "duration_min": 4.545454545454545,
+          "phase": "levelTravel",
+          "oxygen": 0.21,
+          "helium": 0.35,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 45.72,
+          "end_depth_m": 45.72,
+          "duration_min": 20.454545454545453,
+          "phase": "levelHold",
+          "oxygen": 0.21,
+          "helium": 0.35,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 45.72,
+          "end_depth_m": 21.336,
+          "duration_min": 2.6666666666666665,
+          "phase": "ascent",
+          "oxygen": 0.21,
+          "helium": 0.35,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 21.336,
+          "end_depth_m": 21.336,
+          "duration_min": 0.33333333333333215,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 21.336,
+          "end_depth_m": 18.287999999999997,
+          "duration_min": 0.33333333333333354,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 18.287999999999997,
+          "end_depth_m": 18.287999999999997,
+          "duration_min": 0.6666666666666679,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 18.287999999999997,
+          "end_depth_m": 15.239999999999997,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 15.239999999999997,
+          "end_depth_m": 15.239999999999997,
+          "duration_min": 0.6666666666666679,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 15.239999999999997,
+          "end_depth_m": 12.191999999999997,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 12.191999999999997,
+          "end_depth_m": 12.191999999999997,
+          "duration_min": 1.6666666666666679,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 12.191999999999997,
+          "end_depth_m": 9.143999999999997,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 9.143999999999997,
+          "end_depth_m": 9.143999999999997,
+          "duration_min": 2.6666666666666643,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 9.143999999999997,
+          "end_depth_m": 6.0959999999999965,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 6.0959999999999965,
+          "end_depth_m": 6.0959999999999965,
+          "duration_min": 3.6666666666666643,
+          "phase": "decompression",
+          "oxygen": 1.0,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 6.0959999999999965,
+          "end_depth_m": 3.048,
+          "duration_min": 0.3333333333333329,
+          "phase": "ascent",
+          "oxygen": 1.0,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 3.048,
+          "end_depth_m": 3.048,
+          "duration_min": 6.666666666666664,
+          "phase": "decompression",
+          "oxygen": 1.0,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 3.048,
+          "end_depth_m": 0,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 1.0,
+          "helium": 0.0,
+          "mode": "oc"
+        }
+      ],
+      "expected": {
+        "segment_litres": [
+          297.52066115702473,
+          2268.5950413223136,
+          173.33333333333331,
+          15.606060606060549,
+          14.848484848484855,
+          28.18181818181823,
+          13.333333333333329,
+          25.15151515151519,
+          11.818181818181815,
+          55.30303030303033,
+          10.3030303030303,
+          76.36363636363627,
+          8.787878787878785,
+          88.33333333333326,
+          7.272727272727262,
+          130.30303030303025,
+          5.757575757575757
+        ],
+        "total_litres": 3230.812672176308,
+        "bottom_min": 24.999999999999996,
+        "stop_groups": [
+          {
+            "duration_min": 6.0,
+            "stop_count": 5,
+            "shallowest_m": 9.143999999999997,
+            "deepest_m": 21.336
+          },
+          {
+            "duration_min": 10.333333333333329,
+            "stop_count": 2,
+            "shallowest_m": 3.048,
+            "deepest_m": 6.0959999999999965
+          }
+        ]
+      }
+    },
+    {
+      "id": "oc-16",
+      "context": {
+        "surface_bar": 1.01325,
+        "vapour_bar": 0.0627,
+        "initial_n2_bar": 0.7509345000000001,
+        "bar_per_metre": 0.1,
+        "depth_factor": 1,
+        "descent_m_min": 10,
+        "ascent_m_min": 9,
+        "step_m": 3,
+        "last_stop_m": 3,
+        "gf_low": 0.3,
+        "gf_high": 0.85,
+        "minimum_stop_min": 1,
+        "include_descent": true
+      },
+      "rates": [
+        20,
+        15,
+        0.7,
+        0.5
+      ],
+      "segments": [
+        {
+          "start_depth_m": 0.0,
+          "end_depth_m": 45,
+          "duration_min": 4.5,
+          "phase": "levelTravel",
+          "oxygen": 0.21,
+          "helium": 0.35,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 45,
+          "end_depth_m": 45,
+          "duration_min": 20.5,
+          "phase": "levelHold",
+          "oxygen": 0.21,
+          "helium": 0.35,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 45,
+          "end_depth_m": 21,
+          "duration_min": 2.6666666666666665,
+          "phase": "ascent",
+          "oxygen": 0.21,
+          "helium": 0.35,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 21,
+          "end_depth_m": 21,
+          "duration_min": 0.33333333333333215,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 21,
+          "end_depth_m": 18,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 18,
+          "end_depth_m": 18,
+          "duration_min": 0.6666666666666679,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 18,
+          "end_depth_m": 15,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 15,
+          "end_depth_m": 15,
+          "duration_min": 0.6666666666666679,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 15,
+          "end_depth_m": 12,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 12,
+          "end_depth_m": 12,
+          "duration_min": 1.6666666666666679,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 12,
+          "end_depth_m": 9,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 9,
+          "end_depth_m": 9,
+          "duration_min": 1.6666666666666643,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 9,
+          "end_depth_m": 6,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 6,
+          "duration_min": 4.666666666666664,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 3,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 3,
+          "end_depth_m": 3,
+          "duration_min": 8.666666666666664,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 3,
+          "end_depth_m": 0,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        }
+      ],
+      "expected": {
+        "segment_litres": [
+          289.8519615099926,
+          2230.8734270910436,
+          170.2738712065137,
+          15.362694300518081,
+          14.622501850481123,
+          27.764618800888282,
+          13.142116950407104,
+          24.80384900074024,
+          11.661732050333086,
+          54.60769800148042,
+          10.181347150259066,
+          47.20577350111022,
+          8.700962250185047,
+          111.45077720207247,
+          7.220577350111028,
+          168.49000740192446,
+          5.740192450037009
+        ],
+        "total_litres": 3211.9541080680974,
+        "bottom_min": 25.0,
+        "stop_groups": [
+          {
+            "duration_min": 5.0,
+            "stop_count": 5,
+            "shallowest_m": 9,
+            "deepest_m": 21
+          },
+          {
+            "duration_min": 13.333333333333329,
+            "stop_count": 2,
+            "shallowest_m": 3,
+            "deepest_m": 6
+          }
+        ]
+      }
+    },
+    {
+      "id": "oc-17",
+      "context": {
+        "surface_bar": 1.01325,
+        "vapour_bar": 0.0627,
+        "initial_n2_bar": 0.7509345000000001,
+        "bar_per_metre": 0.1,
+        "depth_factor": 1,
+        "descent_m_min": 10,
+        "ascent_m_min": 9,
+        "step_m": 3,
+        "last_stop_m": 3,
+        "gf_low": 0.3,
+        "gf_high": 0.85,
+        "minimum_stop_min": 1,
+        "include_descent": false
+      },
+      "rates": [
+        20,
+        15,
+        0.7,
+        0.5
+      ],
+      "segments": [
+        {
+          "start_depth_m": 0.0,
+          "end_depth_m": 45,
+          "duration_min": 4.5,
+          "phase": "levelTravel",
+          "oxygen": 0.21,
+          "helium": 0.35,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 45,
+          "end_depth_m": 45,
+          "duration_min": 25,
+          "phase": "levelHold",
+          "oxygen": 0.21,
+          "helium": 0.35,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 45,
+          "end_depth_m": 21,
+          "duration_min": 2.6666666666666665,
+          "phase": "ascent",
+          "oxygen": 0.21,
+          "helium": 0.35,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 21,
+          "end_depth_m": 21,
+          "duration_min": 0.8333333333333357,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 21,
+          "end_depth_m": 18,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 18,
+          "end_depth_m": 18,
+          "duration_min": 0.6666666666666643,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 18,
+          "end_depth_m": 15,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 15,
+          "end_depth_m": 15,
+          "duration_min": 0.6666666666666643,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 15,
+          "end_depth_m": 12,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 12,
+          "end_depth_m": 12,
+          "duration_min": 1.6666666666666643,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 12,
+          "end_depth_m": 9,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 9,
+          "end_depth_m": 9,
+          "duration_min": 3.6666666666666643,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 9,
+          "end_depth_m": 6,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 6,
+          "duration_min": 4.666666666666664,
+          "phase": "decompression",
+          "oxygen": 1.0,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 3,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 1.0,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 3,
+          "end_depth_m": 3,
+          "duration_min": 7.666666666666664,
+          "phase": "decompression",
+          "oxygen": 1.0,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 3,
+          "end_depth_m": 0,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 1.0,
+          "helium": 0.0,
+          "mode": "oc"
+        }
+      ],
+      "expected": {
+        "segment_litres": [
+          289.8519615099926,
+          2720.577350111029,
+          170.2738712065137,
+          38.40673575129544,
+          14.622501850481123,
+          27.764618800888133,
+          13.142116950407104,
+          24.803849000740104,
+          11.661732050333086,
+          54.60769800148031,
+          10.181347150259066,
+          103.85270170244257,
+          8.700962250185047,
+          111.45077720207247,
+          7.220577350111028,
+          149.0488527017024,
+          5.740192450037009
+        ],
+        "total_litres": 3761.90784603997,
+        "bottom_min": 29.5,
+        "stop_groups": [
+          {
+            "duration_min": 7.499999999999993,
+            "stop_count": 5,
+            "shallowest_m": 9,
+            "deepest_m": 21
+          },
+          {
+            "duration_min": 12.333333333333329,
+            "stop_count": 2,
+            "shallowest_m": 3,
+            "deepest_m": 6
+          }
+        ]
+      }
+    },
+    {
+      "id": "oc-18",
+      "context": {
+        "surface_bar": 1.01325,
+        "vapour_bar": 0.0627,
+        "initial_n2_bar": 0.7509345000000001,
+        "bar_per_metre": 0.1,
+        "depth_factor": 1,
+        "descent_m_min": 10,
+        "ascent_m_min": 9,
+        "step_m": 3,
+        "last_stop_m": 3,
+        "gf_low": 0.3,
+        "gf_high": 0.85,
+        "minimum_stop_min": 0.5,
+        "include_descent": true
+      },
+      "rates": [
+        20,
+        15,
+        0.7,
+        0.5
+      ],
+      "segments": [
+        {
+          "start_depth_m": 0.0,
+          "end_depth_m": 45,
+          "duration_min": 4.5,
+          "phase": "levelTravel",
+          "oxygen": 0.21,
+          "helium": 0.35,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 45,
+          "end_depth_m": 45,
+          "duration_min": 20.5,
+          "phase": "levelHold",
+          "oxygen": 0.21,
+          "helium": 0.35,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 45,
+          "end_depth_m": 21,
+          "duration_min": 2.6666666666666665,
+          "phase": "ascent",
+          "oxygen": 0.21,
+          "helium": 0.35,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 21,
+          "end_depth_m": 21,
+          "duration_min": 0.33333333333333215,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 21,
+          "end_depth_m": 18,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 18,
+          "end_depth_m": 18,
+          "duration_min": 0.16666666666666785,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 18,
+          "end_depth_m": 15,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 15,
+          "end_depth_m": 15,
+          "duration_min": 0.6666666666666679,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 15,
+          "end_depth_m": 12,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 12,
+          "end_depth_m": 12,
+          "duration_min": 1.6666666666666679,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 12,
+          "end_depth_m": 9,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 9,
+          "end_depth_m": 9,
+          "duration_min": 2.166666666666668,
+          "phase": "decompression",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 9,
+          "end_depth_m": 6,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 0.5,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 6,
+          "duration_min": 3.1666666666666643,
+          "phase": "decompression",
+          "oxygen": 1.0,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 3,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 1.0,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 3,
+          "end_depth_m": 3,
+          "duration_min": 6.166666666666664,
+          "phase": "decompression",
+          "oxygen": 1.0,
+          "helium": 0.0,
+          "mode": "oc"
+        },
+        {
+          "start_depth_m": 3,
+          "end_depth_m": 0,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "oxygen": 1.0,
+          "helium": 0.0,
+          "mode": "oc"
+        }
+      ],
+      "expected": {
+        "segment_litres": [
+          289.8519615099926,
+          2230.8734270910436,
+          170.2738712065137,
+          15.362694300518081,
+          14.622501850481123,
+          6.941154700222107,
+          13.142116950407104,
+          24.80384900074024,
+          11.661732050333086,
+          54.60769800148042,
+          10.181347150259066,
+          61.367505551443415,
+          8.700962250185047,
+          75.62731310140632,
+          7.220577350111028,
+          119.8871206513693,
+          5.740192450037009
+        ],
+        "total_litres": 3120.8660251665433,
+        "bottom_min": 25.0,
+        "stop_groups": [
+          {
+            "duration_min": 5.0000000000000036,
+            "stop_count": 5,
+            "shallowest_m": 9,
+            "deepest_m": 21
+          },
+          {
+            "duration_min": 9.333333333333329,
+            "stop_count": 2,
+            "shallowest_m": 3,
+            "deepest_m": 6
+          }
+        ]
+      }
+    },
+    {
+      "id": "ccr-bailout-0",
+      "context": {
+        "surface_bar": 1.01325,
+        "bar_per_metre": 0.1,
+        "step_m": 3,
+        "last_stop_m": 3
+      },
+      "rates": [
+        20,
+        15,
+        0.7,
+        0.5
+      ],
+      "segments": [
+        {
+          "start_depth_m": 0,
+          "end_depth_m": 22.5,
+          "duration_min": 2.25,
+          "phase": "levelTravel",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 22.5,
+          "end_depth_m": 21,
+          "duration_min": 0.16666666666666666,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 21,
+          "end_depth_m": 6,
+          "duration_min": 1.6666666666666667,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 0.5,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 0,
+          "duration_min": 0.6666666666666666,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 1.0,
+          "helium": 0
+        }
+      ],
+      "expected": {
+        "segment_litres": [
+          1.575,
+          7.86639526276832,
+          58.30866025166544,
+          12.960769800148038
+        ],
+        "total_litres": 80.7108253145818,
+        "bottom_min": 2.25,
+        "stop_groups": []
+      }
+    },
+    {
+      "id": "ccr-bailout-1",
+      "context": {
+        "surface_bar": 1.01325,
+        "bar_per_metre": 0.1,
+        "step_m": 3,
+        "last_stop_m": 3
+      },
+      "rates": [
+        20,
+        15,
+        0.7,
+        0.5
+      ],
+      "segments": [
+        {
+          "start_depth_m": 0,
+          "end_depth_m": 45.0,
+          "duration_min": 4.5,
+          "phase": "levelTravel",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 45.0,
+          "end_depth_m": 21,
+          "duration_min": 2.6666666666666665,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 21,
+          "end_depth_m": 6,
+          "duration_min": 1.6666666666666667,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 0.5,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 6,
+          "duration_min": 0.16666666666666785,
+          "phase": "decompression",
+          "mode": "oc",
+          "oxygen": 1.0,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 3,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 1.0,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 3,
+          "end_depth_m": 3,
+          "duration_min": 0.6666666666666661,
+          "phase": "decompression",
+          "mode": "oc",
+          "oxygen": 1.0,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 3,
+          "end_depth_m": 0,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 1.0,
+          "helium": 0
+        }
+      ],
+      "expected": {
+        "segment_litres": [
+          3.15,
+          170.2738712065137,
+          58.30866025166544,
+          3.9803849000740477,
+          7.220577350111028,
+          12.960769800148027,
+          5.740192450037009
+        ],
+        "total_litres": 261.6344559585492,
+        "bottom_min": 4.5,
+        "stop_groups": [
+          {
+            "duration_min": 0.8333333333333339,
+            "stop_count": 2,
+            "shallowest_m": 3,
+            "deepest_m": 6
+          }
+        ]
+      }
+    },
+    {
+      "id": "ccr-bailout-2",
+      "context": {
+        "surface_bar": 1.01325,
+        "bar_per_metre": 0.1,
+        "step_m": 3,
+        "last_stop_m": 3
+      },
+      "rates": [
+        20,
+        15,
+        0.7,
+        0.5
+      ],
+      "segments": [
+        {
+          "start_depth_m": 0,
+          "end_depth_m": 45.0,
+          "duration_min": 4.5,
+          "phase": "levelTravel",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 45,
+          "end_depth_m": 45.0,
+          "duration_min": 8.0,
+          "phase": "levelHold",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 45.0,
+          "end_depth_m": 21,
+          "duration_min": 2.6666666666666665,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 21,
+          "end_depth_m": 15,
+          "duration_min": 0.6666666666666666,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 0.5,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 15,
+          "end_depth_m": 15,
+          "duration_min": 0.16666666666666785,
+          "phase": "decompression",
+          "mode": "oc",
+          "oxygen": 0.5,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 15,
+          "end_depth_m": 12,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 0.5,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 12,
+          "end_depth_m": 12,
+          "duration_min": 0.6666666666666679,
+          "phase": "decompression",
+          "mode": "oc",
+          "oxygen": 0.5,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 12,
+          "end_depth_m": 9,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 0.5,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 9,
+          "end_depth_m": 9,
+          "duration_min": 0.6666666666666679,
+          "phase": "decompression",
+          "mode": "oc",
+          "oxygen": 0.5,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 9,
+          "end_depth_m": 6,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 0.5,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 6,
+          "duration_min": 0.6666666666666679,
+          "phase": "decompression",
+          "mode": "oc",
+          "oxygen": 1.0,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 3,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 1.0,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 3,
+          "end_depth_m": 3,
+          "duration_min": 0.6666666666666679,
+          "phase": "decompression",
+          "mode": "oc",
+          "oxygen": 1.0,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 3,
+          "end_depth_m": 0,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 1.0,
+          "helium": 0
+        }
+      ],
+      "expected": {
+        "segment_litres": [
+          3.15,
+          5.6,
+          170.2738712065137,
+          27.76461880088823,
+          6.200962250185092,
+          11.661732050333086,
+          21.843079200592193,
+          10.181347150259066,
+          18.88230940044415,
+          8.700962250185047,
+          15.921539600296107,
+          7.220577350111028,
+          12.960769800148062,
+          5.740192450037009
+        ],
+        "total_litres": 326.10196150999275,
+        "bottom_min": 12.5,
+        "stop_groups": [
+          {
+            "duration_min": 1.5000000000000036,
+            "stop_count": 3,
+            "shallowest_m": 9,
+            "deepest_m": 15
+          },
+          {
+            "duration_min": 1.3333333333333357,
+            "stop_count": 2,
+            "shallowest_m": 3,
+            "deepest_m": 6
+          }
+        ]
+      }
+    },
+    {
+      "id": "ccr-bailout-3",
+      "context": {
+        "surface_bar": 1.01325,
+        "bar_per_metre": 0.1,
+        "step_m": 3,
+        "last_stop_m": 3
+      },
+      "rates": [
+        20,
+        15,
+        0.7,
+        0.5
+      ],
+      "segments": [
+        {
+          "start_depth_m": 0,
+          "end_depth_m": 45.0,
+          "duration_min": 4.5,
+          "phase": "levelTravel",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 45,
+          "end_depth_m": 45.0,
+          "duration_min": 20.5,
+          "phase": "levelHold",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 45.0,
+          "end_depth_m": 21,
+          "duration_min": 2.6666666666666665,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 21,
+          "end_depth_m": 18,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 0.5,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 18,
+          "end_depth_m": 18,
+          "duration_min": 1.0,
+          "phase": "decompression",
+          "mode": "oc",
+          "oxygen": 0.5,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 18,
+          "end_depth_m": 15,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 0.5,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 15,
+          "end_depth_m": 15,
+          "duration_min": 0.6666666666666679,
+          "phase": "decompression",
+          "mode": "oc",
+          "oxygen": 0.5,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 15,
+          "end_depth_m": 12,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 0.5,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 12,
+          "end_depth_m": 12,
+          "duration_min": 0.6666666666666679,
+          "phase": "decompression",
+          "mode": "oc",
+          "oxygen": 0.5,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 12,
+          "end_depth_m": 9,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 0.5,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 9,
+          "end_depth_m": 9,
+          "duration_min": 2.666666666666668,
+          "phase": "decompression",
+          "mode": "oc",
+          "oxygen": 0.5,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 9,
+          "end_depth_m": 6,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 0.5,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 6,
+          "duration_min": 2.6666666666666643,
+          "phase": "decompression",
+          "mode": "oc",
+          "oxygen": 1.0,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 3,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 1.0,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 3,
+          "end_depth_m": 3,
+          "duration_min": 5.666666666666664,
+          "phase": "decompression",
+          "mode": "oc",
+          "oxygen": 1.0,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 3,
+          "end_depth_m": 0,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 1.0,
+          "helium": 0
+        }
+      ],
+      "expected": {
+        "segment_litres": [
+          3.15,
+          14.35,
+          170.2738712065137,
+          14.622501850481123,
+          41.646928201332344,
+          13.142116950407104,
+          24.80384900074024,
+          11.661732050333086,
+          21.843079200592193,
+          10.181347150259066,
+          75.5292376017765,
+          8.700962250185047,
+          63.68615840118425,
+          7.220577350111028,
+          110.16654330125827,
+          5.740192450037009
+        ],
+        "total_litres": 596.719096965211,
+        "bottom_min": 25.0,
+        "stop_groups": [
+          {
+            "duration_min": 5.0000000000000036,
+            "stop_count": 4,
+            "shallowest_m": 9,
+            "deepest_m": 18
+          },
+          {
+            "duration_min": 8.333333333333329,
+            "stop_count": 2,
+            "shallowest_m": 3,
+            "deepest_m": 6
+          }
+        ]
+      }
+    },
+    {
+      "id": "ccr-bailout-4",
+      "context": {
+        "surface_bar": 1.01325,
+        "bar_per_metre": 0.1,
+        "step_m": 3,
+        "last_stop_m": 3
+      },
+      "rates": [
+        20,
+        15,
+        0.7,
+        0.5
+      ],
+      "segments": [
+        {
+          "start_depth_m": 0,
+          "end_depth_m": 45.0,
+          "duration_min": 4.5,
+          "phase": "levelTravel",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 45,
+          "end_depth_m": 45.0,
+          "duration_min": 20.5,
+          "phase": "levelHold",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 45.0,
+          "end_depth_m": 18,
+          "duration_min": 3.0,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 18,
+          "end_depth_m": 18,
+          "duration_min": 2.0,
+          "phase": "decompression",
+          "mode": "oc",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 18,
+          "end_depth_m": 15,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 15,
+          "end_depth_m": 15,
+          "duration_min": 1.6666666666666679,
+          "phase": "decompression",
+          "mode": "oc",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 15,
+          "end_depth_m": 12,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 12,
+          "end_depth_m": 12,
+          "duration_min": 2.6666666666666643,
+          "phase": "decompression",
+          "mode": "oc",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 12,
+          "end_depth_m": 9,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 9,
+          "end_depth_m": 9,
+          "duration_min": 3.6666666666666643,
+          "phase": "decompression",
+          "mode": "oc",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 9,
+          "end_depth_m": 6,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 6,
+          "duration_min": 8.666666666666664,
+          "phase": "decompression",
+          "mode": "oc",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 3,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 3,
+          "end_depth_m": 3,
+          "duration_min": 19.666666666666664,
+          "phase": "decompression",
+          "mode": "oc",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 3,
+          "end_depth_m": 0,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 0.21,
+          "helium": 0.35
+        }
+      ],
+      "expected": {
+        "segment_litres": [
+          3.15,
+          14.35,
+          184.89637305699483,
+          83.29385640266469,
+          13.142116950407104,
+          62.00962250185053,
+          11.661732050333086,
+          87.37231680236854,
+          10.181347150259066,
+          103.85270170244257,
+          8.700962250185047,
+          206.98001480384895,
+          7.220577350111028,
+          382.3427091043671,
+          5.740192450037009
+        ],
+        "total_litres": 1184.8945225758696,
+        "bottom_min": 25.0,
+        "stop_groups": [
+          {
+            "duration_min": 9.999999999999996,
+            "stop_count": 4,
+            "shallowest_m": 9,
+            "deepest_m": 18
+          },
+          {
+            "duration_min": 28.33333333333333,
+            "stop_count": 2,
+            "shallowest_m": 3,
+            "deepest_m": 6
+          }
+        ]
+      }
+    },
+    {
+      "id": "ccr-bailout-5",
+      "context": {
+        "surface_bar": 1.01325,
+        "bar_per_metre": 0.1,
+        "step_m": 3,
+        "last_stop_m": 3
+      },
+      "rates": [
+        20,
+        15,
+        0.7,
+        0.5
+      ],
+      "segments": [
+        {
+          "start_depth_m": 0,
+          "end_depth_m": 45.0,
+          "duration_min": 4.5,
+          "phase": "levelTravel",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 45,
+          "end_depth_m": 45.0,
+          "duration_min": 20.5,
+          "phase": "levelHold",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 45,
+          "end_depth_m": 45.0,
+          "duration_min": 10,
+          "phase": "levelHold",
+          "mode": "ccr",
+          "oxygen": 0.18,
+          "helium": 0.45
+        },
+        {
+          "start_depth_m": 45.0,
+          "end_depth_m": 21,
+          "duration_min": 2.6666666666666665,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 21,
+          "end_depth_m": 21,
+          "duration_min": 1.3333333333333357,
+          "phase": "decompression",
+          "mode": "oc",
+          "oxygen": 0.5,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 21,
+          "end_depth_m": 18,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 0.5,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 18,
+          "end_depth_m": 18,
+          "duration_min": 0.6666666666666643,
+          "phase": "decompression",
+          "mode": "oc",
+          "oxygen": 0.5,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 18,
+          "end_depth_m": 15,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 0.5,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 15,
+          "end_depth_m": 15,
+          "duration_min": 0.6666666666666643,
+          "phase": "decompression",
+          "mode": "oc",
+          "oxygen": 0.5,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 15,
+          "end_depth_m": 12,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 0.5,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 12,
+          "end_depth_m": 12,
+          "duration_min": 2.6666666666666643,
+          "phase": "decompression",
+          "mode": "oc",
+          "oxygen": 0.5,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 12,
+          "end_depth_m": 9,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 0.5,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 9,
+          "end_depth_m": 9,
+          "duration_min": 3.6666666666666643,
+          "phase": "decompression",
+          "mode": "oc",
+          "oxygen": 0.5,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 9,
+          "end_depth_m": 6,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 0.5,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 6,
+          "duration_min": 5.666666666666664,
+          "phase": "decompression",
+          "mode": "oc",
+          "oxygen": 1.0,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 3,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 1.0,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 3,
+          "end_depth_m": 3,
+          "duration_min": 9.666666666666664,
+          "phase": "decompression",
+          "mode": "oc",
+          "oxygen": 1.0,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 3,
+          "end_depth_m": 0,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 1.0,
+          "helium": 0
+        }
+      ],
+      "expected": {
+        "segment_litres": [
+          3.15,
+          14.35,
+          7.0,
+          170.2738712065137,
+          61.45077720207265,
+          14.622501850481123,
+          27.764618800888133,
+          13.142116950407104,
+          24.803849000740104,
+          11.661732050333086,
+          87.37231680236854,
+          10.181347150259066,
+          103.85270170244257,
+          8.700962250185047,
+          135.3330866025166,
+          7.220577350111028,
+          187.93116210214652,
+          5.740192450037009
+        ],
+        "total_litres": 894.5518134715023,
+        "bottom_min": 35.0,
+        "stop_groups": [
+          {
+            "duration_min": 8.999999999999993,
+            "stop_count": 5,
+            "shallowest_m": 9,
+            "deepest_m": 21
+          },
+          {
+            "duration_min": 15.333333333333329,
+            "stop_count": 2,
+            "shallowest_m": 3,
+            "deepest_m": 6
+          }
+        ]
+      }
+    },
+    {
+      "id": "ccr-bailout-6",
+      "context": {
+        "surface_bar": 1.01325,
+        "bar_per_metre": 0.1,
+        "step_m": 3,
+        "last_stop_m": 3
+      },
+      "rates": [
+        20,
+        15,
+        0.7,
+        0.5
+      ],
+      "segments": [
+        {
+          "start_depth_m": 0,
+          "end_depth_m": 45.0,
+          "duration_min": 4.5,
+          "phase": "levelTravel",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 45,
+          "end_depth_m": 45.0,
+          "duration_min": 20.5,
+          "phase": "levelHold",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 45.0,
+          "end_depth_m": 18,
+          "duration_min": 3.0,
+          "phase": "ascent",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 18,
+          "end_depth_m": 18,
+          "duration_min": 1.0,
+          "phase": "decompression",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 18,
+          "end_depth_m": 15,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 15,
+          "end_depth_m": 15,
+          "duration_min": 0.6666666666666679,
+          "phase": "decompression",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 15,
+          "end_depth_m": 12,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 12,
+          "end_depth_m": 12,
+          "duration_min": 1.6666666666666679,
+          "phase": "decompression",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 12,
+          "end_depth_m": 9,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 9,
+          "end_depth_m": 9,
+          "duration_min": 1.6666666666666643,
+          "phase": "decompression",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 9,
+          "end_depth_m": 6,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 6,
+          "duration_min": 3.6666666666666643,
+          "phase": "decompression",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 3,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 3,
+          "end_depth_m": 3,
+          "duration_min": 5.666666666666664,
+          "phase": "decompression",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 3,
+          "end_depth_m": 0,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        }
+      ],
+      "expected": {
+        "segment_litres": [
+          3.15,
+          14.35,
+          1.5,
+          0.5,
+          0.16666666666666666,
+          0.3333333333333339,
+          0.16666666666666666,
+          0.8333333333333339,
+          0.16666666666666666,
+          0.8333333333333321,
+          0.16666666666666666,
+          1.8333333333333321,
+          0.16666666666666666,
+          2.833333333333332,
+          0.16666666666666666
+        ],
+        "total_litres": 27.166666666666664,
+        "bottom_min": 25.0,
+        "stop_groups": [
+          {
+            "duration_min": 5.0,
+            "stop_count": 4,
+            "shallowest_m": 9,
+            "deepest_m": 18
+          },
+          {
+            "duration_min": 9.333333333333329,
+            "stop_count": 2,
+            "shallowest_m": 3,
+            "deepest_m": 6
+          }
+        ]
+      }
+    },
+    {
+      "id": "ccr-bailout-7",
+      "context": {
+        "surface_bar": 1.01325,
+        "bar_per_metre": 0.1,
+        "step_m": 3,
+        "last_stop_m": 3
+      },
+      "rates": [
+        20,
+        15,
+        0.7,
+        0.5
+      ],
+      "segments": [
+        {
+          "start_depth_m": 0,
+          "end_depth_m": 45.0,
+          "duration_min": 4.5,
+          "phase": "levelTravel",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 45,
+          "end_depth_m": 45.0,
+          "duration_min": 20.5,
+          "phase": "levelHold",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 45.0,
+          "end_depth_m": 21,
+          "duration_min": 2.6666666666666665,
+          "phase": "ascent",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 21,
+          "end_depth_m": 18,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "ccr",
+          "oxygen": 0.18,
+          "helium": 0.45
+        },
+        {
+          "start_depth_m": 18,
+          "end_depth_m": 18,
+          "duration_min": 1.0,
+          "phase": "decompression",
+          "mode": "ccr",
+          "oxygen": 0.18,
+          "helium": 0.45
+        },
+        {
+          "start_depth_m": 18,
+          "end_depth_m": 15,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "ccr",
+          "oxygen": 0.18,
+          "helium": 0.45
+        },
+        {
+          "start_depth_m": 15,
+          "end_depth_m": 15,
+          "duration_min": 0.6666666666666679,
+          "phase": "decompression",
+          "mode": "ccr",
+          "oxygen": 0.18,
+          "helium": 0.45
+        },
+        {
+          "start_depth_m": 15,
+          "end_depth_m": 12,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "ccr",
+          "oxygen": 0.18,
+          "helium": 0.45
+        },
+        {
+          "start_depth_m": 12,
+          "end_depth_m": 12,
+          "duration_min": 1.6666666666666679,
+          "phase": "decompression",
+          "mode": "ccr",
+          "oxygen": 0.18,
+          "helium": 0.45
+        },
+        {
+          "start_depth_m": 12,
+          "end_depth_m": 9,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "ccr",
+          "oxygen": 0.18,
+          "helium": 0.45
+        },
+        {
+          "start_depth_m": 9,
+          "end_depth_m": 9,
+          "duration_min": 1.6666666666666643,
+          "phase": "decompression",
+          "mode": "ccr",
+          "oxygen": 0.18,
+          "helium": 0.45
+        },
+        {
+          "start_depth_m": 9,
+          "end_depth_m": 6,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "ccr",
+          "oxygen": 0.18,
+          "helium": 0.45
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 6,
+          "duration_min": 4.666666666666664,
+          "phase": "decompression",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 3,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 3,
+          "end_depth_m": 3,
+          "duration_min": 8.666666666666664,
+          "phase": "decompression",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 3,
+          "end_depth_m": 0,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        }
+      ],
+      "expected": {
+        "segment_litres": [
+          3.15,
+          14.35,
+          1.3333333333333333,
+          0.16666666666666666,
+          0.5,
+          0.16666666666666666,
+          0.3333333333333339,
+          0.16666666666666666,
+          0.8333333333333339,
+          0.16666666666666666,
+          0.8333333333333321,
+          0.16666666666666666,
+          2.333333333333332,
+          0.16666666666666666,
+          4.333333333333332,
+          0.16666666666666666
+        ],
+        "total_litres": 29.166666666666664,
+        "bottom_min": 25.0,
+        "stop_groups": [
+          {
+            "duration_min": 5.0,
+            "stop_count": 4,
+            "shallowest_m": 9,
+            "deepest_m": 18
+          },
+          {
+            "duration_min": 13.333333333333329,
+            "stop_count": 2,
+            "shallowest_m": 3,
+            "deepest_m": 6
+          }
+        ]
+      }
+    },
+    {
+      "id": "ccr-bailout-8",
+      "context": {
+        "surface_bar": 1.01325,
+        "bar_per_metre": 0.1,
+        "step_m": 3,
+        "last_stop_m": 3
+      },
+      "rates": [
+        20,
+        15,
+        0.7,
+        0.5
+      ],
+      "segments": [
+        {
+          "start_depth_m": 0,
+          "end_depth_m": 45.0,
+          "duration_min": 4.5,
+          "phase": "levelTravel",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 45,
+          "end_depth_m": 45.0,
+          "duration_min": 20.5,
+          "phase": "levelHold",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 45,
+          "end_depth_m": 45.0,
+          "duration_min": 10,
+          "phase": "levelHold",
+          "mode": "ccr",
+          "oxygen": 0.18,
+          "helium": 0.45
+        },
+        {
+          "start_depth_m": 45.0,
+          "end_depth_m": 21,
+          "duration_min": 2.6666666666666665,
+          "phase": "ascent",
+          "mode": "ccr",
+          "oxygen": 0.18,
+          "helium": 0.45
+        },
+        {
+          "start_depth_m": 21,
+          "end_depth_m": 21,
+          "duration_min": 1.3333333333333357,
+          "phase": "decompression",
+          "mode": "ccr",
+          "oxygen": 0.18,
+          "helium": 0.45
+        },
+        {
+          "start_depth_m": 21,
+          "end_depth_m": 18,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "ccr",
+          "oxygen": 0.18,
+          "helium": 0.45
+        },
+        {
+          "start_depth_m": 18,
+          "end_depth_m": 18,
+          "duration_min": 0.6666666666666643,
+          "phase": "decompression",
+          "mode": "ccr",
+          "oxygen": 0.18,
+          "helium": 0.45
+        },
+        {
+          "start_depth_m": 18,
+          "end_depth_m": 15,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "ccr",
+          "oxygen": 0.18,
+          "helium": 0.45
+        },
+        {
+          "start_depth_m": 15,
+          "end_depth_m": 15,
+          "duration_min": 1.6666666666666643,
+          "phase": "decompression",
+          "mode": "ccr",
+          "oxygen": 0.18,
+          "helium": 0.45
+        },
+        {
+          "start_depth_m": 15,
+          "end_depth_m": 12,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "ccr",
+          "oxygen": 0.18,
+          "helium": 0.45
+        },
+        {
+          "start_depth_m": 12,
+          "end_depth_m": 12,
+          "duration_min": 2.6666666666666643,
+          "phase": "decompression",
+          "mode": "ccr",
+          "oxygen": 0.18,
+          "helium": 0.45
+        },
+        {
+          "start_depth_m": 12,
+          "end_depth_m": 9,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "ccr",
+          "oxygen": 0.18,
+          "helium": 0.45
+        },
+        {
+          "start_depth_m": 9,
+          "end_depth_m": 9,
+          "duration_min": 3.6666666666666643,
+          "phase": "decompression",
+          "mode": "ccr",
+          "oxygen": 0.18,
+          "helium": 0.45
+        },
+        {
+          "start_depth_m": 9,
+          "end_depth_m": 6,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "ccr",
+          "oxygen": 0.18,
+          "helium": 0.45
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 6,
+          "duration_min": 7.666666666666664,
+          "phase": "decompression",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 3,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 3,
+          "end_depth_m": 3,
+          "duration_min": 14.666666666666664,
+          "phase": "decompression",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 3,
+          "end_depth_m": 0,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        }
+      ],
+      "expected": {
+        "segment_litres": [
+          3.15,
+          14.35,
+          7.0,
+          1.3333333333333333,
+          0.6666666666666679,
+          0.16666666666666666,
+          0.33333333333333215,
+          0.16666666666666666,
+          0.8333333333333321,
+          0.16666666666666666,
+          1.3333333333333321,
+          0.16666666666666666,
+          1.8333333333333321,
+          0.16666666666666666,
+          3.833333333333332,
+          0.16666666666666666,
+          7.333333333333332,
+          0.16666666666666666
+        ],
+        "total_litres": 43.16666666666666,
+        "bottom_min": 35.0,
+        "stop_groups": [
+          {
+            "duration_min": 9.999999999999993,
+            "stop_count": 5,
+            "shallowest_m": 9,
+            "deepest_m": 21
+          },
+          {
+            "duration_min": 22.33333333333333,
+            "stop_count": 2,
+            "shallowest_m": 3,
+            "deepest_m": 6
+          }
+        ]
+      }
+    },
+    {
+      "id": "ccr-bailout-9",
+      "context": {
+        "surface_bar": 1.01325,
+        "bar_per_metre": 0.1,
+        "step_m": 3,
+        "last_stop_m": 3
+      },
+      "rates": [
+        20,
+        15,
+        0.7,
+        0.5
+      ],
+      "segments": [
+        {
+          "start_depth_m": 0,
+          "end_depth_m": 22.5,
+          "duration_min": 2.25,
+          "phase": "levelTravel",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 22.5,
+          "end_depth_m": 21,
+          "duration_min": 0.16666666666666666,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 21,
+          "end_depth_m": 6,
+          "duration_min": 1.6666666666666667,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 0.5,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 0,
+          "duration_min": 0.6666666666666666,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 1.0,
+          "helium": 0
+        }
+      ],
+      "expected": {
+        "segment_litres": [
+          1.575,
+          7.86639526276832,
+          58.30866025166544,
+          12.960769800148038
+        ],
+        "total_litres": 80.7108253145818,
+        "bottom_min": 2.25,
+        "stop_groups": []
+      }
+    },
+    {
+      "id": "ccr-bailout-10",
+      "context": {
+        "surface_bar": 1.01325,
+        "bar_per_metre": 0.1,
+        "step_m": 3,
+        "last_stop_m": 3
+      },
+      "rates": [
+        20,
+        15,
+        0.7,
+        0.5
+      ],
+      "segments": [
+        {
+          "start_depth_m": 0,
+          "end_depth_m": 45.0,
+          "duration_min": 4.5,
+          "phase": "levelTravel",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 45.0,
+          "end_depth_m": 21,
+          "duration_min": 2.6666666666666665,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 21,
+          "end_depth_m": 6,
+          "duration_min": 1.6666666666666667,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 0.5,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 6,
+          "duration_min": 0.16666666666666785,
+          "phase": "decompression",
+          "mode": "oc",
+          "oxygen": 1.0,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 3,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 1.0,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 3,
+          "end_depth_m": 3,
+          "duration_min": 0.6666666666666661,
+          "phase": "decompression",
+          "mode": "oc",
+          "oxygen": 1.0,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 3,
+          "end_depth_m": 0,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 1.0,
+          "helium": 0
+        }
+      ],
+      "expected": {
+        "segment_litres": [
+          3.15,
+          170.2738712065137,
+          58.30866025166544,
+          3.9803849000740477,
+          7.220577350111028,
+          12.960769800148027,
+          5.740192450037009
+        ],
+        "total_litres": 261.6344559585492,
+        "bottom_min": 4.5,
+        "stop_groups": [
+          {
+            "duration_min": 0.8333333333333339,
+            "stop_count": 2,
+            "shallowest_m": 3,
+            "deepest_m": 6
+          }
+        ]
+      }
+    },
+    {
+      "id": "ccr-bailout-11",
+      "context": {
+        "surface_bar": 1.01325,
+        "bar_per_metre": 0.1,
+        "step_m": 3,
+        "last_stop_m": 3
+      },
+      "rates": [
+        20,
+        15,
+        0.7,
+        0.5
+      ],
+      "segments": [
+        {
+          "start_depth_m": 0,
+          "end_depth_m": 45.0,
+          "duration_min": 4.5,
+          "phase": "levelTravel",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 45,
+          "end_depth_m": 45.0,
+          "duration_min": 8.0,
+          "phase": "levelHold",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 45.0,
+          "end_depth_m": 21,
+          "duration_min": 2.6666666666666665,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 21,
+          "end_depth_m": 15,
+          "duration_min": 0.6666666666666666,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 0.5,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 15,
+          "end_depth_m": 15,
+          "duration_min": 0.16666666666666785,
+          "phase": "decompression",
+          "mode": "oc",
+          "oxygen": 0.5,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 15,
+          "end_depth_m": 12,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 0.5,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 12,
+          "end_depth_m": 12,
+          "duration_min": 0.6666666666666679,
+          "phase": "decompression",
+          "mode": "oc",
+          "oxygen": 0.5,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 12,
+          "end_depth_m": 9,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 0.5,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 9,
+          "end_depth_m": 9,
+          "duration_min": 0.6666666666666679,
+          "phase": "decompression",
+          "mode": "oc",
+          "oxygen": 0.5,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 9,
+          "end_depth_m": 6,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 0.5,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 6,
+          "duration_min": 0.6666666666666679,
+          "phase": "decompression",
+          "mode": "oc",
+          "oxygen": 1.0,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 3,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 1.0,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 3,
+          "end_depth_m": 3,
+          "duration_min": 0.6666666666666679,
+          "phase": "decompression",
+          "mode": "oc",
+          "oxygen": 1.0,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 3,
+          "end_depth_m": 0,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 1.0,
+          "helium": 0
+        }
+      ],
+      "expected": {
+        "segment_litres": [
+          3.15,
+          5.6,
+          170.2738712065137,
+          27.76461880088823,
+          6.200962250185092,
+          11.661732050333086,
+          21.843079200592193,
+          10.181347150259066,
+          18.88230940044415,
+          8.700962250185047,
+          15.921539600296107,
+          7.220577350111028,
+          12.960769800148062,
+          5.740192450037009
+        ],
+        "total_litres": 326.10196150999275,
+        "bottom_min": 12.5,
+        "stop_groups": [
+          {
+            "duration_min": 1.5000000000000036,
+            "stop_count": 3,
+            "shallowest_m": 9,
+            "deepest_m": 15
+          },
+          {
+            "duration_min": 1.3333333333333357,
+            "stop_count": 2,
+            "shallowest_m": 3,
+            "deepest_m": 6
+          }
+        ]
+      }
+    },
+    {
+      "id": "ccr-bailout-12",
+      "context": {
+        "surface_bar": 1.01325,
+        "bar_per_metre": 0.1,
+        "step_m": 3,
+        "last_stop_m": 3
+      },
+      "rates": [
+        20,
+        15,
+        0.7,
+        0.5
+      ],
+      "segments": [
+        {
+          "start_depth_m": 0,
+          "end_depth_m": 45.0,
+          "duration_min": 4.5,
+          "phase": "levelTravel",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 45,
+          "end_depth_m": 45.0,
+          "duration_min": 20.5,
+          "phase": "levelHold",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 45.0,
+          "end_depth_m": 21,
+          "duration_min": 2.6666666666666665,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 21,
+          "end_depth_m": 18,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 0.5,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 18,
+          "end_depth_m": 18,
+          "duration_min": 1.0,
+          "phase": "decompression",
+          "mode": "oc",
+          "oxygen": 0.5,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 18,
+          "end_depth_m": 15,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 0.5,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 15,
+          "end_depth_m": 15,
+          "duration_min": 0.6666666666666679,
+          "phase": "decompression",
+          "mode": "oc",
+          "oxygen": 0.5,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 15,
+          "end_depth_m": 12,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 0.5,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 12,
+          "end_depth_m": 12,
+          "duration_min": 0.6666666666666679,
+          "phase": "decompression",
+          "mode": "oc",
+          "oxygen": 0.5,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 12,
+          "end_depth_m": 9,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 0.5,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 9,
+          "end_depth_m": 9,
+          "duration_min": 2.666666666666668,
+          "phase": "decompression",
+          "mode": "oc",
+          "oxygen": 0.5,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 9,
+          "end_depth_m": 6,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 0.5,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 6,
+          "duration_min": 3.6666666666666643,
+          "phase": "decompression",
+          "mode": "oc",
+          "oxygen": 1.0,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 3,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 1.0,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 3,
+          "end_depth_m": 3,
+          "duration_min": 5.666666666666664,
+          "phase": "decompression",
+          "mode": "oc",
+          "oxygen": 1.0,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 3,
+          "end_depth_m": 0,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 1.0,
+          "helium": 0
+        }
+      ],
+      "expected": {
+        "segment_litres": [
+          3.15,
+          14.35,
+          170.2738712065137,
+          14.622501850481123,
+          41.646928201332344,
+          13.142116950407104,
+          24.80384900074024,
+          11.661732050333086,
+          21.843079200592193,
+          10.181347150259066,
+          75.5292376017765,
+          8.700962250185047,
+          87.56846780162837,
+          7.220577350111028,
+          110.16654330125827,
+          5.740192450037009
+        ],
+        "total_litres": 620.6014063656551,
+        "bottom_min": 25.0,
+        "stop_groups": [
+          {
+            "duration_min": 5.0000000000000036,
+            "stop_count": 4,
+            "shallowest_m": 9,
+            "deepest_m": 18
+          },
+          {
+            "duration_min": 9.333333333333329,
+            "stop_count": 2,
+            "shallowest_m": 3,
+            "deepest_m": 6
+          }
+        ]
+      }
+    },
+    {
+      "id": "ccr-bailout-13",
+      "context": {
+        "surface_bar": 1.01325,
+        "bar_per_metre": 0.1,
+        "step_m": 3,
+        "last_stop_m": 3
+      },
+      "rates": [
+        20,
+        15,
+        0.7,
+        0.5
+      ],
+      "segments": [
+        {
+          "start_depth_m": 0,
+          "end_depth_m": 45.0,
+          "duration_min": 4.5,
+          "phase": "levelTravel",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 45,
+          "end_depth_m": 45.0,
+          "duration_min": 20.5,
+          "phase": "levelHold",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 45.0,
+          "end_depth_m": 18,
+          "duration_min": 3.0,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 18,
+          "end_depth_m": 18,
+          "duration_min": 2.0,
+          "phase": "decompression",
+          "mode": "oc",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 18,
+          "end_depth_m": 15,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 15,
+          "end_depth_m": 15,
+          "duration_min": 1.6666666666666679,
+          "phase": "decompression",
+          "mode": "oc",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 15,
+          "end_depth_m": 12,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 12,
+          "end_depth_m": 12,
+          "duration_min": 2.6666666666666643,
+          "phase": "decompression",
+          "mode": "oc",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 12,
+          "end_depth_m": 9,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 9,
+          "end_depth_m": 9,
+          "duration_min": 4.666666666666664,
+          "phase": "decompression",
+          "mode": "oc",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 9,
+          "end_depth_m": 6,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 6,
+          "duration_min": 9.666666666666664,
+          "phase": "decompression",
+          "mode": "oc",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 3,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 3,
+          "end_depth_m": 3,
+          "duration_min": 21.666666666666664,
+          "phase": "decompression",
+          "mode": "oc",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 3,
+          "end_depth_m": 0,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 0.21,
+          "helium": 0.35
+        }
+      ],
+      "expected": {
+        "segment_litres": [
+          3.15,
+          14.35,
+          184.89637305699483,
+          83.29385640266469,
+          13.142116950407104,
+          62.00962250185053,
+          11.661732050333086,
+          87.37231680236854,
+          10.181347150259066,
+          132.17616580310874,
+          8.700962250185047,
+          230.86232420429306,
+          7.220577350111028,
+          421.2250185048112,
+          5.740192450037009
+        ],
+        "total_litres": 1275.982605477424,
+        "bottom_min": 25.0,
+        "stop_groups": [
+          {
+            "duration_min": 10.999999999999996,
+            "stop_count": 4,
+            "shallowest_m": 9,
+            "deepest_m": 18
+          },
+          {
+            "duration_min": 31.33333333333333,
+            "stop_count": 2,
+            "shallowest_m": 3,
+            "deepest_m": 6
+          }
+        ]
+      }
+    },
+    {
+      "id": "ccr-bailout-14",
+      "context": {
+        "surface_bar": 1.01325,
+        "bar_per_metre": 0.1,
+        "step_m": 3,
+        "last_stop_m": 3
+      },
+      "rates": [
+        20,
+        15,
+        0.7,
+        0.5
+      ],
+      "segments": [
+        {
+          "start_depth_m": 0,
+          "end_depth_m": 45.0,
+          "duration_min": 4.5,
+          "phase": "levelTravel",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 45,
+          "end_depth_m": 45.0,
+          "duration_min": 20.5,
+          "phase": "levelHold",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 45,
+          "end_depth_m": 45.0,
+          "duration_min": 10,
+          "phase": "levelHold",
+          "mode": "ccr",
+          "oxygen": 0.18,
+          "helium": 0.45
+        },
+        {
+          "start_depth_m": 45.0,
+          "end_depth_m": 21,
+          "duration_min": 2.6666666666666665,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 21,
+          "end_depth_m": 21,
+          "duration_min": 1.3333333333333357,
+          "phase": "decompression",
+          "mode": "oc",
+          "oxygen": 0.5,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 21,
+          "end_depth_m": 18,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 0.5,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 18,
+          "end_depth_m": 18,
+          "duration_min": 0.6666666666666643,
+          "phase": "decompression",
+          "mode": "oc",
+          "oxygen": 0.5,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 18,
+          "end_depth_m": 15,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 0.5,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 15,
+          "end_depth_m": 15,
+          "duration_min": 1.6666666666666643,
+          "phase": "decompression",
+          "mode": "oc",
+          "oxygen": 0.5,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 15,
+          "end_depth_m": 12,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 0.5,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 12,
+          "end_depth_m": 12,
+          "duration_min": 1.6666666666666643,
+          "phase": "decompression",
+          "mode": "oc",
+          "oxygen": 0.5,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 12,
+          "end_depth_m": 9,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 0.5,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 9,
+          "end_depth_m": 9,
+          "duration_min": 4.666666666666664,
+          "phase": "decompression",
+          "mode": "oc",
+          "oxygen": 0.5,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 9,
+          "end_depth_m": 6,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 0.5,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 6,
+          "duration_min": 5.666666666666664,
+          "phase": "decompression",
+          "mode": "oc",
+          "oxygen": 1.0,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 3,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 1.0,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 3,
+          "end_depth_m": 3,
+          "duration_min": 9.666666666666664,
+          "phase": "decompression",
+          "mode": "oc",
+          "oxygen": 1.0,
+          "helium": 0
+        },
+        {
+          "start_depth_m": 3,
+          "end_depth_m": 0,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "oc",
+          "oxygen": 1.0,
+          "helium": 0
+        }
+      ],
+      "expected": {
+        "segment_litres": [
+          3.15,
+          14.35,
+          7.0,
+          170.2738712065137,
+          61.45077720207265,
+          14.622501850481123,
+          27.764618800888133,
+          13.142116950407104,
+          62.009622501850394,
+          11.661732050333086,
+          54.60769800148031,
+          10.181347150259066,
+          132.17616580310874,
+          8.700962250185047,
+          135.3330866025166,
+          7.220577350111028,
+          187.93116210214652,
+          5.740192450037009
+        ],
+        "total_litres": 927.3164322723906,
+        "bottom_min": 35.0,
+        "stop_groups": [
+          {
+            "duration_min": 9.999999999999993,
+            "stop_count": 5,
+            "shallowest_m": 9,
+            "deepest_m": 21
+          },
+          {
+            "duration_min": 15.333333333333329,
+            "stop_count": 2,
+            "shallowest_m": 3,
+            "deepest_m": 6
+          }
+        ]
+      }
+    },
+    {
+      "id": "ccr-bailout-15",
+      "context": {
+        "surface_bar": 1.01325,
+        "bar_per_metre": 0.1,
+        "step_m": 3,
+        "last_stop_m": 3
+      },
+      "rates": [
+        20,
+        15,
+        0.7,
+        0.5
+      ],
+      "segments": [
+        {
+          "start_depth_m": 0,
+          "end_depth_m": 45.0,
+          "duration_min": 4.5,
+          "phase": "levelTravel",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 45,
+          "end_depth_m": 45.0,
+          "duration_min": 20.5,
+          "phase": "levelHold",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 45.0,
+          "end_depth_m": 18,
+          "duration_min": 3.0,
+          "phase": "ascent",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 18,
+          "end_depth_m": 18,
+          "duration_min": 1.0,
+          "phase": "decompression",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 18,
+          "end_depth_m": 15,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 15,
+          "end_depth_m": 15,
+          "duration_min": 0.6666666666666679,
+          "phase": "decompression",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 15,
+          "end_depth_m": 12,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 12,
+          "end_depth_m": 12,
+          "duration_min": 1.6666666666666679,
+          "phase": "decompression",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 12,
+          "end_depth_m": 9,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 9,
+          "end_depth_m": 9,
+          "duration_min": 1.6666666666666643,
+          "phase": "decompression",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 9,
+          "end_depth_m": 6,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 6,
+          "duration_min": 3.6666666666666643,
+          "phase": "decompression",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 3,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 3,
+          "end_depth_m": 3,
+          "duration_min": 6.666666666666664,
+          "phase": "decompression",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 3,
+          "end_depth_m": 0,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        }
+      ],
+      "expected": {
+        "segment_litres": [
+          3.15,
+          14.35,
+          1.5,
+          0.5,
+          0.16666666666666666,
+          0.3333333333333339,
+          0.16666666666666666,
+          0.8333333333333339,
+          0.16666666666666666,
+          0.8333333333333321,
+          0.16666666666666666,
+          1.8333333333333321,
+          0.16666666666666666,
+          3.333333333333332,
+          0.16666666666666666
+        ],
+        "total_litres": 27.666666666666664,
+        "bottom_min": 25.0,
+        "stop_groups": [
+          {
+            "duration_min": 5.0,
+            "stop_count": 4,
+            "shallowest_m": 9,
+            "deepest_m": 18
+          },
+          {
+            "duration_min": 10.333333333333329,
+            "stop_count": 2,
+            "shallowest_m": 3,
+            "deepest_m": 6
+          }
+        ]
+      }
+    },
+    {
+      "id": "ccr-bailout-16",
+      "context": {
+        "surface_bar": 1.01325,
+        "bar_per_metre": 0.1,
+        "step_m": 3,
+        "last_stop_m": 3
+      },
+      "rates": [
+        20,
+        15,
+        0.7,
+        0.5
+      ],
+      "segments": [
+        {
+          "start_depth_m": 0,
+          "end_depth_m": 45.0,
+          "duration_min": 4.5,
+          "phase": "levelTravel",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 45,
+          "end_depth_m": 45.0,
+          "duration_min": 20.5,
+          "phase": "levelHold",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 45.0,
+          "end_depth_m": 21,
+          "duration_min": 2.6666666666666665,
+          "phase": "ascent",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 21,
+          "end_depth_m": 18,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "ccr",
+          "oxygen": 0.18,
+          "helium": 0.45
+        },
+        {
+          "start_depth_m": 18,
+          "end_depth_m": 18,
+          "duration_min": 1.0,
+          "phase": "decompression",
+          "mode": "ccr",
+          "oxygen": 0.18,
+          "helium": 0.45
+        },
+        {
+          "start_depth_m": 18,
+          "end_depth_m": 15,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "ccr",
+          "oxygen": 0.18,
+          "helium": 0.45
+        },
+        {
+          "start_depth_m": 15,
+          "end_depth_m": 15,
+          "duration_min": 0.6666666666666679,
+          "phase": "decompression",
+          "mode": "ccr",
+          "oxygen": 0.18,
+          "helium": 0.45
+        },
+        {
+          "start_depth_m": 15,
+          "end_depth_m": 12,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "ccr",
+          "oxygen": 0.18,
+          "helium": 0.45
+        },
+        {
+          "start_depth_m": 12,
+          "end_depth_m": 12,
+          "duration_min": 1.6666666666666679,
+          "phase": "decompression",
+          "mode": "ccr",
+          "oxygen": 0.18,
+          "helium": 0.45
+        },
+        {
+          "start_depth_m": 12,
+          "end_depth_m": 9,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "ccr",
+          "oxygen": 0.18,
+          "helium": 0.45
+        },
+        {
+          "start_depth_m": 9,
+          "end_depth_m": 9,
+          "duration_min": 1.6666666666666643,
+          "phase": "decompression",
+          "mode": "ccr",
+          "oxygen": 0.18,
+          "helium": 0.45
+        },
+        {
+          "start_depth_m": 9,
+          "end_depth_m": 6,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "ccr",
+          "oxygen": 0.18,
+          "helium": 0.45
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 6,
+          "duration_min": 5.666666666666664,
+          "phase": "decompression",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 3,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 3,
+          "end_depth_m": 3,
+          "duration_min": 8.666666666666664,
+          "phase": "decompression",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 3,
+          "end_depth_m": 0,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        }
+      ],
+      "expected": {
+        "segment_litres": [
+          3.15,
+          14.35,
+          1.3333333333333333,
+          0.16666666666666666,
+          0.5,
+          0.16666666666666666,
+          0.3333333333333339,
+          0.16666666666666666,
+          0.8333333333333339,
+          0.16666666666666666,
+          0.8333333333333321,
+          0.16666666666666666,
+          2.833333333333332,
+          0.16666666666666666,
+          4.333333333333332,
+          0.16666666666666666
+        ],
+        "total_litres": 29.666666666666664,
+        "bottom_min": 25.0,
+        "stop_groups": [
+          {
+            "duration_min": 5.0,
+            "stop_count": 4,
+            "shallowest_m": 9,
+            "deepest_m": 18
+          },
+          {
+            "duration_min": 14.333333333333329,
+            "stop_count": 2,
+            "shallowest_m": 3,
+            "deepest_m": 6
+          }
+        ]
+      }
+    },
+    {
+      "id": "ccr-bailout-17",
+      "context": {
+        "surface_bar": 1.01325,
+        "bar_per_metre": 0.1,
+        "step_m": 3,
+        "last_stop_m": 3
+      },
+      "rates": [
+        20,
+        15,
+        0.7,
+        0.5
+      ],
+      "segments": [
+        {
+          "start_depth_m": 0,
+          "end_depth_m": 45.0,
+          "duration_min": 4.5,
+          "phase": "levelTravel",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 45,
+          "end_depth_m": 45.0,
+          "duration_min": 20.5,
+          "phase": "levelHold",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 45,
+          "end_depth_m": 45.0,
+          "duration_min": 10,
+          "phase": "levelHold",
+          "mode": "ccr",
+          "oxygen": 0.18,
+          "helium": 0.45
+        },
+        {
+          "start_depth_m": 45.0,
+          "end_depth_m": 21,
+          "duration_min": 2.6666666666666665,
+          "phase": "ascent",
+          "mode": "ccr",
+          "oxygen": 0.18,
+          "helium": 0.45
+        },
+        {
+          "start_depth_m": 21,
+          "end_depth_m": 21,
+          "duration_min": 1.3333333333333357,
+          "phase": "decompression",
+          "mode": "ccr",
+          "oxygen": 0.18,
+          "helium": 0.45
+        },
+        {
+          "start_depth_m": 21,
+          "end_depth_m": 18,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "ccr",
+          "oxygen": 0.18,
+          "helium": 0.45
+        },
+        {
+          "start_depth_m": 18,
+          "end_depth_m": 18,
+          "duration_min": 0.6666666666666643,
+          "phase": "decompression",
+          "mode": "ccr",
+          "oxygen": 0.18,
+          "helium": 0.45
+        },
+        {
+          "start_depth_m": 18,
+          "end_depth_m": 15,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "ccr",
+          "oxygen": 0.18,
+          "helium": 0.45
+        },
+        {
+          "start_depth_m": 15,
+          "end_depth_m": 15,
+          "duration_min": 1.6666666666666643,
+          "phase": "decompression",
+          "mode": "ccr",
+          "oxygen": 0.18,
+          "helium": 0.45
+        },
+        {
+          "start_depth_m": 15,
+          "end_depth_m": 12,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "ccr",
+          "oxygen": 0.18,
+          "helium": 0.45
+        },
+        {
+          "start_depth_m": 12,
+          "end_depth_m": 12,
+          "duration_min": 2.6666666666666643,
+          "phase": "decompression",
+          "mode": "ccr",
+          "oxygen": 0.18,
+          "helium": 0.45
+        },
+        {
+          "start_depth_m": 12,
+          "end_depth_m": 9,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "ccr",
+          "oxygen": 0.18,
+          "helium": 0.45
+        },
+        {
+          "start_depth_m": 9,
+          "end_depth_m": 9,
+          "duration_min": 3.6666666666666643,
+          "phase": "decompression",
+          "mode": "ccr",
+          "oxygen": 0.18,
+          "helium": 0.45
+        },
+        {
+          "start_depth_m": 9,
+          "end_depth_m": 6,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "ccr",
+          "oxygen": 0.18,
+          "helium": 0.45
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 6,
+          "duration_min": 8.666666666666664,
+          "phase": "decompression",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 6,
+          "end_depth_m": 3,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 3,
+          "end_depth_m": 3,
+          "duration_min": 15.666666666666664,
+          "phase": "decompression",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        },
+        {
+          "start_depth_m": 3,
+          "end_depth_m": 0,
+          "duration_min": 0.3333333333333333,
+          "phase": "ascent",
+          "mode": "ccr",
+          "oxygen": 0.21,
+          "helium": 0.35
+        }
+      ],
+      "expected": {
+        "segment_litres": [
+          3.15,
+          14.35,
+          7.0,
+          1.3333333333333333,
+          0.6666666666666679,
+          0.16666666666666666,
+          0.33333333333333215,
+          0.16666666666666666,
+          0.8333333333333321,
+          0.16666666666666666,
+          1.3333333333333321,
+          0.16666666666666666,
+          1.8333333333333321,
+          0.16666666666666666,
+          4.333333333333332,
+          0.16666666666666666,
+          7.833333333333332,
+          0.16666666666666666
+        ],
+        "total_litres": 44.16666666666666,
+        "bottom_min": 35.0,
+        "stop_groups": [
+          {
+            "duration_min": 9.999999999999993,
+            "stop_count": 5,
+            "shallowest_m": 9,
+            "deepest_m": 21
+          },
+          {
+            "duration_min": 24.33333333333333,
+            "stop_count": 2,
+            "shallowest_m": 3,
+            "deepest_m": 6
+          }
+        ]
+      }
+    }
+  ]
+}

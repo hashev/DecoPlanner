@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "id": "zero-hold-after-descent",
+  "provenance": {
+    "kind": "original-runtime-observation",
+    "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+    "original_result_sha256": "894ec0028e9590dbee560fbd9cd3dda79b1a8606f0efeff8f0866d922fc6a05d",
+    "source": "analysis/fixtures/results/zero-hold-after-descent.json"
+  },
+  "request": {
+    "id": "zero-hold-after-descent",
+    "model": "b",
+    "mode": "oc",
+    "levels": [
+      [
+        30,
+        3,
+        21,
+        0,
+        0
+      ]
+    ]
+  },
+  "outcome": "legacy-error",
+  "role": "baseline observation, not an independent corrected-model expectation"
+}

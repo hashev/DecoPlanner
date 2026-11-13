@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "id": "cns-clipped-lower-band-equality",
+  "correction": "cns-movement-band-equality",
+  "request": {
+    "mode": "oc",
+    "model": "b",
+    "depth_from_m": 0,
+    "depth_to_m": 30,
+    "duration_min": 3,
+    "oxygen_fraction": 0.21
+  },
+  "provenance": {
+    "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+    "legacy_result_sha256": "f134fa17dee29ac85dd9435f36611434c9315dab68ef1bb79cbe3862c745a355",
+    "expected_origin": "Independent mpmath quadrature of Baker table; not Dart output",
+    "command": "local/oracles/python-env/bin/python tool/capture_schedule_oxygen_replay.py"
+  },
+  "legacy_observed": {
+    "cns_fraction": 0.004973526151167392,
+    "otu": 0.6203387340879786
+  },
+  "expected": {
+    "cns_fraction": "0.002651942899962069970876999474337696831806367526930054126",
+    "otu": "0.6203387340879787724507011715164674719086177899178447548"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "id": "repetitive-vpm-1440",
+  "provenance": {
+    "kind": "original-runtime-observation",
+    "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+    "original_result_sha256": "91621206a70c3e33f0ac22b79436e41a19341d84e5ddc9907b2b90b9efeb4667",
+    "source": "analysis/fixtures/results/repetitive-vpm-1440.json"
+  },
+  "request": {
+    "id": "repetitive-vpm-1440",
+    "model": "vpm",
+    "mode": "oc",
+    "dives": [
+      [
+        [
+          30,
+          20,
+          21,
+          0,
+          0
+        ]
+      ],
+      [
+        [
+          30,
+          20,
+          21,
+          0,
+          0
+        ]
+      ]
+    ],
+    "intervals": [
+      1440
+    ]
+  },
+  "outcome": "legacy-error",
+  "role": "baseline observation, not an independent corrected-model expectation"
+}

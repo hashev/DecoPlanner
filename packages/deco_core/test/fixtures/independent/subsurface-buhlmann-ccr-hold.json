@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "id": "subsurface-buhlmann-ccr-hold",
+  "provenance": {
+    "kind": "independent-execution",
+    "repository": "https://github.com/subsurface/subsurface",
+    "commit": "7f2610cee4572ebc1795c48d054616a51d457eec",
+    "libdivecomputer_headers_commit": "14f92934c0aedbba7a5aafe8915e8a96d944335c",
+    "numerical_source_sha256": {
+      "deco.cpp": "26964790fdca9ac7afb239329a36a8b2b9a0b0d92b02c097bde88a0bc64121b5",
+      "gas.cpp": "a32a61ef2af6f5e6faf294747a054c50537266a27a9e9b7ae01895e5554bd10a",
+      "units.h": "e1e9eae7985758cfca36e35eefe78c6c2416858cc20f4b38675291aa166db557"
+    },
+    "harness_sha256": "7f70906c8975652ece12d8d180e093d5a4451fd915324803ba6a302c34163b2f",
+    "numerical_modifications": false,
+    "command": "python3 tool/capture_subsurface_tissues.py"
+  },
+  "request": {
+    "mode": "ccr",
+    "duration_min": 20,
+    "ambient_bar": 6.01325,
+    "surface_bar": 1.01325,
+    "water_vapour_bar": 0.0627,
+    "initial_n2_fraction": 0.781,
+    "o2_fraction": 0.18,
+    "he_fraction": 0.45,
+    "setpoint_bar": 1.3
+  },
+  "expected": {
+    "mode": "CCR",
+    "n2": [
+      2.0136664429251643,
+      1.8587027470466668,
+      1.6510927392520311,
+      1.4574536893471033,
+      1.286921542976748,
+      1.1541917764408218,
+      1.0479198060612545,
+      0.9658029251402102,
+      0.9043278849088084,
+      0.8652138161387478,
+      0.8392715068260597,
+      0.8187974909571772,
+      0.8026348783903791,
+      0.7897347078681399,
+      0.779607373853505,
+      0.7716629850133935
+    ],
+    "he": [
+      2.550529858348819,
+      2.5262294822444877,
+      2.41681416317729,
+      2.200904961591119,
+      1.8956439918155614,
+      1.5723801491433058,
+      1.2530258479597616,
+      0.9669437963828742,
+      0.729193032750225,
+      0.5668848766994707,
+      0.45447672022767804,
+      0.36306341119790175,
+      0.2891463579279622,
+      0.22905625079585126,
+      0.18119776728262524,
+      0.14322272122118862
+    ]
+  },
+  "scope": "Constant-pressure CCR tissue propagation only; not a full schedule or VPM bubble oracle",
+  "comparison_policy": "explicit upstream initialization; pending model normalization"
+}

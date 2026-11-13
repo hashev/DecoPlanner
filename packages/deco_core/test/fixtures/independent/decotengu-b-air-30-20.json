@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "id": "decotengu-b-air-30-20",
+  "provenance": {
+    "kind": "independent-execution",
+    "project": "DecoTengu",
+    "version": "0.14.1",
+    "source": "https://wrobell.dcmod.org/decotengu/",
+    "engine_module_sha256": "be23ee22c55eb729ad7034efcc7b7fd43a65c856a104990f423374086036599a",
+    "model_module_sha256": "6136b38c650faa3852b4a344b8f32eb1849f815409147ee883d2a1f22063387b"
+  },
+  "request": {
+    "model": "ZH-L16B-GF",
+    "coefficient_variant": "upstream default: B uses compartment 1b, C uses 1a",
+    "mode": "oc",
+    "depth_m": 30,
+    "bottom_runtime_min": 20,
+    "descent_m_min": 10,
+    "ascent_m_min": 9,
+    "gf_low": 0.3,
+    "gf_high": 0.85,
+    "o2_fraction": 0.21,
+    "surface_bar": 1.01325,
+    "water_vapour_bar": 0.0627,
+    "initial_n2_fraction": 0.7902
+  },
+  "expected": {
+    "runtime_min": 27.33333333333333,
+    "stops": [
+      {
+        "depth_m": 12.0,
+        "duration_min": 1.0
+      },
+      {
+        "depth_m": 9.0,
+        "duration_min": 1.0
+      },
+      {
+        "depth_m": 6.0,
+        "duration_min": 1.0
+      },
+      {
+        "depth_m": 3.0,
+        "duration_min": 1.0
+      }
+    ],
+    "final_tissues_bar": {
+      "n2": [
+        1.9927023589342805,
+        2.110280508509107,
+        2.0276105016809183,
+        1.8459069648482362,
+        1.6344866703228504,
+        1.4448570608710298,
+        1.2798268904534211,
+        1.145171815701218,
+        1.0406161117839048,
+        0.9725109520491344,
+        0.9266866071076834,
+        0.8901619162573695,
+        0.8611083144505187,
+        0.837781582015964,
+        0.8193840915403712,
+        0.8049004251371343
+      ],
+      "he": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "scope": "Independent upstream conventions; normalize before comparing to legacy observations",
+  "comparison_policy": "pending-normalization; do not silently treat as exact legacy schedule"
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "scope": "legacy presentation observations; not independent density physics",
+  "cases": [
+    {
+      "id": "density-air-controller",
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "source_sha256": "236b87357c627790fe1403783697964bd6eda4df11405717981f8f5f2dde4dd4",
+        "source": "analysis/fixtures/results/density-air-controller.json"
+      },
+      "request": {
+        "oxygen": 0.21,
+        "helium": 0,
+        "depth_m": 45
+      },
+      "expected_display": {
+        "density_g_l": "7.0",
+        "equivalent_air_density_depth_m": "45.0"
+      }
+    },
+    {
+      "id": "density-nitrox32-controller",
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "source_sha256": "7ec8dc20381998b09a9bd7e963f6575cc693504eba05f02941d68cf5b93cfd8e",
+        "source": "analysis/fixtures/results/density-nitrox32-controller.json"
+      },
+      "request": {
+        "oxygen": 0.32,
+        "helium": 0,
+        "depth_m": 45
+      },
+      "expected_display": {
+        "density_g_l": "7.1",
+        "equivalent_air_density_depth_m": "45.8"
+      }
+    },
+    {
+      "id": "density-trimix-controller",
+      "provenance": {
+        "kind": "original-runtime-observation",
+        "archive_sha256": "c5b8d01df71e28d22a0c9f000548d1a5dce7f1b9dacd63175a4dd07c64151f28",
+        "source_sha256": "511afbd69c0cecd364df3a3d7473790b70e714f087291f7966616ca73928949f",
+        "source": "analysis/fixtures/results/density-trimix-controller.json"
+      },
+      "request": {
+        "oxygen": 0.18,
+        "helium": 0.45,
+        "depth_m": 45
+      },
+      "expected_display": {
+        "density_g_l": "4.4",
+        "equivalent_air_density_depth_m": "24.2"
+      }
+    }
+  ]
+}
