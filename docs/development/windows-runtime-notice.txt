@@ -1,0 +1,11 @@
+Microsoft Visual C++ Runtime
+
+The Windows ZIP includes Microsoft compiler runtime DLLs selected by CMake
+InstallRequiredSystemLibraries from the build runner's Visual Studio toolchain.
+These files are Microsoft components, not DecoPlanner source code. DecoPlanner's
+MIT license does not replace the licenses applicable to these components.
+
+Microsoft's Visual Studio 2022 distributable code information:
+https://learn.microsoft.com/en-us/visualstudio/releases/2022/redistribution
+Microsoft Visual Studio license terms:
+https://visualstudio.microsoft.com/license-terms/

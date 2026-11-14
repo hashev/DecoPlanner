@@ -1,0 +1,61 @@
+{
+  "before_sha": "134c4d25fae24fa6b28c6fa73870d6756651b9f9",
+  "probe_sha": "d3ecdb623ede5d71cd8cf5e57925632e3e3b9555",
+  "primary_ruleset_id": 27256688,
+  "temporary_guard_id": 27256839,
+  "push_returncode": 1,
+  "push_output": "remote: error: GH013: Repository rule violations found for refs/heads/main.        \nremote: Review all repository rules at https://github.com/hashev/DecoPlanner/rules?ref=refs%2Fheads%2Fmain        \nremote: \nremote: - Changes must be made through a pull request.        \nremote: \nremote: - Required status check \"DecoPlanner CI gate\" is expected.        \nremote: \nremote: - Cannot update this protected ref.        \nremote: \nTo https://github.com/hashev/DecoPlanner.git\n ! [remote rejected] d3ecdb623ede5d71cd8cf5e57925632e3e3b9555 -> main (push declined due to repository rule violations)\nerror: failed to push some refs to 'https://github.com/hashev/DecoPlanner.git'\n",
+  "main_unchanged": true,
+  "merge_without_ci_returncode": 1,
+  "merge_without_ci_response": "{\"message\":\"Repository rule violations found\\n\\nRequired status check \\\"DecoPlanner CI gate\\\" is expected.\\n\\nCannot update this protected ref.\\n\\n\",\"documentation_url\":\"https://docs.github.com/rest/pulls/pulls#merge-a-pull-request\",\"status\":\"405\"}gh: Repository rule violations found\n\nRequired status check \"DecoPlanner CI gate\" is expected.\n\nCannot update this protected ref.\n\n (HTTP 405)\n",
+  "effective_rules_after_probe": [
+    {
+      "type": "deletion",
+      "ruleset_source_type": "Repository",
+      "ruleset_source": "hashev/DecoPlanner",
+      "ruleset_id": 27256688
+    },
+    {
+      "type": "non_fast_forward",
+      "ruleset_source_type": "Repository",
+      "ruleset_source": "hashev/DecoPlanner",
+      "ruleset_id": 27256688
+    },
+    {
+      "type": "pull_request",
+      "parameters": {
+        "required_approving_review_count": 0,
+        "dismiss_stale_reviews_on_push": false,
+        "required_reviewers": [],
+        "require_code_owner_review": false,
+        "require_last_push_approval": false,
+        "required_review_thread_resolution": false,
+        "require_extra_approval_for_unattributed_changes": false,
+        "allowed_merge_methods": [
+          "merge",
+          "squash",
+          "rebase"
+        ]
+      },
+      "ruleset_source_type": "Repository",
+      "ruleset_source": "hashev/DecoPlanner",
+      "ruleset_id": 27256688
+    },
+    {
+      "type": "required_status_checks",
+      "parameters": {
+        "strict_required_status_checks_policy": true,
+        "do_not_enforce_on_create": false,
+        "required_status_checks": [
+          {
+            "context": "DecoPlanner CI gate",
+            "integration_id": 15368
+          }
+        ]
+      },
+      "ruleset_source_type": "Repository",
+      "ruleset_source": "hashev/DecoPlanner",
+      "ruleset_id": 27256688
+    }
+  ]
+}

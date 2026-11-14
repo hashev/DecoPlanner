@@ -1,0 +1,130 @@
+name: Release
+on:
+  push:
+    tags: ['v*']
+permissions:
+  contents: read
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  identity:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    outputs:
+      tag: ${{ steps.version.outputs.tag }}
+      name: ${{ steps.version.outputs.name }}
+      code: ${{ steps.version.outputs.code }}
+      sha: ${{ steps.source.outputs.sha }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - id: version
+        run: python3 tool/release/version.py "$RELEASE_TAG" --github-output
+        env:
+          RELEASE_TAG: ${{ github.ref_name }}
+      - id: source
+        run: python3 tool/release/source.py
+  verify:
+    needs: identity
+    uses: ./.github/workflows/ci.yml
+  build:
+    environment: release
+    needs: [identity, verify]
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: windows
+            runner: windows-2022
+          - platform: macos
+            runner: macos-15
+          - platform: android
+            runner: ubuntu-24.04
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 45
+    defaults:
+      run:
+        shell: bash
+    env:
+      RELEASE_TAG: ${{ needs.identity.outputs.tag }}
+      RELEASE_NAME: ${{ needs.identity.outputs.name }}
+      RELEASE_CODE: ${{ needs.identity.outputs.code }}
+      RELEASE_SHA: ${{ needs.identity.outputs.sha }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ needs.identity.outputs.sha }}
+          persist-credentials: false
+      - uses: actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880
+        if: matrix.platform == 'android'
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2
+        with:
+          flutter-version: '3.41.6'
+      - run: flutter pub get --enforce-lockfile
+      - name: Windows bundle
+        if: matrix.platform == 'windows'
+        run: |
+          flutter build windows --release --build-name="$RELEASE_NAME" --build-number="$RELEASE_CODE"
+          python tool/release/package.py windows --source build/windows/x64/runner/Release --tag "$RELEASE_TAG" --sha "$RELEASE_SHA"
+      - name: macOS universal bundle
+        if: matrix.platform == 'macos'
+        run: |
+          flutter build macos --release --build-name="$RELEASE_NAME" --build-number="$RELEASE_CODE"
+          python3 tool/release/package.py macos --source build/macos/Build/Products/Release/deco_planner.app --tag "$RELEASE_TAG" --sha "$RELEASE_SHA"
+      - name: Signed Android APK
+        if: matrix.platform == 'android'
+        env:
+          KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          DECOPLANNER_ANDROID_STORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          DECOPLANNER_ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+          DECOPLANNER_ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          ANDROID_CERT_SHA256: ${{ vars.ANDROID_CERT_SHA256 }}
+        run: |
+          set -euo pipefail
+          export DECOPLANNER_ANDROID_KEYSTORE="$RUNNER_TEMP/decoplanner-release.jks"
+          trap 'rm -f "$DECOPLANNER_ANDROID_KEYSTORE"' EXIT
+          python3 -c 'import os,base64,pathlib; value=os.environ["KEYSTORE_BASE64"]; assert value, "Missing release keystore"; p=pathlib.Path(os.environ["DECOPLANNER_ANDROID_KEYSTORE"]); p.touch(mode=0o600); p.write_bytes(base64.b64decode(value, validate=True))'
+          flutter build apk --release --build-name="$RELEASE_NAME" --build-number="$RELEASE_CODE"
+          python3 tool/release/verify_android.py build/app/outputs/flutter-apk/app-release.apk --tag "$RELEASE_TAG"
+          python3 tool/release/package.py android --source build/app/outputs/flutter-apk/app-release.apk --tag "$RELEASE_TAG" --sha "$RELEASE_SHA" --certificate "$ANDROID_CERT_SHA256"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: release-${{ matrix.platform }}
+          path: build/packages/*
+          if-no-files-found: error
+  publish:
+    environment: release
+    needs: [identity, verify, build]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    env:
+      RELEASE_TAG: ${{ needs.identity.outputs.tag }}
+      RELEASE_SHA: ${{ needs.identity.outputs.sha }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ needs.identity.outputs.sha }}
+          persist-credentials: false
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333
+        with:
+          pattern: release-*
+          merge-multiple: true
+          path: build/packages
+      - name: Assemble and verify complete release
+        run: |
+          python3 tool/release/package.py assemble --tag "$RELEASE_TAG" --sha "$RELEASE_SHA"
+          cp docs/development/releases.md build/packages/releases.md
+          cd build/packages
+          sha256sum releases.md >> SHA256SUMS
+      - name: Publish after verification
+        run: python3 tool/release/publish.py --tag "$RELEASE_TAG" --sha "$RELEASE_SHA"
+        env:
+          GH_TOKEN: ${{ github.token }}

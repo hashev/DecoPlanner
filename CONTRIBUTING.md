@@ -32,3 +32,25 @@ initialization/global/fundamental logic — hot restart релевантного
 файлы не должны теряться из-за широких ignore. CI/CD, release signing
 и публикация релизов выполняются отдельной явно порученной задачей. Commit и push допустимы в рамках согласованной работы
 с репозиторием; перед ними проверяется staged diff и состав файлов.
+
+## Обязательный CI
+
+Изменения main проходят только через PR и успешный `DecoPlanner CI gate`;
+второе approving review не требуется. PR выполняется с contents:read без
+секретов выпуска. Форматирование проверяется командой:
+
+```sh
+dart format --output=none --set-exit-if-changed lib test integration_test test_driver packages/deco_core/lib packages/deco_core/test
+```
+
+Дополнительно выполняются `flutter analyze --fatal-infos`, `flutter test`,
+`dart analyze --fatal-infos` и `dart test` в packages/deco_core,
+`python3 -m unittest discover -s tool/release/tests -v` и
+`python3 tool/release/audits.py` (OpenSpec 2.0.0).
+Платформенные проверки: Windows release, macOS release и автоматический
+`integration_test/plan_flow_test.dart`, Android debug без release-ключа.
+Ручные PDF-диалоги не запускаются unattended.
+
+Агент для analyze/test использует официальный Dart MCP; приведенные CLI-команды
+предназначены также для воспроизведения CI человеком.
+Процесс релиза и установки описан в [releases.md](docs/development/releases.md).

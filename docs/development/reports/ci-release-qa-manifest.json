@@ -1,0 +1,48 @@
+{
+  "tag": "v1.2.3",
+  "sha": "ec73f5f3846c10905fcf81ce4b3ce299b3bd9a7f",
+  "artifacts": [
+    {
+      "tag": "v1.2.3",
+      "name": "1.2.3",
+      "code": 1002003,
+      "sha": "ec73f5f3846c10905fcf81ce4b3ce299b3bd9a7f",
+      "platform": "windows",
+      "architectures": [
+        "x86_64"
+      ],
+      "filename": "DecoPlanner-v1.2.3-windows-x64.zip",
+      "sha256": "367bd4553a198a298b282d64730556f1cc55bc84a6af115c0f6c93de17032401",
+      "signing": "No trusted publisher signature"
+    },
+    {
+      "tag": "v1.2.3",
+      "name": "1.2.3",
+      "code": 1002003,
+      "sha": "ec73f5f3846c10905fcf81ce4b3ce299b3bd9a7f",
+      "platform": "macos",
+      "architectures": [
+        "arm64",
+        "x86_64"
+      ],
+      "filename": "DecoPlanner-v1.2.3-macos-universal.zip",
+      "sha256": "0deb081d6d5737efe40a83650617e64b93f8be4e7d5af3dfd22c9da4fd0ba8b8",
+      "signing": "No trusted publisher signature"
+    },
+    {
+      "tag": "v1.2.3",
+      "name": "1.2.3",
+      "code": 1002003,
+      "sha": "ec73f5f3846c10905fcf81ce4b3ce299b3bd9a7f",
+      "platform": "android",
+      "architectures": [
+        "armeabi-v7a",
+        "arm64-v8a",
+        "x86_64"
+      ],
+      "filename": "DecoPlanner-v1.2.3-android-universal.apk",
+      "sha256": "952e9352d2819708fb5f853321727294661f30da2eb61e08b7495063a3e2d847",
+      "signing": "9B4B027F83F9450F6080389156E7E3E513D20500D56AD24D8FFBD33F4B12CB60"
+    }
+  ]
+}

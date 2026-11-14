@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.deco_planner"
+    namespace = "io.github.hashev.decoplanner"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
@@ -20,8 +20,7 @@ android {
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "com.example.deco_planner"
+        applicationId = "io.github.hashev.decoplanner"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion
@@ -30,15 +29,35 @@ android {
         versionName = flutter.versionName
     }
 
+    signingConfigs {
+        create("publicRelease") {
+            val keystore = System.getenv("DECOPLANNER_ANDROID_KEYSTORE")
+            if (!keystore.isNullOrBlank()) {
+                storeFile = file(keystore)
+                storePassword = System.getenv("DECOPLANNER_ANDROID_STORE_PASSWORD")
+                keyPassword = System.getenv("DECOPLANNER_ANDROID_KEY_PASSWORD")
+                keyAlias = System.getenv("DECOPLANNER_ANDROID_KEY_ALIAS")
+            }
+        }
+    }
+
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig = signingConfigs.getByName("debug")
+            signingConfig = signingConfigs.getByName("publicRelease")
         }
     }
 }
 
 flutter {
     source = "../.."
+}
+
+// Configuration of debug tasks remains possible without release secrets.
+gradle.taskGraph.whenReady {
+    if (allTasks.any { it.project == project && it.name.contains("Release") }) {
+        listOf("DECOPLANNER_ANDROID_KEYSTORE", "DECOPLANNER_ANDROID_STORE_PASSWORD",
+            "DECOPLANNER_ANDROID_KEY_PASSWORD", "DECOPLANNER_ANDROID_KEY_ALIAS").forEach {
+            require(!System.getenv(it).isNullOrBlank()) { "Release signing requires $it" }
+        }
+    }
 }

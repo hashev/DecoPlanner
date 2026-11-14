@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 import 'dart:typed_data';
 import 'package:deco_planner/app/planner_app.dart';
@@ -63,6 +64,27 @@ void main() {
   }
 
   Future<void> act(WidgetTester tester, String text) async {
+    // Refresh can leave a visible action disabled while disk work completes.
+    // Wait for its enabled state so the tap cannot be silently discarded.
+    var ready = false;
+    for (var attempt = 0; attempt < 100; attempt++) {
+      await tester.pump(const Duration(milliseconds: 20));
+      final buttons = find.ancestor(
+        of: find.text(text).last,
+        matching: find.byWidgetPredicate(
+          (widget) => widget is ButtonStyleButton,
+        ),
+      );
+      if (buttons.evaluate().isNotEmpty &&
+          tester.widget<ButtonStyleButton>(buttons.first).onPressed != null) {
+        ready = true;
+        break;
+      }
+      await tester.runAsync(
+        () async => Future<void>.delayed(const Duration(milliseconds: 50)),
+      );
+    }
+    expect(ready, isTrue, reason: 'Action "$text" did not become enabled');
     await tester.ensureVisible(find.text(text).last);
     await tester.runAsync(() async {
       await tester.tap(find.text(text).last);
@@ -73,6 +95,37 @@ void main() {
     );
     await settle(tester);
   }
+
+  testWidgets('actions wait for refresh to enable the button', (tester) async {
+    var enabled = false;
+    var taps = 0;
+    late StateSetter refresh;
+    late BuildContext buttonContext;
+    await tester.pumpWidget(
+      MaterialApp(
+        home: StatefulBuilder(
+          builder: (context, setState) {
+            refresh = setState;
+            buttonContext = context;
+            return TextButton(
+              onPressed: enabled ? () => taps++ : null,
+              child: const Text('Действие'),
+            );
+          },
+        ),
+      ),
+    );
+    await tester.runAsync(() async {
+      unawaited(
+        Future<void>.delayed(const Duration(milliseconds: 250), () {
+          if (buttonContext.mounted) refresh(() => enabled = true);
+        }),
+      );
+    });
+    await act(tester, 'Действие');
+    expect(taps, 1);
+    expect(tester.takeException(), isNull);
+  });
 
   testWidgets(
     'library saves, renames with validation, opens and confirms deletion',
@@ -98,6 +151,7 @@ void main() {
       await act(tester, 'Сохранить');
       expect(session.document.name, 'Мой план');
       await act(tester, 'Удалить');
+      expect(find.text('Удалить план?'), findsOneWidget);
       await tester.tap(find.text('Отмена'));
       await settle(tester);
       expect((await tester.runAsync(session.list))!.length, 1);

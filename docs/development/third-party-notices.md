@@ -35,3 +35,11 @@ packages/deco_core/test содержат provenance отдельно для ис
 PDF/printing (Apache2.0) и image (MIT) подключены из pub.dev; версии
 зафиксированы в pubspec.lock, notices входят в Flutter licenses. PDF встраивает
 поставляемые Fira Sans с указанной выше OFL; сетевые шрифты не используются.
+
+## Windows compiler runtime
+
+Windows ZIP включает app-local Microsoft Visual C++ Runtime DLL из Visual Studio
+runner, выбранные CMake InstallRequiredSystemLibraries. Они распространяются
+как компоненты Microsoft, а не под MIT проекта; в ZIP включается
+[отдельное уведомление](windows-runtime-notice.txt). Упаковщик проверяет наличие
+msvcp140.dll, vcruntime140.dll и vcruntime140_1.dll рядом с executable.
