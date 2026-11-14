@@ -20,6 +20,9 @@ jobs:
           flutter-version: '3.41.6'
       - name: Restore locked application dependencies
         run: flutter pub get --enforce-lockfile
+      - name: Restore core test dependencies before root analysis
+        working-directory: packages/deco_core
+        run: dart pub get
       - name: Formatting
         run: dart format --output=none --set-exit-if-changed lib test integration_test test_driver packages/deco_core/lib packages/deco_core/test
       - run: flutter analyze --fatal-infos
@@ -68,10 +71,20 @@ jobs:
       - run: flutter pub get --enforce-lockfile
       - name: Windows release build
         if: matrix.platform == 'windows'
-        run: flutter build windows --release
+        run: |
+          flutter build windows --release --build-name=0.1.0 --build-number=1000
+          python tool/release/package.py windows --source build/windows/x64/runner/Release --tag v0.1.0 --sha "$SOURCE_SHA"
+          python tool/release/smoke.py windows build/packages/DecoPlanner-v0.1.0-windows-x64.zip
+        env:
+          SOURCE_SHA: ${{ github.sha }}
       - name: macOS release build
         if: matrix.platform == 'macos'
-        run: flutter build macos --release
+        run: |
+          flutter build macos --release --build-name=0.1.0 --build-number=1000
+          python3 tool/release/package.py macos --source build/macos/Build/Products/Release/deco_planner.app --tag v0.1.0 --sha "$SOURCE_SHA"
+          python3 tool/release/smoke.py macos build/packages/DecoPlanner-v0.1.0-macos-universal.zip
+        env:
+          SOURCE_SHA: ${{ github.sha }}
       - name: macOS native integration
         if: matrix.platform == 'macos'
         run: flutter test integration_test/plan_flow_test.dart -d macos
