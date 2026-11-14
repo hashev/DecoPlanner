@@ -34,7 +34,9 @@ jobs:
           dart analyze --fatal-infos
           dart test
       - name: Release tooling tests
-        run: python3 -m unittest discover -s tool/release/tests -v
+        run: |
+          python3 -m compileall -q tool/release
+          python3 -m unittest discover -s tool/release/tests -v
       - name: Public audits and specifications
         run: |
           npm install --global @fission-ai/openspec@2.0.0

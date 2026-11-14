@@ -9,6 +9,49 @@ import zipfile
 from pathlib import Path
 
 
+def running_macos_instances():
+    result = subprocess.run(['pgrep', '-x', 'deco_planner'], capture_output=True, text=True)
+    return {int(pid) for pid in result.stdout.split()} if result.returncode == 0 else set()
+
+
+def launch_macos(app):
+    # Quarantine may cause App Translocation: identify the new process rather
+    # than requiring its executable to remain at the extraction path.
+    subprocess.run(['xattr', '-w', 'com.apple.quarantine', '0081;00000000;DecoPlannerCI;', str(app)], check=True)
+    existing = running_macos_instances()
+    launched = set()
+    launcher = subprocess.Popen(['open', '-n', str(app)])
+    try:
+        deadline = time.monotonic() + 30
+        while time.monotonic() < deadline:
+            launched = running_macos_instances() - existing
+            if launched:
+                break
+            if launcher.poll() not in (None, 0):
+                raise RuntimeError('Launch Services rejected the quarantined app')
+            time.sleep(1)
+        else:
+            raise RuntimeError('Quarantined macOS app did not start in 30 seconds')
+        for pid in launched:
+            subprocess.run(['ps', '-p', str(pid), '-o', 'comm='], check=True)
+        time.sleep(10)
+        if not launched.issubset(running_macos_instances()):
+            raise RuntimeError('Quarantined macOS app exited prematurely')
+    finally:
+        for pid in launched:
+            try:
+                os.kill(pid, signal.SIGTERM)
+            except ProcessLookupError:
+                pass
+        if launcher.poll() is None:
+            launcher.terminate()
+            try:
+                launcher.wait(timeout=5)
+            except subprocess.TimeoutExpired:
+                launcher.kill()
+                launcher.wait(timeout=5)
+
+
 def smoke(platform, archive):
     with tempfile.TemporaryDirectory() as temporary:
         root = Path(temporary)
@@ -17,57 +60,7 @@ def smoke(platform, archive):
             apps = list(root.glob('*.app'))
             if len(apps) != 1:
                 raise ValueError('Expected one macOS application')
-            app = apps[0]
-            subprocess.run(['xattr', '-w', 'com.apple.quarantine', '0081;00000000;DecoPlannerCI;', str(app)], check=True)
-            def running():
-                found = subprocess.run(['pgrep', '-x', 'deco_planner'], capture_output=True, text=True)
-                return {int(pid) for pid in found.stdout.split()} if found.returncode == 0 else set()
-
-            existing = running()
-            launched = set()
-            launcher = subprocess.Popen(['open', '-n', str(app)])
-            try:
-                deadline = time.monotonic() + 30
-                while time.monotonic() < deadline:
-                    launched = running() - existing
-                    if launched:
-                        break
-                    if launcher.poll() not in (None, 0):
-                        raise RuntimeError('Launch Services rejected the quarantined app')
-                    time.sleep(1)
-                else:
-                    raise RuntimeError('Quarantined macOS app did not start in 30 seconds')
-                for pid in launched:
-                    subprocess.run(['ps', '-p', str(pid), '-o', 'comm='], check=True)
-                time.sleep(10)
-                if not launched.issubset(running()):
-                    raise RuntimeError('Quarantined macOS app exited prematurely')
-            finally:
-                for pid in launched:
-                    try:
-                        os.kill(pid, signal.SIGTERM)
-                    except ProcessLookupError:
-                        pass
-                if launcher.poll() is None:
-                    launcher.terminate()
-                    try:
-                        launcher.wait(timeout=5)
-                    except subprocess.TimeoutExpired:
-                        launcher.kill()
-                        launcher.wait(timeout=5)
-        else:
-                    raise RuntimeError('Quarantined macOS app did not start in 30 seconds')
-                time.sleep(10)
-                subprocess.run(['pgrep', '-f', executable], check=True)
-            finally:
-                subprocess.run(['pkill', '-f', executable], check=False)
-                if launcher.poll() is None:
-                    launcher.terminate()
-                    try:
-                        launcher.wait(timeout=5)
-                    except subprocess.TimeoutExpired:
-                        launcher.kill()
-                        launcher.wait(timeout=5)
+            launch_macos(apps[0])
         else:
             with zipfile.ZipFile(archive) as package:
                 package.extractall(root)
