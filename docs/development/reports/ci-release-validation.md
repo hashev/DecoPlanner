@@ -96,3 +96,19 @@ release/packaging/runtime проверены на macos-15 hosted runner. Runtim
 macOS 12 и обычной пользовательской Windows-машине отдельно не проверялся.
 Windows без Authenticode, macOS без Developer ID/notarization — ограничения
 установки описаны в releases.md. Stores, iOS, встроенный updater вне этой задачи.
+
+## Первый tag pipeline и apksigner 37
+
+Попытка v0.1.0, run 43591801988: CI и Windows/macOS release jobs прошли;
+Android APK собран, но проверка остановила публикацию из-за нового формата
+вывода SDK Build-tools 37.0.0 (`V2 Signer:` вместо `Signer #1`).
+На том же подписанном QA APK проблема воспроизведена настоящим apksigner 37:
+сертификат совпадает, прежний parser не находит строку.
+
+Parser поддерживает numbered, SDK-range и scheme-prefixed labels; каждый
+найденный сертификат обязан совпадать с постоянным ожидаемым SHA-256.
+Повтор одного сертификата между схемами допускается; любой другой сертификат,
+неполный digest, отсутствие certificate digest или только public-key digest
+отклоняются. 28 тестов release tooling прошли, настоящий подписанный APK
+проверен инструментами 36.0.0 и 37.0.0. Неудачный тег v0.1.0 не перемещается;
+исправленный первый публичный выпуск получает v0.1.1.
