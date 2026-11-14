@@ -66,8 +66,14 @@ Active ruleset 27256688: PR + строгий DecoPlanner CI gate от GitHub Act
 остался public, политика PR — collaborators_only. После включения защиты
 GitHub сообщил CLEAN для green PR при нуле reviews.
 
-Контрольные попытки push/merge без CI и проверка неизменности main выполняются
-перед финальным завершением задачи; результаты будут добавлены ниже.
+Контрольный прямой push владельцем отклонен GH013 с нарушениями pull_request
+и required_status_checks. Попытка merge PR без green CI отклонена HTTP 405
+с сообщением required status check expected. На время проверок дополнительно
+действовал временный запрет обновления main, чтобы даже при ошибке основного
+правила не изменить ветку. Он удален; API подтвердил только четыре основных
+правила и неизменный исходный SHA main. [Серверные ответы](main-policy-validation.json).
+При green CI GitHub подтвердил CLEAN для PR владельца без reviews; при новом
+коммите с незавершенным CI merge блокируется.
 
 ## Ограничения
 

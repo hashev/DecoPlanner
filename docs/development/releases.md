@@ -117,3 +117,13 @@ notarization пока отсутствуют. Если Gatekeeper блокиру
 [официальную процедуру Apple](https://support.apple.com/en-us/102445)
 разрешения доверенного приложения. CI проверяет запуск извлеченной app с
 quarantine и сохранение процесса; это не сертификация Apple.
+
+## Защита main
+
+Декларация настроенного ruleset находится в `.github/main-ruleset.json`.
+Обязателен DecoPlanner CI gate от GitHub Actions, reviews=0, bypass отсутствует,
+force push и удаление запрещены. Администратор может сверить фактические
+настройки `gh api repos/hashev/DecoPlanner/rules/branches/main`.
+Изменение существующего правила выполнять через GitHub settings или PUT
+соответствующего ruleset ID, не создавая дублирующих правил. Конфигурация CI
+не содержит административного токена для изменения собственной защиты.

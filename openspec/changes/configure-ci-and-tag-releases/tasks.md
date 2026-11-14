@@ -33,8 +33,8 @@
 
 - [x] 5.1 Открыть PR с workflows, получить реальный успешный DecoPlanner CI gate; проверить зарегистрированный check context перед включением защиты.
 - [x] 5.2 Настроить active ruleset main: PR, reviews=0, strict required CI, без bypass, запрет force push/deletion; API-проверкой подтвердить правила и сохранение public/collaborators_only.
-- [ ] 5.3 Проверить блокирование прямого push и merge без CI безопасным контрольным сценарием без изменения main; подтвердить возможность merge green PR владельцем без второго reviewer.
-- [ ] 5.4 Выполнить интеграционную сверку workflow triggers, секретов, packaging и проверок; оформить отчет фактических прогонов, ограничений и состояния правил, выполнить strict validation изменения и финальный diff review.
+- [x] 5.3 Проверить блокирование прямого push и merge без CI безопасным контрольным сценарием без изменения main; подтвердить возможность merge green PR владельцем без второго reviewer.
+- [x] 5.4 Выполнить интеграционную сверку workflow triggers, секретов, packaging и проверок; оформить отчет фактических прогонов, ограничений и состояния правил, выполнить strict validation изменения и финальный diff review.
 
 ## Workflow follow-up
 
