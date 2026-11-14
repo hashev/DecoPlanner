@@ -21,6 +21,10 @@ python3 tool/release/version.py v1.2.3
 python3 -m unittest discover -s tool/release/tests -v
 ```
 
+Windows numeric resource содержит major.minor.patch.0 (16-bit поля);
+полный build number сохраняется в строковой версии. Android versionCode
+не обрезается ради ограничений Windows.
+
 Версия передается Flutter через `--build-name` и `--build-number`.
 Изменять pubspec.yaml только ради тега не требуется. Все платформы собираются
 из одного SHA, указанного в manifest релиза.
@@ -55,10 +59,11 @@ Windows первоначально без Authenticode, macOS без Developer I
 
 ## Ключ Android и восстановление
 
-В GitHub Secrets настроены ANDROID_KEYSTORE_BASE64, ANDROID_KEYSTORE_PASSWORD,
+В GitHub environment `release` настроены секреты ANDROID_KEYSTORE_BASE64, ANDROID_KEYSTORE_PASSWORD,
 ANDROID_KEY_PASSWORD, ANDROID_KEY_ALIAS; variable ANDROID_CERT_SHA256 содержит
 отпечаток публичного сертификата. Release-job получает их только на этапе
-Android signing. PR workflows их не получают. Gradle release без явного
+Android signing. Environment допускает только теги v*, без ручного reviewer.
+PR workflows их не получают, в repository-wide Secrets копий ключа нет. Gradle release без явного
 ключа завершается ошибкой; Android debug остается доступным для разработки.
 
 Локальные signing-параметры: DECOPLANNER_ANDROID_KEYSTORE,

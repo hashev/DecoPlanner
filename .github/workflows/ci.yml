@@ -72,17 +72,17 @@ jobs:
       - name: Windows release build
         if: matrix.platform == 'windows'
         run: |
-          flutter build windows --release --build-name=0.1.0 --build-number=1000
-          python tool/release/package.py windows --source build/windows/x64/runner/Release --tag v0.1.0 --sha "$SOURCE_SHA"
-          python tool/release/smoke.py windows build/packages/DecoPlanner-v0.1.0-windows-x64.zip
+          flutter build windows --release --build-name=1.2.3 --build-number=1002003
+          python tool/release/package.py windows --source build/windows/x64/runner/Release --tag v1.2.3 --sha "$SOURCE_SHA"
+          python tool/release/smoke.py windows build/packages/DecoPlanner-v1.2.3-windows-x64.zip
         env:
           SOURCE_SHA: ${{ github.sha }}
       - name: macOS release build
         if: matrix.platform == 'macos'
         run: |
-          flutter build macos --release --build-name=0.1.0 --build-number=1000
-          python3 tool/release/package.py macos --source build/macos/Build/Products/Release/deco_planner.app --tag v0.1.0 --sha "$SOURCE_SHA"
-          python3 tool/release/smoke.py macos build/packages/DecoPlanner-v0.1.0-macos-universal.zip
+          flutter build macos --release --build-name=1.2.3 --build-number=1002003
+          python3 tool/release/package.py macos --source build/macos/Build/Products/Release/deco_planner.app --tag v1.2.3 --sha "$SOURCE_SHA"
+          python3 tool/release/smoke.py macos build/packages/DecoPlanner-v1.2.3-macos-universal.zip
         env:
           SOURCE_SHA: ${{ github.sha }}
       - name: macOS native integration
@@ -91,6 +91,13 @@ jobs:
       - name: Android validation build (no release credentials)
         if: matrix.platform == 'android'
         run: flutter build apk --debug
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: matrix.platform != 'android'
+        with:
+          name: validation-${{ matrix.platform }}
+          path: build/packages/*
+          retention-days: 3
+          if-no-files-found: error
   gate:
     name: DecoPlanner CI gate
     if: always()

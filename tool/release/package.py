@@ -2,6 +2,8 @@
 import argparse
 import hashlib
 import json
+import os
+import plistlib
 import shutil
 import subprocess
 import zipfile
@@ -24,6 +26,15 @@ def package(platform, source, output, tag, sha, certificate=None):
         required = [source/'deco_planner.exe', source/'flutter_windows.dll', source/'data/icudtl.dat', source/'data/app.so']
         if not all(p.is_file() for p in required):
             raise ValueError('Incomplete Windows runtime')
+        if os.name == 'nt':
+            executable = str((source/'deco_planner.exe').resolve()).replace("'", "''")
+            command = f"[System.Diagnostics.FileVersionInfo]::GetVersionInfo('{executable}') | Select-Object FileVersion,FileMajorPart,FileMinorPart,FileBuildPart,FilePrivatePart | ConvertTo-Json"
+            native = json.loads(subprocess.check_output(['powershell', '-NoProfile', '-Command', command], text=True))
+            numbers = [native['FileMajorPart'], native['FileMinorPart'], native['FileBuildPart']]
+            if numbers != list(map(int, version['name'].split('.'))) or native['FilePrivatePart'] != 0:
+                raise ValueError('Windows numeric version differs from release tag')
+            if native['FileVersion'] != f"{version['name']}+{version['code']}":
+                raise ValueError('Windows string version differs from release identity')
         architectures = ['x86_64']
         name = f'DecoPlanner-{tag}-windows-x64.zip'
         with zipfile.ZipFile(output/name, 'w', zipfile.ZIP_DEFLATED) as archive:
@@ -33,6 +44,12 @@ def package(platform, source, output, tag, sha, certificate=None):
     elif platform == 'macos':
         if not (source/'Contents/Info.plist').is_file():
             raise ValueError('Incomplete macOS app')
+        with (source/'Contents/Info.plist').open('rb') as stream:
+            info = plistlib.load(stream)
+        if (info.get('CFBundleIdentifier'), info.get('CFBundleShortVersionString'), str(info.get('CFBundleVersion'))) != ('io.github.hashev.decoplanner', version['name'], str(version['code'])):
+            raise ValueError('macOS bundle identity or version differs from release')
+        if tuple(map(int, info['LSMinimumSystemVersion'].split('.'))) > (12, 0, 0):
+            raise ValueError('macOS deployment target exceeds 12.0')
         architectures = ['arm64', 'x86_64']
         binaries = 0
         for path in source.rglob('*'):

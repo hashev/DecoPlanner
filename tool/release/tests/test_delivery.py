@@ -25,6 +25,9 @@ class FakeGitHub:
         self.finished = False
         self.fail_upload = False
 
+    def tag_sha(self, tag):
+        return SHA
+
     def releases(self):
         return [self.release] if self.release else []
 
@@ -100,6 +103,12 @@ class DeliveryTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             publish(self.api, self.root, TAG, SHA)
         self.assertFalse(self.api.finished)
+
+    def test_moved_remote_tag(self):
+        self.api.tag_sha = lambda tag: 'b'*40
+        with self.assertRaises(ValueError):
+            publish(self.api, self.root, TAG, SHA)
+        self.assertIsNone(self.api.release)
 
     def test_wrong_sha(self):
         with self.assertRaises(ValueError):

@@ -31,6 +31,7 @@ jobs:
     needs: identity
     uses: ./.github/workflows/ci.yml
   build:
+    environment: release
     needs: [identity, verify]
     strategy:
       fail-fast: false
@@ -98,6 +99,7 @@ jobs:
           path: build/packages/*
           if-no-files-found: error
   publish:
+    environment: release
     needs: [identity, verify, build]
     runs-on: ubuntu-24.04
     timeout-minutes: 15

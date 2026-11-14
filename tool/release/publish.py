@@ -23,6 +23,9 @@ class GitHub:
             raise RuntimeError(f'GitHub API request failed: {method} {path}')
         return json.loads(result.stdout) if result.stdout.strip() else None
 
+    def tag_sha(self, tag):
+        return self.api(f'repos/{self.repo}/commits/{tag}')["sha"]
+
     def releases(self):
         pages = subprocess.check_output(['gh', 'api', f'repos/{self.repo}/releases?per_page=100', '--paginate', '--slurp'], text=True)
         return [release for page in json.loads(pages) for release in page]
@@ -77,6 +80,9 @@ def verify_remote(api, release, tag, sha, expected_names):
 
 
 def publish(api, directory, tag, sha):
+    resolve(tag)
+    if api.tag_sha(tag) != sha:
+        raise ValueError('Remote tag no longer identifies the build SHA')
     directory = Path(directory)
     manifest = json.loads((directory/'manifest.json').read_text())
     if manifest['tag'] != tag or manifest['sha'] != sha:
