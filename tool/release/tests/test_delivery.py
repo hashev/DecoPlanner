@@ -1,6 +1,4 @@
-import hashlib
 import json
-import shutil
 import subprocess
 import sys
 import tempfile
@@ -134,7 +132,7 @@ class DeliveryTest(unittest.TestCase):
         source.mkdir()
         with self.assertRaises(ValueError):
             package('windows', source, self.root/'out', TAG, SHA)
-        for name in ['deco_planner.exe', 'flutter_windows.dll', 'data/icudtl.dat', 'data/app.so', 'plugin.dll']:
+        for name in ['deco_planner.exe', 'flutter_windows.dll', 'data/icudtl.dat', 'data/app.so', 'plugin.dll', 'msvcp140.dll', 'vcruntime140.dll', 'vcruntime140_1.dll', 'MICROSOFT-RUNTIME-NOTICE.txt']:
             path=source/name; path.parent.mkdir(exist_ok=True); path.write_bytes(b'fixture')
         item=package('windows', source, self.root/'out', TAG, SHA)
         with zipfile.ZipFile(self.root/'out'/item['filename']) as z:

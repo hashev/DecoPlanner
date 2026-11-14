@@ -4,7 +4,7 @@ import os
 import subprocess
 import tempfile
 from pathlib import Path
-from package import assemble, digest
+from package import digest
 from version import resolve
 
 

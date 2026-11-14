@@ -23,7 +23,9 @@ def package(platform, source, output, tag, sha, certificate=None):
     source, output = Path(source), Path(output)
     output.mkdir(parents=True, exist_ok=True)
     if platform == 'windows':
-        required = [source/'deco_planner.exe', source/'flutter_windows.dll', source/'data/icudtl.dat', source/'data/app.so']
+        required = [source/'deco_planner.exe', source/'flutter_windows.dll', source/'data/icudtl.dat', source/'data/app.so',
+                    source/'msvcp140.dll', source/'vcruntime140.dll', source/'vcruntime140_1.dll',
+                    source/'MICROSOFT-RUNTIME-NOTICE.txt']
         if not all(p.is_file() for p in required):
             raise ValueError('Incomplete Windows runtime')
         if os.name == 'nt':

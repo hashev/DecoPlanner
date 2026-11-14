@@ -72,6 +72,14 @@ endif()
 set(INSTALL_BUNDLE_DATA_DIR "${CMAKE_INSTALL_PREFIX}/data")
 set(INSTALL_BUNDLE_LIB_DIR "${CMAKE_INSTALL_PREFIX}")
 
+# App-local compiler runtime makes the ZIP independent of Visual Studio installs.
+set(CMAKE_INSTALL_SYSTEM_RUNTIME_DESTINATION "${INSTALL_BUNDLE_LIB_DIR}")
+set(CMAKE_INSTALL_SYSTEM_RUNTIME_COMPONENT Runtime)
+include(InstallRequiredSystemLibraries)
+install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/../docs/development/windows-runtime-notice.txt"
+  DESTINATION "${INSTALL_BUNDLE_LIB_DIR}"
+  RENAME MICROSOFT-RUNTIME-NOTICE.txt COMPONENT Runtime)
+
 install(TARGETS ${BINARY_NAME} RUNTIME DESTINATION "${CMAKE_INSTALL_PREFIX}"
   COMPONENT Runtime)
 
