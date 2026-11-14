@@ -1,0 +1,93 @@
+name: CI
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_call:
+permissions:
+  contents: read
+jobs:
+  checks:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2
+        with:
+          flutter-version: '3.41.6'
+      - name: Restore locked application dependencies
+        run: flutter pub get --enforce-lockfile
+      - name: Formatting
+        run: dart format --output=none --set-exit-if-changed lib test integration_test test_driver packages/deco_core/lib packages/deco_core/test
+      - run: flutter analyze --fatal-infos
+      - run: flutter test
+      - name: Core analysis and tests
+        working-directory: packages/deco_core
+        run: |
+          dart pub get
+          dart analyze --fatal-infos
+          dart test
+      - name: Release tooling tests
+        run: python3 -m unittest discover -s tool/release/tests -v
+      - name: Public audits and specifications
+        run: |
+          npm install --global @fission-ai/openspec@2.0.0
+          python3 tool/release/audits.py
+  build:
+    name: Build (${{ matrix.platform }})
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: windows
+            runner: windows-2022
+          - platform: macos
+            runner: macos-15
+          - platform: android
+            runner: ubuntu-24.04
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 45
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3
+        if: matrix.platform == 'android'
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2
+        with:
+          flutter-version: '3.41.6'
+      - run: flutter pub get --enforce-lockfile
+      - name: Windows release build
+        if: matrix.platform == 'windows'
+        run: flutter build windows --release
+      - name: macOS release build
+        if: matrix.platform == 'macos'
+        run: flutter build macos --release
+      - name: macOS native integration
+        if: matrix.platform == 'macos'
+        run: flutter test integration_test/plan_flow_test.dart -d macos
+      - name: Android validation build (no release credentials)
+        if: matrix.platform == 'android'
+        run: flutter build apk --debug
+  gate:
+    name: DecoPlanner CI gate
+    if: always()
+    needs: [checks, build]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - run: python3 tool/release/gate.py
+        env:
+          NEEDS_JSON: ${{ toJSON(needs) }}

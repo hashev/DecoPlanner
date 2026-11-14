@@ -1,4 +1,4 @@
-package com.example.deco_planner
+package io.github.hashev.decoplanner
 
 import io.flutter.embedding.android.FlutterActivity
 
