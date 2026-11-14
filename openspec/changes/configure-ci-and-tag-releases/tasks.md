@@ -3,7 +3,7 @@
 ## 1. Версия и идентичность
 
 - [x] 1.1 Реализовать общий resolver тега/версии/versionCode; тестами проверить правильные версии, границы, leading zeros, prerelease, переполнение и shell-метасимволы.
-- [ ] 1.2 Установить io.github.hashev.decoplanner в Android/macOS и корректные Windows metadata; проверить native builds и документировать отличие от старых debug-установок.
+- [x] 1.2 Установить io.github.hashev.decoplanner в Android/macOS и корректные Windows metadata; проверить native builds и документировать отличие от старых debug-установок.
 - [x] 1.3 Описать формат тега, состав релиза и ограничения версии в документации выпуска; проверить примеры resolver-ом.
 
 ## 2. Проверки CI
@@ -24,15 +24,15 @@
 ## 4. Tag pipeline и упаковка
 
 - [x] 4.1 Добавить release trigger только по v* со строгой валидацией, проверкой SHA из main и повторным CI этого SHA; тестами проверить неверный тег/коммит и отсутствие публикации по branch push.
-- [ ] 4.2 Упаковать Windows runtime ZIP, macOS universal app ZIP и подписанный универсальный APK с manifest/SHA256SUMS; проверить структуру, версии, архитектуры и контрольные суммы.
-- [ ] 4.3 Проверить запуск распакованного Windows bundle и macOS app с quarantine; задокументировать реальные ограничения unsigned desktop и подтвержденные окружения.
+- [x] 4.2 Упаковать Windows runtime ZIP, macOS universal app ZIP и подписанный универсальный APK с manifest/SHA256SUMS; проверить структуру, версии, архитектуры и контрольные суммы.
+- [x] 4.3 Проверить запуск распакованного Windows bundle и macOS app с quarantine; задокументировать реальные ограничения unsigned desktop и подтвержденные окружения.
 - [x] 4.4 Добавить финальный publisher после всех build jobs: draft/upload/verify/publish, минимальные permissions, concurrency и обработку rerun без перезаписи публичных assets; тестами на mock GitHub API проверить частичный upload, неверный SHA и повторный выпуск.
-- [ ] 4.5 Проверить общий build/package путь без публичного релиза и contents:write; убедиться, что отсутствие signing-секретов блокирует публичную сборку, и описать запуск первого выпуска/устранение ошибок.
+- [x] 4.5 Проверить общий build/package путь без публичного релиза и contents:write; убедиться, что отсутствие signing-секретов блокирует публичную сборку, и описать запуск первого выпуска/устранение ошибок.
 
 ## 5. Защита main и интеграционная проверка
 
-- [ ] 5.1 Открыть PR с workflows, получить реальный успешный DecoPlanner CI gate; проверить зарегистрированный check context перед включением защиты.
-- [ ] 5.2 Настроить active ruleset main: PR, reviews=0, strict required CI, без bypass, запрет force push/deletion; API-проверкой подтвердить правила и сохранение public/collaborators_only.
+- [x] 5.1 Открыть PR с workflows, получить реальный успешный DecoPlanner CI gate; проверить зарегистрированный check context перед включением защиты.
+- [x] 5.2 Настроить active ruleset main: PR, reviews=0, strict required CI, без bypass, запрет force push/deletion; API-проверкой подтвердить правила и сохранение public/collaborators_only.
 - [ ] 5.3 Проверить блокирование прямого push и merge без CI безопасным контрольным сценарием без изменения main; подтвердить возможность merge green PR владельцем без второго reviewer.
 - [ ] 5.4 Выполнить интеграционную сверку workflow triggers, секретов, packaging и проверок; оформить отчет фактических прогонов, ограничений и состояния правил, выполнить strict validation изменения и финальный diff review.
 
