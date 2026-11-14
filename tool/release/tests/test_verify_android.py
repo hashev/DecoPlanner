@@ -27,6 +27,33 @@ class VerifyAndroidTest(unittest.TestCase):
             f'Signer #1 certificate SHA-256 digest: {CERT.lower()}', BADGING]):
             verify('release.apk', 'v0.1.0', CERT)
 
+    def test_sdk37_scheme_labels(self):
+        for label in ['V1 Signer:', 'V2 Signer:', 'V3 Signer:', 'V3.1 Signer:',
+                      'V3.2 Signer:', 'V3 Signer #1:',
+                      'Signer (minSdkVersion=24, maxSdkVersion=32)']:
+            with self.subTest(label=label), patch('verify_android.subprocess.check_output', side_effect=[
+                f'{label} certificate SHA-256 digest: {CERT.lower()}', BADGING]):
+                verify('release.apk', 'v0.1.0', CERT)
+
+    def test_duplicate_certificate_across_schemes(self):
+        output = f'V2 Signer: certificate SHA-256 digest: {CERT}\nV3 Signer: certificate SHA-256 digest: {CERT}'
+        with patch('verify_android.subprocess.check_output', side_effect=[output, BADGING]):
+            verify('release.apk', 'v0.1.0', CERT)
+
+    def test_different_certificate_in_any_scheme_is_rejected(self):
+        for label in ['Signer #2', 'V3 Signer:']:
+            output = f'Signer #1 certificate SHA-256 digest: {CERT}\n{label} certificate SHA-256 digest: '+ 'B'*64
+            with self.subTest(label=label), patch('verify_android.subprocess.check_output', return_value=output):
+                with self.assertRaises(ValueError):
+                    verify('release.apk', 'v0.1.0', CERT)
+
+    def test_missing_malformed_or_public_key_digest_is_rejected(self):
+        for output in ['', f'V2 Signer: certificate SHA-256 digest: {CERT[:-1]}',
+                       f'V2 Signer: public key SHA-256 digest: {CERT}']:
+            with self.subTest(output=output), patch('verify_android.subprocess.check_output', return_value=output):
+                with self.assertRaises(ValueError):
+                    verify('release.apk', 'v0.1.0', CERT)
+
     def test_wrong_certificate(self):
         with patch('verify_android.subprocess.check_output', return_value='Signer #1 certificate SHA-256 digest: '+'B'*64):
             with self.assertRaises(ValueError):

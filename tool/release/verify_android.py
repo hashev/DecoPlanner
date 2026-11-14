@@ -15,9 +15,18 @@ def verify(apk, tag, expected):
     versions = [p for p in (sdk/'build-tools').iterdir() if re.fullmatch(r'\d+\.\d+\.\d+', p.name)]
     tools = max(versions, key=lambda p: tuple(map(int, p.name.split('.'))))
     cert = subprocess.check_output([str(tools/'apksigner'), 'verify', '--verbose', '--print-certs', apk], text=True)
-    fingerprints = re.findall(r'Signer #\d+ certificate SHA-256 digest: ([a-fA-F0-9]+)', cert)
-    if [p.upper() for p in fingerprints] != [expected.upper()]:
-        raise ValueError('Unexpected signing certificate')
+    # SDK 37 labels schemes ("V2 Signer:"); older tools number signers.
+    # Require every reported signer certificate to match, across all schemes.
+    fingerprints = re.findall(
+        r'^(?:Signer\b|V\d+(?:\.\d+)? Signer\b)[^\r\n]* certificate SHA-256 digest: ([^\r\n]+)$',
+        cert,
+        re.MULTILINE,
+    )
+    fingerprints = [value.strip().upper() for value in fingerprints]
+    if not fingerprints or any(not re.fullmatch(r'[A-F0-9]{64}', value) for value in fingerprints):
+        raise ValueError(f'Cannot parse signer certificates from apksigner {tools.name}')
+    if set(fingerprints) != {expected.upper()}:
+        raise ValueError('Unexpected signing certificate: ' + ', '.join(sorted(set(fingerprints))))
     badging = subprocess.check_output([str(tools/'aapt'), 'dump', 'badging', apk], text=True)
     match = re.search(r"package: name='([^']+)' versionCode='([^']+)' versionName='([^']+)'", badging)
     if not match or match.groups() != ('io.github.hashev.decoplanner', str(version['code']), version['name']):
