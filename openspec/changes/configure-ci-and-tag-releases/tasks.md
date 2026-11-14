@@ -10,7 +10,7 @@
 
 - [x] 2.1 Добавить workflow проверки на фиксированном Flutter 3.41.6, format/analyze/tests приложения и ядра; проверить прогон из чистого checkout без local/.
 - [x] 2.2 Подключить публичные Python-аудиты и strict OpenSpec validation, фиксировать версии используемых инструментов; проверить отсутствие приватных зависимостей и регенерации эталонов.
-- [ ] 2.3 Добавить Windows x64/macOS/Android validation builds и нативный macOS plan_flow_test; получить успешные hosted runs, не запускать интерактивный PDF-тест.
+- [x] 2.3 Добавить Windows x64/macOS/Android validation builds и нативный macOS plan_flow_test; получить успешные hosted runs, не запускать интерактивный PDF-тест.
 - [x] 2.4 Добавить единый DecoPlanner CI gate без ложного успеха при skipped/cancelled jobs; проверить негативные результаты через тесты условий и контролируемый неуспешный CI-прогон.
 - [x] 2.5 Описать обязательные CI-команды в CONTRIBUTING и проверить, что PR jobs не имеют signing-секретов или права публикации.
 
