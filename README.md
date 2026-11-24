@@ -24,6 +24,13 @@ CCR→bailout сценарии с отдельными результатами,
 Точный статус и ограничения платформ —
 [в отчёте проверок](docs/development/validation-current.md).
 
+## Telegram Mini App
+
+Планы и настройки хранятся локально. Для переноса планов между устройствами
+используйте экспорт и импорт JSON.
+[Открыть в Telegram](https://t.me/DecoPlannerBot?startapp) ·
+[Открыть в браузере](https://hashev.github.io/DecoPlanner/).
+
 ## Разработка
 
 Базовое окружение: Flutter 3.41.6 stable / Dart 3.11.4. Обновление SDK не требуется.
