@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:isolate';
 import 'package:deco_core/deco_core.dart';
+import 'browser_worker.dart';
 import 'calculation_worker.dart';
 
 final class RangeSummary {
@@ -22,6 +23,42 @@ final class RangeSummary {
   final RangeVariant variant;
   final double? runtimeMin, ascentMin, decompressionMin, firstStopMetres;
   final CalculationFailure? failure;
+
+  factory RangeSummary.fromJson(Map<String, Object?> json) => RangeSummary(
+    request: DiveRequest.fromJson(json['request'] as Map<String, Object?>),
+    bailout: switch (json['bailout']) {
+      final Map<String, Object?> bailout => BailoutRequest.fromJson(bailout),
+      null => null,
+      _ => throw const FormatException('Invalid range bailout.'),
+    },
+    depthMetres: (json['depthMetres'] as num).toDouble(),
+    durationMin: (json['durationMin'] as num).toDouble(),
+    variant: RangeVariant.values.byName(json['variant'] as String),
+    runtimeMin: (json['runtimeMin'] as num?)?.toDouble(),
+    ascentMin: (json['ascentMin'] as num?)?.toDouble(),
+    decompressionMin: (json['decompressionMin'] as num?)?.toDouble(),
+    firstStopMetres: (json['firstStopMetres'] as num?)?.toDouble(),
+    failure: switch (json['failure']) {
+      final Map<String, Object?> failure => CalculationFailure.fromJson(
+        failure,
+      ),
+      null => null,
+      _ => throw const FormatException('Invalid range cell failure.'),
+    },
+  );
+
+  Map<String, Object?> toJson() => {
+    'request': request.toJson(),
+    'bailout': bailout?.toJson(),
+    'depthMetres': depthMetres,
+    'durationMin': durationMin,
+    'variant': variant.name,
+    'runtimeMin': runtimeMin,
+    'ascentMin': ascentMin,
+    'decompressionMin': decompressionMin,
+    'firstStopMetres': firstStopMetres,
+    'failure': failure?.toJson(),
+  };
 }
 
 final class RangeHandle {
@@ -64,12 +101,13 @@ final class RangeWorker {
       inputRevision: inputRevision,
       dependencyVersion: dependencyVersion,
     );
-    final messages = ReceivePort(),
-        errors = ReceivePort(),
-        exits = ReceivePort();
+    final messages = usesBrowserWorkers ? null : ReceivePort();
+    final errors = usesBrowserWorkers ? null : ReceivePort();
+    final exits = usesBrowserWorkers ? null : ReceivePort();
     final stream = StreamController<RangeSummary>();
     final completion = Completer<void>();
     Isolate? isolate;
+    BrowserWorker? browserWorker;
     Timer? timer;
     var finished = false, received = 0;
     void finish([WorkerFailure? failure]) {
@@ -77,9 +115,10 @@ final class RangeWorker {
       finished = true;
       timer?.cancel();
       isolate?.kill(priority: Isolate.immediate);
-      messages.close();
-      errors.close();
-      exits.close();
+      browserWorker?.close();
+      messages?.close();
+      errors?.close();
+      exits?.close();
       unawaited(stream.close());
       if (failure == null) {
         completion.complete();
@@ -101,7 +140,7 @@ final class RangeWorker {
         ),
       ),
     );
-    messages.listen((message) {
+    void receive(Object? message) {
       try {
         if (finished) return;
         if (message is! Map ||
@@ -117,7 +156,11 @@ final class RangeWorker {
           );
           return;
         }
-        if (message['failure'] case final CalculationFailure failure) {
+        final rawFailure = message['failure'];
+        final failure = usesBrowserWorkers && rawFailure != null
+            ? CalculationFailure.fromJson(rawFailure as Map<String, Object?>)
+            : rawFailure;
+        if (failure is CalculationFailure) {
           finish(
             WorkerFailure(
               WorkerFailureKind.calculation,
@@ -140,7 +183,11 @@ final class RangeWorker {
           }
           return;
         }
-        if (message['cell'] case final RangeSummary cell) {
+        final rawCell = message['cell'];
+        final cell = usesBrowserWorkers && rawCell != null
+            ? RangeSummary.fromJson(rawCell as Map<String, Object?>)
+            : rawCell;
+        if (cell is RangeSummary) {
           final ack = message['ack'];
           final selected = variants.toSet().toList();
           final depthIndex = received ~/ (durations.length * selected.length);
@@ -152,7 +199,7 @@ final class RangeWorker {
             cell.decompressionMin,
             cell.firstStopMetres,
           ];
-          if (ack is! SendPort ||
+          if ((!usesBrowserWorkers && ack is! SendPort) ||
               received >= count ||
               cell.variant != selected[variantIndex] ||
               cell.depthMetres != depths.at(depthIndex) ||
@@ -174,7 +221,11 @@ final class RangeWorker {
           }
           received++;
           stream.add(cell);
-          ack.send(true);
+          if (usesBrowserWorkers) {
+            browserWorker!.send({'operation': 'rangeAck'});
+          } else {
+            (ack as SendPort).send(true);
+          }
         } else {
           finish(
             const WorkerFailure(
@@ -191,8 +242,37 @@ final class RangeWorker {
           ),
         );
       }
-    });
-    errors.listen(
+    }
+
+    if (usesBrowserWorkers) {
+      try {
+        browserWorker = BrowserWorker(
+          onMessage: receive,
+          onError: (message) =>
+              finish(WorkerFailure(WorkerFailureKind.unexpected, message)),
+        );
+        browserWorker.send({
+          'operation': 'range',
+          'identity': identity.toJson(),
+          'source': source.toJson(),
+          'bailout': bailout?.toJson(),
+          'depths': _axisJson(depths),
+          'durations': _axisJson(durations),
+          'variants': variants.map((variant) => variant.name).toList(),
+        });
+      } catch (error) {
+        finish(
+          WorkerFailure(
+            WorkerFailureKind.unexpected,
+            'Cannot start range worker: $error',
+          ),
+        );
+      }
+      return RangeHandle(stream.stream, completion.future, cancel);
+    }
+
+    messages!.listen(receive);
+    errors!.listen(
       (_) => finish(
         const WorkerFailure(
           WorkerFailureKind.unexpected,
@@ -200,7 +280,7 @@ final class RangeWorker {
         ),
       ),
     );
-    exits.listen((_) {
+    exits!.listen((_) {
       // Terminal message is sent before exit; allow the receive queue to drain.
       Timer.run(
         () => finish(
@@ -254,21 +334,56 @@ void rangeWorkerEntry(Map<String, Object?> message) async {
   final ack = ReceivePort();
   final iterator = StreamIterator<Object?>(ack);
   try {
-    for (final cell in calculateRange(
+    await runRangeWorker(
+      identity: identity,
       source: message['source'] as DiveRequest,
       bailout: message['bailout'] as BailoutRequest?,
       depths: message['depths'] as RangeAxis,
       durations: message['durations'] as RangeAxis,
       variants: message['variants'] as List<RangeVariant>,
+      send: (event) => send.send({
+        ...event,
+        if (event.containsKey('cell')) 'ack': ack.sendPort,
+      }),
+      waitForAck: iterator.moveNext,
+    );
+  } finally {
+    await iterator.cancel();
+    ack.close();
+  }
+}
+
+Map<String, double> _axisJson(RangeAxis axis) => {
+  'first': axis.first,
+  'last': axis.last,
+  'step': axis.step,
+};
+
+Future<void> runRangeWorker({
+  required Object? identity,
+  required DiveRequest source,
+  required BailoutRequest? bailout,
+  required RangeAxis depths,
+  required RangeAxis durations,
+  required List<RangeVariant> variants,
+  required void Function(Map<String, Object?>) send,
+  required Future<bool> Function() waitForAck,
+}) async {
+  try {
+    for (final cell in calculateRange(
+      source: source,
+      bailout: bailout,
+      depths: depths,
+      durations: durations,
+      variants: variants,
       budget: CalculationBudget(
         maxIterations: 5000000,
         maxElapsed: const Duration(seconds: 60),
       ),
     )) {
       final result = cell.result;
-      send.send({
+      send({
         'identity': identity,
-        'ack': ack.sendPort,
         'cell': RangeSummary(
           request: cell.request,
           bailout: cell.bailout,
@@ -282,13 +397,10 @@ void rangeWorkerEntry(Map<String, Object?> message) async {
           failure: cell.failure,
         ),
       });
-      if (!await iterator.moveNext()) return;
+      if (!await waitForAck()) return;
     }
-    send.send({'identity': identity, 'done': true});
+    send({'identity': identity, 'done': true});
   } on CalculationFailure catch (error) {
-    send.send({'identity': identity, 'failure': error});
-  } finally {
-    await iterator.cancel();
-    ack.close();
+    send({'identity': identity, 'failure': error});
   }
 }

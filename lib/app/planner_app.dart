@@ -25,10 +25,18 @@ import '../data/models/planner_document.dart';
 import '../ui/features/plan/bailout_editor.dart';
 import '../ui/features/plan/planner_view_model.dart';
 
+import 'telegram_integration.dart';
+
 class PlannerApp extends StatefulWidget {
-  const PlannerApp({super.key, this.viewModel, this.documentSession});
+  const PlannerApp({
+    super.key,
+    this.viewModel,
+    this.documentSession,
+    this.openDocumentStore = DocumentRepository.application,
+  });
   final PlannerViewModel? viewModel;
   final DocumentSession? documentSession;
+  final Future<DocumentStore> Function() openDocumentStore;
   @override
   State<PlannerApp> createState() => _PlannerAppState();
 }
@@ -37,6 +45,7 @@ class _PlannerAppState extends State<PlannerApp> with WidgetsBindingObserver {
   late final model =
       widget.viewModel ?? widget.documentSession?.model ?? PlannerViewModel();
   DocumentSession? documents;
+  final telegram = TelegramIntegration();
   bool loading = false;
   String? storageError;
 
@@ -44,6 +53,9 @@ class _PlannerAppState extends State<PlannerApp> with WidgetsBindingObserver {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) telegram.ready();
+    });
     documents = widget.documentSession;
     assert(documents == null || identical(documents!.model, model));
     if (widget.viewModel == null && documents == null) {
@@ -54,7 +66,7 @@ class _PlannerAppState extends State<PlannerApp> with WidgetsBindingObserver {
 
   Future<void> _initializeDocuments() async {
     try {
-      final repository = await DocumentRepository.application();
+      final repository = await widget.openDocumentStore();
       if (!mounted) return;
       final session = DocumentSession(model: model, repository: repository);
       documents = session;
@@ -82,6 +94,7 @@ class _PlannerAppState extends State<PlannerApp> with WidgetsBindingObserver {
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
+    telegram.dispose();
     if (widget.documentSession == null) documents?.dispose();
     if (widget.viewModel == null && widget.documentSession == null) {
       model.dispose();
@@ -91,9 +104,11 @@ class _PlannerAppState extends State<PlannerApp> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) => ListenableBuilder(
-    listenable: Listenable.merge([model, documents]),
+    listenable: Listenable.merge([model, documents, telegram]),
     builder: (context, _) => MaterialApp(
       title: 'Планировщик погружений',
+      navigatorObservers: [telegram],
+      builder: (context, child) => telegram.wrap(context, child!),
       debugShowCheckedModeBanner: false,
       locale: const Locale('ru'),
       supportedLocales: const [Locale('ru')],

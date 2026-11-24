@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:isolate';
 import 'package:deco_core/deco_core.dart';
+import 'browser_worker.dart';
 
 const _protocolVersion = 2;
 
@@ -108,15 +109,35 @@ final class CalculationWorker {
     );
     final envelope = <String, Object?>{
       ...identity.toJson(),
-      'replyTo': job.receive.sendPort,
       'request': request.toJson(),
       'bailout': bailout?.toJson(),
       'maxIterations': maxIterations,
       'numericalTimeLimitMicros': numericalTimeLimit.inMicroseconds,
     };
-    final pending = _spawn(job, envelope);
-    _spawning.add(pending);
-    unawaited(pending.whenComplete(() => _spawning.remove(pending)));
+    if (usesBrowserWorkers) {
+      try {
+        job.browserWorker = BrowserWorker(
+          onMessage: job._receive,
+          onError: (message) =>
+              job.fail(WorkerFailure(WorkerFailureKind.unexpected, message)),
+        );
+        job.browserWorker!.send({...envelope, 'operation': 'calculation'});
+      } catch (error) {
+        job.fail(
+          WorkerFailure(
+            WorkerFailureKind.unexpected,
+            'Could not start calculation worker: $error',
+          ),
+        );
+      }
+    } else {
+      final pending = _spawn(job, {
+        ...envelope,
+        'replyTo': job.receive!.sendPort,
+      });
+      _spawning.add(pending);
+      unawaited(pending.whenComplete(() => _spawning.remove(pending)));
+    }
     return CalculationHandle._(
       identity,
       job.completion.future,
@@ -135,8 +156,8 @@ final class CalculationWorker {
       final isolate = await Isolate.spawn(
         _entryPoint,
         envelope,
-        onExit: job.receive.sendPort,
-        onError: job.receive.sendPort,
+        onExit: job.receive!.sendPort,
+        onError: job.receive!.sendPort,
         errorsAreFatal: true,
         debugName: 'planner-${job.identity.requestId}',
       );
@@ -171,15 +192,16 @@ final class CalculationWorker {
 
 final class _WorkerJob {
   _WorkerJob(this.identity, this.diveId) {
-    receive.listen(_receive);
+    receive?.listen(_receive);
   }
   final CalculationIdentity identity;
   final String diveId;
-  final receive = ReceivePort();
+  final receive = usesBrowserWorkers ? null : ReceivePort();
   final completion = Completer<CalculationResult>();
   final progress = StreamController<CalculationStage>.broadcast();
   Timer? timer;
   Isolate? isolate;
+  BrowserWorker? browserWorker;
   bool get done => completion.isCompleted;
 
   void _receive(Object? message) {
@@ -274,14 +296,21 @@ final class _WorkerJob {
   void _close() {
     timer?.cancel();
     isolate?.kill(priority: Isolate.immediate);
-    receive.close();
+    browserWorker?.close();
+    receive?.close();
     unawaited(progress.close());
   }
 }
 
 /// Static isolate boundary. Only explicit JSON inputs cross into the core.
 void calculationWorkerEntry(Map<String, Object?> envelope) {
-  final reply = envelope['replyTo'] as SendPort;
+  runCalculationWorker(envelope, (envelope['replyTo'] as SendPort).send);
+}
+
+void runCalculationWorker(
+  Map<String, Object?> envelope,
+  void Function(Map<String, Object?>) reply,
+) {
   final identity = <String, Object?>{
     for (final key in [
       'requestId',
@@ -292,7 +321,7 @@ void calculationWorkerEntry(Map<String, Object?> envelope) {
     ])
       key: envelope[key],
   };
-  void send(Map<String, Object?> event) => reply.send({...identity, ...event});
+  void send(Map<String, Object?> event) => reply({...identity, ...event});
   try {
     if (envelope['protocolVersion'] != _protocolVersion ||
         envelope['modelVersion'] != calculationModelVersion) {

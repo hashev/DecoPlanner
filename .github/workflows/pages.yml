@@ -1,0 +1,65 @@
+name: Publish Mini App
+on:
+  workflow_dispatch:
+    inputs:
+      revision:
+        description: 'Full commit SHA from main. Leave blank for the current main.'
+        required: false
+        type: string
+permissions:
+  contents: read
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+jobs:
+  build:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    permissions:
+      checks: read
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Select verified revision from main
+        env:
+          REVISION: ${{ inputs.revision || github.sha }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          [[ "$REVISION" =~ ^[0-9a-f]{40}$ ]]
+          git merge-base --is-ancestor "$REVISION" origin/main
+          successful=$(gh api --paginate "repos/$GITHUB_REPOSITORY/commits/$REVISION/check-runs" \
+            --jq '.check_runs[] | select(.app.slug == "github-actions" and .name == "DecoPlanner CI gate" and .conclusion == "success") | .id')
+          [[ -n "$successful" ]]
+          git checkout --detach "$REVISION"
+      - uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2
+        with:
+          flutter-version: '3.41.6'
+      - uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b
+        id: pages
+      - run: flutter pub get --enforce-lockfile
+      - name: Build static Mini App
+        env:
+          BASE_PATH: ${{ steps.pages.outputs.base_path }}
+        run: |
+          bash tool/web/build.sh --base-href "${BASE_PATH%/}/" --no-pub
+          git rev-parse HEAD > build/web/revision.txt
+      - uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b
+        with:
+          path: build/web
+  deploy:
+    needs: build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e
+        id: deployment

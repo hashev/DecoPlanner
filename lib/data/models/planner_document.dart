@@ -473,6 +473,34 @@ Object? _canonical(Object? value, [int depth = 0]) {
   };
 }
 
+// JavaScript folds integral doubles into ints. A native schema-1 envelope
+// can distinguish those tokens in its checksum even after a browser decodes it.
+final _jsonStringsAndNumbers = RegExp(
+  r'"(?:[^"\\]|\\.)*"|(-?(?:0|[1-9][0-9]*)(?:\.[0-9]+)?(?:[eE][+-]?[0-9]+)?)',
+);
+
+String _wireNumberDigest(String source, Map<String, Object?> envelope) {
+  // Pick a marker that cannot collide with a decoded JSON string or key.
+  const prefix = '#decoplanner-number#';
+  final used = RegExp(
+    '$prefix([0-9]+):',
+  ).allMatches(jsonEncode(envelope)).map((match) => match[1]!).toSet();
+  var suffix = 0;
+  while (used.contains('$suffix')) {
+    suffix++;
+  }
+  final marker = '$prefix$suffix:';
+  final tagged = source.replaceAllMapped(_jsonStringsAndNumbers, (match) {
+    final number = match[1];
+    return number == null ? match[0]! : '"$marker$number"';
+  });
+  final payload = _map(jsonDecode(tagged), 'envelope')['document'];
+  final canonical = jsonEncode(
+    _canonical(payload),
+  ).replaceAllMapped(RegExp('"$marker([-+.0-9Ee]+)"'), (match) => match[1]!);
+  return sha256.convert(utf8.encode(canonical)).toString();
+}
+
 Uint8List encodePlannerDocument(
   PlannerDocument document, {
   int maxBytes = maximumDocumentBytes,
@@ -509,7 +537,8 @@ PlannerDocument decodePlannerDocument(
     );
   }
   try {
-    final json = _map(jsonDecode(utf8.decode(bytes)), 'envelope');
+    final source = utf8.decode(bytes);
+    final json = _map(jsonDecode(source), 'envelope');
     if (json['format'] != 'decoplanner-plan') _invalid('format');
     if (json['schemaVersion'] is! int) _invalid('schemaVersion');
     if (json['schemaVersion'] != plannerDocumentSchema) {
@@ -522,7 +551,9 @@ PlannerDocument decodePlannerDocument(
     final digest = sha256
         .convert(utf8.encode(jsonEncode(_canonical(payload))))
         .toString();
-    if (json['sha256'] != digest) {
+    if (json['sha256'] != digest &&
+        (!identical(1, 1.0) ||
+            json['sha256'] != _wireNumberDigest(source, json))) {
       throw const DocumentFailure(
         DocumentFailureKind.integrity,
         'Document checksum does not match.',

@@ -1,4 +1,5 @@
 import 'dart:isolate';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
@@ -10,6 +11,7 @@ final class PlannerPdf {
   Future<Uint8List> build(PlannerReport report) async {
     final regular = await rootBundle.load('assets/fonts/FiraSans-Regular.ttf');
     final bold = await rootBundle.load('assets/fonts/FiraSans-SemiBold.ttf');
+    if (kIsWeb) return renderPlannerPdf(report, regular, bold);
     return Isolate.run(() => renderPlannerPdf(report, regular, bold));
   }
 }
