@@ -5,6 +5,9 @@ import 'dart:typed_data';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
 import '../models/planner_document.dart';
+import 'document_store.dart';
+
+export 'document_store.dart';
 
 enum SaveStage {
   beforeDirectory,
@@ -48,24 +51,6 @@ Future<void> _validateBackground(
   decodePlannerDocument(actual, maxBytes: limit);
 });
 
-final class LoadedDocument {
-  const LoadedDocument(
-    this.document, {
-    this.recoveredFromBackup = false,
-    this.primaryFailure,
-  });
-  final PlannerDocument document;
-  final bool recoveredFromBackup;
-  final DocumentFailure? primaryFailure;
-}
-
-final class DocumentEntry {
-  const DocumentEntry(this.id, {this.loaded, this.failure});
-  final String id;
-  final LoadedDocument? loaded;
-  final DocumentFailure? failure;
-}
-
 final class _VerifiedFile {
   const _VerifiedFile(this.document, this.bytes, {this.backup = false});
   final PlannerDocument document;
@@ -74,7 +59,7 @@ final class _VerifiedFile {
 }
 
 /// Serializes writes and keeps a verified last-good copy until publication.
-final class DocumentRepository {
+final class DocumentRepository implements DocumentStore {
   DocumentRepository(
     this.directory, {
     this.maxBytes = maximumDocumentBytes,
@@ -166,6 +151,7 @@ final class DocumentRepository {
     _ => false,
   };
 
+  @override
   Future<LoadedDocument> load(String id) => _serial(() => _load(id));
 
   Future<LoadedDocument> _load(String id) async {
@@ -201,6 +187,7 @@ final class DocumentRepository {
   }
 
   /// Includes unreadable documents so that damage never silently hides a plan.
+  @override
   Future<List<DocumentEntry>> list() => _serial(() async {
     try {
       if (!await directory.exists()) return const [];
@@ -233,6 +220,7 @@ final class DocumentRepository {
     }
   });
 
+  @override
   Future<void> rename(String id, String name, {DateTime? modifiedAt}) =>
       _serial(() async {
         final loaded = await _load(id);
@@ -245,6 +233,7 @@ final class DocumentRepository {
       });
 
   /// A durable tombstone prevents queued or interrupted saves resurrecting data.
+  @override
   Future<void> delete(String id) => _serial(() async {
     final marker = _path(id, '.deleted');
     final pending = _path(id, '.delete.pending');
@@ -291,6 +280,7 @@ final class DocumentRepository {
     await _validateBackground(actual, expected, maxBytes);
   }
 
+  @override
   Future<void> save(PlannerDocument document) => _serial(() => _save(document));
 
   Future<void> _save(PlannerDocument document) async {

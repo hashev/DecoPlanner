@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:typed_data';
 import 'package:file_selector/file_selector.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:share_plus/share_plus.dart';
 import '../models/planner_document.dart';
@@ -76,6 +77,14 @@ final class NativeDocumentFiles implements DocumentFiles {
         DocumentFailureKind.io,
         'File selection is unavailable.',
       );
+    } on DocumentFailure {
+      rethrow;
+    } catch (_) {
+      if (!kIsWeb) rethrow;
+      throw const DocumentFailure(
+        DocumentFailureKind.io,
+        'Could not read the selected plan in this browser.',
+      );
     }
   }
 
@@ -87,7 +96,7 @@ final class NativeDocumentFiles implements DocumentFiles {
   ) async {
     final filename = documentFileName(name);
     try {
-      if (Platform.isAndroid || Platform.isIOS) {
+      if (kIsWeb || Platform.isAndroid || Platform.isIOS) {
         final result = await SharePlus.instance.share(
           ShareParams(
             files: [XFile.fromData(bytes, mimeType: 'application/json')],
@@ -122,6 +131,12 @@ final class NativeDocumentFiles implements DocumentFiles {
       throw const DocumentFailure(
         DocumentFailureKind.io,
         'File export is unavailable.',
+      );
+    } catch (_) {
+      if (!kIsWeb) rethrow;
+      throw const DocumentFailure(
+        DocumentFailureKind.io,
+        'Could not export the plan in this browser.',
       );
     }
   }

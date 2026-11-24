@@ -1,7 +1,9 @@
 import 'dart:io';
 import 'package:file_selector/file_selector.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:printing/printing.dart';
+import 'package:share_plus/share_plus.dart';
 import 'document_files.dart';
 
 enum PdfActionResult { completed, cancelled, handedOff }
@@ -28,7 +30,7 @@ final class NativePdfActions implements PdfActions {
   }
 
   @override
-  bool get saveUsesShare => Platform.isAndroid || Platform.isIOS;
+  bool get saveUsesShare => kIsWeb || Platform.isAndroid || Platform.isIOS;
   @override
   Future<PdfActionResult> print(Uint8List bytes) async =>
       await Printing.layoutPdf(
@@ -45,10 +47,23 @@ final class NativePdfActions implements PdfActions {
     Uint8List bytes,
     String name,
     Rect origin,
-  ) async =>
-      await Printing.sharePdf(bytes: bytes, filename: name, bounds: origin)
-      ? PdfActionResult.handedOff
-      : PdfActionResult.cancelled;
+  ) async {
+    if (kIsWeb) {
+      final result = await SharePlus.instance.share(
+        ShareParams(
+          files: [XFile.fromData(bytes, mimeType: 'application/pdf')],
+          fileNameOverrides: [name],
+        ),
+      );
+      return result.status == ShareResultStatus.dismissed
+          ? PdfActionResult.cancelled
+          : PdfActionResult.handedOff;
+    }
+    return await Printing.sharePdf(bytes: bytes, filename: name, bounds: origin)
+        ? PdfActionResult.handedOff
+        : PdfActionResult.cancelled;
+  }
+
   @override
   Future<PdfActionResult> save(
     Uint8List bytes,

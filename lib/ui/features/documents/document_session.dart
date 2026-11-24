@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'dart:async';
 import 'dart:convert';
 import 'dart:math';
@@ -21,7 +22,7 @@ final class DocumentSession extends ChangeNotifier {
     model.addListener(_changed);
   }
   final PlannerViewModel model;
-  final DocumentRepository repository;
+  final DocumentStore repository;
   final Duration autosaveDelay;
   late PlannerDocument _document;
   late String _saved;
@@ -433,8 +434,10 @@ final class DocumentSession extends ChangeNotifier {
   }
 }
 
-Future<PlannerDocument> _decodeImported(Uint8List bytes) =>
-    Isolate.run(() => decodePlannerDocument(bytes));
+Future<PlannerDocument> _decodeImported(Uint8List bytes) => kIsWeb
+    ? Future.sync(() => decodePlannerDocument(bytes))
+    : Isolate.run(() => decodePlannerDocument(bytes));
 
-Future<Uint8List> _encodeExport(PlannerDocument document) =>
-    Isolate.run(() => encodePlannerDocument(document));
+Future<Uint8List> _encodeExport(PlannerDocument document) => kIsWeb
+    ? Future.sync(() => encodePlannerDocument(document))
+    : Isolate.run(() => encodePlannerDocument(document));

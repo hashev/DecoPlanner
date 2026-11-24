@@ -50,6 +50,19 @@ macOS и Android; релизы GitHub Releases выпускаются тольк
 `vMAJOR.MINOR.PATCH`. [Выпуск и установка](docs/development/releases.md),
 [отчет проверки CI/CD](docs/development/reports/ci-release-validation.md).
 
+### Веб-сборка и проверка расчётов
+
+```sh
+bash tool/web/build.sh --base-href /DecoPlanner/
+python3 tool/web/check_workers.py
+```
+
+Скрипт сборки добавляет `planner_worker.dart.js` в `build/web`. Для локальной
+публикации в корне сайта укажите `--base-href /`. Проверка запускает Chromium
+и сравнивает ответы Web Worker с эталонами. Если `google-chrome` отсутствует
+в PATH, передайте путь к браузеру через `--chrome`.
+[Публикация в GitHub Pages и настройка Telegram](docs/development/telegram-mini-app.md).
+
 ## Материалы
 
 - [UX-проект](docs/ui/README.md) и [SVG-макеты](docs/ui/mockups/README.md).

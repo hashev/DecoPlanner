@@ -24,7 +24,7 @@ jobs:
         working-directory: packages/deco_core
         run: dart pub get
       - name: Formatting
-        run: dart format --output=none --set-exit-if-changed lib test integration_test test_driver packages/deco_core/lib packages/deco_core/test
+        run: dart format --output=none --set-exit-if-changed lib test integration_test test_driver tool/web packages/deco_core/lib packages/deco_core/test
       - run: flutter analyze --fatal-infos
       - run: flutter test
       - name: Core analysis and tests
@@ -52,6 +52,8 @@ jobs:
           - platform: macos
             runner: macos-15
           - platform: android
+            runner: ubuntu-24.04
+          - platform: web
             runner: ubuntu-24.04
     runs-on: ${{ matrix.runner }}
     timeout-minutes: 45
@@ -112,8 +114,14 @@ jobs:
       - name: Android validation build (no release credentials)
         if: matrix.platform == 'android'
         run: flutter build apk --debug
+      - name: Web release build
+        if: matrix.platform == 'web'
+        run: bash tool/web/build.sh --base-href /DecoPlanner/ --no-pub
+      - name: Chromium calculation and document checks
+        if: matrix.platform == 'web'
+        run: python3 tool/web/check_workers.py
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
-        if: matrix.platform != 'android'
+        if: matrix.platform == 'windows' || matrix.platform == 'macos'
         with:
           name: validation-${{ matrix.platform }}
           path: build/packages/*
