@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ru">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Проверка DecoPlanner в Telegram</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<h1>Проверка DecoPlanner в Telegram</h1>
+<button id="save">Записать в IndexedDB</button>
+<button id="read">Прочитать из IndexedDB</button>
+<p><label>Выбрать JSON <input id="file" type="file" accept=".json,application/json"></label></p>
+<button id="json">Скачать JSON</button>
+<button id="pdf">Скачать PDF</button>
+<p><button id="shareJson">Поделиться JSON</button> <button id="sharePdf">Поделиться PDF</button></p>
+<pre style="white-space:pre-wrap;overflow-wrap:anywhere" id="status" aria-live="polite"></pre>
+<script>
+const show = message => document.getElementById('status').textContent = message;
+const app = window.Telegram?.WebApp;
+app?.ready();
+const sample = JSON.stringify({probe: 'DecoPlanner WebView'});
+const run = action => async () => {
+  try { await action(); } catch (error) { show(String(error)); }
+};
+function database() {
+  return new Promise((resolve, reject) => {
+    const open = indexedDB.open('decoplanner-webview-probe', 1);
+    open.onupgradeneeded = () => open.result.createObjectStore('probe');
+    open.onsuccess = () => resolve(open.result);
+    open.onerror = () => reject(open.error);
+  });
+}
+save.onclick = run(async () => {
+  const db = await database();
+  const tx = db.transaction('probe', 'readwrite');
+  tx.objectStore('probe').put(new Date().toISOString(), 'sample');
+  tx.oncomplete = () => { db.close(); show('Запись сохранена. Закройте Mini App и откройте снова.'); };
+  tx.onabort = () => { db.close(); show(String(tx.error)); };
+});
+read.onclick = run(async () => {
+  const db = await database();
+  const tx = db.transaction('probe');
+  const result = tx.objectStore('probe').get('sample');
+  tx.oncomplete = () => { db.close(); show(result.result ?? 'Запись отсутствует'); };
+  tx.onabort = () => { db.close(); show(String(tx.error)); };
+});
+file.onchange = run(async () => {
+  const selected = file.files[0];
+  if (selected) {
+    JSON.parse(await selected.text());
+    show('JSON прочитан: ' + selected.name);
+  }
+});
+function download(content, format, name) {
+  const url = URL.createObjectURL(new Blob([content], {type: format}));
+  const link = Object.assign(document.createElement('a'), {href: url, download: name});
+  document.body.append(link);
+  link.click();
+  link.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 30000);
+  show('Запрос скачивания отправлен. Проверьте наличие файла: ' + name);
+}
+json.onclick = run(() => download(sample, 'application/json', 'decoplanner-probe.json'));
+function makePdf() {
+  const stream = 'BT /F1 18 Tf 32 60 Td (DecoPlanner WebView probe) Tj ET';
+  const objects = [
+    '<< /Type /Catalog /Pages 2 0 R >>',
+    '<< /Type /Pages /Kids [3 0 R] /Count 1 >>',
+    '<< /Type /Page /Parent 2 0 R /MediaBox [0 0 300 100] /Resources << /Font << /F1 4 0 R >> >> /Contents 5 0 R >>',
+    '<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>',
+    '<< /Length ' + stream.length + ' >>\nstream\n' + stream + '\nendstream'
+  ];
+  let content = '%PDF-1.4\n';
+  const offsets = objects.map((object, index) => {
+    const offset = content.length;
+    content += (index + 1) + ' 0 obj\n' + object + '\nendobj\n';
+    return offset;
+  });
+  const xref = content.length;
+  content += 'xref\n0 6\n0000000000 65535 f \n' +
+    offsets.map(offset => String(offset).padStart(10, '0') + ' 00000 n \n').join('') +
+    'trailer\n<< /Size 6 /Root 1 0 R >>\nstartxref\n' + xref + '\n%%EOF\n';
+  return content;
+}
+pdf.onclick = run(() => download(makePdf(), 'application/pdf', 'decoplanner-probe.pdf'));
+async function shareFile(content, type, name) {
+  const file = new File([content], name, {type});
+  if (typeof navigator.share !== 'function') {
+    show('navigator.share недоступен в этом клиенте.');
+    return;
+  }
+  if (typeof navigator.canShare === 'function' && !navigator.canShare({files: [file]})) {
+    show('Системное меню не поддерживает передачу файла: ' + name);
+    return;
+  }
+  await navigator.share({files: [file]});
+  show('Файл передан системному меню: ' + name);
+}
+shareJson.onclick = run(() => shareFile(sample, 'application/json', 'decoplanner-share.json'));
+sharePdf.onclick = run(() => shareFile(makePdf(), 'application/pdf', 'decoplanner-share.pdf'));
+show('Telegram API: ' + (app?.version ?? '—') + ' / ' + (app?.platform ?? '—'));
+</script>
+</html>
