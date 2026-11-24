@@ -10,7 +10,8 @@
 <p><label>Выбрать JSON <input id="file" type="file" accept=".json,application/json"></label></p>
 <button id="json">Скачать JSON</button>
 <button id="pdf">Скачать PDF</button>
-<pre id="status" aria-live="polite"></pre>
+<p><button id="shareJson">Поделиться JSON</button> <button id="sharePdf">Поделиться PDF</button></p>
+<pre style="white-space:pre-wrap;overflow-wrap:anywhere" id="status" aria-live="polite"></pre>
 <script>
 const show = message => document.getElementById('status').textContent = message;
 const app = window.Telegram?.WebApp;
@@ -58,7 +59,7 @@ function download(content, format, name) {
   show('Запрос скачивания отправлен. Проверьте наличие файла: ' + name);
 }
 json.onclick = run(() => download(sample, 'application/json', 'decoplanner-probe.json'));
-pdf.onclick = run(() => {
+function makePdf() {
   const stream = 'BT /F1 18 Tf 32 60 Td (DecoPlanner WebView probe) Tj ET';
   const objects = [
     '<< /Type /Catalog /Pages 2 0 R >>',
@@ -77,8 +78,24 @@ pdf.onclick = run(() => {
   content += 'xref\n0 6\n0000000000 65535 f \n' +
     offsets.map(offset => String(offset).padStart(10, '0') + ' 00000 n \n').join('') +
     'trailer\n<< /Size 6 /Root 1 0 R >>\nstartxref\n' + xref + '\n%%EOF\n';
-  download(content, 'application/pdf', 'decoplanner-probe.pdf');
-});
+  return content;
+}
+pdf.onclick = run(() => download(makePdf(), 'application/pdf', 'decoplanner-probe.pdf'));
+async function shareFile(content, type, name) {
+  const file = new File([content], name, {type});
+  if (typeof navigator.share !== 'function') {
+    show('navigator.share недоступен в этом клиенте.');
+    return;
+  }
+  if (typeof navigator.canShare === 'function' && !navigator.canShare({files: [file]})) {
+    show('Системное меню не поддерживает передачу файла: ' + name);
+    return;
+  }
+  await navigator.share({files: [file]});
+  show('Файл передан системному меню: ' + name);
+}
+shareJson.onclick = run(() => shareFile(sample, 'application/json', 'decoplanner-share.json'));
+sharePdf.onclick = run(() => shareFile(makePdf(), 'application/pdf', 'decoplanner-share.pdf'));
 show('Telegram API: ' + (app?.version ?? '—') + ' / ' + (app?.platform ?? '—'));
 </script>
 </html>
