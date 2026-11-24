@@ -9,9 +9,14 @@
 
 ## BotFather
 
-В настройках нужного бота выберите **Mini Apps → Main App**, укажите постоянный HTTPS-адрес Pages с завершающим слешем и режим **Fullsize**. Тестовый бот — [DecoPlannerTestBot](https://t.me/DecoPlannerTestBot?startapp). В клиентской сборке и в workflow токен бота не требуется.
+В настройках бота выберите **Mini Apps → Main App**, укажите адрес [GitHub Pages](https://hashev.github.io/DecoPlanner/) с завершающим слешем и режим **Fullsize**. В клиентской сборке и в workflow токен бота не требуется.
+
+- Публичный бот [@DecoPlannerBot](https://t.me/DecoPlannerBot?startapp)
+- Тестовый бот [@DecoPlannerTestBot](https://t.me/DecoPlannerTestBot?startapp)
 
 ## Проверка клиента
+
+Проверки в Telegram для Android и iOS проводят пользователи после публикации.
 
 Откройте Mini App в Telegram и запишите версию клиента и ОС. Создайте план, рассчитайте его, сохраните, закройте Mini App и откройте снова. Отключите сеть с уже открытым приложением и повторите расчёт. Проверьте изменение поля с клавиатурой и системную кнопку «Назад» на телефоне.
 
